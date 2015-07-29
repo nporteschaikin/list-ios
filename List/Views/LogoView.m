@@ -10,7 +10,7 @@
 
 @implementation LogoView
 
-static CGFloat const LogoViewLineWidth = 2.0f;
+static NSString * const LogoViewLogoURL = @"logo";
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -29,41 +29,21 @@ static CGFloat const LogoViewLineWidth = 2.0f;
 }
 
 - (void)drawRect:(CGRect)rect {
-    [super drawRect:rect];
-    CGFloat x = CGRectGetMinX(rect) + (LogoViewLineWidth / 2);
-    CGFloat y = CGRectGetMinY(rect) + (LogoViewLineWidth / 2);
-    CGFloat w = CGRectGetWidth(rect) - LogoViewLineWidth;
-    CGFloat h = CGRectGetHeight(rect) - LogoViewLineWidth;
-    CGRect circleRect = CGRectMake(x, y, w, h);
-    UIBezierPath *circlePath = [UIBezierPath bezierPathWithOvalInRect:circleRect];
-    circlePath.lineWidth = LogoViewLineWidth;
-    [[UIColor clearColor] setFill];
-    [self.lineColor setStroke];
-    [circlePath fill];
-    [circlePath stroke];
-    CGFloat menuSize = rect.size.width * .45;
-    CGFloat firstLineStartX = ((rect.size.width - menuSize) / 2);
-    CGFloat firstLineStartY = CGRectGetMidY(rect) - (LogoViewLineWidth * 2);
-    CGFloat firstLineEndX = rect.size.width - ((rect.size.width - menuSize) / 2);
-    CGFloat firstLineEndY = firstLineStartY;
-    CGFloat secondLineStartX = firstLineStartX;
-    CGFloat secondLineStartY = CGRectGetMidY(rect);
-    CGFloat secondLineEndX = firstLineEndX;
-    CGFloat secondLineEndY = secondLineStartY;
-    CGFloat thirdLineStartX = firstLineStartX;
-    CGFloat thirdLineStartY = CGRectGetMidY(rect) + (LogoViewLineWidth * 2);
-    CGFloat thirdLineEndX = firstLineEndX;
-    CGFloat thirdLineEndY = thirdLineStartY;
-    UIBezierPath *linePath = [UIBezierPath bezierPath];
-    linePath.lineWidth = LogoViewLineWidth;
-    [linePath moveToPoint:CGPointMake(firstLineStartX, firstLineStartY)];
-    [linePath addLineToPoint:CGPointMake(firstLineEndX, firstLineEndY)];
-    [linePath moveToPoint:CGPointMake(secondLineStartX, secondLineStartY)];
-    [linePath addLineToPoint:CGPointMake(secondLineEndX, secondLineEndY)];
-    [linePath moveToPoint:CGPointMake(thirdLineStartX, thirdLineStartY)];
-    [linePath addLineToPoint:CGPointMake(thirdLineEndX, thirdLineEndY)];
-    [self.lineColor setStroke];
-    [linePath stroke];
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    [[UIColor clearColor] set];
+    CGContextFillRect(ctx, rect);
+    CGContextGetCTM(ctx);
+    CGContextScaleCTM(ctx, 1, -1);
+    CGContextTranslateCTM(ctx, 0, -rect.size.height);
+    NSString *path = [[NSBundle mainBundle] pathForResource:LogoViewLogoURL ofType:@"pdf"];
+    NSURL *URL = [NSURL fileURLWithPath:path];
+    CGPDFDocumentRef logo = CGPDFDocumentCreateWithURL((CFURLRef)URL);
+    CGPDFPageRef page1 = CGPDFDocumentGetPage(logo, 1);
+    CGRect logoRect = CGPDFPageGetBoxRect(page1, kCGPDFCropBox);
+    CGContextScaleCTM(ctx, rect.size.width / logoRect.size.width, rect.size.height / logoRect.size.height);
+    CGContextTranslateCTM(ctx, -logoRect.origin.x, -logoRect.origin.y);
+    CGContextDrawPDFPage(ctx, page1);
+    CGPDFDocumentRelease(logo);
 }
 
 

@@ -87,6 +87,7 @@
 		4FAB0D231B5CBA58004035CC /* PostLocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB0D221B5CBA58004035CC /* PostLocationView.m */; };
 		4FAB0D261B5CBBF2004035CC /* Placemark.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB0D251B5CBBF2004035CC /* Placemark.m */; };
 		4FAB0D2C1B5D3292004035CC /* MessagesFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB0D2B1B5D3292004035CC /* MessagesFormView.m */; };
+		4FCBE9F31B691FAC00589E61 /* logo.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBE9F21B691FAC00589E61 /* logo.pdf */; };
 		4FCDBDA01B4495C0005ACBDD /* UIFont+List.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCDBD9F1B4495C0005ACBDD /* UIFont+List.m */; };
 		4FE660A81B68414500EE8CAD /* ThreadsFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE660A71B68414500EE8CAD /* ThreadsFormView.m */; };
 		4FEA81931B62C7A300185F33 /* NotificationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA81921B62C7A300185F33 /* NotificationsTableViewController.m */; };
@@ -293,6 +294,7 @@
 		4FAB0D251B5CBBF2004035CC /* Placemark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Placemark.m; sourceTree = "<group>"; };
 		4FAB0D2A1B5D3292004035CC /* MessagesFormView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesFormView.h; sourceTree = "<group>"; };
 		4FAB0D2B1B5D3292004035CC /* MessagesFormView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesFormView.m; sourceTree = "<group>"; };
+		4FCBE9F21B691FAC00589E61 /* logo.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = logo.pdf; sourceTree = "<group>"; };
 		4FCDBD9E1B4495C0005ACBDD /* UIFont+List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+List.h"; sourceTree = "<group>"; };
 		4FCDBD9F1B4495C0005ACBDD /* UIFont+List.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+List.m"; sourceTree = "<group>"; };
 		4FE660A61B68414500EE8CAD /* ThreadsFormView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadsFormView.h; sourceTree = "<group>"; };
@@ -726,6 +728,7 @@
 		4FEA99071B6685400068BA34 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4FCBE9F21B691FAC00589E61 /* logo.pdf */,
 				4FEA99081B66857B0068BA34 /* loginView1.jpg */,
 				4FEA99091B66857B0068BA34 /* loginView2.jpg */,
 				4FEA990A1B66857B0068BA34 /* loginView3.jpg */,
@@ -893,6 +896,7 @@
 				E441005E1B4D758400587232 /* OpenSans-Light.ttf in Resources */,
 				E441005A1B4D757C00587232 /* OpenSans-BoldItalic.ttf in Resources */,
 				E441005B1B4D757F00587232 /* OpenSans-ExtraBold.ttf in Resources */,
+				4FCBE9F31B691FAC00589E61 /* logo.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
