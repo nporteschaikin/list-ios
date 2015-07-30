@@ -90,10 +90,10 @@
      * Otherwise, start animating.
      */
     
-    if (!locationManager.location) {
-        [self.activityIndicatorView startAnimating];
-    } else {
+    if (locationManager.location) {
         [self createLocationViewController];
+    } else {
+        [self.activityIndicatorView startAnimating];
     }
     
 }
