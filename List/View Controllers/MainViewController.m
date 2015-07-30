@@ -7,18 +7,23 @@
 //
 
 #import "MainViewController.h"
+#import "LocationController.h"
 #import "CategoriesController.h"
-#import "CategoriesViewController.h"
+#import "PostsController.h"
+#import "LLocationManager.h"
+#import "HomeLocationViewController.h"
 #import "MenuViewController.h"
-#import "Session.h"
+#import "ActivityIndicatorView.h"
 #import "Constants.h"
 #import "UIColor+List.h"
 
-@interface MainViewController () <CategoriesViewControllerDelegate, MenuViewControllerDelegate>
+@interface MainViewController () <LLocationManagerListener>
 
 @property (strong, nonatomic) Session *session;
-@property (strong, nonatomic) CategoriesViewController *categoriesViewController;
+@property (strong, nonatomic) LocationController *locationController;
+@property (strong, nonatomic) HomeLocationViewController *locationViewController;
 @property (strong, nonatomic) MenuViewController *menuViewController;
+@property (strong, nonatomic) ActivityIndicatorView *activityIndicatorView;
 
 @end
 
@@ -41,52 +46,106 @@
     self.view.backgroundColor = [UIColor list_blueColorAlpha:1];
     
     /*
-     * Create categories controller.
-     */
-    
-    CategoriesController *categoriesController = [[CategoriesController alloc] init];
-    
-    /*
-     * Create categories controller.
-     */
-    
-    self.categoriesViewController = [[CategoriesViewController alloc] initWithCategoriesController:categoriesController
-                                                                                           session:self.session];
-    self.categoriesViewController.delegate = self;
-    [self addChildViewController:self.categoriesViewController];
-    [self.view addSubview:self.categoriesViewController.view];
-    [self.categoriesViewController didMoveToParentViewController:self];
-    
-    /*
      * Create menu view controller.
      */
     
     self.menuViewController = [[MenuViewController alloc] initWithSession:self.session];
-    self.menuViewController.delegate = self;
     self.menuViewController.view.hidden = YES;
     self.menuViewController.view.alpha = 0.0f;
     self.menuViewController.view.transform = CGAffineTransformMakeScale(0.5f, 0.5f);
     [self addChildViewController:self.menuViewController];
-    [self.view insertSubview:self.menuViewController.view
-                aboveSubview:self.categoriesViewController.view];
+    [self.view addSubview:self.menuViewController.view];
     [self.menuViewController didMoveToParentViewController:self];
     
+    /*
+     * Listen to close control
+     */
+    
+    LIconControl *closeControl = self.menuViewController.closeControl;
+    [closeControl addTarget:self
+                     action:@selector(handleMenuViewControllerCloseControlTouchDown:)
+           forControlEvents:UIControlEventTouchDown];
+    
+    /*
+     * Add activity indicator view.
+     */
+    
+    [self.view addSubview:self.activityIndicatorView];
+    
+    /*
+     * Listen to location manager.
+     */
+    
+    LLocationManager *locationManager = [LLocationManager sharedManager];
+    [locationManager addListener:self];
+    
+    /*
+     * Create location controller.
+     */
+    
+    self.locationController = [[LocationController alloc] initWithLocation:locationManager.location];
+    
+    /*
+     * If we have a location, present location view controller.
+     * Otherwise, start animating.
+     */
+    
+    if (!locationManager.location) {
+        [self.activityIndicatorView startAnimating];
+    } else {
+        [self createLocationViewController];
+    }
+    
+}
+
+- (void)createLocationViewController {
+    
+    /*
+     * Create location view controller.
+     */
+    
+    CategoriesController *categoriesController = [[CategoriesController alloc] init];
+    PostsController *postsController = [[PostsController alloc] initWithSession:self.session];
+    self.locationViewController = [[HomeLocationViewController alloc] initWithLocationController:self.locationController
+                                                                            categoriesController:categoriesController
+                                                                                 postsController:postsController
+                                                                                         session:self.session];
+    
+    /*
+     * Customize header view.
+     */
+    
+    LocationHeaderView *locationHeaderView = self.locationViewController.headerView;
+    locationHeaderView.iconControlPosition = HeaderViewIconControlPositionLeft;
+    LIconControl *iconControl = locationHeaderView.iconControl;
+    iconControl.style = LIconControlStyleMenu;
+    [iconControl addTarget:self
+                    action:@selector(handleLocationViewControllerHeaderViewIconControlTouchDown:)
+          forControlEvents:UIControlEventTouchDown];
+    
+    /*
+     * Add to this controller.
+     */
+    
+    [self.view addSubview:self.locationViewController.view];
+    [self addChildViewController:self.locationViewController];
+    [self.locationViewController didMoveToParentViewController:self];
 }
 
 - (void)openMenuView:(BOOL)open
             animated:(BOOL)animated {
     MenuViewController *menuViewController = self.menuViewController;
-    CategoriesViewController *categoriesViewController = self.categoriesViewController;
+    LocationViewController *locationViewController = self.locationViewController;
     UIView *menuView = menuViewController.view;
-    UIView *categoriesView = categoriesViewController.view;
+    UIView *categoriesView = locationViewController.view;
     
     if (open) {
         menuView.hidden = NO;
         [menuViewController viewWillAppear:YES];
-        [categoriesViewController viewWillDisappear:YES];
+        [locationViewController viewWillDisappear:YES];
     } else {
         [menuViewController viewWillDisappear:YES];
-        [categoriesViewController viewWillAppear:YES];
+        [locationViewController viewWillAppear:YES];
     }
     
     void (^animationBlock)(void) = ^void(void) {
@@ -105,11 +164,11 @@
     void (^completionBlock)(BOOL) = ^void(BOOL finished) {
         if (open) {
             [menuViewController viewDidAppear:YES];
-            [categoriesViewController viewDidDisappear:YES];
+            [locationViewController viewDidDisappear:YES];
         } else {
             menuView.hidden = YES;
             [menuViewController viewDidDisappear:YES];
-            [categoriesViewController viewDidAppear:YES];
+            [locationViewController viewDidAppear:YES];
         }
     };
     if (animated) {
@@ -121,18 +180,74 @@
     }
 }
 
-#pragma mark - CategoriesViewControllDelegate
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    
+    CGFloat x, y, w, h;
+    x = (CGRectGetWidth(self.view.bounds) - ActivityIndicatorViewDefaultSize) / 2;
+    y = (CGRectGetHeight(self.view.bounds) - ActivityIndicatorViewDefaultSize) / 2;
+    w = ActivityIndicatorViewDefaultSize;
+    h = ActivityIndicatorViewDefaultSize;
+    self.activityIndicatorView.frame = CGRectMake(x, y, w, h);
 
-- (void)categoriesViewControllerHeaderViewMenuControlTouchDown:(CategoriesViewController *)viewController {
-    [self openMenuView:YES
-              animated:YES];
 }
 
-#pragma mark - MenuViewControllerDelegate
+#pragma mark - LLocationManagerListener
 
-- (void)menuViewControllerCloseControlTouchDown:(MenuViewController *)viewController {
-    [self openMenuView:NO
-              animated:YES];
+- (void)locationManager:(LLocationManager *)manager event:(LLocationManagerEvent)event {
+    switch (event) {
+        case LLocationManagerEventUpdateLocation: {
+            
+            /*
+             * Set location.
+             */
+            
+            self.locationController.location = manager.location;
+            
+            /*
+             * If posts controller doesn't exist, create it.
+             */
+            
+            if (!self.locationViewController) {
+                [self createLocationViewController];
+            }
+            
+        }
+        default: {
+            break;
+        }
+    }
+}
+
+#pragma mark - Location view controller button handler.
+
+- (void)handleLocationViewControllerHeaderViewIconControlTouchDown:(LIconControl *)control {
+    
+    /*
+     * Show menu.
+     */
+    
+    [self openMenuView:YES animated:YES];
+    
+}
+
+- (void)handleMenuViewControllerCloseControlTouchDown:(LIconControl *)control {
+    
+    /*
+     * Hide menu.
+     */
+    
+    [self openMenuView:NO animated:YES];
+    
+}
+
+#pragma mark - Dynamic getters
+
+- (ActivityIndicatorView *)activityIndicatorView {
+    if (!_activityIndicatorView) {
+        _activityIndicatorView = [[ActivityIndicatorView alloc] initWithStyle:ActivityIndicatorViewStyleWhite];
+    }
+    return _activityIndicatorView;
 }
 
 @end

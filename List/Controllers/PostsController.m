@@ -65,6 +65,10 @@
      * Send request.
      */
     
+    if ([self.delegate respondsToSelector:@selector(postsControllerDidRequestPosts:)]) {
+        [self.delegate postsControllerDidRequestPosts:self];
+    }
+    
     [request sendRequest:^(id<NSObject> body) {
         
         /*

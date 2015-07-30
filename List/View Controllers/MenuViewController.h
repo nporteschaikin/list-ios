@@ -8,20 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Session.h"
-
-@class MenuViewController;
-
-@protocol MenuViewControllerDelegate <NSObject>
-
-@optional;
-- (void)menuViewControllerCloseControlTouchDown:(MenuViewController *)viewController;
-- (void)menuViewControllerSignOutButtonTouchDown:(MenuViewController *)viewController;
-
-@end
+#import "LIconControl.h"
 
 @interface MenuViewController : UIViewController
 
-@property (weak, nonatomic) id<MenuViewControllerDelegate> delegate;
+@property (strong, nonatomic, readonly) LIconControl *closeControl;
 
 - (instancetype)initWithSession:(Session *)session NS_DESIGNATED_INITIALIZER;
 

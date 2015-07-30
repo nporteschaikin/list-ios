@@ -14,6 +14,7 @@
 @protocol CategoriesControllerDelegate <NSObject>
 
 @optional
+- (void)categoriesControllerDidRequestCategories:(CategoriesController *)categoriesController;
 - (void)categoriesControllerDidFetchCategories:(CategoriesController *)categoriesController;
 - (void)categoriesController:(CategoriesController *)categoriesController failedToFetchCategoriesWithError:(NSError *)error;
 - (void)categoriesController:(CategoriesController *)categoriesController failedToFetchCategoriesWithResponse:(id<NSObject>)response;

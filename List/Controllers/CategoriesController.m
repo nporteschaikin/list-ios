@@ -27,6 +27,10 @@
      * Send request.
      */
     
+    if ([self.delegate respondsToSelector:@selector(categoriesControllerDidRequestCategories:)]) {
+        [self.delegate categoriesControllerDidRequestCategories:self];
+    }
+    
     [request sendRequest:^(id<NSObject> body) {
         
         /*

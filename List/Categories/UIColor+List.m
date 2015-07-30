@@ -18,16 +18,16 @@
 }
 
 + (UIColor *)list_lightBlueColorAlpha:(CGFloat)alpha {
-    return [UIColor colorWithRed:0.314
-                           green:0.639
-                            blue:0.886
+    return [UIColor colorWithRed:0.859
+                           green:0.925
+                            blue:0.984
                            alpha:alpha];
 }
 
 + (UIColor *)list_lightGrayColorAlpha:(CGFloat)alpha {
-    return [UIColor colorWithRed:0.945
-                           green:0.945
-                            blue:0.945
+    return [UIColor colorWithRed:0.975
+                           green:0.975
+                            blue:0.975
                            alpha:alpha];
 }
 

@@ -18,6 +18,7 @@
 @protocol PostsControllerDelegate <NSObject>
 
 @optional
+- (void)postsControllerDidRequestPosts:(PostsController *)postController;
 - (void)postsControllerDidFetchPosts:(PostsController *)postController;
 - (void)postsController:(PostsController *)postController failedToFetchPostsWithError:(NSError *)error;
 - (void)postsController:(PostsController *)postController failedToFetchPostsWithResponse:(id<NSObject>)response;

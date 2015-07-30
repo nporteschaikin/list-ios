@@ -55,9 +55,9 @@ static NSString * const ListFontLightName = @"OpenSans-Light";
                          size:15.0f];
 }
 
-+ (UIFont *)list_categoriesHeaderViewFont {
++ (UIFont *)list_headerViewFont {
     return [self fontWithName:ListFontSemiboldName
-                         size:15.0f];
+                         size:14.0f];
 }
 
 + (UIFont *)list_buttonFont {
@@ -84,7 +84,8 @@ static NSString * const ListFontLightName = @"OpenSans-Light";
 }
 
 + (UIFont *)list_postEditorViewHeaderFont {
-    return [self list_categoriesHeaderViewFont];
+    return [self fontWithName:ListFontSemiboldName
+                         size:12.0f];
 }
 
 + (UIFont *)list_locationBarViewFont {
@@ -165,7 +166,7 @@ static NSString * const ListFontLightName = @"OpenSans-Light";
 
 + (UIFont *)list_postsSearchBarFont {
     return [self fontWithName:ListFontSemiboldName
-                         size:15.0f];
+                         size:13.0f];
 }
 
 + (UIFont *)list_userViewDetailsCellNameFont {

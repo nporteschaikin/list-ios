@@ -9,8 +9,6 @@
 #import "MenuViewController.h"
 #import "MenuDataSource.h"
 #import "UIColor+List.h"
-#import "LIconControl.h"
-#import "MenuViewFooterView.h"
 #import "APIRequest.h"
 #import "Constants.h"
 #import "LLocationManager.h"
@@ -25,7 +23,6 @@
 
 @property (strong, nonatomic) Session *session;
 @property (strong, nonatomic) MenuDataSource *dataSource;
-@property (strong, nonatomic) MenuViewFooterView *footerView;
 @property (strong, nonatomic) LIconControl *closeControl;
 @property (strong, nonatomic) UIImageView *avatarImageView;
 @property (strong, nonatomic) UITableView *tableView;
@@ -78,16 +75,6 @@ static CGFloat const MenuViewControllerCircleSize = 45.f;
                 aboveSubview:self.tableView];
     [self.view insertSubview:self.closeControl
                 aboveSubview:self.tableView];
-    [self.view insertSubview:self.footerView
-                aboveSubview:self.tableView];
-    
-    /*
-     * Handle close control.
-     */
-    
-    [self.closeControl addTarget:self
-                          action:@selector(handleCloseControlTouchDown:)
-                forControlEvents:UIControlEventTouchDown];
     
     /*
      * Set avatar image view.
@@ -96,57 +83,6 @@ static CGFloat const MenuViewControllerCircleSize = 45.f;
     User *user = self.session.user;
     if (user.profilePictureURL) {
         [self.avatarImageView sd_setImageWithURL:user.profilePictureURL];
-    }
-    
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    /*
-     * Perform placemark request
-     */
-    
-    [self performPlacemarkRequest];
-}
-
-- (void)performPlacemarkRequest {
-    
-    /*
-     * Get shared location manager.
-     */
-    
-    LLocationManager *locationManager = [LLocationManager sharedManager];
-    CLLocation *location = locationManager.location;
-    if (location) {
-        APIRequest *request = [[APIRequest alloc] init];
-        request.endpoint = APIGeocoderPlacemarkEndpoint;
-        request.query = @{@"latitude": [[NSNumber numberWithDouble:location.coordinate.latitude] stringValue],
-                          @"longitude": [[NSNumber numberWithDouble:location.coordinate.longitude] stringValue]};
-        [request sendRequest:^(id<NSObject> body) {
-            
-            /*
-             * Add placemark.
-             */
-            
-            Placemark *placemark = [Placemark fromJSONDict:(NSDictionary *)body];
-            MenuViewFooterView *footerView = self.footerView;
-            UILabel *locationLabel = footerView.locationLabel;
-            locationLabel.text = placemark.title;
-            
-        } onError:^(NSError *error) {
-            
-            /*
-             * Could not find placemark.
-             */
-            
-        } onFail:^(id<NSObject> body) {
-            
-            /*
-             * Could not find placemark.
-             */
-            
-        }];
     }
     
 }
@@ -165,12 +101,8 @@ static CGFloat const MenuViewControllerCircleSize = 45.f;
     self.avatarImageView.frame = CGRectMake(x, y, w, h);
     
     x = 0.0f;
-    w = CGRectGetWidth(self.view.bounds);
-    h = [self.footerView sizeThatFits:CGSizeMake(w, 0.0f)].height;
-    y = CGRectGetHeight(self.view.bounds) - h;
-    self.footerView.frame = CGRectMake(x, y, w, h);
-    
     y = 0.0f;
+    w = CGRectGetWidth(self.view.bounds);
     h = CGRectGetHeight(self.view.bounds);
     self.tableView.frame = CGRectMake(x, y, w, h);
     
@@ -314,21 +246,6 @@ static CGFloat const MenuViewControllerCircleSize = 45.f;
         _tableView = [[UITableView alloc] init];
     }
     return _tableView;
-}
-
-- (MenuViewFooterView *)footerView {
-    if (!_footerView) {
-        _footerView = [[MenuViewFooterView alloc] init];
-    }
-    return _footerView;
-}
-
-#pragma mark - Close control handler
-
-- (void)handleCloseControlTouchDown:(LIconControl *)closeControl {
-    if ([self.delegate respondsToSelector:@selector(menuViewControllerCloseControlTouchDown:)]) {
-        [self.delegate menuViewControllerCloseControlTouchDown:self];
-    }
 }
 
 @end

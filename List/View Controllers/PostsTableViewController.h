@@ -19,6 +19,5 @@
 
 - (id)initWithPostsController:(PostsController *)postsController
                       session:(Session *)session;
-- (void)performRequest;
 
 @end

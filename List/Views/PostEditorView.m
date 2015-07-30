@@ -10,17 +10,13 @@
 #import "UIColor+List.h"
 #import "UIFont+List.h"
 #import "UIButton+List.h"
-#import "LIconControl.h"
 
 @interface PostEditorView ()
 
-@property (strong, nonatomic) UIView *headerView;
-@property (strong, nonatomic) UIImageView *avatarImageView;
 @property (strong, nonatomic) LTextField *titleTextField;
 @property (strong, nonatomic) UIView *contentContainer;
 @property (strong, nonatomic) LTextView *contentTextView;
 @property (strong, nonatomic) UILabel *categoryLabel;
-@property (strong, nonatomic) LIconControl *closeControl;
 @property (strong, nonatomic) UIView *footerView;
 @property (strong, nonatomic) UIButton *cameraButton;
 @property (strong, nonatomic) UIView *coverPhotoContainer;
@@ -32,7 +28,6 @@
 @implementation PostEditorView
 
 static CGFloat const PostEditorViewPadding = 12.f;
-static CGFloat const PostEditorViewAvatarImageViewSize = 45.f;
 static CGFloat const PostEditorViewContentContainerHeight = 150.f;
 static CGFloat const PostEditorViewCoverPhotoContainerSize = 100.f;
 
@@ -55,9 +50,6 @@ static CGFloat const PostEditorViewCoverPhotoContainerSize = 100.f;
      * Add subviews.
      */
     
-    [self addSubview:self.headerView];
-    [self.headerView addSubview:self.closeControl];
-    [self.headerView addSubview:self.avatarImageView];
     [self addSubview:self.titleTextField];
     [self addSubview:self.contentContainer];
     [self.contentContainer addSubview:self.contentTextView];
@@ -76,23 +68,8 @@ static CGFloat const PostEditorViewCoverPhotoContainerSize = 100.f;
     [super layoutSubviews];
     
     CGFloat x, y, w, h;
-    x = CGRectGetMinX(self.bounds);
-    y = CGRectGetMinY(self.bounds);
-    w = CGRectGetWidth(self.bounds);
-    h = PostEditorViewAvatarImageViewSize + (PostEditorViewPadding * 2);
-    self.headerView.frame = CGRectMake(x, y, w, h);
-    
-    x = w - (PostEditorViewPadding + PostEditorViewAvatarImageViewSize);
-    y = PostEditorViewPadding;
-    w = PostEditorViewAvatarImageViewSize;
-    h = PostEditorViewAvatarImageViewSize;
-    self.closeControl.frame = CGRectMake(x, y, w, h);
-    
-    x = PostEditorViewPadding;
-    self.avatarImageView.frame = CGRectMake(x, y, w, h);
-    
-    x = CGRectGetMinX(self.bounds);
-    y = CGRectGetMaxY(self.headerView.frame) + 1.0;
+    x = 0.0f;
+    y = 0.0f;;
     w = CGRectGetWidth(self.bounds);
     h = CGRectGetHeight(self.titleTextField.frame);
     self.titleTextField.frame = CGRectMake(x, y, w, h);
@@ -147,15 +124,6 @@ static CGFloat const PostEditorViewCoverPhotoContainerSize = 100.f;
 
 #pragma mark - Dynamic getters
 
-- (UIView *)headerView {
-    if (!_headerView) {
-        _headerView = [[UIView alloc] init];
-        _headerView.backgroundColor = [UIColor whiteColor];
-        _headerView.layer.masksToBounds = YES;
-    }
-    return _headerView;
-}
-
 - (UIView *)footerView {
     if (!_footerView) {
         _footerView = [[UIView alloc] init];
@@ -205,17 +173,6 @@ static CGFloat const PostEditorViewCoverPhotoContainerSize = 100.f;
     return _saveButton;
 }
 
-- (UIImageView *)avatarImageView {
-    if (!_avatarImageView) {
-        _avatarImageView = [[UIImageView alloc] init];
-        _avatarImageView.backgroundColor = [UIColor list_lightGrayColorAlpha:1];
-        _avatarImageView.layer.cornerRadius = PostEditorViewAvatarImageViewSize / 2;
-        _avatarImageView.layer.masksToBounds = YES;
-        _avatarImageView.contentMode = UIViewContentModeScaleAspectFill;
-    }
-    return _avatarImageView;
-}
-
 - (UIImageView *)coverPhotoImageView {
     if (!_coverPhotoImageView) {
         _coverPhotoImageView = [[UIImageView alloc] init];
@@ -253,14 +210,6 @@ static CGFloat const PostEditorViewCoverPhotoContainerSize = 100.f;
         _contentTextView.textContainerInset = UIEdgeInsetsMake(PostEditorViewPadding, (PostEditorViewPadding * 2) + PostEditorViewCoverPhotoContainerSize, PostEditorViewPadding, PostEditorViewPadding);
     }
     return _contentTextView;
-}
-
-- (LIconControl *)closeControl {
-    if (!_closeControl) {
-        _closeControl = [[LIconControl alloc] initWithStyle:LIconControlStyleRemove];
-        _closeControl.lineColor = [UIColor list_blueColorAlpha:1];
-    }
-    return _closeControl;
 }
 
 @end

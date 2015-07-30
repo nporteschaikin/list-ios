@@ -7,9 +7,9 @@
 //
 
 #import "PostEditorViewController.h"
+#import "PostEditorHeaderView.h"
 #import "PostController.h"
 #import "ActivityIndicatorView.h"
-#import "APIRequest.h"
 #import "Constants.h"
 #import "UIColor+List.h"
 #import "LLocationManager.h"
@@ -18,6 +18,7 @@
 @interface PostEditorViewController () <PostControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) PostEditorView *postEditorView;
+@property (strong, nonatomic) PostEditorHeaderView *headerView;
 @property (strong, nonatomic) UIView *activityOverlay;
 @property (strong, nonatomic) ActivityIndicatorView *activityIndicatorView;
 @property (strong, nonatomic) PostController *postController;
@@ -43,21 +44,39 @@
 }
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    PostController *postController = self.postController;
+    Post *post = self.postController.post;
+    User *currentUser = postController.session.user;
     
     /*
-     * Clear background.
+     * Blue background.
      */
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor list_blueColorAlpha:1];
     
     /*
      * Add subviews
      */
     
+    [self.view addSubview:self.headerView];
     [self.view addSubview:self.postEditorView];
     [self.view insertSubview:self.activityOverlay
                 aboveSubview:self.postEditorView];
     [self.activityOverlay addSubview:self.activityIndicatorView];
+    
+    /*
+     * Setup header view.
+     */
+    
+    PostEditorHeaderView *headerView = self.headerView;
+    PostCategory *category = post.category;
+    headerView.textLabel.text = category.name;
+    headerView.iconControlPosition = HeaderViewIconControlPositionRight;
+    headerView.iconControl.style = LIconControlStyleRemove;
+    [headerView.iconControl addTarget:self
+                               action:@selector(handleHeaderViewIconControlTouchDown:)
+                     forControlEvents:UIControlEventTouchDown];
     
     /*
      * Listen to save button.
@@ -66,15 +85,6 @@
     UIButton *saveButton = self.postEditorView.saveButton;
     [saveButton addTarget:self
                    action:@selector(handleSaveButtonTouchDown:)
-         forControlEvents:UIControlEventTouchDown];
-    
-    /*
-     * Listen to close control.
-     */
-    
-    LIconControl *closeControl = self.postEditorView.closeControl;
-    [closeControl addTarget:self
-                     action:@selector(handleCloseControlTouchDown:)
          forControlEvents:UIControlEventTouchDown];
     
     /*
@@ -87,13 +97,11 @@
            forControlEvents:UIControlEventTouchDown];
     
     /*
-     * Set up photo button.
+     * Set up avatar.
      */
     
-    PostController *postController = self.postController;
-    User *currentUser = postController.session.user;
     if (currentUser.profilePictureURL) {
-        [self.postEditorView.avatarImageView sd_setImageWithURL:currentUser.profilePictureURL];
+        [self.headerView.avatarImageView sd_setImageWithURL:currentUser.profilePictureURL];
     }
     
     /*
@@ -140,43 +148,22 @@
     [super viewWillLayoutSubviews];
     
     CGFloat x, y, w, h;
-    x = CGRectGetMinX( self.view.bounds );
-    y = CGRectGetMinY( self.view.bounds );
+    x = 0.0f;
+    y = CGRectGetMinY([UIScreen mainScreen].applicationFrame);
     w = CGRectGetWidth( self.view.bounds );
-    h = CGRectGetHeight( self.view.bounds );
+    h = [self.headerView sizeThatFits:CGSizeZero].height;
+    self.headerView.frame = CGRectMake(x, y, w, h);
+    
+    y = CGRectGetMaxY(self.headerView.frame);
+    h = CGRectGetHeight(self.view.bounds) - (y + h);
     self.postEditorView.frame = CGRectMake(x, y, w, h);
     self.activityOverlay.frame = CGRectMake(x, y, w, h);
     
-    x = ( CGRectGetMidX( self.activityOverlay.bounds ) - ( ActivityIndicatorViewDefaultSize / 2 ) );
-    y = ( CGRectGetMidY( self.activityOverlay.bounds ) - ( ActivityIndicatorViewDefaultSize / 2 ) );
+    x = CGRectGetMidX(self.activityOverlay.bounds) - (ActivityIndicatorViewDefaultSize / 2);
+    y = CGRectGetMidY(self.activityOverlay.bounds) - (ActivityIndicatorViewDefaultSize / 2);
     w = ActivityIndicatorViewDefaultSize;
     h = ActivityIndicatorViewDefaultSize;
     self.activityIndicatorView.frame = CGRectMake(x, y, w, h);
-}
-
-#pragma mark - Dynamic getters
-
-- (PostEditorView *)postEditorView {
-    if (!_postEditorView) {
-        _postEditorView = [[PostEditorView alloc] init];
-    }
-    return _postEditorView;
-}
-
-- (UIView *)activityOverlay {
-    if (!_activityOverlay) {
-        _activityOverlay = [[UIView alloc] init];
-        _activityOverlay.hidden = YES;
-        _activityOverlay.backgroundColor = [UIColor clearColor];
-    }
-    return _activityOverlay;
-}
-
-- (ActivityIndicatorView *)activityIndicatorView {
-    if (!_activityIndicatorView) {
-        _activityIndicatorView = [[ActivityIndicatorView alloc] initWithStyle:ActivityIndicatorViewStyleBlue];
-    }
-    return _activityIndicatorView;
 }
 
 #pragma mark - Button handlers
@@ -200,13 +187,14 @@
     
 }
 
-- (void)handleCloseControlTouchDown:(LIconControl *)closeControl {
+- (void)handleHeaderViewIconControlTouchDown:(LIconControl *)closeControl {
     
     /*
-     * Send delegate message.
+     * Dismiss.
      */
     
-    [self.delegate postEditorViewControllerDidAskToClose:self];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 - (void)handleCameraButtonTouchDown:(UIButton *)cameraButton {
@@ -243,17 +231,10 @@
 - (void)postControllerDidSavePost:(PostController *)postController {
     
     /*
-     * Send delegate message.
+     * Dismiss.
      */
     
-    [self.delegate postEditorViewControllerDidSavePost:self];
-    
-    /*
-     * Hide activity indicator.
-     */
-    
-    self.activityOverlay.hidden = YES;
-    [self.activityIndicatorView stopAnimating];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
@@ -350,6 +331,39 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
     postEditorView.contentInset = contentInsets;
     postEditorView.scrollIndicatorInsets = contentInsets;
+}
+
+
+#pragma mark - Dynamic getters
+
+- (PostEditorHeaderView *)headerView {
+    if (!_headerView) {
+        _headerView = [[PostEditorHeaderView alloc] init];
+    }
+    return _headerView;
+}
+
+- (PostEditorView *)postEditorView {
+    if (!_postEditorView) {
+        _postEditorView = [[PostEditorView alloc] init];
+    }
+    return _postEditorView;
+}
+
+- (UIView *)activityOverlay {
+    if (!_activityOverlay) {
+        _activityOverlay = [[UIView alloc] init];
+        _activityOverlay.hidden = YES;
+        _activityOverlay.backgroundColor = [UIColor clearColor];
+    }
+    return _activityOverlay;
+}
+
+- (ActivityIndicatorView *)activityIndicatorView {
+    if (!_activityIndicatorView) {
+        _activityIndicatorView = [[ActivityIndicatorView alloc] initWithStyle:ActivityIndicatorViewStyleBlue];
+    }
+    return _activityIndicatorView;
 }
 
 @end

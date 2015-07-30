@@ -76,17 +76,18 @@
 		4F81C8771B4AD18900B40E20 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F81C8761B4AD18900B40E20 /* Post.m */; };
 		4F9193F81B57F7C6004BD4DD /* Thread.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9193F71B57F7C6004BD4DD /* Thread.m */; };
 		4F98E40A1B617720008D6A52 /* LogoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F98E4091B617720008D6A52 /* LogoView.m */; };
-		4F98E40D1B617CAA008D6A52 /* MenuViewFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F98E40C1B617CAA008D6A52 /* MenuViewFooterView.m */; };
 		4F9EC1691B62C03500B8174F /* MenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9EC1681B62C03500B8174F /* MenuTableViewCell.m */; };
 		4F9EC16C1B62C1E300B8174F /* MenuDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9EC16B1B62C1E300B8174F /* MenuDataSource.m */; };
 		4FA2A3421B5DB17400AFA8F3 /* RepliesCounterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FA2A3411B5DB17400AFA8F3 /* RepliesCounterView.m */; };
-		4FA342991B4B12C5007E94D2 /* GeoPostsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FA342981B4B12C4007E94D2 /* GeoPostsTableViewController.m */; };
-		4FA5EAEC1B4C7941003D87C7 /* CategoriesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FA5EAEB1B4C7941003D87C7 /* CategoriesDataSource.m */; };
 		4FAB0D1D1B5CA745004035CC /* ThreadsCounterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB0D1C1B5CA745004035CC /* ThreadsCounterView.m */; };
 		4FAB0D201B5CA8A6004035CC /* UIImage+List.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB0D1F1B5CA8A6004035CC /* UIImage+List.m */; };
 		4FAB0D231B5CBA58004035CC /* PostLocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB0D221B5CBA58004035CC /* PostLocationView.m */; };
 		4FAB0D261B5CBBF2004035CC /* Placemark.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB0D251B5CBBF2004035CC /* Placemark.m */; };
 		4FAB0D2C1B5D3292004035CC /* MessagesFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB0D2B1B5D3292004035CC /* MessagesFormView.m */; };
+		4FBBE2FD1B6A64850074E737 /* LocationDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBE2FC1B6A64850074E737 /* LocationDataSource.m */; };
+		4FBBE3001B6A9D5A0074E737 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBE2FF1B6A9D5A0074E737 /* HeaderView.m */; };
+		4FBBE3061B6AA5D30074E737 /* HomeLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBE3051B6AA5D30074E737 /* HomeLocationViewController.m */; };
+		4FBBE3091B6AADBD0074E737 /* PostEditorHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBE3081B6AADBD0074E737 /* PostEditorHeaderView.m */; };
 		4FCBE9F31B691FAC00589E61 /* logo.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBE9F21B691FAC00589E61 /* logo.pdf */; };
 		4FCDBDA01B4495C0005ACBDD /* UIFont+List.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCDBD9F1B4495C0005ACBDD /* UIFont+List.m */; };
 		4FE660A81B68414500EE8CAD /* ThreadsFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE660A71B68414500EE8CAD /* ThreadsFormView.m */; };
@@ -103,14 +104,15 @@
 		4FEA990C1B66857B0068BA34 /* loginView2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA99091B66857B0068BA34 /* loginView2.jpg */; };
 		4FEA990D1B66857B0068BA34 /* loginView3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA990A1B66857B0068BA34 /* loginView3.jpg */; };
 		4FEA99101B66985A0068BA34 /* SettingsSliderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA990F1B66985A0068BA34 /* SettingsSliderTableViewCell.m */; };
-		4FEF6E011B472B4E00E03B1B /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF6E001B472B4E00E03B1B /* CategoriesViewController.m */; };
 		4FEF6E081B472DBE00E03B1B /* PostCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF6E071B472DBE00E03B1B /* PostCategory.m */; };
 		4FEF6E0F1B47437300E03B1B /* APIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF6E0E1B47437300E03B1B /* APIRequest.m */; };
 		4FEF6E161B4745C600E03B1B /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF6E151B4745C600E03B1B /* Constants.m */; };
-		4FFE0F271B457FE800238ED1 /* CategoriesHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE0F261B457FE800238ED1 /* CategoriesHeaderView.m */; };
 		E42D1B561B5F3ED2003D1026 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E42D1B551B5F3ED2003D1026 /* UserViewController.m */; };
 		E42D1B591B5F404E003D1026 /* UserDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E42D1B581B5F404E003D1026 /* UserDataSource.m */; };
 		E42D1B5C1B5F4344003D1026 /* UserViewDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E42D1B5B1B5F4344003D1026 /* UserViewDetailsCell.m */; };
+		E43428301B69D7BB00A2D5A4 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E434282F1B69D7BB00A2D5A4 /* LocationViewController.m */; };
+		E43428331B69D98200A2D5A4 /* LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E43428321B69D98200A2D5A4 /* LocationController.m */; };
+		E43428361B69E93D00A2D5A4 /* LocationHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E43428351B69E93D00A2D5A4 /* LocationHeaderView.m */; };
 		E44100581B4D757500587232 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E44100551B4D755300587232 /* OpenSans-Regular.ttf */; };
 		E44100591B4D757900587232 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E441004E1B4D755300587232 /* OpenSans-Bold.ttf */; };
 		E441005A1B4D757C00587232 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E441004F1B4D755300587232 /* OpenSans-BoldItalic.ttf */; };
@@ -272,18 +274,12 @@
 		4F9193F71B57F7C6004BD4DD /* Thread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Thread.m; sourceTree = "<group>"; };
 		4F98E4081B617720008D6A52 /* LogoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoView.h; sourceTree = "<group>"; };
 		4F98E4091B617720008D6A52 /* LogoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogoView.m; sourceTree = "<group>"; };
-		4F98E40B1B617CAA008D6A52 /* MenuViewFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewFooterView.h; sourceTree = "<group>"; };
-		4F98E40C1B617CAA008D6A52 /* MenuViewFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewFooterView.m; sourceTree = "<group>"; };
 		4F9EC1671B62C03500B8174F /* MenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewCell.h; sourceTree = "<group>"; };
 		4F9EC1681B62C03500B8174F /* MenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewCell.m; sourceTree = "<group>"; };
 		4F9EC16A1B62C1E300B8174F /* MenuDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuDataSource.h; sourceTree = "<group>"; };
 		4F9EC16B1B62C1E300B8174F /* MenuDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuDataSource.m; sourceTree = "<group>"; };
 		4FA2A3401B5DB17400AFA8F3 /* RepliesCounterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepliesCounterView.h; sourceTree = "<group>"; };
 		4FA2A3411B5DB17400AFA8F3 /* RepliesCounterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepliesCounterView.m; sourceTree = "<group>"; };
-		4FA342971B4B12C4007E94D2 /* GeoPostsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoPostsTableViewController.h; sourceTree = "<group>"; };
-		4FA342981B4B12C4007E94D2 /* GeoPostsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoPostsTableViewController.m; sourceTree = "<group>"; };
-		4FA5EAEA1B4C7941003D87C7 /* CategoriesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesDataSource.h; sourceTree = "<group>"; };
-		4FA5EAEB1B4C7941003D87C7 /* CategoriesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesDataSource.m; sourceTree = "<group>"; };
 		4FAB0D1B1B5CA745004035CC /* ThreadsCounterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadsCounterView.h; sourceTree = "<group>"; };
 		4FAB0D1C1B5CA745004035CC /* ThreadsCounterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreadsCounterView.m; sourceTree = "<group>"; };
 		4FAB0D1E1B5CA8A6004035CC /* UIImage+List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+List.h"; sourceTree = "<group>"; };
@@ -294,6 +290,14 @@
 		4FAB0D251B5CBBF2004035CC /* Placemark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Placemark.m; sourceTree = "<group>"; };
 		4FAB0D2A1B5D3292004035CC /* MessagesFormView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesFormView.h; sourceTree = "<group>"; };
 		4FAB0D2B1B5D3292004035CC /* MessagesFormView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesFormView.m; sourceTree = "<group>"; };
+		4FBBE2FB1B6A64850074E737 /* LocationDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDataSource.h; sourceTree = "<group>"; };
+		4FBBE2FC1B6A64850074E737 /* LocationDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDataSource.m; sourceTree = "<group>"; };
+		4FBBE2FE1B6A9D5A0074E737 /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
+		4FBBE2FF1B6A9D5A0074E737 /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
+		4FBBE3041B6AA5D30074E737 /* HomeLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeLocationViewController.h; sourceTree = "<group>"; };
+		4FBBE3051B6AA5D30074E737 /* HomeLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeLocationViewController.m; sourceTree = "<group>"; };
+		4FBBE3071B6AADBD0074E737 /* PostEditorHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostEditorHeaderView.h; sourceTree = "<group>"; };
+		4FBBE3081B6AADBD0074E737 /* PostEditorHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostEditorHeaderView.m; sourceTree = "<group>"; };
 		4FCBE9F21B691FAC00589E61 /* logo.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = logo.pdf; sourceTree = "<group>"; };
 		4FCDBD9E1B4495C0005ACBDD /* UIFont+List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+List.h"; sourceTree = "<group>"; };
 		4FCDBD9F1B4495C0005ACBDD /* UIFont+List.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+List.m"; sourceTree = "<group>"; };
@@ -322,22 +326,24 @@
 		4FEA990A1B66857B0068BA34 /* loginView3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loginView3.jpg; sourceTree = "<group>"; };
 		4FEA990E1B66985A0068BA34 /* SettingsSliderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsSliderTableViewCell.h; sourceTree = "<group>"; };
 		4FEA990F1B66985A0068BA34 /* SettingsSliderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsSliderTableViewCell.m; sourceTree = "<group>"; };
-		4FEF6DFF1B472B4E00E03B1B /* CategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesViewController.h; sourceTree = "<group>"; };
-		4FEF6E001B472B4E00E03B1B /* CategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesViewController.m; sourceTree = "<group>"; };
 		4FEF6E061B472DBD00E03B1B /* PostCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCategory.h; sourceTree = "<group>"; };
 		4FEF6E071B472DBE00E03B1B /* PostCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCategory.m; sourceTree = "<group>"; };
 		4FEF6E0D1B47437300E03B1B /* APIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIRequest.h; sourceTree = "<group>"; };
 		4FEF6E0E1B47437300E03B1B /* APIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIRequest.m; sourceTree = "<group>"; };
 		4FEF6E141B4745C600E03B1B /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		4FEF6E151B4745C600E03B1B /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
-		4FFE0F251B457FE800238ED1 /* CategoriesHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesHeaderView.h; sourceTree = "<group>"; };
-		4FFE0F261B457FE800238ED1 /* CategoriesHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesHeaderView.m; sourceTree = "<group>"; };
 		E42D1B541B5F3ED2003D1026 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
 		E42D1B551B5F3ED2003D1026 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 		E42D1B571B5F404E003D1026 /* UserDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataSource.h; sourceTree = "<group>"; };
 		E42D1B581B5F404E003D1026 /* UserDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataSource.m; sourceTree = "<group>"; };
 		E42D1B5A1B5F4344003D1026 /* UserViewDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewDetailsCell.h; sourceTree = "<group>"; };
 		E42D1B5B1B5F4344003D1026 /* UserViewDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewDetailsCell.m; sourceTree = "<group>"; };
+		E434282E1B69D7BB00A2D5A4 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		E434282F1B69D7BB00A2D5A4 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		E43428311B69D98200A2D5A4 /* LocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationController.h; sourceTree = "<group>"; };
+		E43428321B69D98200A2D5A4 /* LocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationController.m; sourceTree = "<group>"; };
+		E43428341B69E93D00A2D5A4 /* LocationHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationHeaderView.h; sourceTree = "<group>"; };
+		E43428351B69E93D00A2D5A4 /* LocationHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationHeaderView.m; sourceTree = "<group>"; };
 		E441004E1B4D755300587232 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		E441004F1B4D755300587232 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		E44100501B4D755300587232 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -406,6 +412,8 @@
 				E442A8CF1B61EF2A0003B4DD /* CategoriesController.m */,
 				4FEA81941B62C7C700185F33 /* NotificationsController.h */,
 				4FEA81951B62C7C700185F33 /* NotificationsController.m */,
+				E43428311B69D98200A2D5A4 /* LocationController.h */,
+				E43428321B69D98200A2D5A4 /* LocationController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -570,16 +578,16 @@
 		4F7009BB1B446A2E00A01BCE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4F7009CC1B446ED100A01BCE /* MainViewController.h */,
-				4F7009CD1B446ED100A01BCE /* MainViewController.m */,
-				4F7009CF1B446F0400A01BCE /* PostsTableViewController.h */,
-				4F7009D01B446F0400A01BCE /* PostsTableViewController.m */,
-				4FEF6DFF1B472B4E00E03B1B /* CategoriesViewController.h */,
-				4FEF6E001B472B4E00E03B1B /* CategoriesViewController.m */,
 				E4EBA1AB1B49FCB7000F89F4 /* LoginViewController.h */,
 				E4EBA1AC1B49FCB7000F89F4 /* LoginViewController.m */,
-				4FA342971B4B12C4007E94D2 /* GeoPostsTableViewController.h */,
-				4FA342981B4B12C4007E94D2 /* GeoPostsTableViewController.m */,
+				4F7009CC1B446ED100A01BCE /* MainViewController.h */,
+				4F7009CD1B446ED100A01BCE /* MainViewController.m */,
+				E434282E1B69D7BB00A2D5A4 /* LocationViewController.h */,
+				E434282F1B69D7BB00A2D5A4 /* LocationViewController.m */,
+				4FBBE3041B6AA5D30074E737 /* HomeLocationViewController.h */,
+				4FBBE3051B6AA5D30074E737 /* HomeLocationViewController.m */,
+				4F7009CF1B446F0400A01BCE /* PostsTableViewController.h */,
+				4F7009D01B446F0400A01BCE /* PostsTableViewController.m */,
 				4F16C08B1B4CCE9F0025AC2B /* PostEditorViewController.h */,
 				4F16C08C1B4CCE9F0025AC2B /* PostEditorViewController.m */,
 				4F0A3ECF1B5823B3009DEBE9 /* PostViewController.h */,
@@ -605,10 +613,14 @@
 			children = (
 				4F7009C31B446B0100A01BCE /* ActivityIndicatorView.h */,
 				4F7009C41B446B0100A01BCE /* ActivityIndicatorView.m */,
+				4FBBE2FE1B6A9D5A0074E737 /* HeaderView.h */,
+				4FBBE2FF1B6A9D5A0074E737 /* HeaderView.m */,
+				E43428341B69E93D00A2D5A4 /* LocationHeaderView.h */,
+				E43428351B69E93D00A2D5A4 /* LocationHeaderView.m */,
+				4FBBE3071B6AADBD0074E737 /* PostEditorHeaderView.h */,
+				4FBBE3081B6AADBD0074E737 /* PostEditorHeaderView.m */,
 				4F7009D21B446F1800A01BCE /* PostsTableViewCell.h */,
 				4F7009D31B446F1800A01BCE /* PostsTableViewCell.m */,
-				4FFE0F251B457FE800238ED1 /* CategoriesHeaderView.h */,
-				4FFE0F261B457FE800238ED1 /* CategoriesHeaderView.m */,
 				E4EBA1C71B4A262A000F89F4 /* LoginView.h */,
 				E4EBA1C81B4A262A000F89F4 /* LoginView.m */,
 				4F16C08E1B4CD6890025AC2B /* PostEditorView.h */,
@@ -641,8 +653,6 @@
 				E42D1B5B1B5F4344003D1026 /* UserViewDetailsCell.m */,
 				4F98E4081B617720008D6A52 /* LogoView.h */,
 				4F98E4091B617720008D6A52 /* LogoView.m */,
-				4F98E40B1B617CAA008D6A52 /* MenuViewFooterView.h */,
-				4F98E40C1B617CAA008D6A52 /* MenuViewFooterView.m */,
 				4F9EC1671B62C03500B8174F /* MenuTableViewCell.h */,
 				4F9EC1681B62C03500B8174F /* MenuTableViewCell.m */,
 				4FEA819A1B62C98200185F33 /* NotificationsTableViewCell.h */,
@@ -664,10 +674,10 @@
 		4F7009D51B44708500A01BCE /* Data Sources */ = {
 			isa = PBXGroup;
 			children = (
+				4FBBE2FB1B6A64850074E737 /* LocationDataSource.h */,
+				4FBBE2FC1B6A64850074E737 /* LocationDataSource.m */,
 				4F7009D61B44709A00A01BCE /* PostsDataSource.h */,
 				4F7009D71B44709A00A01BCE /* PostsDataSource.m */,
-				4FA5EAEA1B4C7941003D87C7 /* CategoriesDataSource.h */,
-				4FA5EAEB1B4C7941003D87C7 /* CategoriesDataSource.m */,
 				4F0A3EC91B58234E009DEBE9 /* PostDataSource.h */,
 				4F0A3ECA1B58234E009DEBE9 /* PostDataSource.m */,
 				E42D1B571B5F404E003D1026 /* UserDataSource.h */,
@@ -932,6 +942,7 @@
 			files = (
 				4FEA99001B6661AC0068BA34 /* SettingsTableViewController.m in Sources */,
 				4F241D3B1B6045D100E3BD36 /* UIImageView+HighlightedWebCache.m in Sources */,
+				4FBBE3091B6AADBD0074E737 /* PostEditorHeaderView.m in Sources */,
 				4F241D381B6045D100E3BD36 /* UIImage+GIF.m in Sources */,
 				4F368F7D1B68111D00C814C0 /* MessagesTableViewCell.m in Sources */,
 				E442A8D01B61EF2A0003B4DD /* CategoriesController.m in Sources */,
@@ -966,7 +977,6 @@
 				4F241D3D1B6045D100E3BD36 /* UIView+WebCacheOperation.m in Sources */,
 				4FAB0D201B5CA8A6004035CC /* UIImage+List.m in Sources */,
 				4F56726C1B5701C600CC3D2E /* LReachabilityManager.m in Sources */,
-				4FFE0F271B457FE800238ED1 /* CategoriesHeaderView.m in Sources */,
 				4F368F6B1B67C71000C814C0 /* UserEditorTextViewTableViewCell.m in Sources */,
 				4F7009981B4469A700A01BCE /* main.m in Sources */,
 				4F7009D81B44709A00A01BCE /* PostsDataSource.m in Sources */,
@@ -974,9 +984,10 @@
 				4F241D3C1B6045D100E3BD36 /* UIImageView+WebCache.m in Sources */,
 				4FEF6E0F1B47437300E03B1B /* APIRequest.m in Sources */,
 				4F7009CE1B446ED100A01BCE /* MainViewController.m in Sources */,
+				4FBBE3001B6A9D5A0074E737 /* HeaderView.m in Sources */,
 				4F241D311B6045D100E3BD36 /* SDWebImageCompat.m in Sources */,
+				E43428331B69D98200A2D5A4 /* LocationController.m in Sources */,
 				4F241D2E1B6045D100E3BD36 /* MKAnnotationView+WebCache.m in Sources */,
-				4FA5EAEC1B4C7941003D87C7 /* CategoriesDataSource.m in Sources */,
 				4F81C8771B4AD18900B40E20 /* Post.m in Sources */,
 				4F5672521B5596CC00CC3D2E /* LIconControl.m in Sources */,
 				4F46FDBB1B4E01B100D7A560 /* LTextView.m in Sources */,
@@ -984,8 +995,8 @@
 				4F9EC1691B62C03500B8174F /* MenuTableViewCell.m in Sources */,
 				4F56725C1B559A7D00CC3D2E /* FontInspector.m in Sources */,
 				4F16C0901B4CD6890025AC2B /* PostEditorView.m in Sources */,
+				4FBBE3061B6AA5D30074E737 /* HomeLocationViewController.m in Sources */,
 				4FE660A81B68414500EE8CAD /* ThreadsFormView.m in Sources */,
-				4FA342991B4B12C5007E94D2 /* GeoPostsTableViewController.m in Sources */,
 				4F9EC16C1B62C1E300B8174F /* MenuDataSource.m in Sources */,
 				4F1818261B61B15800C438B8 /* PostController.m in Sources */,
 				4FAB0D1D1B5CA745004035CC /* ThreadsCounterView.m in Sources */,
@@ -994,18 +1005,19 @@
 				4F6F82B51B45CBB700A52C97 /* UIColor+List.m in Sources */,
 				4F81C8741B4AC96300B40E20 /* LModel.m in Sources */,
 				4F368F621B66DDEA00C814C0 /* UserEditorViewController.m in Sources */,
-				4FEF6E011B472B4E00E03B1B /* CategoriesViewController.m in Sources */,
 				E42D1B561B5F3ED2003D1026 /* UserViewController.m in Sources */,
 				E42D1B591B5F404E003D1026 /* UserDataSource.m in Sources */,
 				4F7009D11B446F0400A01BCE /* PostsTableViewController.m in Sources */,
 				4F6661F21B4EFA9700298BAB /* NSDate+ISO8601.m in Sources */,
 				4F16C08D1B4CCE9F0025AC2B /* PostEditorViewController.m in Sources */,
+				4FBBE2FD1B6A64850074E737 /* LocationDataSource.m in Sources */,
 				4FEA819F1B62C9F100185F33 /* Notification.m in Sources */,
 				4FEA99031B66636E0068BA34 /* SettingsDataSource.m in Sources */,
 				4F16C0961B4D813F0025AC2B /* LTextField.m in Sources */,
 				4F0A3ED71B5831B8009DEBE9 /* ThreadsTableViewCell.m in Sources */,
 				4FEA99101B66985A0068BA34 /* SettingsSliderTableViewCell.m in Sources */,
 				4FEA99061B6664FB0068BA34 /* SettingsTableViewCell.m in Sources */,
+				E43428361B69E93D00A2D5A4 /* LocationHeaderView.m in Sources */,
 				4F241D321B6045D100E3BD36 /* SDWebImageDecoder.m in Sources */,
 				4F368F801B68120C00C814C0 /* Message.m in Sources */,
 				4F98E40A1B617720008D6A52 /* LogoView.m in Sources */,
@@ -1019,11 +1031,11 @@
 				4F0A3ECB1B58234E009DEBE9 /* PostDataSource.m in Sources */,
 				4FEA81991B62C88400185F33 /* NotificationsDataSource.m in Sources */,
 				4FEF6E161B4745C600E03B1B /* Constants.m in Sources */,
-				4F98E40D1B617CAA008D6A52 /* MenuViewFooterView.m in Sources */,
 				4FA2A3421B5DB17400AFA8F3 /* RepliesCounterView.m in Sources */,
 				E4EBA1B01B49FD24000F89F4 /* Session.m in Sources */,
 				4F1818291B61B17800C438B8 /* PostsController.m in Sources */,
 				4FEA81961B62C7C700185F33 /* NotificationsController.m in Sources */,
+				E43428301B69D7BB00A2D5A4 /* LocationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,13 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "LTextField.h"
 #import "LTextView.h"
-#import "LIconControl.h"
 
 @interface PostEditorView : UIScrollView
 
-@property (strong, nonatomic, readonly) UIImageView *avatarImageView;
 @property (strong, nonatomic, readonly) LTextField *titleTextField;
-@property (strong, nonatomic, readonly) LIconControl *closeControl;
 @property (strong, nonatomic, readonly) UILabel *categoryLabel;
 @property (strong, nonatomic, readonly) LTextView *contentTextView;
 @property (strong, nonatomic, readonly) UIButton *cameraButton;

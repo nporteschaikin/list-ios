@@ -82,7 +82,7 @@ static CGFloat const PostsSearchBarXInset = 12.f;
 - (UIImageView *)searchImageView {
     if (!_searchImageView) {
         _searchImageView = [[UIImageView alloc] initWithImage:[UIImage list_searchIconImageColor:[UIColor list_grayColorAlpha:1.0f]
-                                                                                              size:20.0f]];
+                                                                                              size:16.0f]];
         [_searchImageView sizeToFit];
     }
     return _searchImageView;
@@ -126,6 +126,10 @@ static CGFloat const PostsSearchBarXInset = 12.f;
 
 - (BOOL)becomeFirstResponder {
     return [self.textField becomeFirstResponder];
+}
+
+- (BOOL)isFirstResponder {
+    return self.textField.isFirstResponder;
 }
 
 @end

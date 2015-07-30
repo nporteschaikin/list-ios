@@ -10,7 +10,7 @@
 
 @interface UIFont (List)
 
-+ (UIFont *)list_categoriesHeaderViewFont;
++ (UIFont *)list_headerViewFont;
 + (UIFont *)list_postViewDetailsCellTitleFont;
 + (UIFont *)list_postViewDetailsCellUserNameFont;
 + (UIFont *)list_postViewDetailsCellDateFont;

@@ -9,6 +9,7 @@
 #import "NotificationsTableViewController.h"
 #import "PostViewController.h"
 #import "UserViewController.h"
+#import "ActivityIndicatorView.h"
 #import "UIColor+List.h"
 
 @interface NotificationsTableViewController () <NotificationsControllerDelegate>
@@ -116,9 +117,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     }
 }
 
-- (void)tableView:(UITableView *)tableView
-  willDisplayCell:(UITableViewCell *)cell
-forRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     /*
      * Style cell.

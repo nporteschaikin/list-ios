@@ -27,7 +27,7 @@
 
 @implementation PostsTableViewController
 
-static CGFloat const PostsTableViewControllerSearchBarHeight = 50.f;
+static CGFloat const PostsTableViewControllerSearchBarHeight = 40.f;
 
 - (id)initWithPostsController:(PostsController *)postsController
                       session:(Session *)session {
@@ -110,8 +110,7 @@ static CGFloat const PostsTableViewControllerSearchBarHeight = 50.f;
     
     LReachabilityManager *reachabilityManager = [LReachabilityManager sharedManager];
     if (reachabilityManager.isReachable) {
-        self.statusView.state = PostsTableViewStatusViewStateLoading;
-        [self performRequest];
+        [self.postsController requestPosts];
     } else {
         self.statusView.state = PostsTableViewStatusViewStateAPIRequestFailed;
     }
@@ -129,27 +128,30 @@ static CGFloat const PostsTableViewControllerSearchBarHeight = 50.f;
     self.statusView.frame = CGRectMake(x, y, w, h);
 }
 
-- (void)performRequest {
-    
-    /*
-     * Proxy for controller perform request.
-     */
-    
-    [self.postsController requestPosts];
-}
-
 - (void)handleRefreshControl {
     
     /*
-     * Don't run `performRequest`
-     * to avoid loader.
+     * Refresh posts.
      */
     
-    [self performRequest];
+    [self.postsController requestPosts];
     
 }
 
 #pragma mark - PostsDataSourceDelegate
+
+- (void)postsControllerDidRequestPosts:(PostsController *)postController {
+    
+    /*
+     * Show status view animation
+     * if needed.
+     */
+    
+    if (!self.refreshControl.isRefreshing && !self.searchBar.isFirstResponder) {
+        self.statusView.state = PostsTableViewStatusViewStateLoading;
+    }
+    
+}
 
 - (void)postsControllerDidFetchPosts:(PostsController *)postController {
     
@@ -160,7 +162,6 @@ static CGFloat const PostsTableViewControllerSearchBarHeight = 50.f;
     [self.tableView reloadData];
     
     /*
-     
      * Stop animating.
      */
     
@@ -271,7 +272,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
      * Send request.
      */
     
-    [self performRequest];
+    [self.postsController requestPosts];
     
 }
 

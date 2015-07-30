@@ -33,6 +33,6 @@
 + (UIImage *)list_peopleIconImageColor:(UIColor *)color
                                     size:(CGFloat)size;
 + (UIImage *)list_personIconImageColor:(UIColor *)color
-                                    size:(CGFloat)size;
+                                  size:(CGFloat)size;
 
 @end
