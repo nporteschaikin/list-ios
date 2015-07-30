@@ -58,9 +58,9 @@ static CGFloat const HeaderViewHeight = 50.f;
     
     CGFloat x, y, w, h;
     x = self.iconControlPosition == HeaderViewIconControlPositionLeft ? self.xMargin
-        : (CGRectGetWidth(self.bounds) - (self.xMargin + (HeaderViewHeight * 0.45)));
-    y = CGRectGetMidY(self.bounds) - ((HeaderViewHeight * 0.45) / 2);
-    w = HeaderViewHeight * 0.45;
+        : (CGRectGetWidth(self.bounds) - (self.xMargin + (HeaderViewHeight * 0.6)));
+    y = CGRectGetMidY(self.bounds) - ((HeaderViewHeight * 0.6) / 2);
+    w = HeaderViewHeight * 0.6;
     h = w;
     self.iconControl.frame = CGRectMake(x, y, w, h);
     

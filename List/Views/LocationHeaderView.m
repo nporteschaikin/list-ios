@@ -152,12 +152,10 @@
 }
 
 - (void)layoutTitleView {
-    [super layoutSubviews];
-    
     [self.titleLabel sizeToFit];
     
     CGFloat x, y, w, h;
-    x = CGRectGetMaxX(self.titleRadarView.frame) + (self.titleLabel.text ? 7.0f : 0.0f);
+    x = CGRectGetMaxX(self.titleRadarView.frame) + (self.titleLabel.text ? 3.0f : 0.0f);
     y = 0.0f;
     w = self.titleLabel.text ? CGRectGetWidth(self.titleLabel.frame) : 0.0f;
     h = self.titleLabel.font.lineHeight;
@@ -201,14 +199,16 @@
 }
 
 - (void)layoutSubviews {
+    [super layoutSubviews];
     
     /*
      * Frame scroll view.
      */
+    
     CGFloat x, y, w, h;
     x = self.iconControlPosition == HeaderViewIconControlPositionLeft ? CGRectGetMaxX(self.iconControl.frame)
         : 0.0f;
-    w = CGRectGetWidth(self.bounds) - w - self.xMargin;
+    w = CGRectGetWidth(self.bounds) - CGRectGetWidth(self.iconControl.frame) - self.xMargin;
     y = 0.0f;
     h = CGRectGetHeight(self.bounds);
     self.scrollView.frame = CGRectMake(x, y, w, h);
