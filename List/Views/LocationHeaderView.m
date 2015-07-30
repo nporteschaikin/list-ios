@@ -155,7 +155,7 @@
     [self.titleLabel sizeToFit];
     
     CGFloat x, y, w, h;
-    x = CGRectGetMaxX(self.titleRadarView.frame) + (self.titleLabel.text ? 3.0f : 0.0f);
+    x = CGRectGetMaxX(self.titleRadarView.frame) + (self.titleLabel.text ? 5.0f : 0.0f);
     y = 0.0f;
     w = self.titleLabel.text ? CGRectGetWidth(self.titleLabel.frame) : 0.0f;
     h = self.titleLabel.font.lineHeight;

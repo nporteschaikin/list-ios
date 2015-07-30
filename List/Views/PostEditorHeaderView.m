@@ -34,7 +34,7 @@
     [super layoutSubviews];
     
     CGFloat x, y, w, h;
-    x = (self.xMargin * 0.75) + (self.iconControlPosition == HeaderViewIconControlPositionLeft ? CGRectGetMaxX(self.iconControl.frame) : 0.0f);
+    x = self.xMargin + (self.iconControlPosition == HeaderViewIconControlPositionLeft ? CGRectGetMaxX(self.iconControl.frame) : 0.0f);
     y = CGRectGetMidY(self.bounds) - ((CGRectGetHeight(self.bounds) * 0.6) / 2);
     w = CGRectGetHeight(self.bounds) * 0.6;
     h = w;
