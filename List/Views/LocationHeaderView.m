@@ -328,7 +328,7 @@
 
 - (UIView *)titleRadarView {
     if (!_titleRadarView) {
-        CGFloat size = [UIFont list_headerViewFont].pointSize;
+        CGFloat size = [UIFont list_headerViewFont].pointSize * .5;
         _titleRadarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, size, size)];
         _titleRadarView.backgroundColor = [UIColor clearColor];
         _titleRadarView.layer.borderColor = [UIColor whiteColor].CGColor;
