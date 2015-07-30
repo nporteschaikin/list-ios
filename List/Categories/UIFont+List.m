@@ -166,7 +166,7 @@ static NSString * const ListFontLightName = @"OpenSans-Light";
 
 + (UIFont *)list_postsSearchBarFont {
     return [self fontWithName:ListFontSemiboldName
-                         size:13.0f];
+                         size:14.0f];
 }
 
 + (UIFont *)list_userViewDetailsCellNameFont {

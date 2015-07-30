@@ -19,7 +19,7 @@
 
 @implementation HeaderView
 
-static CGFloat const HeaderViewHeight = 50.f;
+static CGFloat const HeaderViewHeight = 45.f;
 
 - (instancetype)init {
     if (self = [super init]) {
