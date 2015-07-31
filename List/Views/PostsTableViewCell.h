@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 Noah Portes Chaikin. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ListTableViewCell.h"
 #import "ThreadsCounterView.h"
 #import "PostLocationView.h"
 
-@interface PostsTableViewCell : UITableViewCell
+@interface PostsTableViewCell : ListTableViewCell
 
 @property (strong, nonatomic, readonly) UIImageView *avatarImageView;
 @property (strong, nonatomic, readonly) UILabel *titleLabel;

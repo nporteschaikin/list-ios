@@ -16,7 +16,7 @@
 #import "UserEditorViewController.h"
 #import "UIColor+List.h"
 
-@interface UserViewController () <UITableViewDelegate, UserControllerDelegate, PostsControllerDelegate>
+@interface UserViewController () <UITableViewDelegate, UserControllerDelegate, PostsControllerDelegate, ListTableViewCellDelegate>
 
 @property (strong, nonatomic) UserController *userController;
 @property (strong, nonatomic) PostsController *postsController;
@@ -107,15 +107,6 @@ static CGFloat const UserViewControllerCloseControlMargin = 12.f;
     if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
         self.tableView.layoutMargins = UIEdgeInsetsZero;
     }
-    
-    /*
-     * Register tap notification
-     */
-    
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                           action:@selector(handleTableViewTapGestureRecognizer:)];
-    
-    [self.tableView addGestureRecognizer:tapGestureRecognizer];
     
     /*
      * Handle close control.
@@ -238,15 +229,37 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 0.0f;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == UserDataSourceSectionDetails) {
-        [((UserViewDetailsCell *)cell).button addTarget:self
-                                                 action:@selector(handleUserViewDetailsButtonTouchDown:)
-                                       forControlEvents:UIControlEventTouchDown];
-    }
+- (void)tableView:(UITableView *)tableView willDisplayCell:(ListTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.delegate = self;
+    cell.indexPath = indexPath;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
         cell.layoutMargins = UIEdgeInsetsZero;
+    }
+}
+
+#pragma mark - ListTableViewCellDelegate
+
+- (void)listTableViewCell:(ListTableViewCell *)cell viewTapped:(UIView *)view {
+    NSIndexPath *indexPath = cell.indexPath;
+    User *user = self.userController.user;
+    UIViewController *viewController;
+    switch (indexPath.section) {
+        case UserDataSourceSectionDetails: {
+            if (view == ((UserViewDetailsCell *)cell).button) {
+                UserEditorViewController *userEditorViewController = [[UserEditorViewController alloc] initWithUser:user session:self.session];
+                viewController = [[UINavigationController alloc] initWithRootViewController:userEditorViewController];
+            }
+            break;
+        }
+        case UserDataSourceSectionPosts: {
+            Post *post = self.postsController.posts[indexPath.row];
+            viewController = [[PostViewController alloc] initWithPost:post session:self.session];
+            break;
+        }
+    }
+    if (viewController) {
+        [self presentViewController:viewController animated:YES completion:nil];
     }
 }
 
@@ -269,32 +282,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     closeControl.frame = frame;
 }
 
-#pragma mark - Gesture recognizer handler
-
-- (void)handleTableViewTapGestureRecognizer:(UITapGestureRecognizer *)gestureRecognizer {
-    CGPoint point = [gestureRecognizer locationInView:self.tableView];
-    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
-    if (indexPath) {
-        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-        CGPoint cellPoint = [gestureRecognizer locationInView:cell];
-        switch (indexPath.section) {
-            case UserDataSourceSectionPosts: {
-                Post *post = self.postsController.posts[indexPath.row];
-                Session *session = self.session;
-                PostsTableViewCell *postsTableViewCell = (PostsTableViewCell *)cell;
-                if (!(CGRectContainsPoint(postsTableViewCell.avatarImageView.frame, cellPoint) || CGRectContainsPoint(postsTableViewCell.userNameLabel.frame, cellPoint))) {
-                    PostViewController *viewController = [[PostViewController alloc] initWithPost:post session:session];
-                    [self presentViewController:viewController animated:YES completion:nil];
-                }
-                break;
-            }
-            default: {
-                break;
-            }
-        }
-    }
-}
-
 #pragma mark - Close control handler
 
 - (void)handleCloseControlTouchDown:(LIconControl *)closeControl {
@@ -306,35 +293,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [self dismissViewControllerAnimated:YES
                              completion:nil];
     
-}
-
-#pragma mark - User details button handler
-
-- (void)handleUserViewDetailsButtonTouchDown:(UIButton *)button {
-    if ([self.userController.user isEqual:self.userController.session.user]) {
-        
-        /*
-         * Create user editor view controller.
-         */
-        
-        UserEditorViewController *viewController = [[UserEditorViewController alloc] initWithUser:self.userController.user
-                                                                                          session:self.userController.session];
-        
-        /*
-         * Create navigation controller.
-         */
-        
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-        
-        /*
-         * Present navigation controller.
-         */
-        
-        [self presentViewController:navigationController
-                           animated:YES
-                         completion:nil];
-        
-    }
 }
 
 #pragma mark - Dynamic getters

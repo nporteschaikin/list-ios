@@ -124,7 +124,7 @@
     request.method = APIRequestMethodPOST;
     request.endpoint = [NSString stringWithFormat:APIPostThreadsEndpoint, self.post.postID];
     request.session = self.session;
-    request.body = [thread toJSON];
+    request.body = [thread toJSON];\
     [request sendRequest:^(id<NSObject> body) {
         
         /*

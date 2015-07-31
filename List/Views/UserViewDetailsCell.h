@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Noah Portes Chaikin. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ListTableViewCell.h"
 
-@interface UserViewDetailsCell : UITableViewCell
+@interface UserViewDetailsCell : ListTableViewCell
 
 @property (strong, nonatomic, readonly) UIImageView *coverPhotoView;
 @property (strong, nonatomic, readonly) UIImageView *avatarImageView;

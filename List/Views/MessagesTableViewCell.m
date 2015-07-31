@@ -123,6 +123,7 @@ static CGFloat const MessagesTableViewCellAvatarImageViewSize = 30.f;
         _avatarImageView.layer.masksToBounds = YES;
         _avatarImageView.clipsToBounds = YES;
         _avatarImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _avatarImageView.userInteractionEnabled = NO;
     }
     return _avatarImageView;
 }

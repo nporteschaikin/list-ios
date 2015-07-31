@@ -18,8 +18,9 @@
 #import "ActivityIndicatorView.h"
 #import "UIColor+List.h"
 
-@interface PostViewController () <PostControllerDelegate, UITableViewDelegate>
+@interface PostViewController () <PostControllerDelegate, UITableViewDelegate, ListTableViewCellDelegate>
 
+@property (strong, nonatomic) Session *session;
 @property (strong, nonatomic) PostDataSource *dataSource;
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) LIconControl *closeControl;
@@ -38,6 +39,7 @@ static CGFloat const PostViewControllerCloseControlMargin = 12.f;
 - (id)initWithPost:(Post *)post
            session:(Session *)session {
     if (self = [super init]) {
+        self.session = session;
         
         /*
          * Create post controller.
@@ -351,10 +353,48 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 0;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView willDisplayCell:(ListTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.delegate = self;
+    cell.indexPath = indexPath;
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
         cell.layoutMargins = UIEdgeInsetsZero;
+    }
+}
+
+#pragma mark - ListTableViewCellDelegate
+
+- (void)listTableViewCell:(ListTableViewCell *)cell viewTapped:(UIView *)view {
+    NSIndexPath *indexPath = cell.indexPath;
+    UIViewController *viewController;
+    switch (indexPath.section) {
+        case PostDataSourceSectionDetails: {
+            Post *post = self.postController.post;
+            if (view == ((PostViewDetailsCell *)cell).userNameLabel || view == ((PostViewDetailsCell *)cell).avatarImageView) {
+                User *user = post.user;
+                viewController = [[UserViewController alloc] initWithUser:user session:self.session];
+            } else if (view == ((PostViewDetailsCell *)cell).listImageView) {
+                // list
+            }
+            break;
+        }
+        case PostDataSourceSectionThreads: {
+            Post *post = self.postController.post;
+            Thread *thread = post.threads[indexPath.row];
+            if (view == ((ThreadsTableViewCell *)cell).avatarImageView) {
+                User *user = thread.user;
+                viewController = [[UserViewController alloc] initWithUser:user session:self.session];
+            } else {
+                ThreadViewController *threadViewController = [[ThreadViewController alloc] initWithThread:thread inPost:post session:self.session];
+                viewController = [[UINavigationController alloc] initWithRootViewController:threadViewController];
+            }
+            break;
+        }
+    }
+    if (viewController) {
+        [self presentViewController:viewController
+                           animated:YES
+                         completion:nil];
     }
 }
 
@@ -439,65 +479,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
      */
     
     [self.view endEditing:YES];
-    
-    /*
-     * Handle cell taps.
-     */
-    
-    CGPoint point = [gestureRecognizer locationInView:self.tableView];
-    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
-    if (indexPath) {
-        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-        CGPoint cellPoint = [gestureRecognizer locationInView:cell];
-        Post *post = self.postController.post;
-        Session *session = self.postController.session;
-        switch (indexPath.section) {
-            case PostDataSourceSectionDetails: {
-                PostViewDetailsCell *postViewDetailsCell = (PostViewDetailsCell *)cell;
-                if (CGRectContainsPoint(postViewDetailsCell.avatarImageView.frame, cellPoint) || CGRectContainsPoint(postViewDetailsCell.userNameLabel.frame, cellPoint)) {
-                    User *user = post.user;
-                    UserViewController *viewController = [[UserViewController alloc] initWithUser:user session:session];
-                    [self presentViewController:viewController animated:YES completion:nil];
-                }
-                break;
-            }
-            case PostDataSourceSectionThreads: {
-                Thread *thread = post.threads[indexPath.row];
-                ThreadsTableViewCell *threadsTableViewCell = (ThreadsTableViewCell *)cell;
-                if (CGRectContainsPoint(threadsTableViewCell.avatarImageView.frame, cellPoint)) {
-                    User *user = thread.user;
-                    UserViewController *viewController = [[UserViewController alloc] initWithUser:user session:session];
-                    [self presentViewController:viewController animated:YES completion:nil];
-                } else {
-                    
-                    /*
-                     * Create thread view controller.
-                     */
-                    
-                    ThreadViewController *viewController = [[ThreadViewController alloc] initWithThread:thread
-                                                                                                 inPost:post
-                                                                                                session:session];
-                    
-                    /*
-                     * Create navigation controller.
-                     */
-                    
-                    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-                    
-                    /*
-                     * Present navigation controller.
-                     */
-                    
-                    [self presentViewController:navigationController
-                                       animated:YES
-                                     completion:nil];
-                    
-                }
-                break;
-            }
-        }
-    }
-    
+        
 }
 
 #pragma mark - Keyboard observers

@@ -141,6 +141,7 @@ static CGFloat const PostViewDetailsCellAvatarImageViewSize = 50.f;
         _avatarImageView.layer.cornerRadius = PostViewDetailsCellAvatarImageViewSize / 2;
         _avatarImageView.backgroundColor = [UIColor list_lightGrayColorAlpha:1];
         _avatarImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _avatarImageView.userInteractionEnabled = YES;
     }
     return _avatarImageView;
 }
@@ -161,6 +162,7 @@ static CGFloat const PostViewDetailsCellAvatarImageViewSize = 50.f;
         _userNameLabel.numberOfLines = 1;
         _userNameLabel.font = [UIFont list_postViewDetailsCellUserNameFont];
         _userNameLabel.textColor = [UIColor list_blueColorAlpha:1];
+        _userNameLabel.userInteractionEnabled = YES;
     }
     return _userNameLabel;
 }

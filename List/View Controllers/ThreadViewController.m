@@ -7,6 +7,7 @@
 //
 
 #import "ThreadViewController.h"
+#import "UserViewController.h"
 #import "PostController.h"
 #import "ThreadDataSource.h"
 #import "MessagesFormView.h"
@@ -14,8 +15,9 @@
 #import "Constants.h"
 #import "UIColor+List.h"
 
-@interface ThreadViewController () <PostControllerDelegate, UITableViewDelegate>
+@interface ThreadViewController () <PostControllerDelegate, UITableViewDelegate, ListTableViewCellDelegate>
 
+@property (strong, nonatomic) Session *session;
 @property (strong, nonatomic) Thread *thread;
 @property (strong, nonatomic) PostController *postController;
 @property (strong, nonatomic) ThreadDataSource *dataSource;
@@ -32,6 +34,7 @@
                         inPost:(Post *)post
                        session:(Session *)session {
     if (self = [super init]) {
+        self.session = session;
         self.thread = thread;
         self.postController = [[PostController alloc] initWithPost:post
                                                            session:session];
@@ -289,10 +292,39 @@
     return 0;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView willDisplayCell:(ListTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.delegate = self;
+    cell.indexPath = indexPath;
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
         cell.layoutMargins = UIEdgeInsetsZero;
+    }
+}
+
+#pragma mark - ListTableViewCellDelegate
+
+- (void)listTableViewCell:(ListTableViewCell *)cell viewTapped:(UIView *)view {
+    NSIndexPath *indexPath = cell.indexPath;
+    Thread *thread = self.thread;
+    UIViewController *viewController;
+    switch (indexPath.section) {
+        case ThreadDataSourceSectionsThread: {
+            if (view == ((ThreadsTableViewCell *)cell).avatarImageView) {
+                User *user = thread.user;
+                viewController = [[UserViewController alloc] initWithUser:user session:self.session];
+            }
+            break;
+        }
+        case ThreadDataSourceSectionsMessages: {
+            if (view == ((MessagesTableViewCell *)cell).avatarImageView) {
+                User *user = thread.user;
+                viewController = [[UserViewController alloc] initWithUser:user session:self.session];
+            }
+            break;
+        }
+    }
+    if (viewController) {
+        [self presentViewController:viewController animated:YES completion:nil];
     }
 }
 

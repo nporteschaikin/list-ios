@@ -53,6 +53,7 @@
 		4F368F7D1B68111D00C814C0 /* MessagesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F368F7C1B68111D00C814C0 /* MessagesTableViewCell.m */; };
 		4F368F801B68120C00C814C0 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F368F7F1B68120C00C814C0 /* Message.m */; };
 		4F3A2A4E1B5E8758000058AE /* PostsSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3A2A4D1B5E8758000058AE /* PostsSearchBar.m */; };
+		4F3F59D91B6BD048000D1821 /* ListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3F59D81B6BD048000D1821 /* ListTableViewCell.m */; };
 		4F46FDBB1B4E01B100D7A560 /* LTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F46FDBA1B4E01B100D7A560 /* LTextView.m */; };
 		4F5672521B5596CC00CC3D2E /* LIconControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5672511B5596CC00CC3D2E /* LIconControl.m */; };
 		4F56725C1B559A7D00CC3D2E /* FontInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5672551B559A7D00CC3D2E /* FontInspector.m */; };
@@ -228,6 +229,8 @@
 		4F368F7F1B68120C00C814C0 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		4F3A2A4C1B5E8758000058AE /* PostsSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostsSearchBar.h; sourceTree = "<group>"; };
 		4F3A2A4D1B5E8758000058AE /* PostsSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostsSearchBar.m; sourceTree = "<group>"; };
+		4F3F59D71B6BD048000D1821 /* ListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableViewCell.h; sourceTree = "<group>"; };
+		4F3F59D81B6BD048000D1821 /* ListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableViewCell.m; sourceTree = "<group>"; };
 		4F46FDB91B4E01B100D7A560 /* LTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTextView.h; sourceTree = "<group>"; };
 		4F46FDBA1B4E01B100D7A560 /* LTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTextView.m; sourceTree = "<group>"; };
 		4F5672501B5596CC00CC3D2E /* LIconControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIconControl.h; sourceTree = "<group>"; };
@@ -611,6 +614,8 @@
 		4F7009BC1B446A3300A01BCE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4F3F59D71B6BD048000D1821 /* ListTableViewCell.h */,
+				4F3F59D81B6BD048000D1821 /* ListTableViewCell.m */,
 				4F7009C31B446B0100A01BCE /* ActivityIndicatorView.h */,
 				4F7009C41B446B0100A01BCE /* ActivityIndicatorView.m */,
 				4FBBE2FE1B6A9D5A0074E737 /* HeaderView.h */,
@@ -975,6 +980,7 @@
 				E4EBA1C61B4A242E000F89F4 /* UIButton+List.m in Sources */,
 				4F241D371B6045D100E3BD36 /* UIButton+WebCache.m in Sources */,
 				4F241D3D1B6045D100E3BD36 /* UIView+WebCacheOperation.m in Sources */,
+				4F3F59D91B6BD048000D1821 /* ListTableViewCell.m in Sources */,
 				4FAB0D201B5CA8A6004035CC /* UIImage+List.m in Sources */,
 				4F56726C1B5701C600CC3D2E /* LReachabilityManager.m in Sources */,
 				4F368F6B1B67C71000C814C0 /* UserEditorTextViewTableViewCell.m in Sources */,

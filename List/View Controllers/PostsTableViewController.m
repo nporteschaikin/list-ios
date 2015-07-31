@@ -15,7 +15,7 @@
 #import "PostsSearchBar.h"
 #import "UserViewController.h"
 
-@interface PostsTableViewController () <PostsControllerDelegate, PostsSearchBarDelegate, UIGestureRecognizerDelegate>
+@interface PostsTableViewController () <PostsControllerDelegate, PostsSearchBarDelegate, ListTableViewCellDelegate, UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) PostsController *postsController;
 @property (strong, nonatomic) PostsDataSource *dataSource;
@@ -82,15 +82,6 @@ static CGFloat const PostsTableViewControllerSearchBarHeight = 40.f;
     frame.size.height = PostsTableViewControllerSearchBarHeight;
     self.searchBar.frame = frame;
     self.tableView.tableHeaderView = self.searchBar;
-    
-    /*
-     * Register tap notification
-     */
-    
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                           action:@selector(handleTableViewTapGestureRecognizer:)];
-    
-    [self.tableView addGestureRecognizer:tapGestureRecognizer];
     
     /*
      * Add subviews.
@@ -219,31 +210,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
      * Style cell.
      */
     
+    cell.indexPath = indexPath;
+    cell.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
         cell.layoutMargins = UIEdgeInsetsZero;
     }
     
-}
-
-#pragma mark - Gesture recognizer handler
-
-- (void)handleTableViewTapGestureRecognizer:(UITapGestureRecognizer *)gestureRecognizer {
-    CGPoint point = [gestureRecognizer locationInView:self.tableView];
-    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
-    if (indexPath) {
-        Post *post = self.postsController.posts[indexPath.row];
-        PostsTableViewCell *cell = (PostsTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-        CGPoint cellPoint = [gestureRecognizer locationInView:cell];
-        if ( CGRectContainsPoint(cell.avatarImageView.frame, cellPoint) || CGRectContainsPoint(cell.userNameLabel.frame, cellPoint) ) {
-            User *user = post.user;
-            UserViewController *viewController = [[UserViewController alloc] initWithUser:user session:self.session];
-            [self presentViewController:viewController animated:YES completion:nil];
-        } else {
-            PostViewController *viewController = [[PostViewController alloc] initWithPost:post session:self.session];
-            [self presentViewController:viewController animated:YES completion:nil];
-        }
-    }
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -255,6 +228,38 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
      */
     
     [self.view endEditing:YES];
+    
+}
+
+#pragma mark - ListTableViewCellDelegate
+
+- (void)listTableViewCell:(PostsTableViewCell *)cell viewTapped:(UIView *)view {
+    NSIndexPath *indexPath = cell.indexPath;
+    Post *post = self.postsController.posts[indexPath.row];
+    UIViewController *viewController;
+    if (view == cell.userNameLabel || view == cell.avatarImageView) {
+        
+        /*
+         * Open user.
+         */
+        
+        viewController = [[UserViewController alloc] initWithUser:post.user session:self.session];
+        
+    } else {
+        
+        /*
+         * Open post.
+         */
+        
+        viewController = [[PostViewController alloc] initWithPost:post session:self.session];
+        
+    }
+    
+    if (viewController) {
+        [self presentViewController:viewController
+                           animated:YES
+                         completion:nil];
+    }
     
 }
 

@@ -120,6 +120,7 @@ static CGFloat const ThreadsTableViewCellAvatarImageViewSize = 30.f;
         _avatarImageView.layer.masksToBounds = YES;
         _avatarImageView.clipsToBounds = YES;
         _avatarImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _avatarImageView.userInteractionEnabled = YES;
     }
     return _avatarImageView;
 }
