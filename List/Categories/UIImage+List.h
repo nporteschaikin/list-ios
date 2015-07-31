@@ -34,5 +34,7 @@
                                     size:(CGFloat)size;
 + (UIImage *)list_personIconImageColor:(UIColor *)color
                                   size:(CGFloat)size;
++ (UIImage *)list_listImageColor:(UIColor *)color
+                            size:(CGFloat)size;
 
 @end

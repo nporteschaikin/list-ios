@@ -9,6 +9,7 @@
 #import "PostViewDetailsCell.h"
 #import "UIColor+List.h"
 #import "UIFont+List.h"
+#import "UIImage+List.h"
 
 @interface PostViewDetailsCell ()
 
@@ -19,6 +20,7 @@
 @property (strong, nonatomic) UILabel *contentLabel;
 @property (strong, nonatomic) UILabel *dateLabel;
 @property (strong, nonatomic) PostLocationView *postLocationView;
+@property (strong, nonatomic) UIImageView *listImageView;
 
 @end
 
@@ -50,6 +52,7 @@ static CGFloat const PostViewDetailsCellAvatarImageViewSize = 50.f;
     [self.contentView addSubview:self.dateLabel];
     [self.contentView addSubview:self.contentLabel];
     [self.contentView addSubview:self.postLocationView];
+    [self.contentView addSubview:self.listImageView];
 }
 
 - (void)layoutSubviews {
@@ -94,9 +97,15 @@ static CGFloat const PostViewDetailsCellAvatarImageViewSize = 50.f;
     
     x = PostViewDetailsCellPadding;
     y = CGRectGetMaxY(self.contentLabel.frame) + PostViewDetailsCellPadding;
-    w = CGRectGetWidth(self.contentView.bounds) - (PostViewDetailsCellPadding * 2);
+    w = CGRectGetWidth(self.contentView.bounds) - CGRectGetWidth(self.listImageView.frame) - (PostViewDetailsCellPadding * 3);
     self.postLocationView.frame = CGRectMake(x, y, w, 0.0f);
     [self.postLocationView sizeToFit];
+    
+    x = CGRectGetWidth(self.contentView.bounds) - CGRectGetWidth(self.listImageView.frame) - PostViewDetailsCellPadding;
+    y = CGRectGetMidY(self.postLocationView.frame) - (CGRectGetHeight(self.listImageView.frame) / 2);
+    w = CGRectGetWidth(self.listImageView.frame);
+    h = CGRectGetHeight(self.listImageView.frame);
+    self.listImageView.frame = CGRectMake(x, y, w, h);
     
 }
 
@@ -181,6 +190,14 @@ static CGFloat const PostViewDetailsCellAvatarImageViewSize = 50.f;
         _postLocationView = [[PostLocationView alloc] init];
     }
     return _postLocationView;
+}
+
+- (UIImageView *)listImageView {
+    if (!_listImageView) {
+        _listImageView = [[UIImageView alloc] initWithImage:[UIImage list_listImageColor:[UIColor list_darkGrayColorAlpha:1.0f] size:15.f]];
+        [_listImageView sizeToFit];
+    }
+    return _listImageView;
 }
 
 @end

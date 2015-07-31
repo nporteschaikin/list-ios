@@ -83,4 +83,11 @@
                              color:color];
 }
 
++ (UIImage *)list_listImageColor:(UIColor *)color
+                            size:(CGFloat)size {
+    return [IonIcons imageWithIcon:ion_ios_keypad
+                              size:size
+                             color:color];
+}
+
 @end

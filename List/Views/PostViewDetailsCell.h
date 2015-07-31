@@ -18,6 +18,7 @@
 @property (strong, nonatomic, readonly) UILabel *dateLabel;
 @property (strong, nonatomic, readonly) UILabel *contentLabel;
 @property (strong, nonatomic, readonly) PostLocationView *postLocationView;
+@property (strong, nonatomic, readonly) UIImageView *listImageView;
 @property (nonatomic) BOOL hasCoverPhoto;
 
 @end
