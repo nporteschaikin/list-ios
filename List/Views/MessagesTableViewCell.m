@@ -95,8 +95,8 @@ static CGFloat const MessagesTableViewCellAvatarImageViewSize = 30.f;
     x = CGRectGetMaxX(self.avatarImageView.frame) + (MessagesTableViewCellPadding * .75);
     w = CGRectGetWidth(self.contentView.bounds) - x - MessagesTableViewCellPadding;
     self.contentLabel.preferredMaxLayoutWidth = w;
-    self.contentLabel.frame = CGRectMake(x, y, w, 0.0f);
-    [self.contentLabel sizeToFit];
+    h = [self.contentLabel sizeThatFits:CGSizeMake(w, CGFLOAT_MAX)].height;;
+    self.contentLabel.frame = CGRectMake(x, y, w, h);
     
     y = CGRectGetMaxY(self.contentLabel.frame) + 2.0f;
     [self.dateLabel sizeToFit];
@@ -109,7 +109,7 @@ static CGFloat const MessagesTableViewCellAvatarImageViewSize = 30.f;
 - (CGSize)sizeThatFits:(CGSize)size {
     CGFloat height = 0.0f;
     height += MessagesTableViewCellPadding;
-    height += fmaxf(CGRectGetMaxY(self.dateLabel.frame), CGRectGetMaxY(self.avatarImageView.frame)) - MessagesTableViewCellPadding;
+    height += fmaxf((CGRectGetHeight(self.dateLabel.frame) + CGRectGetHeight(self.contentLabel.frame)), CGRectGetHeight(self.avatarImageView.frame));
     height += MessagesTableViewCellPadding;
     return CGSizeMake(size.width, height);
 }

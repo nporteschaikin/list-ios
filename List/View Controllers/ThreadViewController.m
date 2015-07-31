@@ -282,7 +282,7 @@
             }
             sizingMessagesTableViewCell.frame = CGRectMake(0, 0, width, 0);
             sizingMessagesTableViewCell.userNameString = user.displayName;
-            sizingMessagesTableViewCell.contentString = thread.content;
+            sizingMessagesTableViewCell.contentString = message.content;
             [sizingMessagesTableViewCell setNeedsLayout];
             [sizingMessagesTableViewCell layoutIfNeeded];
             CGSize size = [sizingMessagesTableViewCell sizeThatFits:CGSizeMake(width, 0)];
