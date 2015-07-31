@@ -49,6 +49,7 @@
 + (UIFont *)list_menuTableViewCellTitleFont;
 + (UIFont *)list_navigationBarTitleFont;
 + (UIFont *)list_notificationsTableViewCellContentFont;
++ (UIFont *)list_notificationsTableViewCellBoldFont;
 + (UIFont *)list_notificationsTableViewCellDateFont;
 + (UIFont *)list_loginViewLabelFont;
 + (UIFont *)list_settingsTableViewSectionHeaderFont;

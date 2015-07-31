@@ -200,7 +200,12 @@ static NSString * const ListFontLightName = @"OpenSans-Light";
 
 + (UIFont *)list_notificationsTableViewCellContentFont {
     return [self fontWithName:ListFontName
-                         size:15.0f];
+                         size:13.0f];
+}
+
++ (UIFont *)list_notificationsTableViewCellBoldFont {
+    return [self fontWithName:ListFontSemiboldName
+                         size:13.0f];
 }
 
 + (UIFont *)list_notificationsTableViewCellDateFont {

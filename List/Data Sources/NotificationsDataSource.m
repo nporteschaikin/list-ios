@@ -62,11 +62,11 @@ static NSString * const NotificationsTableViewCellReuseIdentifier = @"Notificati
                     NSString *string = [NSString stringWithFormat:@"%@ created a thread in %@", actor.displayName, post.title];
                     attributedString = [[NSMutableAttributedString alloc] initWithString:string];
                     
-                    [attributedString addAttribute:NSForegroundColorAttributeName
-                                             value:[UIColor list_blueColorAlpha:1]
+                    [attributedString addAttribute:NSFontAttributeName
+                                             value:[UIFont list_notificationsTableViewCellBoldFont]
                                              range:NSMakeRange(0, actor.displayName.length)];
-                    [attributedString addAttribute:NSForegroundColorAttributeName
-                                             value:[UIColor list_blueColorAlpha:1]
+                    [attributedString addAttribute:NSFontAttributeName
+                                             value:[UIFont list_notificationsTableViewCellBoldFont]
                                              range:NSMakeRange(string.length - post.title.length, post.title.length)];
                     
                     break;
