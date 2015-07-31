@@ -92,7 +92,7 @@
 		4FCBE9F31B691FAC00589E61 /* logo.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBE9F21B691FAC00589E61 /* logo.pdf */; };
 		4FCDBDA01B4495C0005ACBDD /* UIFont+List.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCDBD9F1B4495C0005ACBDD /* UIFont+List.m */; };
 		4FE660A81B68414500EE8CAD /* ThreadsFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE660A71B68414500EE8CAD /* ThreadsFormView.m */; };
-		4FEA81931B62C7A300185F33 /* NotificationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA81921B62C7A300185F33 /* NotificationsTableViewController.m */; };
+		4FEA81931B62C7A300185F33 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA81921B62C7A300185F33 /* NotificationsViewController.m */; };
 		4FEA81961B62C7C700185F33 /* NotificationsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA81951B62C7C700185F33 /* NotificationsController.m */; };
 		4FEA81991B62C88400185F33 /* NotificationsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA81981B62C88400185F33 /* NotificationsDataSource.m */; };
 		4FEA819C1B62C98200185F33 /* NotificationsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA819B1B62C98200185F33 /* NotificationsTableViewCell.m */; };
@@ -306,8 +306,8 @@
 		4FCDBD9F1B4495C0005ACBDD /* UIFont+List.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+List.m"; sourceTree = "<group>"; };
 		4FE660A61B68414500EE8CAD /* ThreadsFormView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadsFormView.h; sourceTree = "<group>"; };
 		4FE660A71B68414500EE8CAD /* ThreadsFormView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreadsFormView.m; sourceTree = "<group>"; };
-		4FEA81911B62C7A300185F33 /* NotificationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsTableViewController.h; sourceTree = "<group>"; };
-		4FEA81921B62C7A300185F33 /* NotificationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsTableViewController.m; sourceTree = "<group>"; };
+		4FEA81911B62C7A300185F33 /* NotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsViewController.h; sourceTree = "<group>"; };
+		4FEA81921B62C7A300185F33 /* NotificationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsViewController.m; sourceTree = "<group>"; };
 		4FEA81941B62C7C700185F33 /* NotificationsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsController.h; sourceTree = "<group>"; };
 		4FEA81951B62C7C700185F33 /* NotificationsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsController.m; sourceTree = "<group>"; };
 		4FEA81971B62C88400185F33 /* NotificationsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsDataSource.h; sourceTree = "<group>"; };
@@ -599,8 +599,8 @@
 				4F07217D1B5EE56A0046E299 /* MenuViewController.m */,
 				E42D1B541B5F3ED2003D1026 /* UserViewController.h */,
 				E42D1B551B5F3ED2003D1026 /* UserViewController.m */,
-				4FEA81911B62C7A300185F33 /* NotificationsTableViewController.h */,
-				4FEA81921B62C7A300185F33 /* NotificationsTableViewController.m */,
+				4FEA81911B62C7A300185F33 /* NotificationsViewController.h */,
+				4FEA81921B62C7A300185F33 /* NotificationsViewController.m */,
 				4FEA98FE1B6661AC0068BA34 /* SettingsTableViewController.h */,
 				4FEA98FF1B6661AC0068BA34 /* SettingsTableViewController.m */,
 				4F368F601B66DDEA00C814C0 /* UserEditorViewController.h */,
@@ -1029,7 +1029,7 @@
 				4F98E40A1B617720008D6A52 /* LogoView.m in Sources */,
 				4F241D3A1B6045D100E3BD36 /* UIImage+WebP.m in Sources */,
 				4F368F771B680AA700C814C0 /* ThreadViewController.m in Sources */,
-				4FEA81931B62C7A300185F33 /* NotificationsTableViewController.m in Sources */,
+				4FEA81931B62C7A300185F33 /* NotificationsViewController.m in Sources */,
 				4F0FC3981B4BFE7A00AB48EC /* LLocationManager.m in Sources */,
 				4FAB0D2C1B5D3292004035CC /* MessagesFormView.m in Sources */,
 				4F241D351B6045D100E3BD36 /* SDWebImageManager.m in Sources */,

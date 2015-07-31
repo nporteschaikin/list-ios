@@ -14,7 +14,7 @@
 #import "LLocationManager.h"
 #import "Placemark.h"
 #import "UIImageView+WebCache.h"
-#import "NotificationsTableViewController.h"
+#import "NotificationsViewController.h"
 #import "NotificationsController.h"
 #import "SettingsTableViewController.h"
 #import "UserViewController.h"
@@ -138,7 +138,7 @@ static CGFloat const MenuViewControllerCircleSize = 45.f;
              * Create table view controller.
              */
             
-            viewController = [[NotificationsTableViewController alloc] initWithNotificationsController:notificationsController session:self.session];
+            viewController = [[NotificationsViewController alloc] initWithNotificationsController:notificationsController session:self.session];
             viewController.navigationItem.title = @"Notifications";
             
             break;

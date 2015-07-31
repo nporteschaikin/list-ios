@@ -1,26 +1,29 @@
 //
-//  NotificationsTableViewController.m
+//  NotificationsViewController.m
 //  List
 //
 //  Created by Noah Portes Chaikin on 7/24/15.
 //  Copyright (c) 2015 Noah Portes Chaikin. All rights reserved.
 //
 
-#import "NotificationsTableViewController.h"
+#import "NotificationsViewController.h"
 #import "PostViewController.h"
 #import "UserViewController.h"
 #import "ActivityIndicatorView.h"
 #import "UIColor+List.h"
+#import "Constants.h"
 
-@interface NotificationsTableViewController () <NotificationsControllerDelegate>
+@interface NotificationsViewController () <NotificationsControllerDelegate, UITableViewDelegate>
 
 @property (strong, nonatomic) NotificationsController *notificationsController;
 @property (strong, nonatomic) Session *session;
+@property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NotificationsDataSource *dataSource;
+@property (strong, nonatomic) ActivityIndicatorView *activityIndicatorView;
 
 @end
 
-@implementation NotificationsTableViewController
+@implementation NotificationsViewController
 
 - (instancetype)initWithNotificationsController:(NotificationsController *)notificationsController
                                         session:(Session *)session {
@@ -37,11 +40,26 @@
     [super viewDidLoad];
     
     /*
+     * Set background color.
+     */
+    
+    self.view.backgroundColor = [UIColor list_lightGrayColorAlpha:1];
+    
+    /*
+     * Add subviews.
+     */
+    
+    [self.view addSubview:self.tableView];
+    [self.view insertSubview:self.activityIndicatorView
+                belowSubview:self.tableView];
+    
+    /*
      * Set up table view.
      */
     
     [self.dataSource registerReuseIdentifiersForTableView:self.tableView];
     self.tableView.dataSource = self.dataSource;
+    self.tableView.delegate = self;
     self.tableView.separatorColor = [UIColor list_lightGrayColorAlpha:1];
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         self.tableView.separatorInset = UIEdgeInsetsZero;
@@ -49,6 +67,22 @@
     if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
         self.tableView.layoutMargins = UIEdgeInsetsZero;
     }
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    /*
+     * Hide table view.
+     */
+    
+    //self.tableView.hidden = YES;
+    
+    /*
+     * Start animating.
+     */
+    
+    [self.activityIndicatorView startAnimating];
     
     /*
      * Request notifications.
@@ -58,15 +92,59 @@
     
 }
 
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    
+    CGFloat x, y, w, h;
+    x = 0.0f;
+    y = 0.0f;
+    w = CGRectGetWidth(self.view.bounds);
+    h = CGRectGetHeight(self.view.bounds);
+    self.tableView.frame = CGRectMake(x, y, w, h);
+    
+    x = CGRectGetMidX(self.view.bounds) - (ActivityIndicatorViewDefaultSize / 2);
+    y = CGRectGetMidY(self.view.bounds) - (ActivityIndicatorViewDefaultSize / 2);
+    w = ActivityIndicatorViewDefaultSize;
+    h = ActivityIndicatorViewDefaultSize;
+    self.activityIndicatorView.frame = CGRectMake(x, y, w, h);
+    
+}
+
 #pragma mark - NotificationsControllerDelegate
 
 - (void)notificationsControllerDidFetchNotifications:(NotificationsController *)notificationsController {
+    
+    /*
+     * Show table view.
+     */
+    
+    self.tableView.hidden = NO;
     
     /*
      * Reload table.
      */
     
     [self.tableView reloadData];
+    
+}
+
+- (void)notificationsController:(NotificationsController *)notificationsController failedToFetchNotificationsWithError:(NSError *)error {
+    
+    /*
+     * Stop animating.
+     */
+    
+    [self.activityIndicatorView stopAnimating];
+    
+}
+
+- (void)notificationsController:(NotificationsController *)notificationsController failedToFetchNotificationsWithResponse:(id<NSObject>)response {
+    
+    /*
+     * Stop animating.
+     */
+    
+    [self.activityIndicatorView stopAnimating];
     
 }
 
@@ -128,6 +206,23 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     
     
+}
+
+#pragma mark - Dynamic getters
+
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] init];
+        _tableView.backgroundColor = [UIColor list_lightGrayColorAlpha:1];
+    }
+    return _tableView;
+}
+
+- (ActivityIndicatorView *)activityIndicatorView {
+    if (!_activityIndicatorView) {
+        _activityIndicatorView = [[ActivityIndicatorView alloc] initWithStyle:ActivityIndicatorViewStyleBlue];
+    }
+    return _activityIndicatorView;
 }
 
 @end

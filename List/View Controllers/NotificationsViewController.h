@@ -1,5 +1,5 @@
 //
-//  NotificationsTableViewController.h
+//  NotificationsViewController.h
 //  List
 //
 //  Created by Noah Portes Chaikin on 7/24/15.
@@ -11,7 +11,7 @@
 #import "NotificationsDataSource.h"
 #import "Session.h"
 
-@interface NotificationsTableViewController : UITableViewController
+@interface NotificationsViewController : UIViewController
 
 - (instancetype)initWithNotificationsController:(NotificationsController *)notificationsController
                                         session:(Session *)session;
