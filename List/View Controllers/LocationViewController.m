@@ -198,7 +198,7 @@
     if (!self.postsTableViewController && self.categoriesController.categories.count) {
         self.postsController.category = self.categoriesController.categories[0];
         self.postsTableViewController = [[PostsTableViewController alloc] initWithPostsController:self.postsController
-                                                                                          session:nil];
+                                                                                          session:self.session];
         [self.view insertSubview:self.postsTableViewController.view atIndex:0];
         [self addChildViewController:self.postsTableViewController];
         [self.postsTableViewController didMoveToParentViewController:self];
