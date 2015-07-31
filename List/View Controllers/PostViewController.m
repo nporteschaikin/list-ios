@@ -241,7 +241,7 @@ static CGFloat const PostViewControllerCloseControlMargin = 12.f;
     }
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [alertController dismissViewControllerAnimated:YES completion:nil];
     }];
     [alertController addAction:cancelAction];
     
