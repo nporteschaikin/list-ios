@@ -13,7 +13,7 @@
 @protocol ListTableViewCellDelegate <NSObject>
 
 @optional
-- (void)listTableViewCell:(ListTableViewCell *)cell viewTapped:(UIView *)view;
+- (void)listTableViewCell:(ListTableViewCell *)cell viewTapped:(UIView *)view point:(CGPoint)point;
 
 @end
 

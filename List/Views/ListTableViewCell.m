@@ -32,11 +32,11 @@
 }
 
 - (void)handleTapGestureRecognizer:(UITapGestureRecognizer *)tapGestureRecognizer {
-    if ([self.delegate respondsToSelector:@selector(listTableViewCell:viewTapped:)]) {
+    if ([self.delegate respondsToSelector:@selector(listTableViewCell:viewTapped:point:)]) {
         CGPoint point = [tapGestureRecognizer locationInView:self];
         UIView *subview = [self hitTest:point withEvent:nil];
         if (subview) {
-            [self.delegate listTableViewCell:self viewTapped:subview];
+            [self.delegate listTableViewCell:self viewTapped:subview point:point];
         }
     }
 }

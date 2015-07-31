@@ -240,7 +240,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 #pragma mark - ListTableViewCellDelegate
 
-- (void)listTableViewCell:(ListTableViewCell *)cell viewTapped:(UIView *)view {
+- (void)listTableViewCell:(ListTableViewCell *)cell viewTapped:(UIView *)view point:(CGPoint)point {
     NSIndexPath *indexPath = cell.indexPath;
     User *user = self.userController.user;
     UIViewController *viewController;

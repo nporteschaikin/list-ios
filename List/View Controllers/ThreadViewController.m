@@ -303,7 +303,7 @@
 
 #pragma mark - ListTableViewCellDelegate
 
-- (void)listTableViewCell:(ListTableViewCell *)cell viewTapped:(UIView *)view {
+- (void)listTableViewCell:(ListTableViewCell *)cell viewTapped:(UIView *)view point:(CGPoint)point {
     NSIndexPath *indexPath = cell.indexPath;
     Thread *thread = self.thread;
     UIViewController *viewController;
