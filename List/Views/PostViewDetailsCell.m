@@ -197,6 +197,7 @@ static CGFloat const PostViewDetailsCellAvatarImageViewSize = 50.f;
 - (UIImageView *)listImageView {
     if (!_listImageView) {
         _listImageView = [[UIImageView alloc] initWithImage:[UIImage list_listImageColor:[UIColor list_darkGrayColorAlpha:1.0f] size:15.f]];
+        _listImageView.userInteractionEnabled = YES;
         [_listImageView sizeToFit];
     }
     return _listImageView;

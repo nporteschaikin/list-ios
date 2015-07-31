@@ -29,6 +29,9 @@
 - (void)postController:(PostController *)postController didAddMessage:(Message *)message toThread:(Thread *)thread atIndex:(NSInteger)index;
 - (void)postController:(PostController *)postController failedToAddMessage:(Message *)message toThread:(Thread *)thread withError:(NSError *)error;
 - (void)postController:(PostController *)postController failedToAddMessage:(Message *)message toThread:(Thread *)thread withResponse:(id<NSObject>)response;
+- (void)postControllerDidDeletePost:(PostController *)postController;
+- (void)postController:(PostController *)postController failedToDeletePostWithError:(NSError *)error;
+- (void)postController:(PostController *)postController failedToDeletePostWithResponse:(id<NSObject>)response;
 
 @end
 
@@ -45,5 +48,6 @@
 - (void)addThreadToPost:(Thread *)thread;
 - (void)addMessage:(Message *)message
           toThread:(Thread *)thread;
+- (void)deletePost;
 
 @end

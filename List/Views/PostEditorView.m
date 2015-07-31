@@ -108,6 +108,7 @@ static CGFloat const PostEditorViewCoverPhotoContainerSize = 100.f;
     h = CGRectGetHeight(self.saveButton.frame) + (PostEditorViewPadding * 2);
     self.footerView.frame = CGRectMake(x, y, w, h);
     
+    [self.saveButton sizeToFit];
     x = CGRectGetWidth(self.footerView.bounds) - (PostEditorViewPadding + CGRectGetWidth(self.saveButton.frame));
     y = PostEditorViewPadding;
     w = CGRectGetWidth(self.saveButton.frame);
@@ -166,9 +167,6 @@ static CGFloat const PostEditorViewCoverPhotoContainerSize = 100.f;
     if (!_saveButton) {
         _saveButton = [UIButton list_buttonWithSize:UIButtonListSizeMedium
                                                 style:UIButtonListStyleBlue];
-        [_saveButton setTitle:@"Post"
-                     forState:UIControlStateNormal];
-        [_saveButton sizeToFit];
     }
     return _saveButton;
 }

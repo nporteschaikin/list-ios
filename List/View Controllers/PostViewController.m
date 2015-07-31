@@ -8,6 +8,7 @@
 
 #import "PostViewController.h"
 #import "UserViewController.h"
+#import "PostEditorViewController.h"
 #import "ThreadViewController.h"
 #import "PostDataSource.h"
 #import "PostController.h"
@@ -209,6 +210,44 @@ static CGFloat const PostViewControllerCloseControlMargin = 12.f;
     self.tableView.scrollIndicatorInsets = contentInset;
 }
 
+- (void)presentOptionsAlertController {
+    UIAlertController *alertController = [[UIAlertController alloc] init];
+    PostController *postController = self.postController;
+    Post *post = postController.post;
+    User *user = post.user;
+    User *currentUser = self.session.user;
+    
+    if ([currentUser isEqual:user]) {
+        
+        /*
+         * Add edit post action.
+         */
+        
+        UIAlertAction *editAction = [UIAlertAction actionWithTitle:@"Edit" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            PostEditorViewController *viewController = [[PostEditorViewController alloc] initWithPost:post session:self.session];
+            [self presentViewController:viewController animated:YES completion:nil];
+        }];
+        [alertController addAction:editAction];
+        
+        /*
+         * Add delete post action.
+         */
+        
+        UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+            [self.postController deletePost];
+        }];
+        [alertController addAction:deleteAction];
+        
+    }
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 #pragma mark - PostControllerDelegate
 
 - (void)postControllerDidFetchPost:(PostController *)postController {
@@ -268,6 +307,23 @@ static CGFloat const PostViewControllerCloseControlMargin = 12.f;
     
     self.activityOverlay.hidden = YES;
     [self.activityIndicatorView stopAnimating];
+    
+}
+
+- (void)postControllerDidDeletePost:(PostController *)postController {
+    
+    /*
+     * Stop animating activity.
+     */
+    
+    self.activityOverlay.hidden = YES;
+    [self.activityIndicatorView stopAnimating];
+    
+    /*
+     * Dismiss this.
+     */
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
@@ -357,6 +413,17 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.delegate = self;
     cell.indexPath = indexPath;
+    
+    /*
+     * Temporary: only show list image view
+     * if post user is session user.
+     */
+    
+    PostController *postController = self.postController;
+    Post *post = postController.post;
+    User *user = post.user;
+    if (indexPath.section == PostDataSourceSectionDetails) ((PostViewDetailsCell *)cell).listImageView.hidden = !(indexPath.section == PostDataSourceSectionDetails && [user isEqual:self.session.user]);
+        
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
         cell.layoutMargins = UIEdgeInsetsZero;
     }
@@ -374,7 +441,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                 User *user = post.user;
                 viewController = [[UserViewController alloc] initWithUser:user session:self.session];
             } else if (view == ((PostViewDetailsCell *)cell).listImageView) {
-                // list
+                [self presentOptionsAlertController];
             }
             break;
         }

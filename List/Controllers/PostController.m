@@ -77,7 +77,7 @@
 - (void)savePost {
     APIRequest *request = [[APIRequest alloc] init];
     request.method = self.post.postID ? APIRequestMethodPUT : APIRequestMethodPOST;
-    request.endpoint = APIPostsEndpoint;
+    request.endpoint = self.post.postID ? [NSString stringWithFormat:APIPostEndpoint, self.post.postID] : APIPostsEndpoint;
     request.session = self.session;
     request.body = [self.post toJSON];
     [request sendRequest:^(id<NSObject> body) {
@@ -217,6 +217,44 @@
         
         if ([self.delegate respondsToSelector:@selector(postController:failedToAddMessage:toThread:withResponse:)]) {
             [self.delegate postController:self failedToAddMessage:message toThread:thread withResponse:body];
+        }
+        
+    }];
+}
+
+- (void)deletePost {
+    APIRequest *request = [[APIRequest alloc] init];
+    request.method = APIRequestMethodDELETE;
+    request.endpoint = [NSString stringWithFormat:APIPostEndpoint, self.post.postID];
+    request.session = self.session;
+    [request sendRequest:^(id<NSObject> body) {
+        
+        /*
+         * Send delegate message.
+         */
+        
+        if ([self.delegate respondsToSelector:@selector(postControllerDidDeletePost:)]) {
+            [self.delegate postControllerDidDeletePost:self];
+        }
+        
+    } onError:^(NSError *error) {
+        
+        /*
+         * Send delegate message.
+         */
+        
+        if ([self.delegate respondsToSelector:@selector(postController:failedToDeletePostWithError:)]) {
+            [self.delegate postController:self failedToDeletePostWithError:error];
+        }
+        
+    } onFail:^(id<NSObject> body) {
+        
+        /*
+         * Send delegate message.
+         */
+        
+        if ([self.delegate respondsToSelector:@selector(postController:failedToDeletePostWithError:)]) {
+            [self.delegate postController:self failedToDeletePostWithResponse:body];
         }
         
     }];

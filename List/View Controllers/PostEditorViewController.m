@@ -97,11 +97,23 @@
            forControlEvents:UIControlEventTouchDown];
     
     /*
-     * Set up avatar.
+     * Setup view.
      */
     
+    self.postEditorView.titleTextField.text = self.postController.post.title;
+    self.postEditorView.contentTextView.text = self.postController.post.content;
     if (currentUser.profilePictureURL) {
         [self.headerView.avatarImageView sd_setImageWithURL:currentUser.profilePictureURL];
+    }
+    if (post.coverPhotoURL) {
+        [self.postEditorView.coverPhotoImageView sd_setImageWithURL:post.coverPhotoURL];
+    }
+    if (post.postID) {
+        [self.postEditorView.saveButton setTitle:@"Edit"
+                                        forState:UIControlStateNormal];
+    } else {
+        [self.postEditorView.saveButton setTitle:@"List"
+                                        forState:UIControlStateNormal];
     }
     
     /*
@@ -171,6 +183,12 @@
 - (void)handleSaveButtonTouchDown:(UIButton *)saveButton {
     
     /*
+     * End editing.
+     */
+    
+    [self.view endEditing:YES];
+    
+    /*
      * Update post.
      */
     
@@ -178,8 +196,10 @@
     post.title = self.postEditorView.titleTextField.text;
     post.content = self.postEditorView.contentTextView.text;
     
-    LLocationManager *locationManager = [LLocationManager sharedManager];
-    post.location = locationManager.location;
+    if (!post.location) {
+        LLocationManager *locationManager = [LLocationManager sharedManager];
+        post.location = locationManager.location;
+    }
     
     self.activityOverlay.hidden = NO;
     [self.activityIndicatorView startAnimating];
