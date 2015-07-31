@@ -451,6 +451,26 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
             if (view == ((ThreadsTableViewCell *)cell).avatarImageView) {
                 User *user = thread.user;
                 viewController = [[UserViewController alloc] initWithUser:user session:self.session];
+            } else if (view == ((ThreadsTableViewCell *)cell).contentLabel) {
+                UILabel *contentLabel = ((ThreadsTableViewCell *)cell).contentLabel;
+                CGPoint labelPoint = [contentLabel convertPoint:point fromView:cell];
+                NSTextStorage *textStorage = [[NSTextStorage alloc] initWithAttributedString:contentLabel.attributedText];
+                NSLayoutManager *layoutManager = [[NSLayoutManager alloc] init];
+                [textStorage addLayoutManager:layoutManager];
+                NSTextContainer *textContainer = [[NSTextContainer alloc] initWithSize:contentLabel.frame.size];
+                textContainer.lineFragmentPadding = 0;
+                textContainer.maximumNumberOfLines = 0;
+                textContainer.lineBreakMode = contentLabel.lineBreakMode;
+                [layoutManager addTextContainer:textContainer];
+                NSUInteger characterIndex = [layoutManager characterIndexForPoint:labelPoint inTextContainer:textContainer fractionOfDistanceBetweenInsertionPoints:NULL];
+                if (characterIndex < thread.user.displayName.length) {
+                    User *user = thread.user;
+                    viewController = [[UserViewController alloc] initWithUser:user session:self.session];
+                } else {
+                    ThreadViewController *threadViewController = [[ThreadViewController alloc] initWithThread:thread inPost:post session:self.session];
+                    viewController = [[UINavigationController alloc] initWithRootViewController:threadViewController];
+                }
+
             } else {
                 ThreadViewController *threadViewController = [[ThreadViewController alloc] initWithThread:thread inPost:post session:self.session];
                 viewController = [[UINavigationController alloc] initWithRootViewController:threadViewController];

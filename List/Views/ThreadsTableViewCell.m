@@ -129,6 +129,7 @@ static CGFloat const ThreadsTableViewCellAvatarImageViewSize = 30.f;
     if (!_contentLabel) {
         _contentLabel = [[UILabel alloc] init];
         _contentLabel.numberOfLines = 0;
+        _contentLabel.userInteractionEnabled = YES;
     }
     return _contentLabel;
 }

@@ -233,7 +233,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 #pragma mark - ListTableViewCellDelegate
 
-- (void)listTableViewCell:(PostsTableViewCell *)cell viewTapped:(UIView *)view {
+- (void)listTableViewCell:(PostsTableViewCell *)cell viewTapped:(UIView *)view point:(CGPoint)point {
     NSIndexPath *indexPath = cell.indexPath;
     Post *post = self.postsController.posts[indexPath.row];
     UIViewController *viewController;
