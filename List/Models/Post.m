@@ -22,8 +22,8 @@
     self.title = JSON[@"title"];
     self.content = JSON[@"content"];
     self.createdAtDate = [NSDate dateWithISO8601:JSON[@"createdAt"]];
-    self.coverPhotoURL = [NSURL URLWithString:JSON[@"coverPhotoUrl"]];
     self.coverImage = nil;
+    if (JSON[@"coverPhotoUrl"] != [NSNull null]) self.coverPhotoURL = [NSURL URLWithString:JSON[@"coverPhotoUrl"]];
     if ([JSON[@"user"] isKindOfClass:[NSDictionary class]]) self.user = [User fromJSONDict:JSON[@"user"]];
     if ([JSON[@"category"] isKindOfClass:[NSDictionary class]]) self.category = [PostCategory fromJSONDict:JSON[@"category"]];
     if ([JSON[@"threads"] isKindOfClass:[NSArray class]]) self.threads = [Thread fromJSONArray:JSON[@"threads"]];

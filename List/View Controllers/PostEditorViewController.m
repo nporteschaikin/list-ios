@@ -155,7 +155,7 @@
     self.headerView.frame = CGRectMake(x, y, w, h);
     
     y = CGRectGetMaxY(self.headerView.frame);
-    h = CGRectGetHeight(self.view.bounds) - (y + h);
+    h = CGRectGetHeight(self.view.bounds) - y;
     self.postEditorView.frame = CGRectMake(x, y, w, h);
     self.activityOverlay.frame = CGRectMake(x, y, w, h);
     

@@ -20,8 +20,8 @@
     self.userID = JSON[@"_id"];
     self.displayName = JSON[@"displayName"];
     self.bio = JSON[@"bio"];
-    self.profilePictureURL = [NSURL URLWithString:JSON[@"profilePictureUrl"]];
-    self.coverPhotoURL = [NSURL URLWithString:JSON[@"coverPhotoUrl"]];
+    if (JSON[@"profilePictureUrl"] != [NSNull null]) self.profilePictureURL = [NSURL URLWithString:JSON[@"profilePictureUrl"]];
+    if (JSON[@"coverPhotoUrl"] != [NSNull null]) self.coverPhotoURL = [NSURL URLWithString:JSON[@"coverPhotoUrl"]];
     self.coverImage = nil;
     self.profileImage = nil;
 }
