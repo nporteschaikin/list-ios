@@ -192,6 +192,11 @@
 
 }
 
+- (void)dealloc {
+    LLocationManager *locationManager = [LLocationManager sharedManager];
+    [locationManager removeListener:self];
+}
+
 #pragma mark - LLocationManagerListener
 
 - (void)locationManager:(LLocationManager *)manager event:(LLocationManagerEvent)event {
