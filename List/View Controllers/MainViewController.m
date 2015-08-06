@@ -93,7 +93,7 @@
     if (locationManager.location) {
         [self createLocationViewController];
     } else {
-        [self.activityIndicatorView startAnimating];
+        self.activityIndicatorView.hidden = NO;
     }
     
 }
@@ -162,14 +162,7 @@
         }
     };
     void (^completionBlock)(BOOL) = ^void(BOOL finished) {
-        if (open) {
-            [menuViewController viewDidAppear:YES];
-            [locationViewController viewDidDisappear:YES];
-        } else {
-            menuView.hidden = YES;
-            [menuViewController viewDidDisappear:YES];
-            [locationViewController viewDidAppear:YES];
-        }
+        if (!open) menuView.hidden = YES;
     };
     if (animated) {
         [UIView animateWithDuration:0.25f
@@ -251,6 +244,7 @@
 - (ActivityIndicatorView *)activityIndicatorView {
     if (!_activityIndicatorView) {
         _activityIndicatorView = [[ActivityIndicatorView alloc] initWithStyle:ActivityIndicatorViewStyleWhite];
+        _activityIndicatorView.hidden = YES;
     }
     return _activityIndicatorView;
 }

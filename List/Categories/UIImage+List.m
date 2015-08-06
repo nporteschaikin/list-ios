@@ -11,10 +11,6 @@
 
 @implementation UIImage (List)
 
-/*
- * Utils
- */
-
 + (UIImage *)list_imageWithColor:(UIColor *)color {
     CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
     UIGraphicsBeginImageContext(rect.size);
@@ -29,65 +25,11 @@
     return image;
 }
 
-/*
- * Icons
- */
-
-+ (UIImage *)list_threadsIconImageColor:(UIColor *)color
-                                     size:(CGFloat)size {
-    return [IonIcons imageWithIcon:ion_ios_chatbubble
-                              size:size
-                             color:color];
-}
-
-+ (UIImage *)list_locationIconImageColor:(UIColor *)color
-                                 size:(CGFloat)size {
-    return [IonIcons imageWithIcon:ion_ios_paperplane
-                              size:size
-                             color:color];
-}
-
-+ (UIImage *)list_replyIconImageColor:(UIColor *)color
-                                   size:(CGFloat)size {
-    return [IonIcons imageWithIcon:ion_ios_redo
-                              size:size
-                             color:color];
-}
-
-+ (UIImage *)list_searchIconImageColor:(UIColor *)color
-                                    size:(CGFloat)size {
-    return [IonIcons imageWithIcon:ion_ios_search_strong
-                              size:size
-                             color:color];
-}
-
-
-+ (UIImage *)list_menuIconImageColor:(UIColor *)color
-                                  size:(CGFloat)size {
-    return [IonIcons imageWithIcon:ion_ios_list
-                              size:size
-                             color:color];
-}
-
-+ (UIImage *)list_peopleIconImageColor:(UIColor *)color
-                                    size:(CGFloat)size {
-    return [IonIcons imageWithIcon:ion_ios_people
-                              size:size
-                             color:color];
-}
-
-+ (UIImage *)list_personIconImageColor:(UIColor *)color
-                                    size:(CGFloat)size {
-    return [IonIcons imageWithIcon:ion_ios_person
-                              size:size
-                             color:color];
-}
-
-+ (UIImage *)list_listImageColor:(UIColor *)color
-                            size:(CGFloat)size {
-    return [IonIcons imageWithIcon:ion_ios_keypad
-                              size:size
-                             color:color];
++ (UIImage *)list_imageForIcon:(LIcon)icon
+                          size:(CGFloat)size
+                         color:(UIColor *)color {
+    NSString *string = [IonIcons list_stringForIcon:icon];
+    return [IonIcons imageWithIcon:string size:size color:color];
 }
 
 @end

@@ -7,13 +7,9 @@
 //
 
 #import "UIFont+List.h"
+#import "Constants.h"
 
 @implementation UIFont (List)
-
-static NSString * const ListFontName = @"OpenSans";
-static NSString * const ListFontSemiboldName = @"OpenSans-Semibold";
-static NSString * const ListFontBoldName = @"OpenSans-Bold";
-static NSString * const ListFontLightName = @"OpenSans-Light";
 
 + (UIFont *)list_postViewDetailsCellTitleFont {
     return [self fontWithName:ListFontSemiboldName
@@ -35,24 +31,33 @@ static NSString * const ListFontLightName = @"OpenSans-Light";
                          size:15.0f];
 }
 
-+ (UIFont *)list_postsTableViewCellTitleFont {
-    return [self fontWithName:ListFontSemiboldName
-                         size:15.0f];
-}
-
-+ (UIFont *)list_postsTableViewCellUserNameFont {
++ (UIFont *)list_postHeaderViewUserNameFont {
     return [self fontWithName:ListFontSemiboldName
                          size:12.0f];
 }
 
-+ (UIFont *)list_postsTableViewCellDateFont {
++ (UIFont *)list_postHeaderViewLocationFont {
+    return [self list_postHeaderViewUserNameFont];
+}
+
++ (UIFont *)list_postHeaderViewDateFont {
     return [self fontWithName:ListFontLightName
                          size:12.0f];
 }
 
-+ (UIFont *)list_postsTableViewCellTextFont {
-    return [self fontWithName:ListFontName
++ (UIFont *)list_textPostsTableViewCellTitleFont {
+    return [self fontWithName:ListFontSemiboldName
                          size:15.0f];
+}
+
++ (UIFont *)list_coverPostsTableViewCellTitleFont {
+    return [self fontWithName:ListFontSemiboldName
+                         size:15.0f];
+}
+
++ (UIFont *)list_postContentFont {
+    return [self fontWithName:ListFontName
+                         size:13.0f];
 }
 
 + (UIFont *)list_headerViewFont {
@@ -65,21 +70,20 @@ static NSString * const ListFontLightName = @"OpenSans-Light";
                          size:15.0f];
 }
 
-+ (UIFont *)list_lTextFieldLabelFont {
-    return [self fontWithName:ListFontSemiboldName
-                         size:11.0f];
-}
-
 + (UIFont *)list_lTextFieldFont {
     return [self fontWithName:ListFontName
                          size:15.0f];
 }
 
-+ (UIFont *)list_lTextViewLabelFont {
-    return [self list_lTextFieldLabelFont];
++ (UIFont *)list_lTextViewFont {
+    return [self list_lTextFieldFont];
 }
 
-+ (UIFont *)list_lTextViewFont {
++ (UIFont *)list_listGeneralCellTextFont {
+    return [self list_lTextFieldFont];
+}
+
++ (UIFont *)list_listGeneralCellDetailsFont {
     return [self list_lTextFieldFont];
 }
 
@@ -113,11 +117,6 @@ static NSString * const ListFontLightName = @"OpenSans-Light";
                          size:11.0f];
 }
 
-+ (UIFont *)list_threadsCounterViewFont {
-    return [self fontWithName:ListFontSemiboldName
-                         size:11.0f];
-}
-
 + (UIFont *)list_messagesTableViewCellUserNameFont {
     return [self list_threadsTableViewCellUserNameFont];
 }
@@ -128,10 +127,6 @@ static NSString * const ListFontLightName = @"OpenSans-Light";
 
 + (UIFont *)list_messagesTableViewCellDateFont {
     return [self list_threadsTableViewCellDateFont];
-}
-
-+ (UIFont *)list_postLocationViewFont {
-    return [self list_threadsCounterViewFont];
 }
 
 + (UIFont *)list_messagesFormViewSaveButtonFont {
@@ -159,24 +154,14 @@ static NSString * const ListFontLightName = @"OpenSans-Light";
                          size:18.0f];
 }
 
-+ (UIFont *)list_repliesCounterViewFont {
-    return [self fontWithName:ListFontSemiboldName
-                         size:11.0f];
-}
-
 + (UIFont *)list_postsSearchBarFont {
     return [self fontWithName:ListFontSemiboldName
                          size:14.0f];
 }
 
-+ (UIFont *)list_userViewDetailsCellNameFont {
-    return [self fontWithName:ListFontSemiboldName
++ (UIFont *)list_userViewCoverPhotoCellNameFont {
+    return [self fontWithName:ListFontLightName
                          size:20.0f];
-}
-
-+ (UIFont *)list_userViewDetailsCellBioFont {
-    return [self fontWithName:ListFontName
-                         size:15.0f];
 }
 
 + (UIFont *)list_menuViewFooterLocationFont {
@@ -233,9 +218,39 @@ static NSString * const ListFontLightName = @"OpenSans-Light";
                          size:15.0f];
 }
 
-+ (UIFont *)list_userEditorPhotoTableViewCellLabelFont {
++ (UIFont *)list_listPhotoCellLabelFont {
     return [self fontWithName:ListFontSemiboldName
                          size:15.0f];
+}
+
++ (UIFont *)list_createPostButtonFont {
+    return [self fontWithName:ListFontLightName
+                         size:25.0f];
+}
+
++ (UIFont *)list_postsTableViewCellEventsViewTimeFont {
+    return [self fontWithName:ListFontSemiboldName
+                         size:14.0f];
+}
+
++ (UIFont *)list_postsTableViewCellEventsViewPlaceFont {
+    return [self fontWithName:ListFontLightName
+                         size:14.0f];
+}
+
++ (UIFont *)list_listLabelViewDefaultFont {
+    return [self fontWithName:ListFontSemiboldName
+                         size:11.0f];
+}
+
++ (UIFont *)list_listIconTableViewCellFont {
+    return [self fontWithName:ListFontSemiboldName
+                         size:13.0f];
+}
+
++ (UIFont *)list_userViewBioCellFont {
+    return [self fontWithName:ListFontName
+                         size:14.0f];
 }
 
 @end

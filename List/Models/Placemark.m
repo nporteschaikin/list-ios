@@ -10,11 +10,19 @@
 
 @implementation Placemark
 
-- (void)applyJSON:(NSDictionary *)JSON {
-    self.neighborhood = JSON[@"neighborhood"];
-    self.locality = JSON[@"locality"];
-    self.sublocality = JSON[@"sublocality"];
-    self.country = JSON[@"country"];
+- (void)applyDict:(NSDictionary *)dict {
+    if (dict[@"neighborhood"]) {
+        self.neighborhood = dict[@"neighborhood"];
+    }
+    if (dict[@"locality"]) {
+        self.locality = dict[@"locality"];
+    }
+    if (dict[@"sublocaity"]) {
+        self.sublocality = dict[@"sublocality"];
+    }
+    if (dict[@"country"]) {
+        self.country = dict[@"country"];
+    }
 }
 
 - (NSString *)title {

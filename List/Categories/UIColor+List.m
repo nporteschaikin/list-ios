@@ -10,46 +10,41 @@
 
 @implementation UIColor (List)
 
+#define UIColorFromRGBWithAlpha(rgbValue,a) [UIColor \
+colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
+blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
+
 + (UIColor *)list_blueColorAlpha:(CGFloat)alpha {
-    return [UIColor colorWithRed:0.141
-                           green:0.498
-                            blue:0.8
-                           alpha:alpha];
+    return UIColorFromRGBWithAlpha(0x247fcc, alpha);
 }
 
 + (UIColor *)list_lightBlueColorAlpha:(CGFloat)alpha {
-    return [UIColor colorWithRed:0.859
-                           green:0.925
-                            blue:0.984
-                           alpha:alpha];
+    return UIColorFromRGBWithAlpha(0x50a3e2, alpha);
+}
+
++ (UIColor *)list_greenColorAlpha:(CGFloat)alpha {
+    return UIColorFromRGBWithAlpha(0x24c6cc, alpha);
 }
 
 + (UIColor *)list_lightGrayColorAlpha:(CGFloat)alpha {
-    return [UIColor colorWithRed:0.975
-                           green:0.975
-                            blue:0.975
-                           alpha:alpha];
+    return UIColorFromRGBWithAlpha(0xf4f4f4, alpha);
 }
 
 + (UIColor *)list_blackColorAlpha:(CGFloat)alpha {
-    return [UIColor colorWithRed:0.133
-                           green:0.133
-                            blue:0.133
-                           alpha:alpha];
+    return UIColorFromRGBWithAlpha(0x555555, alpha);
+}
+
++ (UIColor *)list_lightBlackColorAlpha:(CGFloat)alpha {
+    return UIColorFromRGBWithAlpha(0x777777, alpha);
 }
 
 + (UIColor *)list_grayColorAlpha:(CGFloat)alpha {
-    return [UIColor colorWithRed:0.867
-                           green:0.867
-                            blue:0.867
-                           alpha:alpha];
+    return UIColorFromRGBWithAlpha(0xDDDDDD, alpha);
 }
 
 + (UIColor *)list_darkGrayColorAlpha:(CGFloat)alpha {
-    return [UIColor colorWithRed:0.600
-                           green:0.600
-                            blue:0.600
-                           alpha:alpha];
+    return UIColorFromRGBWithAlpha(0x999999, alpha);
 }
 
 @end

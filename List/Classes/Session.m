@@ -65,7 +65,7 @@
          * Save user.
          */
         
-        User *user = [User fromJSONDict:body[@"user"]];
+        User *user = [User fromDict:body[@"user"]];
         self.user = user;
         
         /*

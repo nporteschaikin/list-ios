@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Noah Portes Chaikin. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import "LModel.h"
 
 @interface PostCategory : LModel

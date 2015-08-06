@@ -16,26 +16,45 @@
 
 @implementation User
 
-- (void)applyJSON:(NSDictionary *)JSON {
-    self.userID = JSON[@"_id"];
-    self.displayName = JSON[@"displayName"];
-    self.bio = JSON[@"bio"];
-    if (JSON[@"profilePictureUrl"] != [NSNull null]) self.profilePictureURL = [NSURL URLWithString:JSON[@"profilePictureUrl"]];
-    if (JSON[@"coverPhotoUrl"] != [NSNull null]) self.coverPhotoURL = [NSURL URLWithString:JSON[@"coverPhotoUrl"]];
+- (void)applyDict:(NSDictionary *)dict {
+    if (dict[@"_id"]) {
+        self.userID = dict[@"_id"];
+    }
+    if (dict[@"displayName"]) {
+        self.displayName = dict[@"displayName"];
+    }
+    if (dict[@"bio"]) {
+        self.bio = dict[@"bio"];
+    }
+    if (dict[@"profilePictureUrl"]) {
+        self.profilePictureURL = [NSURL URLWithString:dict[@"profilePictureUrl"]];
+    }
+    if (dict[@"coverPhotoUrl"]) {
+        self.coverPhotoURL = [NSURL URLWithString:dict[@"coverPhotoUrl"]];
+    }
     self.coverImage = nil;
     self.profileImage = nil;
 }
 
-- (NSDictionary *)propertiesJSON {
+- (NSDictionary *)toDict {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    if (self.bio) dict[@"bio"] = self.bio;
-    if (self.coverImage) dict[@"coverPhoto"] = [UIImageJPEGRepresentation(self.coverImage, 0.6) base64EncodedStringWithOptions:0];
-    if (self.profileImage) dict[@"profilePicture"] = [UIImageJPEGRepresentation(self.profileImage, 0.6) base64EncodedStringWithOptions:0];
+    if (self.displayName) {
+        dict[@"displayName"] = self.displayName;
+    }
+    if (self.bio) {
+        dict[@"bio"] = self.bio;
+    }
+    if (self.coverImage) {
+        dict[@"coverPhoto"] = [UIImageJPEGRepresentation(self.coverImage, 0.6) base64EncodedStringWithOptions:0];
+    }
+    if (self.profileImage) {
+        dict[@"profilePicture"] = [UIImageJPEGRepresentation(self.profileImage, 0.6) base64EncodedStringWithOptions:0];
+    }
     return [NSDictionary dictionaryWithDictionary:dict];
 }
 
-- (NSObject<NSCopying> *)equalityProperty {
-    return self.userID;
+- (BOOL)isEqual:(User *)user {
+    return [self.userID isEqualToString:user.userID];
 }
 
 @end

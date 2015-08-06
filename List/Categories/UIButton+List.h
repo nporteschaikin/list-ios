@@ -28,7 +28,5 @@ typedef NS_ENUM(NSUInteger, UIButtonListStyle) {
                                          color:(UIColor *)color;
 + (UIButton *)list_cameraIconButtonWithSize:(CGFloat)size
                                         color:(UIColor *)color;
-+ (UIButton *)list_photosIconButtonWithSize:(CGFloat)size
-                                        color:(UIColor *)color;
 
 @end

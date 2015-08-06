@@ -11,9 +11,12 @@
 @interface UIColor (List)
 
 + (UIColor *)list_blueColorAlpha:(CGFloat)alpha;
++ (UIColor *)list_greenColorAlpha:(CGFloat)alpha;
 + (UIColor *)list_lightBlueColorAlpha:(CGFloat)alpha;
+
 + (UIColor *)list_lightGrayColorAlpha:(CGFloat)alpha;
 + (UIColor *)list_blackColorAlpha:(CGFloat)alpha;
++ (UIColor *)list_lightBlackColorAlpha:(CGFloat)alpha;
 + (UIColor *)list_grayColorAlpha:(CGFloat)alpha;
 + (UIColor *)list_darkGrayColorAlpha:(CGFloat)alpha;
 

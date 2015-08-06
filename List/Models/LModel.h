@@ -2,27 +2,20 @@
 //  LModel.h
 //  List
 //
-//  Created by Noah Portes Chaikin on 7/6/15.
+//  Created by Noah Portes Chaikin on 8/3/15.
 //  Copyright (c) 2015 Noah Portes Chaikin. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import "NSString+ISO8601.h"
+#import "NSDateFormatter+ISO8601.h"
 
-@class LModel;
+@interface LModel : NSObject
 
-@protocol LModelConversion <NSObject>
-
-+ (NSArray *)fromJSONArray:(NSArray *)JSON;
-+ (instancetype)fromJSONDict:(NSDictionary *)JSON;
-- (NSDictionary *)toJSON;
-
-@optional
-- (NSDictionary *)propertiesJSON;
-- (void)applyJSON:(NSDictionary *)JSON;
-- (NSObject<NSCopying> *)equalityProperty;
-
-@end
-
-@interface LModel : NSObject <LModelConversion>
++ (id)fromDict:(NSDictionary *)dict;
++ (NSArray *)fromArray:(NSArray *)array;
+- (id)initWithDict:(NSDictionary *)dict;
+- (void)applyDict:(NSDictionary *)dict;
+- (NSDictionary *)toDict;
 
 @end

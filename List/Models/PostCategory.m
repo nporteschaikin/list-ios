@@ -16,13 +16,25 @@
 
 @implementation PostCategory
 
-- (void)applyJSON:(NSDictionary *)JSON {
-    self.categoryID = JSON[@"_id"];
-    self.name = JSON[@"name"];
+- (void)applyDict:(NSDictionary *)dict {
+    if (dict[@"_id"]) {
+        self.categoryID = dict[@"_id"];
+    }
+    if (dict[@"name"]) {
+        self.name = dict[@"name"];
+    }
 }
 
-- (NSObject<NSCopying> *)equalityProperty {
-    return self.categoryID;
+- (NSDictionary *)toDict {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    if (self.name) {
+        dict[@"name"] = self.name;
+    }
+    return [NSDictionary dictionaryWithDictionary:dict];
+}
+
+- (BOOL)isEqual:(PostCategory *)category {
+    return [category.categoryID isEqualToString:self.categoryID];
 }
 
 @end

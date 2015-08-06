@@ -7,34 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IonIcons+LIcon.h"
 
 @interface UIImage (List)
 
-/*
- * Utils
- */
-
 + (UIImage *)list_imageWithColor:(UIColor *)color;
-
-/*
- * Icons
- */
-
-+ (UIImage *)list_threadsIconImageColor:(UIColor *)color
-                                     size:(CGFloat)size;
-+ (UIImage *)list_locationIconImageColor:(UIColor *)color
-                                 size:(CGFloat)size;
-+ (UIImage *)list_replyIconImageColor:(UIColor *)color
-                                   size:(CGFloat)size;
-+ (UIImage *)list_searchIconImageColor:(UIColor *)color
-                                    size:(CGFloat)size;
-+ (UIImage *)list_menuIconImageColor:(UIColor *)color
-                                  size:(CGFloat)size;
-+ (UIImage *)list_peopleIconImageColor:(UIColor *)color
-                                    size:(CGFloat)size;
-+ (UIImage *)list_personIconImageColor:(UIColor *)color
-                                  size:(CGFloat)size;
-+ (UIImage *)list_listImageColor:(UIColor *)color
-                            size:(CGFloat)size;
++ (UIImage *)list_imageForIcon:(LIcon)icon
+                          size:(CGFloat)size
+                         color:(UIColor *)color;
 
 @end

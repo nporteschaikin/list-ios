@@ -23,9 +23,20 @@ NSString * const APIUserEndpoint = @"users/%@";
 NSString * const APINotificationsEndpoint = @"notifications";
 NSString * const APIGeocoderPlacemarkEndpoint = @"geocoder/placemark";
 
+NSString * const APIPostDiscriminatorEvent = @"Event";
+
+NSString * const ListFontName = @"OpenSans";
+NSString * const ListFontSemiboldName = @"OpenSans-Semibold";
+NSString * const ListFontBoldName = @"OpenSans-Bold";
+NSString * const ListFontLightName = @"OpenSans-Light";
+
 float const DiscoveryRadiusInMilesDefaultValue = 5.0;
 
 NSString * const SessionTokenUserDefaultsKey = @"SessionTokenUserDefaultsKey";
 NSString * const DiscoveryRadiusInMilesUserDefaultsKey = @"DiscoveryRadiusInMilesUserDefaultsKey";
 
+float const CoverPhotoHeightMultiplier = 1;
+float const CoverPhotoOverlayAlpha = 0.5f;
+
 float const ActivityIndicatorViewDefaultSize = 75.f;
+float const HeaderViewDefaultHeight = 50.f;

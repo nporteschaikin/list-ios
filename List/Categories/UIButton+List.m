@@ -69,13 +69,6 @@
                                      color:color];
 }
 
-+ (UIButton *)list_photosIconButtonWithSize:(CGFloat)size
-                                        color:(UIColor *)color {
-    return [self list_iconButtonWithIcon:ion_ios_photos_outline
-                                      size:size
-                                     color:color];
-}
-
 + (UIButton *)list_iconButtonWithIcon:(NSString *)icon
                                    size:(CGFloat)size
                                   color:(UIColor *)color {

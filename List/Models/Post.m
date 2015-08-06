@@ -7,50 +7,113 @@
 //
 
 #import "Post.h"
-#import "NSDate+ISO8601.h"
+#import "Constants.h"
 
 @interface Post ()
 
 @property (copy, nonatomic) NSString *postID;
+@property (strong, nonatomic) Event *event;
 
 @end
 
 @implementation Post
 
-- (void)applyJSON:(NSDictionary *)JSON {
-    self.postID = JSON[@"_id"];
-    self.title = JSON[@"title"];
-    self.content = JSON[@"content"];
-    self.createdAtDate = [NSDate dateWithISO8601:JSON[@"createdAt"]];
-    self.coverImage = nil;
-    if (JSON[@"coverPhotoUrl"] != [NSNull null]) self.coverPhotoURL = [NSURL URLWithString:JSON[@"coverPhotoUrl"]];
-    if ([JSON[@"user"] isKindOfClass:[NSDictionary class]]) self.user = [User fromJSONDict:JSON[@"user"]];
-    if ([JSON[@"category"] isKindOfClass:[NSDictionary class]]) self.category = [PostCategory fromJSONDict:JSON[@"category"]];
-    if ([JSON[@"threads"] isKindOfClass:[NSArray class]]) self.threads = [Thread fromJSONArray:JSON[@"threads"]];
-    if ([JSON[@"placemark"] isKindOfClass:[NSDictionary class]]) self.placemark = [Placemark fromJSONDict:JSON[@"placemark"]];
-    
-    NSArray *location = JSON[@"location"];
-    if (location) {
-        self.location = [[CLLocation alloc] initWithLatitude:[location[1] doubleValue]
-                                                   longitude:[location[0] doubleValue]];
+- (void)applyDict:(NSDictionary *)dict {
+    if (dict[@"_id"]) {
+        self.postID = dict[@"_id"];
     }
+    if ([dict[@"category"] isKindOfClass:[NSDictionary class]]) {
+        self.category = [PostCategory fromDict:dict[@"category"]];
+    }
+    if ([dict[@"location"] isKindOfClass:[NSArray class]]) {
+        self.location = [[CLLocation alloc] initWithLatitude:[dict[@"location"][1] doubleValue]
+                                                   longitude:[dict[@"location"][0] doubleValue]];
+    }
+    if ([dict[@"user"] isKindOfClass:[NSDictionary class]]) {
+        self.user = [User fromDict:dict[@"user"]];
+    }
+    if (dict[@"title"]) {
+        self.title = dict[@"title"];
+    }
+    if (dict[@"content"]) {
+        self.content = dict[@"content"];
+    }
+    if ([dict[@"threads"] isKindOfClass:[NSArray class]]) {
+        self.threads = [Thread fromArray:dict[@"threads"]];
+    }
+    if ([dict[@"placemark"] isKindOfClass:[NSDictionary class]]) {
+        self.placemark = [Placemark fromDict:dict[@"placemark"]];
+    }
+    if (dict[@"coverPhotoUrl"]) {
+        self.coverPhotoURL = [NSURL URLWithString:dict[@"coverPhotoUrl"]];
+    }
+    if (dict[@"createdAt"]) {
+        NSDateFormatter *dateFormatter = [NSDateFormatter ISO8601formatter];
+        NSDate *createdAtDate = [dateFormatter dateFromString:[dict[@"createdAt"] ISO8601FormattedString]];
+        self.createdAtDate = createdAtDate;
+    }
+    
+    /*
+     * Type switcher.
+     */
+    
+    if ( [dict[@"__t"] isEqualToString:APIPostDiscriminatorEvent] ) {
+        self.event = [Event fromDict:dict];
+        self.type = PostTypeEvent;
+    } else {
+        self.type = PostTypePost;
+    }
+    
+    self.coverImage = nil;
 }
 
-- (NSDictionary *)propertiesJSON {
+- (NSDictionary *)toDict {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    if (self.category) dict[@"category"] = self.category.categoryID;
-    if (self.title) dict[@"title"] = self.title;
-    if (self.content) dict[@"content"] = self.content;
-    if (self.coverImage) dict[@"coverPhoto"] = [UIImageJPEGRepresentation(self.coverImage, 0.6) base64EncodedStringWithOptions:0];
+    if (self.category.categoryID) {
+        dict[@"category"] = self.category.categoryID;
+    }
+    if (self.title) {
+        dict[@"title"] = self.title;
+    }
+    if (self.content) {
+        dict[@"content"] = self.content;
+    }
     if (self.location) {
         dict[@"latitude"] = [[NSNumber numberWithDouble:self.location.coordinate.latitude] stringValue];
         dict[@"longitude"] = [[NSNumber numberWithDouble:self.location.coordinate.longitude] stringValue];
     }
+    if (self.coverImage) {
+        dict[@"coverPhoto"] = [UIImageJPEGRepresentation(self.coverImage, 0.6) base64EncodedStringWithOptions:0];
+    }
+    
+    /*
+     * Type switcher.
+     */
+    
+    switch (self.type) {
+        case PostTypeEvent: {
+            dict[@"event"] = [self.event toDict];
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+    
     return [NSDictionary dictionaryWithDictionary:dict];
 }
 
-- (NSObject<NSCopying> *)equalityProperty {
-    return self.postID;
+- (BOOL)isEqual:(Post *)post {
+    return [post.postID isEqualToString:self.postID];
+}
+
+#pragma mark - Dynamic getters for different types.
+
+- (Event *)event {
+    if (!_event) {
+        _event = [[Event alloc] init];
+    }
+    return _event;
 }
 
 @end

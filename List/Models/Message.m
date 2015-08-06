@@ -7,19 +7,36 @@
 //
 
 #import "Message.h"
-#import "NSDate+ISO8601.h"
 
 @implementation Message
 
-- (void)applyJSON:(NSDictionary *)JSON {
-    self.content = JSON[@"content"];
-    self.createdAtDate = [NSDate dateWithISO8601:JSON[@"createdAt"]];
-    if ([JSON[@"user"] isKindOfClass:[NSDictionary class]]) self.user = [User fromJSONDict:JSON[@"user"]];
+- (NSDictionary *)toJSONDict {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    if (self.content) {
+        dict[@"content"] = self.content;
+    }
+    return [NSDictionary dictionaryWithDictionary:dict];
 }
 
-- (NSDictionary *)propertiesJSON {
+- (void)applyDict:(NSDictionary *)dict {
+    if ([dict[@"user"] isKindOfClass:[NSDictionary class]]) {
+        self.user = [User fromDict:dict[@"user"]];
+    }
+    if (dict[@"content"]) {
+        self.content = dict[@"content"];
+    }
+    if (dict[@"createdAt"]) {
+        NSDateFormatter *dateFormatter = [NSDateFormatter ISO8601formatter];
+        NSDate *createdAtDate = [dateFormatter dateFromString:[dict[@"createdAt"] ISO8601FormattedString]];
+        self.createdAtDate = createdAtDate;
+    }
+}
+
+- (NSDictionary *)toDict {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    if (self.content) dict[@"content"] = self.content;
+    if (self.content) {
+        dict[@"content"] = self.content;
+    }
     return [NSDictionary dictionaryWithDictionary:dict];
 }
 

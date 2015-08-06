@@ -2,7 +2,7 @@
 //  LModel.m
 //  List
 //
-//  Created by Noah Portes Chaikin on 7/6/15.
+//  Created by Noah Portes Chaikin on 8/3/15.
 //  Copyright (c) 2015 Noah Portes Chaikin. All rights reserved.
 //
 
@@ -10,34 +10,35 @@
 
 @implementation LModel
 
-+ (instancetype)fromJSONDict:(NSDictionary *)JSON {
-    LModel *model = [[self alloc] init];
-    if ([model respondsToSelector:@selector(applyJSON:)]) {
-        [model applyJSON:(NSDictionary *)JSON];
-    }
-    return model;
++ (instancetype)fromDict:(NSDictionary *)dict {
+    LModel *object = [[self alloc] init];
+    [object applyDict:dict];
+    return object;
 }
 
-+ (NSArray *)fromJSONArray:(NSArray *)JSON {
-    NSMutableArray *array = [NSMutableArray array];
-    for (NSDictionary *data in (NSArray *)JSON) {
-        [array addObject:[self fromJSONDict:data]];
++ (NSArray *)fromArray:(NSArray *)array {
+    NSMutableArray *objects = [NSMutableArray array];
+    LModel *object;
+    for (NSDictionary *dict in array) {
+        object = [self fromDict:dict];
+        [objects addObject:object];
     }
-    return array;
+    return [NSArray arrayWithArray:objects];
 }
 
-- (NSDictionary *)toJSON {
-    if ([self respondsToSelector:@selector(propertiesJSON)]) {
-        return [self propertiesJSON];
+- (id)initWithDict:(NSDictionary *)dict {
+    if (self = [super init]) {
+        [self applyDict:dict];
     }
-    return @{};
+    return self;
 }
 
-- (BOOL)isEqual:(LModel *)object {
-    if ([self equalityProperty]) {
-        return [[self equalityProperty] isEqual:[object equalityProperty]] && [self isKindOfClass:[object class]];
-    }
-    return NO;
+- (void)applyDict:(NSDictionary *)dict {
+    return;
+}
+
+- (NSDictionary *)toDict {
+    return nil;
 }
 
 @end

@@ -22,9 +22,20 @@ FOUNDATION_EXPORT NSString * const APIUserEndpoint;
 FOUNDATION_EXPORT NSString * const APINotificationsEndpoint;
 FOUNDATION_EXPORT NSString * const APIGeocoderPlacemarkEndpoint;
 
+FOUNDATION_EXPORT NSString * const APIPostDiscriminatorEvent;
+
 FOUNDATION_EXPORT float const DiscoveryRadiusInMilesDefaultValue;
 
 FOUNDATION_EXPORT NSString * const SessionTokenUserDefaultsKey;
 FOUNDATION_EXPORT NSString * const DiscoveryRadiusInMilesUserDefaultsKey;
 
+FOUNDATION_EXPORT NSString * const ListFontName;
+FOUNDATION_EXPORT NSString * const ListFontSemiboldName;
+FOUNDATION_EXPORT NSString * const ListFontBoldName;
+FOUNDATION_EXPORT NSString * const ListFontLightName;
+
+FOUNDATION_EXPORT float const CoverPhotoHeightMultiplier;
+FOUNDATION_EXPORT float const CoverPhotoOverlayAlpha;
+
 FOUNDATION_EXPORT float const ActivityIndicatorViewDefaultSize;
+FOUNDATION_EXPORT float const HeaderViewDefaultHeight;

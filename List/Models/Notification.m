@@ -7,12 +7,12 @@
 //
 
 #import "Notification.h"
-#import "NSDate+ISO8601.h"
 
 @implementation Notification
 
-- (void)applyJSON:(NSDictionary *)JSON {
-    NSString *type = JSON[@"type"];
+- (void)applyDict:(NSDictionary *)dict {
+    
+    NSString *type = dict[@"type"];
     if ([type isEqualToString:@"ThreadNotification"]) {
         self.type = NotificationTypeThread;
     } else if ([type isEqualToString:@"PostNotification"]) {
@@ -21,16 +21,49 @@
         self.type = NotificationTypeUser;
     }
     
-    NSString *action = JSON[@"action"];
+    NSString *action = dict[@"action"];
     if ([action isEqualToString:@"create"]) {
         self.action = NotificationActionCreate;
     }
     
-    self.createdAtDate = [NSDate dateWithISO8601:JSON[@"createdAt"]];
-    if ([JSON[@"actor"] isKindOfClass:[NSDictionary class]]) self.actor = [User fromJSONDict:JSON[@"actor"]];
-    if ([JSON[@"post"] isKindOfClass:[NSDictionary class]]) self.post = [Post fromJSONDict:JSON[@"post"]];
-    if ([JSON[@"user"] isKindOfClass:[NSDictionary class]]) self.user = [User fromJSONDict:JSON[@"user"]];
-    if ([JSON[@"thread"] isKindOfClass:[NSDictionary class]]) self.thread = [Thread fromJSONDict:JSON[@"thread"]];
+    if (dict[@"createdAt"]) {
+        NSDateFormatter *dateFormatter = [NSDateFormatter ISO8601formatter];
+        NSDate *createdAtDate = [dateFormatter dateFromString:[dict[@"createdAt"] ISO8601FormattedString]];
+        self.createdAtDate = createdAtDate;
+    }
+    
+    /*
+     * Create nested user.
+     */
+    
+    if ([dict[@"user"] isKindOfClass:[NSDictionary class]]) {
+        self.user = [User fromDict:dict[@"user"]];
+    }
+    
+    /*
+     * Create nested actor.
+     */
+    
+    if ([dict[@"actor"] isKindOfClass:[NSDictionary class]]) {
+        self.actor = [User fromDict:dict[@"actor"]];
+    }
+    
+    /*
+     * Create nested post.
+     */
+    
+    if ([dict[@"post"] isKindOfClass:[NSDictionary class]]) {
+        self.post = [Post fromDict:dict[@"post"]];
+    }
+    
+    /*
+     * Create nested thread.
+     */
+    
+    if ([dict[@"thread"] isKindOfClass:[NSDictionary class]]) {
+        self.thread = [Thread fromDict:dict[@"thread"]];
+    }
+    
 }
 
 @end
