@@ -117,13 +117,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "List/ListUIKit/View Controllers/Photos/ListUIPhotosViewController.m"
-            timestampString = "462216736.358243"
+            filePath = "List/Views/Pictures/PictureNavigationBar.m"
+            timestampString = "462396608.128517"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "-initWithFrame:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "List/Views/Pictures/PictureNavigationBar.m"
+            timestampString = "462396608.610647"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
             endingLineNumber = "17"
-            landmarkName = "@implementation ListUIPhotosViewController"
+            landmarkName = "@implementation PictureNavigationBar"
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>

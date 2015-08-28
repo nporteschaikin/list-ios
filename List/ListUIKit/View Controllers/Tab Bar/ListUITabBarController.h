@@ -26,8 +26,8 @@
 
 @end
 
-@interface ListUIViewController (ListUITabBarControllerItem)
+@interface UIViewController (ListUITabBarControllerItem)
 
-@property (strong, nonatomic, readonly) ListUITabBarItem *tabBarItem;
+@property (strong, nonatomic, readonly) ListUITabBarItem *listTabBarItem;
 
 @end

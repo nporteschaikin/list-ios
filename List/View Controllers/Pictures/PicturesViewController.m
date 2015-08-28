@@ -13,6 +13,7 @@
 @interface PicturesViewController ()
 
 @property (strong, nonatomic) Session *session;
+@property (strong, nonatomic) ListUIPhotosView *photosView;
 @property (strong, nonatomic) PicturesController *picturesController;
 @property (strong, nonatomic) PicturesDataSource *dataSource;
 
@@ -45,23 +46,30 @@
     [super loadView];
     
     /*
-     * Set data source.
+     * Set view background.
      */
     
+    self.view.backgroundColor = [UIColor listBlackColorAlpha:1];
+    
+    /*
+     * Setup photos view.
+     */
+    
+    self.photosView = [[ListUIPhotosView alloc] init];
     self.photosView.dataSource = self.dataSource;
+    self.photosView.delegate = self;
+    [self.view addSubview:self.photosView];
     
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
     
     /*
-     * Set location bar item.
+     * Set navigation item title view.
      */
     
-    self.locationBarItem.image = [UIImage listIcon:ListUIIconPictures size:kListUILocationBarDefaultImageSize];
-    self.locationBarItem.barTintColor = [UIColor listBlackColorAlpha:1];
-    self.locationBarItem.tintColor = [UIColor whiteColor];
+    UIImage *icon = [[UIImage listIcon:ListUIIconPictures size:kUINavigationBarDefaultImageSize] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:icon];
     
 }
 
@@ -73,6 +81,21 @@
      */
     
     [self.picturesController requestPictures];
+    
+}
+
+- (void)viewWillLayoutSubviews {
+    
+    /*
+     * Lay out photo view.
+     */
+    
+    CGFloat x, y, w, h;
+    x = 0.0f;
+    y = 0.0f;
+    w = CGRectGetWidth(self.view.bounds);
+    h = CGRectGetHeight(self.view.bounds);
+    self.photosView.frame = CGRectMake(x, y, w, h);
     
 }
 

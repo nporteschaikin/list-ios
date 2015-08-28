@@ -43,7 +43,7 @@
     x = 12.f;
     w = CGRectGetWidth(self.bounds) - 24.f;
     size = [self.headerView sizeThatFits:CGSizeMake(w, CGFLOAT_MAX)];
-    y = CGRectGetMaxY(self.bounds) - size.height - 12.f;
+    y = 12.f;
     h = size.height;
     self.headerView.frame = CGRectMake(x, y, w, h);
     

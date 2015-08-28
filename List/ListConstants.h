@@ -27,6 +27,6 @@
 
 #define kDiscoveryRadiusInMilesUserDefaultsKey @"kDiscoveryRadiusInMilesUserDefaultsKey"
 
-#define kUINavigationBarDefaultImageSize 20
+#define kUINavigationBarDefaultImageSize 25
 #define kListUITabBarDefaultImageSize 20
 #define kListUILocationBarDefaultImageSize 25

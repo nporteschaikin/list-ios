@@ -13,8 +13,8 @@
 
 @property (copy, nonatomic, readonly) NSString *userID;
 @property (copy, nonatomic) NSString *displayName;
-@property (copy, nonatomic) Photo *profilePhoto;
-@property (copy, nonatomic) Photo *coverPhoto;
+@property (strong, nonatomic) Photo *profilePhoto;
+@property (strong, nonatomic) Photo *coverPhoto;
 @property (copy, nonatomic) NSString *bio;
 
 @end

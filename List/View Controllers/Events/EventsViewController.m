@@ -24,16 +24,4 @@
     return self;
 }
 
-- (void)viewDidLoad {
-    
-    /*
-     * Set location bar item.
-     */
-    
-    self.locationBarItem.image = [UIImage listIcon:ListUIIconEvents size:kListUILocationBarDefaultImageSize];
-    self.locationBarItem.barTintColor = [UIColor listBlueColorAlpha:1];
-    self.locationBarItem.tintColor = [UIColor whiteColor];
-    
-}
-
 @end

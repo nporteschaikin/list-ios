@@ -284,7 +284,7 @@
      */
     
     ListUITabBar *tabBar = self.tabBar;
-    tabBar.selectedItem = selectedViewController.tabBarItem;
+    tabBar.selectedItem = selectedViewController.listTabBarItem;
     
 }
 
@@ -313,7 +313,7 @@
     NSMutableArray *tabBarItems = [NSMutableArray array];
     ListUITabBarItem *tabBarItem;
     for (ListUIViewController *viewController in self.viewControllers) {
-        tabBarItem = viewController.tabBarItem;
+        tabBarItem = viewController.listTabBarItem;
         [tabBarItems addObject:tabBarItem];
     }
     
@@ -351,7 +351,7 @@
 
 @implementation UIViewController (ListUITabBarControllerItem)
 
-- (ListUITabBarItem *)tabBarItem {
+- (ListUITabBarItem *)listTabBarItem {
     
     /*
      * Use or create list tab bar item.

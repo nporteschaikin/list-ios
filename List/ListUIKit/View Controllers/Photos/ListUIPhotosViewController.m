@@ -30,6 +30,10 @@
     
 }
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+}
+
 #pragma mark - ListUIPhotosViewDataSource
 
 - (ListUIPhotosViewCell *)photosView:(ListUIPhotosView *)scrollView cellForRowAtIndex:(NSInteger)index {

@@ -26,12 +26,9 @@
 		4F6D72C41B7FA40000ADA9D3 /* ListUITabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D72C31B7FA40000ADA9D3 /* ListUITabBar.m */; };
 		4F6D72C81B7FA41500ADA9D3 /* ListUITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D72C71B7FA41500ADA9D3 /* ListUITabBarController.m */; };
 		4F6D72CC1B7FA57A00ADA9D3 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D72CB1B7FA57A00ADA9D3 /* SettingsViewController.m */; };
-		4F6D72D41B7FAF9200ADA9D3 /* ListUILocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D72D31B7FAF9200ADA9D3 /* ListUILocationViewController.m */; };
 		4F6D72DC1B7FAFDF00ADA9D3 /* MapCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D72DB1B7FAFDF00ADA9D3 /* MapCircle.m */; };
 		4F6D72DF1B7FB00700ADA9D3 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D72DE1B7FB00700ADA9D3 /* LocationManager.m */; };
 		4F6D72E31B7FB1D600ADA9D3 /* ListUITabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D72E21B7FB1D600ADA9D3 /* ListUITabBarItem.m */; };
-		4F6D72E71B7FB21D00ADA9D3 /* ListUILocationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D72E61B7FB21D00ADA9D3 /* ListUILocationBar.m */; };
-		4F6D72EB1B7FB24100ADA9D3 /* ListUILocationBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D72EA1B7FB24100ADA9D3 /* ListUILocationBarItem.m */; };
 		4F6D72EF1B7FD0D500ADA9D3 /* CreatePictureButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D72EE1B7FD0D500ADA9D3 /* CreatePictureButton.m */; };
 		4F89A9001B7D1EFD00C8BF85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A8FF1B7D1EFD00C8BF85 /* main.m */; };
 		4F89A9031B7D1EFD00C8BF85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A9021B7D1EFD00C8BF85 /* AppDelegate.m */; };
@@ -89,6 +86,7 @@
 		4F89AA071B7D65FC00C8BF85 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F89AA041B7D65FC00C8BF85 /* FBSDKCoreKit.framework */; };
 		4F89AA081B7D65FC00C8BF85 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F89AA051B7D65FC00C8BF85 /* FBSDKLoginKit.framework */; };
 		4F89AA091B7D65FC00C8BF85 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F89AA061B7D65FC00C8BF85 /* FBSDKShareKit.framework */; };
+		4F8A47131B8F89B000ED2B3C /* PictureNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8A47121B8F89B000ED2B3C /* PictureNavigationBar.m */; };
 		4F8F85751B8A0D140055D552 /* PlacemarkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F85741B8A0D140055D552 /* PlacemarkController.m */; };
 		4F8F857D1B8A708F0055D552 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F857C1B8A708F0055D552 /* Tag.m */; };
 		4F8F85811B8A716B0055D552 /* TagsScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F85801B8A716B0055D552 /* TagsScrollView.m */; };
@@ -165,18 +163,12 @@
 		4F6D72C71B7FA41500ADA9D3 /* ListUITabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListUITabBarController.m; sourceTree = "<group>"; };
 		4F6D72CA1B7FA57A00ADA9D3 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		4F6D72CB1B7FA57A00ADA9D3 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		4F6D72D21B7FAF9200ADA9D3 /* ListUILocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListUILocationViewController.h; sourceTree = "<group>"; };
-		4F6D72D31B7FAF9200ADA9D3 /* ListUILocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListUILocationViewController.m; sourceTree = "<group>"; };
 		4F6D72DA1B7FAFDF00ADA9D3 /* MapCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapCircle.h; sourceTree = "<group>"; };
 		4F6D72DB1B7FAFDF00ADA9D3 /* MapCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapCircle.m; sourceTree = "<group>"; };
 		4F6D72DD1B7FB00700ADA9D3 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		4F6D72DE1B7FB00700ADA9D3 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		4F6D72E11B7FB1D600ADA9D3 /* ListUITabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListUITabBarItem.h; sourceTree = "<group>"; };
 		4F6D72E21B7FB1D600ADA9D3 /* ListUITabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListUITabBarItem.m; sourceTree = "<group>"; };
-		4F6D72E51B7FB21D00ADA9D3 /* ListUILocationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListUILocationBar.h; sourceTree = "<group>"; };
-		4F6D72E61B7FB21D00ADA9D3 /* ListUILocationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListUILocationBar.m; sourceTree = "<group>"; };
-		4F6D72E91B7FB24100ADA9D3 /* ListUILocationBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListUILocationBarItem.h; sourceTree = "<group>"; };
-		4F6D72EA1B7FB24100ADA9D3 /* ListUILocationBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListUILocationBarItem.m; sourceTree = "<group>"; };
 		4F6D72ED1B7FD0D500ADA9D3 /* CreatePictureButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePictureButton.h; sourceTree = "<group>"; };
 		4F6D72EE1B7FD0D500ADA9D3 /* CreatePictureButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePictureButton.m; sourceTree = "<group>"; };
 		4F89A8FA1B7D1EFD00C8BF85 /* List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = List.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -286,6 +278,8 @@
 		4F89AA041B7D65FC00C8BF85 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		4F89AA051B7D65FC00C8BF85 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		4F89AA061B7D65FC00C8BF85 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		4F8A47111B8F89B000ED2B3C /* PictureNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureNavigationBar.h; sourceTree = "<group>"; };
+		4F8A47121B8F89B000ED2B3C /* PictureNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureNavigationBar.m; sourceTree = "<group>"; };
 		4F8F85731B8A0D140055D552 /* PlacemarkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacemarkController.h; sourceTree = "<group>"; };
 		4F8F85741B8A0D140055D552 /* PlacemarkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacemarkController.m; sourceTree = "<group>"; };
 		4F8F857B1B8A708F0055D552 /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
@@ -411,6 +405,8 @@
 				4F64DAB61B8CDF1A009F6943 /* PicturesPhotosViewCell.m */,
 				4FCD62721B8E0655006E2FC9 /* PicturesHeaderView.h */,
 				4FCD62731B8E0655006E2FC9 /* PicturesHeaderView.m */,
+				4F8A47111B8F89B000ED2B3C /* PictureNavigationBar.h */,
+				4F8A47121B8F89B000ED2B3C /* PictureNavigationBar.m */,
 			);
 			path = Pictures;
 			sourceTree = "<group>";
@@ -452,39 +448,11 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		4F6D72D11B7FAF7C00ADA9D3 /* Location */ = {
-			isa = PBXGroup;
-			children = (
-				4F6D72D21B7FAF9200ADA9D3 /* ListUILocationViewController.h */,
-				4F6D72D31B7FAF9200ADA9D3 /* ListUILocationViewController.m */,
-			);
-			path = Location;
-			sourceTree = "<group>";
-		};
 		4F6D72E01B7FB15500ADA9D3 /* Item */ = {
 			isa = PBXGroup;
 			children = (
 				4F6D72E11B7FB1D600ADA9D3 /* ListUITabBarItem.h */,
 				4F6D72E21B7FB1D600ADA9D3 /* ListUITabBarItem.m */,
-			);
-			path = Item;
-			sourceTree = "<group>";
-		};
-		4F6D72E41B7FB20A00ADA9D3 /* Location */ = {
-			isa = PBXGroup;
-			children = (
-				4F6D72E81B7FB22F00ADA9D3 /* Item */,
-				4F6D72E51B7FB21D00ADA9D3 /* ListUILocationBar.h */,
-				4F6D72E61B7FB21D00ADA9D3 /* ListUILocationBar.m */,
-			);
-			path = Location;
-			sourceTree = "<group>";
-		};
-		4F6D72E81B7FB22F00ADA9D3 /* Item */ = {
-			isa = PBXGroup;
-			children = (
-				4F6D72E91B7FB24100ADA9D3 /* ListUILocationBarItem.h */,
-				4F6D72EA1B7FB24100ADA9D3 /* ListUILocationBarItem.m */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -973,7 +941,6 @@
 			isa = PBXGroup;
 			children = (
 				4F64DAA41B8CDAD3009F6943 /* Photos */,
-				4F6D72D11B7FAF7C00ADA9D3 /* Location */,
 				4F6D72C51B7FA40500ADA9D3 /* Tab Bar */,
 				4F89A9241B7D200D00C8BF85 /* ListUIViewController.h */,
 				4F89A9251B7D200D00C8BF85 /* ListUIViewController.m */,
@@ -986,7 +953,6 @@
 			children = (
 				4F64DAAB1B8CDC03009F6943 /* Photos */,
 				4F4D3B991B84D4FA00D79CD3 /* Fields */,
-				4F6D72E41B7FB20A00ADA9D3 /* Location */,
 				4F6D72C11B7FA2B800ADA9D3 /* Tab Bar */,
 			);
 			path = Views;
@@ -1175,7 +1141,6 @@
 				4F4D3B801B84326C00D79CD3 /* CreatePictureCameraViewController.m in Sources */,
 				4F89A98C1B7D240A00C8BF85 /* APIRequest.m in Sources */,
 				4F89A9DB1B7D658400C8BF85 /* SDWebImageManager.m in Sources */,
-				4F6D72D41B7FAF9200ADA9D3 /* ListUILocationViewController.m in Sources */,
 				4F89A9E21B7D658400C8BF85 /* UIImageView+WebCache.m in Sources */,
 				4F89A9391B7D209700C8BF85 /* LoginViewController.m in Sources */,
 				4F6D72C01B7F9BD300ADA9D3 /* AppearanceHelper.m in Sources */,
@@ -1212,7 +1177,6 @@
 				4F89A9DF1B7D658400C8BF85 /* UIImage+MultiFormat.m in Sources */,
 				4F89A9D81B7D658400C8BF85 /* SDWebImageDecoder.m in Sources */,
 				4F89A9001B7D1EFD00C8BF85 /* main.m in Sources */,
-				4F6D72EB1B7FB24100ADA9D3 /* ListUILocationBarItem.m in Sources */,
 				4F64DAAA1B8CDB37009F6943 /* PicturesViewController.m in Sources */,
 				4F8F85811B8A716B0055D552 /* TagsScrollView.m in Sources */,
 				4FB9B4661B7E91B00016BFC3 /* MyLocationEventsViewController.m in Sources */,
@@ -1232,9 +1196,9 @@
 				4F89A9DE1B7D658400C8BF85 /* UIImage+GIF.m in Sources */,
 				4F6D72B11B7EF0B100ADA9D3 /* UserViewController.m in Sources */,
 				4F89A92A1B7D202C00C8BF85 /* MainViewController.m in Sources */,
+				4F8A47131B8F89B000ED2B3C /* PictureNavigationBar.m in Sources */,
 				4F89A9851B7D239C00C8BF85 /* UserEditorDataSource.m in Sources */,
 				4FFFD6AE1B8253CF00915241 /* UIColor+ListUI.m in Sources */,
-				4F6D72E71B7FB21D00ADA9D3 /* ListUILocationBar.m in Sources */,
 				4F89A9591B7D21D700C8BF85 /* PictureController.m in Sources */,
 				4F64DAB71B8CDF1A009F6943 /* PicturesPhotosViewCell.m in Sources */,
 				4FFFD6B01B8253CF00915241 /* UIImage+ListUI.m in Sources */,

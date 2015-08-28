@@ -20,7 +20,7 @@
 
 @end
 
-@interface ListUIPhotosView : UIView
+@interface ListUIPhotosView : UIScrollView
 
 @property (weak, nonatomic) id<ListUIPhotosViewDelegate> delegate;
 @property (weak, nonatomic) id<ListUIPhotosViewDataSource> dataSource;

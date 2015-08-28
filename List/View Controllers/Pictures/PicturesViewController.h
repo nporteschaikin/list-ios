@@ -10,9 +10,11 @@
 #import "PicturesController.h"
 #import "Session.h"
 
-@interface PicturesViewController : ListUIPhotosViewController <PicturesControllerDelegate>
+@interface PicturesViewController : ListUIViewController <ListUIPhotosViewDelegate, PicturesControllerDelegate>
 
 @property (strong, nonatomic, readonly) PicturesController *picturesController;
+@property (strong, nonatomic, readonly) Session *session;
+@property (strong, nonatomic, readonly) ListUIPhotosView *photosView;
 
 - (instancetype)initWithSession:(Session *)session NS_DESIGNATED_INITIALIZER;
 

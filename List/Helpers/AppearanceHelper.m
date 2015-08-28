@@ -23,8 +23,8 @@
      * UINavigationBar
      */
     
-    [[UINavigationBar appearance] setBarTintColor:[UIColor listBlackColorAlpha:1]];
-    [[UINavigationBar appearance] setTintColor:[UIColor listBlueColorAlpha:1]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor listBlueColorAlpha:1]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{ NSFontAttributeName:[UIFont listFontWithSize:11.f] }];
     
 }

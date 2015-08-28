@@ -25,7 +25,7 @@
  */
 
 + (UIColor *)listBlackColorAlpha:(CGFloat)alpha {
-    return [UIColor colorWithHex:0x222222 alpha:alpha];
+    return [UIColor colorWithHex:0x111111 alpha:alpha];
 }
 
 + (UIColor *)listBlueColorAlpha:(CGFloat)alpha {

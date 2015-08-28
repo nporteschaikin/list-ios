@@ -11,13 +11,14 @@
 
 @interface ListUIPhotosView () <UIScrollViewDelegate>
 
-@property (strong, nonatomic) UIScrollView *scrollView;
 @property (copy, nonatomic) NSArray *cells;
 @property (nonatomic) NSInteger selectedIndex;
 
 @end
 
 @implementation ListUIPhotosView
+
+@dynamic delegate;
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -27,21 +28,12 @@
          */
         
         self.expandedHeight = 375.f;
-        self.collapsedHeight = 125.f;
-        self.mininumAlpha = 0.75f;
+        self.collapsedHeight = 40.f;
+        self.mininumAlpha = 0.5f;
         self.maximumAlpha = 1.0f;
         self.selectedIndex = 0;
-        self.backgroundColor = [UIColor blackColor];
-        
-        /*
-         * Set up scroll view.
-         */
-        
-        self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-        self.scrollView.delegate = self;
-        self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        self.scrollView.decelerationRate = UIScrollViewDecelerationRateFast;
-        [self addSubview:self.scrollView];
+        self.backgroundColor = [UIColor listBlackColorAlpha:1];
+        self.decelerationRate = UIScrollViewDecelerationRateFast;
         
     }
     return self;
@@ -83,14 +75,13 @@
      * Set content size.
      */
     
-    [self setScrollViewContentSize];
+    [self updateContentSize];
     
 }
 
 - (void)reloadData {
     id<ListUIPhotosViewDataSource> dataSource = self.dataSource;
     NSInteger num = [dataSource numberOfRowsInPhotosView:self];
-    UIScrollView *scrollView = self.scrollView;
     NSMutableArray *cells = [NSMutableArray array];
     ListUIPhotosViewCell *cell;
     
@@ -110,7 +101,7 @@
         cell = [dataSource photosView:self cellForRowAtIndex:i];
         cell.frame = [self frameForCellAtIndex:i];
         cell.alpha = [self alphaForCellAtIndex:i];
-        [scrollView addSubview:cell];
+        [self addSubview:cell];
         [cells addObject:cell];
     }
     
@@ -124,7 +115,7 @@
      * Set content size.
      */
     
-    [self setScrollViewContentSize];
+    [self updateContentSize];
     
 }
 
@@ -140,15 +131,21 @@
      * Get Y-offset.
      */
     
-    UIScrollView *scrollView = self.scrollView;
-    CGPoint contentOffset = scrollView.contentOffset;
+    CGPoint contentOffset = self.contentOffset;
     CGFloat offsetY = contentOffset.y;
+    
+    /*
+     * Get top inset.
+     */
+    
+    UIEdgeInsets contentInset = self.contentInset;
+    CGFloat insetTop = contentInset.top;
     
     /*
      * Get current "page", last page, and next page.
      */
     
-    CGFloat cur = MAX(offsetY, 0) / collapsedHeight;
+    CGFloat cur = MAX((offsetY + insetTop), 0) / collapsedHeight;
     CGFloat prev = floorf(cur);
     CGFloat next = ceilf(cur) ?: 1;
     
@@ -178,21 +175,27 @@
      * Get Y-offset.
      */
     
-    UIScrollView *scrollView = self.scrollView;
-    CGPoint contentOffset = scrollView.contentOffset;
+    CGPoint contentOffset = self.contentOffset;
     CGFloat offsetY = contentOffset.y;
+    
+    /*
+     * Get top inset.
+     */
+    
+    UIEdgeInsets contentInset = self.contentInset;
+    CGFloat insetTop = contentInset.top;
 
     /*
      * Get current "page", last page, and next page.
      */
     
-    CGFloat cur = MAX(offsetY, 0) / collapsedHeight;
+    CGFloat cur = offsetY > -insetTop ? (MAX((offsetY + insetTop), 0) / collapsedHeight) : 0;
     CGFloat prev = floorf(cur);
-    CGFloat next = ceilf(cur) ?: 1;
+    CGFloat next = prev + 1.0f;
     CGFloat pct = [self percentVisibleForCellAtIndex:index];
     CGFloat x, y, w, h;
     x = 0.0f;
-    w = CGRectGetWidth(scrollView.bounds);
+    w = CGRectGetWidth(self.bounds);
     
     /*
      * Figure out Y origin and height.
@@ -220,8 +223,8 @@
      * adjust the height.
      */
     
-    if (index == (num - 1) && offsetY > (y + h) - CGRectGetHeight(scrollView.bounds)) {
-        h += CGRectGetHeight(scrollView.bounds) - ((y + h) - offsetY);
+    if (index == (num - 1) && offsetY > (y + h) - CGRectGetHeight(self.bounds)) {
+        h += (CGRectGetHeight(self.bounds) - ((y + h) - offsetY));
     }
     
     /*
@@ -229,9 +232,9 @@
      * adjust the height.
      */
     
-    if (index == 0 && offsetY < 0) {
-        y += offsetY;
-        h -= offsetY;
+    if (index == 0 && offsetY < -insetTop) {
+        y += offsetY + insetTop;
+        h -= offsetY + insetTop;
     }
     
     /*
@@ -265,24 +268,10 @@
     
 }
 
-- (void)setScrollViewContentSize {
+- (void)updateCells {
     
     /*
-     * Set content size.
-     */
-    
-    UIScrollView *scrollView = self.scrollView;
-    id<ListUIPhotosViewDataSource> dataSource = self.dataSource;
-    NSInteger num = [dataSource numberOfRowsInPhotosView:self];
-    NSInteger collapsedHeight = self.collapsedHeight;
-    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(scrollView.bounds), ((num - 1) * collapsedHeight) + CGRectGetHeight(scrollView.bounds));
-    
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
-    /*
-     * Set cell frames.
+     * Set cell frames and alpha.
      */
     
     NSArray *cells = self.cells;
@@ -295,18 +284,83 @@
     
 }
 
-//- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
-//    CGFloat height = self.collapsedHeight;
-//    NSInteger current = self.selectedIndex;
-//    NSInteger next;
-//    if (velocity.y == 0) {
-//        next = floor((targetContentOffset->y - height / 2) / height) + 1;
-//    } else {
-//        next = velocity.y > 0 ? current + 1 : current - 1;
-//    }
-//
-//    *targetContentOffset = CGPointMake(targetContentOffset->x, next * height);
-//    self.selectedIndex = next;
-//}
+- (void)updateContentSize {
+    
+    /*
+     * Set content size.
+     */
+    
+    id<ListUIPhotosViewDataSource> dataSource = self.dataSource;
+    NSInteger num = [dataSource numberOfRowsInPhotosView:self];
+    NSInteger collapsedHeight = self.collapsedHeight;
+    UIEdgeInsets contentInset = self.contentInset;
+    CGFloat insetTop = contentInset.top;
+    self.contentSize = CGSizeMake(CGRectGetWidth(self.bounds), (CGRectGetHeight(self.bounds) - insetTop) + ((num - 1) * collapsedHeight));
+    
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    /*
+     * Setup cells
+     */
+    
+    [self updateCells];
+    
+}
+
+- (void)setCollapsedHeight:(CGFloat)collapsedHeight {
+    
+    /*
+     * Set variable.
+     */
+    
+    _collapsedHeight = collapsedHeight;
+    
+    /*
+     * Setup cells
+     */
+    
+    [self updateCells];
+    
+}
+
+- (void)setExpandedHeight:(CGFloat)expandedHeight {
+    
+    /*
+     * Set variable.
+     */
+    
+    _expandedHeight = expandedHeight;
+    
+    /*
+     * Setup cells
+     */
+    
+    [self updateCells];
+    
+}
+
+- (void)setContentOffset:(CGPoint)contentOffset {
+    [super setContentOffset:contentOffset];
+    
+    /*
+     * Setup cells.
+     */
+    
+    [self updateCells];
+    
+}
+
+- (void)setContentInset:(UIEdgeInsets)contentInset {
+    [super setContentInset:contentInset];
+    
+    /*
+     * Set content size.
+     */
+    
+    [self updateContentSize];
+    
+}
 
 @end

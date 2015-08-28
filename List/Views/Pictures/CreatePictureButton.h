@@ -10,4 +10,7 @@
 
 @interface CreatePictureButton : UIButton
 
+@property (strong, nonatomic) UIColor *iconColor;
+@property (nonatomic) CGFloat iconWidth;
+
 @end

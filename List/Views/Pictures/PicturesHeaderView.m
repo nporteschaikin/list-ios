@@ -45,8 +45,8 @@ static CGFloat const kPicturesHeaderViewAvatarSpacing = 6.0f;
         self.userNameLabel = [[UILabel alloc] init];
         self.userNameLabel.layer.shadowColor = [UIColor listBlackColorAlpha:1].CGColor;
         self.userNameLabel.layer.shadowRadius = 1.0f;
-        self.userNameLabel.layer.shadowOpacity = 0.5f;
-        self.userNameLabel.layer.shadowOffset = CGSizeZero;
+        self.userNameLabel.layer.shadowOpacity = 0.75f;
+        self.userNameLabel.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
         self.userNameLabel.font = [UIFont listSemiboldFontWithSize:12.f];
         [self addSubview:self.userNameLabel];
         
@@ -57,8 +57,8 @@ static CGFloat const kPicturesHeaderViewAvatarSpacing = 6.0f;
         self.placemarkTitleLabel = [[UILabel alloc] init];
         self.placemarkTitleLabel.layer.shadowColor = [UIColor listBlackColorAlpha:1].CGColor;
         self.placemarkTitleLabel.layer.shadowRadius = 1.0f;
-        self.placemarkTitleLabel.layer.shadowOpacity = 0.5f;
-        self.placemarkTitleLabel.layer.shadowOffset = CGSizeZero;
+        self.placemarkTitleLabel.layer.shadowOpacity = 0.75f;
+        self.placemarkTitleLabel.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
         self.placemarkTitleLabel.font = [UIFont listFontWithSize:12.f];
         [self addSubview:self.placemarkTitleLabel];
         
