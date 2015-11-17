@@ -12,6 +12,6 @@
 
 @interface MainViewController : ListUIViewController <SessionDelegate, LocationManagerDelegate>
 
-- (instancetype)initWithSession:(Session *)session NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithSession:(Session *)session;
 
 @end

@@ -15,6 +15,6 @@
 
 @property (strong, nonatomic, readonly) CreatePictureCameraView *createPictureCameraView;
 
-- (instancetype)initWithPicture:(Picture *)picture NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithPicture:(Picture *)picture;
 
 @end

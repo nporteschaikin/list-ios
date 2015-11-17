@@ -12,6 +12,6 @@
 
 @interface LoginViewController : ListUIViewController <LoginViewDelegate, SessionDelegate>
 
-- (instancetype)initWithSession:(Session *)session NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithSession:(Session *)session;
 
 @end

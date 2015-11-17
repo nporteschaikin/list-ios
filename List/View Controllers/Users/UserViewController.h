@@ -12,6 +12,6 @@
 @interface UserViewController : ListUIViewController
 
 - (instancetype)initWithUser:(User *)user
-                     session:(Session *)session NS_DESIGNATED_INITIALIZER;
+                     session:(Session *)session;
 
 @end

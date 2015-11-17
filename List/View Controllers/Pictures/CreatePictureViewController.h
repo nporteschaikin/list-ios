@@ -27,7 +27,7 @@ typedef NS_ENUM(NSUInteger, CreatePictureViewControllerAction) {
 @interface CreatePictureViewController : ListUIViewController
 
 @property (weak, nonatomic) id<CreatePictureViewControllerDelegate> delegate;
-- (instancetype)initWithPicture:(Picture *)picture session:(Session *)session NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithPicture:(Picture *)picture session:(Session *)session;
 - (void)transition:(CreatePictureViewControllerAction)action animated:(BOOL)animated;
 
 @end

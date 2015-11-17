@@ -13,6 +13,6 @@
 @interface CreatePictureEditorViewController : ListUIViewController <PictureControllerDelegate>
 
 @property (strong, nonatomic, readonly) CreatePictureEditorView *createPictureEditorView;
-- (instancetype)initWithPicture:(Picture *)picture session:(Session *)session NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithPicture:(Picture *)picture session:(Session *)session;
 
 @end

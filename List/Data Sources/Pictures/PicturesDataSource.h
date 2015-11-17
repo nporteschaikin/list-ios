@@ -8,10 +8,11 @@
 
 #import "ListUIKit.h"
 #import "PicturesController.h"
-#import "PicturesPhotosViewCell.h"
+#import "PicturesCollectionViewCell.h"
 
-@interface PicturesDataSource : NSObject <ListUIPhotosViewDataSource>
+@interface PicturesDataSource : NSObject <UICollectionViewDataSource>
 
-- (instancetype)initWithPicturesController:(PicturesController *)picturesController NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithPicturesController:(PicturesController *)picturesController;
+- (void)registerReuseIdentifiersForCollectionView:(UICollectionView *)collectionView;
 
 @end

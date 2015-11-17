@@ -31,7 +31,7 @@
 @property (strong, nonatomic) MapCircle *mapCircle;
 @property (strong, nonatomic) User *user;
 
-- (id)initWithSession:(Session *)session NS_DESIGNATED_INITIALIZER;
+- (id)initWithSession:(Session *)session;
 - (void)requestPictures;
 
 @end

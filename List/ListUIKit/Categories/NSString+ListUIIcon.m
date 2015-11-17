@@ -48,6 +48,9 @@
         case ListUIIconTag: {
             return @"\ue756";
         }
+        case ListUIIconCamera: {
+            return @"\ue708";
+        }
     }
     return nil;
 }

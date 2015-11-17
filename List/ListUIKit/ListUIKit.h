@@ -11,7 +11,6 @@
 #import "UIImage+ListUI.h"
 #import "ListUIViewController.h"
 #import "ListUITabBarController.h"
-#import "ListUIPhotosViewController.h"
 #import "ListUICameraController.h"
 #import "ListUITextField.h"
 #import "ListUITextView.h"

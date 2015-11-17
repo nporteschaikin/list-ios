@@ -9,13 +9,16 @@
 #import "PicturesViewController.h"
 #import "PicturesDataSource.h"
 #import "ListConstants.h"
+#import "PicturesFlowLayout.h"
 
 @interface PicturesViewController ()
 
 @property (strong, nonatomic) Session *session;
-@property (strong, nonatomic) ListUIPhotosView *photosView;
+@property (strong, nonatomic) UICollectionView *collectionView;
 @property (strong, nonatomic) PicturesController *picturesController;
 @property (strong, nonatomic) PicturesDataSource *dataSource;
+@property (strong, nonatomic) PicturesFlowLayout *layout;
+
 
 @end
 
@@ -52,17 +55,32 @@
     self.view.backgroundColor = [UIColor listBlackColorAlpha:1];
     
     /*
+     * Create default layout.
+     */
+    
+    PicturesFlowLayout *layout = self.layout = [[PicturesFlowLayout alloc] init];
+    
+    /*
      * Setup photos view.
      */
     
-    self.photosView = [[ListUIPhotosView alloc] init];
-    self.photosView.dataSource = self.dataSource;
-    self.photosView.delegate = self;
-    [self.view addSubview:self.photosView];
+    UICollectionView *collectionView = self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+    collectionView.dataSource = self.dataSource;
+    collectionView.delegate = self;
+    collectionView.backgroundColor = [UIColor listBlackColorAlpha:1];
+    collectionView.pagingEnabled = YES;
+    [self.view addSubview:collectionView];
     
 }
 
 - (void)viewDidLoad {
+    
+    /*
+     * Register class for reuse identifier.
+     */
+    
+    UICollectionView *collectionView = self.collectionView;
+    [self.dataSource registerReuseIdentifiersForCollectionView:collectionView];
     
     /*
      * Set navigation item title view.
@@ -95,7 +113,7 @@
     y = 0.0f;
     w = CGRectGetWidth(self.view.bounds);
     h = CGRectGetHeight(self.view.bounds);
-    self.photosView.frame = CGRectMake(x, y, w, h);
+    self.collectionView.frame = CGRectMake(x, y, w, h);
     
 }
 
@@ -107,7 +125,7 @@
      * Reload data.
      */
     
-    [self.photosView reloadData];
+    [self.collectionView reloadData];
     
 }
 

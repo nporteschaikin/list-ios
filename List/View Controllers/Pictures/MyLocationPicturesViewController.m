@@ -75,7 +75,7 @@ static CGFloat const kCreatePictureButtonIconWidth = 60.0f;
     
     PicturesController *picturesController = self.picturesController;
     picturesController.mapCircle = mapCircle;
-
+    
     /*
      * `super`!!!
      */

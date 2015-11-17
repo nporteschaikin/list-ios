@@ -30,7 +30,7 @@
 @property (strong, nonatomic, readonly) Picture *picture;
 @property (strong, nonatomic, readonly) Session *session;
 
-- (instancetype)initWithPicture:(Picture *)picture session:(Session *)session NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithPicture:(Picture *)picture session:(Session *)session;
 - (void)savePicture;
 
 @end
