@@ -9,15 +9,15 @@
 #import "PicturesViewController.h"
 #import "PicturesDataSource.h"
 #import "ListConstants.h"
-#import "PicturesTableViewDelegate.h"
+#import "PicturesLayout.h"
 
 @interface PicturesViewController ()
 
 @property (strong, nonatomic) Session *session;
-@property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) UICollectionView *collectionView;
 @property (strong, nonatomic) PicturesController *picturesController;
 @property (strong, nonatomic) PicturesDataSource *dataSource;
-@property (strong, nonatomic) PicturesTableViewDelegate *tableViewDelegate;
+@property (strong, nonatomic) PicturesLayout *layout;
 
 @end
 
@@ -54,16 +54,19 @@
     self.view.backgroundColor = [UIColor listBlackColorAlpha:1];
     
     /*
-     * Setup photos view.
+     * Create default layout.
      */
     
-    UITableView *tableView = self.tableView = [[UITableView alloc] init];
-    PicturesTableViewDelegate *tableViewDelegate = self.tableViewDelegate = [[PicturesTableViewDelegate alloc] initWithPicturesController:self.picturesController];
-    tableView.dataSource = self.dataSource;
-    tableView.delegate = tableViewDelegate;
-    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    tableView.backgroundColor = [UIColor listBlackColorAlpha:1];
-    [self.view addSubview:tableView];
+    PicturesLayout *layout = self.layout = [[PicturesLayout alloc] initWithPicturesController:self.picturesController];
+    
+    /*
+     * Create collection view.
+     */
+    
+    UICollectionView *collectionView = self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+    collectionView.dataSource = self.dataSource;
+    collectionView.backgroundColor = [UIColor listBlackColorAlpha:1];
+    [self.view addSubview:collectionView];
     
 }
 
@@ -73,8 +76,8 @@
      * Register class for reuse identifier.
      */
     
-    UITableView *tableView = self.tableView;
-    [self.dataSource registerReuseIdentifiersForTableView:tableView];
+    UICollectionView *collectionView = self.collectionView;
+    [self.dataSource registerReuseIdentifiersForCollectionView:collectionView];
     
     /*
      * Set navigation item title view.
@@ -107,7 +110,7 @@
     y = 0.0f;
     w = CGRectGetWidth(self.view.bounds);
     h = CGRectGetHeight(self.view.bounds);
-    self.tableView.frame = CGRectMake(x, y, w, h);
+    self.collectionView.frame = CGRectMake(x, y, w, h);
     
 }
 
@@ -119,7 +122,7 @@
      * Reload data.
      */
     
-    [self.tableView reloadData];
+    [self.collectionView reloadData];
     
 }
 

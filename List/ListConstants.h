@@ -29,3 +29,5 @@
 
 #define kUINavigationBarDefaultImageSize 25
 #define kListUITabBarDefaultImageSize 20
+
+#define kPicturesHeightMultiplier = 1.7777;

@@ -13,7 +13,7 @@
 + (NSString *)listStringForIcon:(ListUIIcon)icon {
     switch (icon) {
         case ListUIIconLocation: {
-            return @"\ue835";
+            return @"\ue783";
         }
         case ListUIIconPictures: {
             return @"\ue711";

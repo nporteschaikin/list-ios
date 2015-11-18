@@ -17,7 +17,7 @@
 
 @implementation PicturesDataSource
 
-static NSString * const kPicturesTableViewCellReuseIdentifier = @"kPicturesTableViewCellReuseIdentifier";
+static NSString * const kPicturesCollectionViewCellReuseIdentifier = @"kPicturesCollectionViewCellReuseIdentifier";
 
 - (instancetype)initWithPicturesController:(PicturesController *)picturesController {
     if (self = [super init]) {
@@ -26,34 +26,35 @@ static NSString * const kPicturesTableViewCellReuseIdentifier = @"kPicturesTable
     return self;
 }
 
-- (void)registerReuseIdentifiersForTableView:(UITableView *)tableView {
-    [tableView registerClass:[PicturesTableViewCell class] forCellReuseIdentifier:kPicturesTableViewCellReuseIdentifier];
+- (void)registerReuseIdentifiersForCollectionView:(UICollectionView *)collectionView {
+    [collectionView registerClass:[PicturesCollectionViewCell class] forCellWithReuseIdentifier:kPicturesCollectionViewCellReuseIdentifier];
 }
 
-#pragma mark - UITableViewDataSource
+#pragma mark - UICollectionViewDataSource
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = indexPath.row;
     PicturesController *picturesController = self.picturesController;
     NSArray *pictures = picturesController.pictures;
     Picture *picture = pictures[row];
-    PicturesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPicturesTableViewCellReuseIdentifier];
+    PicturesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPicturesCollectionViewCellReuseIdentifier forIndexPath:indexPath];
     [cell.assetView sd_setImageWithURL:picture.asset.URL];
     [cell.avatarView sd_setImageWithURL:picture.user.profilePhoto.URL];
     cell.userNameLabel.text = picture.user.displayName;
     cell.descriptionLabel.text = picture.text;
     cell.dateLabel.text = @"3m";
+    cell.badge.text = picture.placemark.title;
     return cell;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     PicturesController *picturesController = self.picturesController;
     NSArray *pictures = picturesController.pictures;
     return pictures.count;
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
 }
 
 @end
