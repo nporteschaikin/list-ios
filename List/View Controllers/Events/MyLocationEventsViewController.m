@@ -15,4 +15,23 @@
 
 @implementation MyLocationEventsViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    /*
+     * Add button navigation item.
+     */
+    
+    UINavigationItem *navigationItem = self.navigationItem;
+    UIImage *buttonImage = [UIImage listIcon:ListUIIconPlus size:kUINavigationBarDefaultImageSize];
+    navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:buttonImage style:UIBarButtonItemStylePlain target:self action:@selector(handleBarButtonItem:)];
+    
+}
+
+#pragma mark - Button handler
+
+- (void)handleBarButtonItem:(UIBarButtonItem *)item {
+    
+}
+
 @end

@@ -89,7 +89,7 @@
              * FB login.
              */
             
-            [login logInWithReadPermissions:@[@"email"] handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+            [login logInWithReadPermissions:@[@"email"] fromViewController:self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
                 if (!result.isCancelled && !error) {
                     
                     /*

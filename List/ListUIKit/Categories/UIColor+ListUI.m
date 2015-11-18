@@ -41,7 +41,7 @@
 }
 
 + (UIColor *)listLightGrayColorAlpha:(CGFloat)alpha {
-    return [UIColor colorWithHex:0xE4E4E6 alpha:alpha];
+    return [UIColor colorWithHex:0xf1f1f1 alpha:alpha];
 }
 
 @end

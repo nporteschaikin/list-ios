@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F140A1C1BA0C67B008E1EC2 /* CameraShutterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F140A1B1BA0C67B008E1EC2 /* CameraShutterButton.m */; };
 		4F4D3B801B84326C00D79CD3 /* CreatePictureCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D3B7F1B84326C00D79CD3 /* CreatePictureCameraViewController.m */; };
 		4F4D3B861B84341C00D79CD3 /* CreatePictureCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D3B851B84341C00D79CD3 /* CreatePictureCameraView.m */; };
 		4F4D3B8C1B84B65500D79CD3 /* CreatePictureEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D3B8B1B84B65500D79CD3 /* CreatePictureEditorViewController.m */; };
@@ -16,9 +15,6 @@
 		4F4D3B961B84C7FD00D79CD3 /* CreatePictureViewControllerAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D3B951B84C7FD00D79CD3 /* CreatePictureViewControllerAnimator.m */; };
 		4F4D3B9C1B84D53300D79CD3 /* ListUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D3B9B1B84D53300D79CD3 /* ListUITextField.m */; };
 		4F4D3B9F1B84D54300D79CD3 /* ListUITextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D3B9E1B84D54300D79CD3 /* ListUITextView.m */; };
-		4F4D47331BA05FEC00DF3D74 /* PicturesFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D47321BA05FEC00DF3D74 /* PicturesFlowLayout.m */; };
-		4F4D47371BA0608900DF3D74 /* PicturesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D47361BA0608900DF3D74 /* PicturesCollectionViewCell.m */; };
-		4F5AA28E1BA1F9F40080A1AA /* CreatePictureButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5AA28D1BA1F9F40080A1AA /* CreatePictureButton.m */; };
 		4F64DAAA1B8CDB37009F6943 /* PicturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F64DAA91B8CDB37009F6943 /* PicturesViewController.m */; };
 		4F6D72B11B7EF0B100ADA9D3 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D72B01B7EF0B100ADA9D3 /* UserViewController.m */; };
 		4F6D72C01B7F9BD300ADA9D3 /* AppearanceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D72BF1B7F9BD300ADA9D3 /* AppearanceHelper.m */; };
@@ -28,6 +24,12 @@
 		4F6D72DC1B7FAFDF00ADA9D3 /* MapCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D72DB1B7FAFDF00ADA9D3 /* MapCircle.m */; };
 		4F6D72DF1B7FB00700ADA9D3 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D72DE1B7FB00700ADA9D3 /* LocationManager.m */; };
 		4F6D72E31B7FB1D600ADA9D3 /* ListUITabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D72E21B7FB1D600ADA9D3 /* ListUITabBarItem.m */; };
+		4F7453671BFB818100D77DD4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F7453641BFB818100D77DD4 /* FBSDKCoreKit.framework */; };
+		4F7453681BFB818100D77DD4 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F7453651BFB818100D77DD4 /* FBSDKLoginKit.framework */; };
+		4F7453691BFB818100D77DD4 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F7453661BFB818100D77DD4 /* FBSDKShareKit.framework */; };
+		4F74536C1BFB936900D77DD4 /* PicturesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F74536B1BFB936900D77DD4 /* PicturesTableViewCell.m */; };
+		4F7453711BFB988200D77DD4 /* PicturesTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7453701BFB988200D77DD4 /* PicturesTableViewDelegate.m */; };
+		4F7453741BFC017D00D77DD4 /* CameraShutterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7453731BFC017D00D77DD4 /* CameraShutterButton.m */; };
 		4F89A9001B7D1EFD00C8BF85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A8FF1B7D1EFD00C8BF85 /* main.m */; };
 		4F89A9031B7D1EFD00C8BF85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A9021B7D1EFD00C8BF85 /* AppDelegate.m */; };
 		4F89A90B1B7D1EFD00C8BF85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A90A1B7D1EFD00C8BF85 /* Images.xcassets */; };
@@ -81,9 +83,6 @@
 		4F89AA001B7D65E000C8BF85 /* loginView1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A9F11B7D65E000C8BF85 /* loginView1.jpg */; };
 		4F89AA011B7D65E000C8BF85 /* loginView2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A9F21B7D65E000C8BF85 /* loginView2.jpg */; };
 		4F89AA021B7D65E000C8BF85 /* loginView3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A9F31B7D65E000C8BF85 /* loginView3.jpg */; };
-		4F89AA071B7D65FC00C8BF85 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F89AA041B7D65FC00C8BF85 /* FBSDKCoreKit.framework */; };
-		4F89AA081B7D65FC00C8BF85 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F89AA051B7D65FC00C8BF85 /* FBSDKLoginKit.framework */; };
-		4F89AA091B7D65FC00C8BF85 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F89AA061B7D65FC00C8BF85 /* FBSDKShareKit.framework */; };
 		4F8A47131B8F89B000ED2B3C /* PictureNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8A47121B8F89B000ED2B3C /* PictureNavigationBar.m */; };
 		4F8F85751B8A0D140055D552 /* PlacemarkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F85741B8A0D140055D552 /* PlacemarkController.m */; };
 		4F8F857D1B8A708F0055D552 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F857C1B8A708F0055D552 /* Tag.m */; };
@@ -105,7 +104,6 @@
 		4FB9B45D1B7E90B20016BFC3 /* MyLocationPicturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9B45C1B7E90B20016BFC3 /* MyLocationPicturesViewController.m */; };
 		4FB9B4661B7E91B00016BFC3 /* MyLocationEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9B4651B7E91B00016BFC3 /* MyLocationEventsViewController.m */; };
 		4FB9B46C1B7E951D0016BFC3 /* NSString+ListUIIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9B46B1B7E951D0016BFC3 /* NSString+ListUIIcon.m */; };
-		4FCD62741B8E0655006E2FC9 /* PicturesHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD62731B8E0655006E2FC9 /* PicturesHeaderView.m */; };
 		4FFFD6AE1B8253CF00915241 /* UIColor+ListUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFFD6A91B8253CF00915241 /* UIColor+ListUI.m */; };
 		4FFFD6AF1B8253CF00915241 /* UIFont+ListUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFFD6AB1B8253CF00915241 /* UIFont+ListUI.m */; };
 		4FFFD6B01B8253CF00915241 /* UIImage+ListUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFFD6AD1B8253CF00915241 /* UIImage+ListUI.m */; };
@@ -123,8 +121,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4F140A1A1BA0C67B008E1EC2 /* CameraShutterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CameraShutterButton.h; path = ../../../../../.Trash/CameraShutterButton.h; sourceTree = "<group>"; };
-		4F140A1B1BA0C67B008E1EC2 /* CameraShutterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CameraShutterButton.m; path = ../../../../../.Trash/CameraShutterButton.m; sourceTree = "<group>"; };
 		4F4D3B7E1B84326C00D79CD3 /* CreatePictureCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePictureCameraViewController.h; sourceTree = "<group>"; };
 		4F4D3B7F1B84326C00D79CD3 /* CreatePictureCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePictureCameraViewController.m; sourceTree = "<group>"; };
 		4F4D3B841B84341C00D79CD3 /* CreatePictureCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePictureCameraView.h; sourceTree = "<group>"; };
@@ -141,12 +137,6 @@
 		4F4D3B9B1B84D53300D79CD3 /* ListUITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListUITextField.m; sourceTree = "<group>"; };
 		4F4D3B9D1B84D54300D79CD3 /* ListUITextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListUITextView.h; sourceTree = "<group>"; };
 		4F4D3B9E1B84D54300D79CD3 /* ListUITextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListUITextView.m; sourceTree = "<group>"; };
-		4F4D47311BA05FEC00DF3D74 /* PicturesFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesFlowLayout.h; sourceTree = "<group>"; };
-		4F4D47321BA05FEC00DF3D74 /* PicturesFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesFlowLayout.m; sourceTree = "<group>"; };
-		4F4D47351BA0608900DF3D74 /* PicturesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesCollectionViewCell.h; sourceTree = "<group>"; };
-		4F4D47361BA0608900DF3D74 /* PicturesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesCollectionViewCell.m; sourceTree = "<group>"; };
-		4F5AA28C1BA1F9F40080A1AA /* CreatePictureButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreatePictureButton.h; path = ../../../../../.Trash/CreatePictureButton.h; sourceTree = "<group>"; };
-		4F5AA28D1BA1F9F40080A1AA /* CreatePictureButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreatePictureButton.m; path = ../../../../../.Trash/CreatePictureButton.m; sourceTree = "<group>"; };
 		4F64DAA81B8CDB37009F6943 /* PicturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesViewController.h; sourceTree = "<group>"; };
 		4F64DAA91B8CDB37009F6943 /* PicturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesViewController.m; sourceTree = "<group>"; };
 		4F6D72AF1B7EF0B100ADA9D3 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
@@ -165,6 +155,15 @@
 		4F6D72DE1B7FB00700ADA9D3 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		4F6D72E11B7FB1D600ADA9D3 /* ListUITabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListUITabBarItem.h; sourceTree = "<group>"; };
 		4F6D72E21B7FB1D600ADA9D3 /* ListUITabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListUITabBarItem.m; sourceTree = "<group>"; };
+		4F7453641BFB818100D77DD4 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		4F7453651BFB818100D77DD4 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		4F7453661BFB818100D77DD4 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		4F74536A1BFB936900D77DD4 /* PicturesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesTableViewCell.h; sourceTree = "<group>"; };
+		4F74536B1BFB936900D77DD4 /* PicturesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesTableViewCell.m; sourceTree = "<group>"; };
+		4F74536F1BFB988200D77DD4 /* PicturesTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesTableViewDelegate.h; sourceTree = "<group>"; };
+		4F7453701BFB988200D77DD4 /* PicturesTableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesTableViewDelegate.m; sourceTree = "<group>"; };
+		4F7453721BFC017D00D77DD4 /* CameraShutterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraShutterButton.h; sourceTree = "<group>"; };
+		4F7453731BFC017D00D77DD4 /* CameraShutterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraShutterButton.m; sourceTree = "<group>"; };
 		4F89A8FA1B7D1EFD00C8BF85 /* List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = List.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F89A8FE1B7D1EFD00C8BF85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F89A8FF1B7D1EFD00C8BF85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -269,9 +268,6 @@
 		4F89A9F11B7D65E000C8BF85 /* loginView1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loginView1.jpg; sourceTree = "<group>"; };
 		4F89A9F21B7D65E000C8BF85 /* loginView2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loginView2.jpg; sourceTree = "<group>"; };
 		4F89A9F31B7D65E000C8BF85 /* loginView3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loginView3.jpg; sourceTree = "<group>"; };
-		4F89AA041B7D65FC00C8BF85 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		4F89AA051B7D65FC00C8BF85 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		4F89AA061B7D65FC00C8BF85 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		4F8A47111B8F89B000ED2B3C /* PictureNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureNavigationBar.h; sourceTree = "<group>"; };
 		4F8A47121B8F89B000ED2B3C /* PictureNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureNavigationBar.m; sourceTree = "<group>"; };
 		4F8F85731B8A0D140055D552 /* PlacemarkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacemarkController.h; sourceTree = "<group>"; };
@@ -290,8 +286,6 @@
 		4FB9B4651B7E91B00016BFC3 /* MyLocationEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLocationEventsViewController.m; sourceTree = "<group>"; };
 		4FB9B46A1B7E951D0016BFC3 /* NSString+ListUIIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ListUIIcon.h"; sourceTree = "<group>"; };
 		4FB9B46B1B7E951D0016BFC3 /* NSString+ListUIIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ListUIIcon.m"; sourceTree = "<group>"; };
-		4FCD62721B8E0655006E2FC9 /* PicturesHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesHeaderView.h; sourceTree = "<group>"; };
-		4FCD62731B8E0655006E2FC9 /* PicturesHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesHeaderView.m; sourceTree = "<group>"; };
 		4FFFD6A31B82505100915241 /* ListUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListUIKit.h; sourceTree = "<group>"; };
 		4FFFD6A41B82505D00915241 /* ListUIConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListUIConstants.h; sourceTree = "<group>"; };
 		4FFFD6A51B82507B00915241 /* ListConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListConstants.h; sourceTree = "<group>"; };
@@ -321,10 +315,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F7453691BFB818100D77DD4 /* FBSDKShareKit.framework in Frameworks */,
 				4FB9B4541B7E8CF10016BFC3 /* CoreLocation.framework in Frameworks */,
-				4F89AA081B7D65FC00C8BF85 /* FBSDKLoginKit.framework in Frameworks */,
-				4F89AA071B7D65FC00C8BF85 /* FBSDKCoreKit.framework in Frameworks */,
-				4F89AA091B7D65FC00C8BF85 /* FBSDKShareKit.framework in Frameworks */,
+				4F7453671BFB818100D77DD4 /* FBSDKCoreKit.framework in Frameworks */,
+				4F7453681BFB818100D77DD4 /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,28 +360,11 @@
 			path = Fields;
 			sourceTree = "<group>";
 		};
-		4F4D472C1BA05F3500DF3D74 /* Layouts */ = {
-			isa = PBXGroup;
-			children = (
-				4F4D472D1BA05F8600DF3D74 /* Pictures */,
-			);
-			path = Layouts;
-			sourceTree = "<group>";
-		};
-		4F4D472D1BA05F8600DF3D74 /* Pictures */ = {
-			isa = PBXGroup;
-			children = (
-				4F4D47311BA05FEC00DF3D74 /* PicturesFlowLayout.h */,
-				4F4D47321BA05FEC00DF3D74 /* PicturesFlowLayout.m */,
-			);
-			path = Pictures;
-			sourceTree = "<group>";
-		};
 		4F4D47341BA0607700DF3D74 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				4F4D47351BA0608900DF3D74 /* PicturesCollectionViewCell.h */,
-				4F4D47361BA0608900DF3D74 /* PicturesCollectionViewCell.m */,
+				4F74536A1BFB936900D77DD4 /* PicturesTableViewCell.h */,
+				4F74536B1BFB936900D77DD4 /* PicturesTableViewCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -396,16 +373,10 @@
 			isa = PBXGroup;
 			children = (
 				4F4D47341BA0607700DF3D74 /* Cells */,
-				4F140A1A1BA0C67B008E1EC2 /* CameraShutterButton.h */,
-				4F140A1B1BA0C67B008E1EC2 /* CameraShutterButton.m */,
-				4F5AA28C1BA1F9F40080A1AA /* CreatePictureButton.h */,
-				4F5AA28D1BA1F9F40080A1AA /* CreatePictureButton.m */,
 				4F4D3B841B84341C00D79CD3 /* CreatePictureCameraView.h */,
 				4F4D3B851B84341C00D79CD3 /* CreatePictureCameraView.m */,
 				4F4D3B8D1B84B94500D79CD3 /* CreatePictureEditorView.h */,
 				4F4D3B8E1B84B94500D79CD3 /* CreatePictureEditorView.m */,
-				4FCD62721B8E0655006E2FC9 /* PicturesHeaderView.h */,
-				4FCD62731B8E0655006E2FC9 /* PicturesHeaderView.m */,
 				4F8A47111B8F89B000ED2B3C /* PictureNavigationBar.h */,
 				4F8A47121B8F89B000ED2B3C /* PictureNavigationBar.m */,
 			);
@@ -458,6 +429,23 @@
 			path = Item;
 			sourceTree = "<group>";
 		};
+		4F74536D1BFB985700D77DD4 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				4F74536E1BFB986E00D77DD4 /* Pictures */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		4F74536E1BFB986E00D77DD4 /* Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				4F74536F1BFB988200D77DD4 /* PicturesTableViewDelegate.h */,
+				4F7453701BFB988200D77DD4 /* PicturesTableViewDelegate.m */,
+			);
+			path = Pictures;
+			sourceTree = "<group>";
+		};
 		4F89A8F11B7D1EFD00C8BF85 = {
 			isa = PBXGroup;
 			children = (
@@ -479,7 +467,7 @@
 		4F89A8FC1B7D1EFD00C8BF85 /* List */ = {
 			isa = PBXGroup;
 			children = (
-				4F4D472C1BA05F3500DF3D74 /* Layouts */,
+				4F74536D1BFB985700D77DD4 /* Delegates */,
 				4F4D3B931B84C7E500D79CD3 /* Animators */,
 				4FFFD6A01B824EEF00915241 /* ListUIKit */,
 				4F6D72BD1B7F9BBB00ADA9D3 /* Helpers */,
@@ -784,10 +772,10 @@
 		4F89A99D1B7D249E00C8BF85 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4F7453641BFB818100D77DD4 /* FBSDKCoreKit.framework */,
+				4F7453651BFB818100D77DD4 /* FBSDKLoginKit.framework */,
+				4F7453661BFB818100D77DD4 /* FBSDKShareKit.framework */,
 				4FB9B4521B7E8CD70016BFC3 /* CoreLocation.framework */,
-				4F89AA041B7D65FC00C8BF85 /* FBSDKCoreKit.framework */,
-				4F89AA051B7D65FC00C8BF85 /* FBSDKLoginKit.framework */,
-				4F89AA061B7D65FC00C8BF85 /* FBSDKShareKit.framework */,
 				4F89A9B21B7D658400C8BF85 /* SDWebImage */,
 			);
 			path = Frameworks;
@@ -816,6 +804,8 @@
 				4F8F857E1B8A715B0055D552 /* Tags */,
 				4F6D72B21B7F940F00ADA9D3 /* Pictures */,
 				4F89A9AB1B7D53EA00C8BF85 /* Login */,
+				4F7453721BFC017D00D77DD4 /* CameraShutterButton.h */,
+				4F7453731BFC017D00D77DD4 /* CameraShutterButton.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1125,9 +1115,9 @@
 				4F89A96C1B7D229300C8BF85 /* Photo.m in Sources */,
 				4F89A9501B7D21A300C8BF85 /* PicturesController.m in Sources */,
 				4F89A9A21B7D24E400C8BF85 /* LoginDataSource.m in Sources */,
-				4F4D47331BA05FEC00DF3D74 /* PicturesFlowLayout.m in Sources */,
 				4F89A9691B7D228B00C8BF85 /* Placemark.m in Sources */,
 				4FFFD6AF1B8253CF00915241 /* UIFont+ListUI.m in Sources */,
+				4F7453741BFC017D00D77DD4 /* CameraShutterButton.m in Sources */,
 				4F89A96F1B7D229900C8BF85 /* Picture.m in Sources */,
 				4F89A9821B7D238200C8BF85 /* PicturesDataSource.m in Sources */,
 				4F8F85751B8A0D140055D552 /* PlacemarkController.m in Sources */,
@@ -1157,19 +1147,18 @@
 				4F89A9461B7D20DA00C8BF85 /* EventEditorViewController.m in Sources */,
 				4F6D72C81B7FA41500ADA9D3 /* ListUITabBarController.m in Sources */,
 				4F89A9DA1B7D658400C8BF85 /* SDWebImageDownloaderOperation.m in Sources */,
+				4F7453711BFB988200D77DD4 /* PicturesTableViewDelegate.m in Sources */,
 				4F89A9311B7D205B00C8BF85 /* PictureViewController.m in Sources */,
+				4F74536C1BFB936900D77DD4 /* PicturesTableViewCell.m in Sources */,
 				4FFFD6C11B82590600915241 /* ListUICameraController.m in Sources */,
 				4FB9B45D1B7E90B20016BFC3 /* MyLocationPicturesViewController.m in Sources */,
 				4F6D72DC1B7FAFDF00ADA9D3 /* MapCircle.m in Sources */,
-				4F4D47371BA0608900DF3D74 /* PicturesCollectionViewCell.m in Sources */,
 				4F89A99C1B7D249100C8BF85 /* ListReachabilityManager.m in Sources */,
 				4F89A9E01B7D658400C8BF85 /* UIImage+WebP.m in Sources */,
-				4FCD62741B8E0655006E2FC9 /* PicturesHeaderView.m in Sources */,
 				4F89A9D91B7D658400C8BF85 /* SDWebImageDownloader.m in Sources */,
 				4F8F857D1B8A708F0055D552 /* Tag.m in Sources */,
 				4F89A9431B7D20D100C8BF85 /* UserEditorViewController.m in Sources */,
 				4F4D3B961B84C7FD00D79CD3 /* CreatePictureViewControllerAnimator.m in Sources */,
-				4F140A1C1BA0C67B008E1EC2 /* CameraShutterButton.m in Sources */,
 				4F6D72DF1B7FB00700ADA9D3 /* LocationManager.m in Sources */,
 				4F89A93C1B7D20B400C8BF85 /* EventViewController.m in Sources */,
 				4F89A9DF1B7D658400C8BF85 /* UIImage+MultiFormat.m in Sources */,
@@ -1178,7 +1167,6 @@
 				4F64DAAA1B8CDB37009F6943 /* PicturesViewController.m in Sources */,
 				4F8F85811B8A716B0055D552 /* TagsScrollView.m in Sources */,
 				4FB9B4661B7E91B00016BFC3 /* MyLocationEventsViewController.m in Sources */,
-				4F5AA28E1BA1F9F40080A1AA /* CreatePictureButton.m in Sources */,
 				4F89A9661B7D228100C8BF85 /* ListModel.m in Sources */,
 				4F89A9351B7D207800C8BF85 /* EventsViewController.m in Sources */,
 				4F89A9DD1B7D658400C8BF85 /* UIButton+WebCache.m in Sources */,
@@ -1255,6 +1243,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1300,6 +1289,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1360,10 +1350,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1380,6 +1367,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

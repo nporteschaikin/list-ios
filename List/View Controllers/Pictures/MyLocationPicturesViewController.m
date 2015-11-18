@@ -7,20 +7,16 @@
 //
 
 #import "MyLocationPicturesViewController.h"
-#import "CreatePictureButton.h"
 #import "CreatePictureViewController.h"
 #import "ListConstants.h"
 
 @interface MyLocationPicturesViewController ()
 
 @property (strong, nonatomic) LocationManager *locationManager;
-@property (strong, nonatomic) CreatePictureButton *createPictureButton;
 
 @end
 
 @implementation MyLocationPicturesViewController
-
-static CGFloat const kCreatePictureButtonIconWidth = 60.0f;
 
 - (instancetype)initWithSession:(Session *)session {
     if (self = [super initWithSession:session]) {
@@ -36,22 +32,16 @@ static CGFloat const kCreatePictureButtonIconWidth = 60.0f;
     return self;
 }
 
-- (void)loadView {
-    [super loadView];
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
     /*
-     * Add create picture button.
+     * Add button navigation item.
      */
     
-    self.createPictureButton = [[CreatePictureButton alloc] init];
-    self.createPictureButton.iconColor = [UIColor colorWithWhite:1.0f alpha:0.95f];
-    self.createPictureButton.iconWidth = kCreatePictureButtonIconWidth;
-    self.createPictureButton.layer.shadowColor = [UIColor listBlackColorAlpha:1.0f].CGColor;
-    self.createPictureButton.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
-    self.createPictureButton.layer.shadowOpacity = 0.25f;
-    self.createPictureButton.layer.shadowRadius = 3.0f;
-    [self.createPictureButton addTarget:self action:@selector(handleCreatePictureButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
-    [self.view addSubview:self.createPictureButton];
+    UINavigationItem *navigationItem = self.navigationItem;
+    UIImage *buttonImage = [UIImage listIcon:ListUIIconPlus size:kUINavigationBarDefaultImageSize];
+    navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:buttonImage style:UIBarButtonItemStylePlain target:self action:@selector(handleBarButtonItem:)];
     
 }
 
@@ -81,25 +71,6 @@ static CGFloat const kCreatePictureButtonIconWidth = 60.0f;
      */
     
     [super viewWillAppear:animated];
-    
-}
-
-- (void)viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
-    
-    CGFloat x, y, w, h;
-    CGSize size;
-    
-    /*
-     * Layout create picture button.
-     */
-    
-    size = [self.createPictureButton sizeThatFits:CGSizeZero];
-    x = (CGRectGetWidth(self.view.bounds) - (size.width)) / 2;
-    y = CGRectGetHeight(self.view.bounds) - (size.height + 12.f);
-    w = size.width;
-    h = size.height;
-    self.createPictureButton.frame = CGRectMake(x, y, w, h);
     
 }
 
@@ -140,7 +111,7 @@ static CGFloat const kCreatePictureButtonIconWidth = 60.0f;
 
 #pragma mark - Button handler
 
-- (void)handleCreatePictureButtonTouchDown:(CreatePictureButton *)button {
+- (void)handleBarButtonItem:(UIBarButtonItem *)item {
     
     /*
      * Create picture view controller.

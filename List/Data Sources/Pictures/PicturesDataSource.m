@@ -17,7 +17,7 @@
 
 @implementation PicturesDataSource
 
-static NSString * const kPicturesCollectionViewCellReuseIdentifier = @"kPicturesCollectionViewCellReuseIdentifier";
+static NSString * const kPicturesTableViewCellReuseIdentifier = @"kPicturesTableViewCellReuseIdentifier";
 
 - (instancetype)initWithPicturesController:(PicturesController *)picturesController {
     if (self = [super init]) {
@@ -26,32 +26,31 @@ static NSString * const kPicturesCollectionViewCellReuseIdentifier = @"kPictures
     return self;
 }
 
-- (void)registerReuseIdentifiersForCollectionView:(UICollectionView *)collectionView {
-    [collectionView registerClass:[PicturesCollectionViewCell class] forCellWithReuseIdentifier:kPicturesCollectionViewCellReuseIdentifier];
+- (void)registerReuseIdentifiersForTableView:(UITableView *)tableView {
+    [tableView registerClass:[PicturesTableViewCell class] forCellReuseIdentifier:kPicturesTableViewCellReuseIdentifier];
 }
 
-#pragma mark - UICollectionViewDataSource
+#pragma mark - UITableViewDataSource
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = indexPath.row;
     PicturesController *picturesController = self.picturesController;
     NSArray *pictures = picturesController.pictures;
     Picture *picture = pictures[row];
-    PicturesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPicturesCollectionViewCellReuseIdentifier forIndexPath:indexPath];
-    cell.headerView.userNameLabel.text = picture.user.displayName;
-    cell.headerView.placemarkTitleLabel.text = picture.placemark.title;
+    PicturesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPicturesTableViewCellReuseIdentifier];
     [cell.assetView sd_setImageWithURL:picture.asset.URL];
-    [cell.headerView.avatarImageView sd_setImageWithURL:picture.user.profilePhoto.URL];
-    [cell.headerView setNeedsLayout];
-    [cell.headerView layoutIfNeeded];
+    [cell.avatarView sd_setImageWithURL:picture.user.profilePhoto.URL];
+    cell.userNameLabel.text = picture.user.displayName;
+    cell.descriptionLabel.text = picture.text;
+    cell.dateLabel.text = @"3m";
     return cell;
 }
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     PicturesController *picturesController = self.picturesController;
     NSArray *pictures = picturesController.pictures;
     return pictures.count;

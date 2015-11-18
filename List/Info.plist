@@ -35,7 +35,7 @@
 	<string>List</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>fbauth</string>
+		<string>fbauth2</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

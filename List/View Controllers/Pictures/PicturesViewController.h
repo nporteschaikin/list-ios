@@ -10,11 +10,11 @@
 #import "PicturesController.h"
 #import "Session.h"
 
-@interface PicturesViewController : ListUIViewController <UICollectionViewDelegate, PicturesControllerDelegate>
+@interface PicturesViewController : ListUIViewController <UITableViewDelegate, PicturesControllerDelegate>
 
 @property (strong, nonatomic, readonly) PicturesController *picturesController;
 @property (strong, nonatomic, readonly) Session *session;
-@property (strong, nonatomic, readonly) UICollectionView *collectionView;
+@property (strong, nonatomic, readonly) UITableView *tableView;
 
 - (instancetype)initWithSession:(Session *)session;
 

@@ -29,4 +29,3 @@
 
 #define kUINavigationBarDefaultImageSize 25
 #define kListUITabBarDefaultImageSize 20
-#define kListUILocationBarDefaultImageSize 25
