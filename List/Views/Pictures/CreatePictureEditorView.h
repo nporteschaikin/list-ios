@@ -8,11 +8,15 @@
 
 #import "ListUIKit.h"
 
-@interface CreatePictureEditorView : UIScrollView
+@interface CreatePictureEditorView : UIView
 
 @property (copy, nonatomic) NSString *text;
 @property (strong, nonatomic) UIImage *image;
 @property (copy, nonatomic) NSArray *toolbarItems;
+@property (nonatomic) CGFloat progress;
+@property (strong, nonatomic, readonly) UIButton *returnButton;
+@property (strong, nonatomic, readonly) UIButton *closeButton;
+@property (strong, nonatomic, readonly) UIScrollView *scrollView;
 
 - (void)setToolbarItems:(NSArray *)items animated:(BOOL)animated;
 

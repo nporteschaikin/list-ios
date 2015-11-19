@@ -15,6 +15,7 @@
 @property (strong, nonatomic) Session *session;
 @property (copy, nonatomic) NSArray *pictures;
 @property (copy, nonatomic) NSArray *tags;
+@property (strong, nonatomic) Placemark *placemark;
 
 @end
 
@@ -82,6 +83,7 @@
         
         self.pictures = [Picture fromJSONArray:(NSArray *)body[kAPIPicturesKey]];
         self.tags = [Tag fromJSONArray:(NSArray *)body[kAPITagsKey]];
+        self.placemark = [Placemark fromJSONDict:(NSDictionary *)body[kAPIPlacemarkKey]];
 
         /*
          * Send delegate message.

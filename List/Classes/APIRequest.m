@@ -9,6 +9,18 @@
 #import "APIRequest.h"
 #import "ListConstants.h"
 
+@interface APIRequest () <NSURLConnectionDataDelegate>
+
+@property (strong, nonatomic) NSURLConnection *connection;
+@property (strong, nonatomic) NSMutableData *data;
+@property (strong, nonatomic) NSHTTPURLResponse *response;
+@property (strong, nonatomic) void (^onCompleteBlock)(id<NSObject>);
+@property (strong, nonatomic) void (^onProgressBlock)(NSInteger, NSInteger);
+@property (strong, nonatomic) void (^onErrorBlock)(NSError *);
+@property (strong, nonatomic) void (^onFailBlock)(id<NSObject>);
+
+@end
+
 @implementation APIRequest
 
 + (NSOperationQueue *)operationQueue {
@@ -20,6 +32,27 @@
 }
 
 - (void)sendRequest:(void(^)(id<NSObject> body))onComplete onError:(void(^)(NSError *error))onError onFail:(void(^)(id<NSObject> body))onFail {
+    
+    /*
+     * Use main method.
+     */
+    
+    [self sendRequest:onComplete onProgress:nil onError:onError onFail:onFail];
+    
+}
+
+- (void)sendRequest:(void(^)(id<NSObject> body))onComplete onProgress:(void (^)(NSInteger, NSInteger))onProgress onError:(void (^)(NSError *))onError onFail:(void (^)(id<NSObject>))onFail {
+    
+    /*
+     * If connection exists here, cancel it.
+     */
+    
+    if (self.connection) {
+        [self.connection cancel];
+        self.onCompleteBlock = nil;
+        self.onErrorBlock = nil;
+        self.onFailBlock = nil;
+    }
     
     /*
      * Create base URL
@@ -96,23 +129,54 @@
      * Send request asynchronously.
      */
     
+    NSURLConnection *connection = self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    self.onCompleteBlock = onComplete;
+    self.onErrorBlock = onError;
+    self.onFailBlock = onFail;
+    self.onProgressBlock = onProgress;
     NSOperationQueue *operationQueue = [[self class] operationQueue];
-    [NSURLConnection sendAsynchronousRequest:request queue:operationQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-            if (connectionError) {
-                if (onError) onError(connectionError);
-            } else {
-                id body = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                if (httpResponse.statusCode != 200) {
-                    if (onFail) onFail(body);
-                } else {
-                    if (onComplete) onComplete(body);
-                }
-            }
-        });
-    }];
+    [connection setDelegateQueue:operationQueue];
+    [connection start];
+    NSLog(@"[%@] %@", request.HTTPMethod, request.URL);
     
+}
+
+#pragma mark - NSURLConnectionDataDelegate
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response {
+    self.response = response;
+    self.data = [[NSMutableData alloc] init];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [self.data appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
+    if (self.onProgressBlock) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.onProgressBlock(totalBytesWritten, totalBytesExpectedToWrite);
+        });
+    }
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    if (self.onErrorBlock) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.onErrorBlock(error);
+        });
+    }
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    id body = [NSJSONSerialization JSONObjectWithData:self.data options:kNilOptions error:nil];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.response.statusCode != 200 && self.onFailBlock) {
+            self.onFailBlock(body);
+        } else if (self.onCompleteBlock) {
+            self.onCompleteBlock(body);
+        }
+    });
 }
 
 @end

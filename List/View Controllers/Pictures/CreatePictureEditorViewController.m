@@ -7,6 +7,7 @@
 //
 
 #import "CreatePictureEditorViewController.h"
+#import "CreatePictureViewController.h"
 
 @interface CreatePictureEditorViewController ()
 
@@ -53,6 +54,16 @@
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(handleKeyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [defaultCenter addObserver:self selector:@selector(handleKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    
+    /*
+     * Set button handlers.
+     */
+    
+    CreatePictureEditorView *view = self.createPictureEditorView;
+    UIButton *returnButton = view.returnButton;
+    UIButton *closeButton = view.closeButton;
+    [returnButton addTarget:self action:@selector(handleReturnButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
+    [closeButton addTarget:self action:@selector(handleCloseButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
     
 }
 
@@ -139,6 +150,17 @@
     
 }
 
+- (void)pictureControllerIsSavingPicture:(PictureController *)pictureController bytesWritten:(NSInteger)bytesWritten bytesExpectedToWrite:(NSInteger)bytesExpectedToWrite {
+    
+    /*
+     * Set progress.
+     */
+    
+    CreatePictureEditorView *view = self.createPictureEditorView;
+    view.progress = (CGFloat)bytesWritten / bytesExpectedToWrite;
+    
+}
+
 #pragma mark - Bar button item handlers.
 
 - (void)handleSaveBarButtonItem:(UIBarButtonItem *)item {
@@ -153,10 +175,43 @@
     picture.text = view.text;
     
     /*
+     * Disable user interaction on view.
+     */
+    
+    view.userInteractionEnabled = NO;
+    [view resignFirstResponder];
+    
+    /*
      * Save picture.
      */
     
     [pictureController savePicture];
+    
+}
+
+#pragma mark - Button handlers
+
+- (void)handleReturnButtonTouchDown:(UIButton *)button {
+    
+    /*
+     * If parent view is create picture, return.
+     */
+    
+    UIViewController *parentViewController = self.parentViewController;
+    if ([parentViewController isKindOfClass:[CreatePictureViewController class]]) {
+        [self.view resignFirstResponder];
+        [((CreatePictureViewController *)parentViewController) transition:CreatePictureViewControllerActionCamera animated:YES];
+    }
+    
+}
+
+- (void)handleCloseButtonTouchDown:(UIButton *)button {
+    
+    /*
+     * Close view.
+     */
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
@@ -172,15 +227,16 @@
     
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
     CreatePictureEditorView *view = self.createPictureEditorView;
-    view.contentInset = contentInsets;
-    view.scrollIndicatorInsets = contentInsets;
+    UIScrollView *scrollView = view.scrollView;
+    scrollView.contentInset = contentInsets;
+    scrollView.scrollIndicatorInsets = contentInsets;
     
     /*
      * Scroll to bottom.
      */
     
     CGPoint point = CGPointMake(0, kbSize.height);
-    [view setContentOffset:point animated:YES];
+    [scrollView setContentOffset:point animated:YES];
     
 }
 
@@ -192,8 +248,9 @@
     
     CreatePictureEditorView *view = self.createPictureEditorView;
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-    view.contentInset = contentInsets;
-    view.scrollIndicatorInsets = contentInsets;
+    UIScrollView *scrollView = view.scrollView;
+    scrollView.contentInset = contentInsets;
+    scrollView.scrollIndicatorInsets = contentInsets;
     
 }
 

@@ -7,19 +7,13 @@
 //
 
 #import "ListUIKit.h"
-
-@class CreatePictureCameraView;
-
-@protocol CreatePictureCameraViewDelegate <NSObject>
-
-- (void)createPictureCameraView:(CreatePictureCameraView *)view flipButtonDidChangeState:(UIControlState)state;
-- (void)didTouchDownShutterButtonCreatePictureCameraView:(CreatePictureCameraView *)view;
-
-@end
+#import "CameraShutterButton.h"
 
 @interface CreatePictureCameraView : UIView
 
-@property (weak, nonatomic) id<CreatePictureCameraViewDelegate> delegate;
 @property (strong, nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
+@property (strong, nonatomic, readonly) CameraShutterButton *shutterButton;
+@property (strong, nonatomic, readonly) UIButton *flipButton;
+@property (strong, nonatomic, readonly) UIButton *closeButton;
 
 @end

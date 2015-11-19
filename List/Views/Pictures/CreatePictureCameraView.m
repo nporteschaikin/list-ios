@@ -7,13 +7,13 @@
 //
 
 #import "CreatePictureCameraView.h"
-#import "CameraShutterButton.h"
 
 @interface CreatePictureCameraView ()
 
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) CameraShutterButton *shutterButton;
 @property (strong, nonatomic) UIButton *flipButton;
+@property (strong, nonatomic) UIButton *closeButton;
 
 @end
 
@@ -40,7 +40,6 @@
          */
         
         self.shutterButton = [[CameraShutterButton alloc] init];
-        [self.shutterButton addTarget:self action:@selector(handleShutterButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
         [self addSubview:self.shutterButton];
         
         /*
@@ -64,8 +63,20 @@
         self.flipButton.layer.shadowOpacity = shadowOpacity;
         self.flipButton.layer.shadowColor = shadowColor;
         [self.flipButton setImage:flipImage forState:UIControlStateNormal];
-        [self.flipButton addTarget:self action:@selector(handleFlipButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
         [self addSubview:self.flipButton];
+        
+        /*
+         * Create close button.
+         */
+        
+        UIImage *closeImage = [UIImage listIcon:ListUIIconCross size:30.f color:color];
+        self.closeButton = [[UIButton alloc] init];
+        self.closeButton.layer.shadowOffset = shadowOffset;
+        self.closeButton.layer.shadowRadius = shadowRadius;
+        self.closeButton.layer.shadowOpacity = shadowOpacity;
+        self.closeButton.layer.shadowColor = shadowColor;
+        [self.closeButton setImage:closeImage forState:UIControlStateNormal];
+        [self addSubview:self.closeButton];
         
     }
     return self;
@@ -91,43 +102,17 @@
     self.shutterButton.frame = CGRectMake(x, y, w, h);
     
     size = [self.flipButton sizeThatFits:CGSizeZero];
-    x = CGRectGetWidth(self.bounds) - (size.width + 25.f);
+    x = 25.f;
     y = 25.f;
     w = size.width;
     h = size.height;
     self.flipButton.frame = CGRectMake(x, y, w, h);
     
-}
-
-#pragma mark - Button handlers
-
-- (void)handleShutterButtonTouchDown:(CameraShutterButton *)shutterButton {
-    
-    /*
-     * Send delegate message.
-     */
-    
-    if ([self.delegate respondsToSelector:@selector(didTouchDownShutterButtonCreatePictureCameraView:)]) {
-        [self.delegate didTouchDownShutterButtonCreatePictureCameraView:self];
-    }
-    
-}
-
-- (void)handleFlipButtonTouchDown:(UIButton *)flipButton {
-    
-    /*
-     * Flip state.
-     */
-    
-    flipButton.selected = !flipButton.selected;
-    
-    /*
-     * Send delegate message.
-     */
-    
-    if ([self.delegate respondsToSelector:@selector(createPictureCameraView:flipButtonDidChangeState:)]) {
-        [self.delegate createPictureCameraView:self flipButtonDidChangeState:flipButton.state];
-    }
+    size = [self.flipButton sizeThatFits:CGSizeZero];
+    x = CGRectGetWidth(self.bounds) - (size.width + 25.f);
+    w = size.width;
+    h = size.height;
+    self.closeButton.frame = CGRectMake(x, y, w, h);
     
 }
 

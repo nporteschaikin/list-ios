@@ -28,6 +28,7 @@
 @property (weak, nonatomic) id<PicturesControllerDelegate> delegate;
 @property (copy, nonatomic, readonly) NSArray *pictures;
 @property (copy, nonatomic, readonly) NSArray *tags;
+@property (strong, nonatomic, readonly) Placemark *placemark;
 @property (strong, nonatomic) MapCircle *mapCircle;
 @property (strong, nonatomic) User *user;
 

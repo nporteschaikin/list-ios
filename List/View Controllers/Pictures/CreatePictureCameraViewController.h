@@ -11,7 +11,7 @@
 #import "Session.h"
 #import "CreatePictureCameraView.h"
 
-@interface CreatePictureCameraViewController : ListUIViewController <CreatePictureCameraViewDelegate, ListUICameraControllerDelegate>
+@interface CreatePictureCameraViewController : ListUIViewController <ListUICameraControllerDelegate>
 
 @property (strong, nonatomic, readonly) CreatePictureCameraView *createPictureCameraView;
 

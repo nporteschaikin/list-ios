@@ -92,6 +92,7 @@
 
 @interface PicturesCollectionViewCell ()
 
+@property (strong, nonatomic) UIView *assetContainer;
 @property (strong, nonatomic) UIImageView *assetView;
 @property (strong, nonatomic) UILabel *descriptionLabel;
 @property (strong, nonatomic) UIImageView *avatarView;
@@ -117,11 +118,15 @@
         contentView.layer.cornerRadius = 2.0f;
         contentView.layer.masksToBounds = YES;
         
+        UIView *assetContainer = self.assetContainer = [[UIView alloc] init];
+        assetContainer.backgroundColor = [UIColor colorWithHex:0xf1f1f1 alpha:1.0f];
+        [contentView addSubview:assetContainer];
+        
         UIImageView *assetView = self.assetView = [[UIImageView alloc] init];
         assetView.clipsToBounds = YES;
         assetView.layer.masksToBounds = YES;
         assetView.contentMode = UIViewContentModeScaleAspectFill;
-        [contentView addSubview:assetView];
+        [assetContainer addSubview:assetView];
         
         PicturesCollectionViewCellBadge *badge = self.badge = [[PicturesCollectionViewCellBadge alloc] init];
         badge.tintColor = [UIColor whiteColor];
@@ -170,12 +175,16 @@
     x = 0.0f;
     y = 0.0f;
     w = CGRectGetWidth(self.contentView.bounds);
-    h = w * 1.77777f;
+    h = w * 1.777777777f;
+    self.assetContainer.frame = CGRectMake(x, y, w, h);
+    
+    w = CGRectGetWidth(self.assetContainer.bounds);
+    h = CGRectGetHeight(self.assetContainer.bounds);
     self.assetView.frame = CGRectMake(x, y, w, h);
     
     size = [self.badge sizeThatFits:CGSizeZero];
     x = CGRectGetWidth(self.contentView.bounds) - (size.width + kPicturesCollectionViewCellMargin);
-    y = (y + h) - (size.height + kPicturesCollectionViewCellMargin);
+    y = CGRectGetMaxY(self.assetView.frame) - (size.height + kPicturesCollectionViewCellMargin);
     w = size.width;
     h = size.height;
     self.badge.frame = CGRectMake(x, y, w, h);

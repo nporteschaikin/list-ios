@@ -8,6 +8,7 @@
 
 #import "MyLocationPicturesViewController.h"
 #import "CreatePictureViewController.h"
+#import "LocationTitleView.h"
 #import "ListConstants.h"
 
 @interface MyLocationPicturesViewController ()
@@ -71,6 +72,23 @@
      */
     
     [super viewWillAppear:animated];
+    
+}
+
+#pragma mark - PicturesControllerDelegate
+
+- (void)picturesControllerDidFetchPictures:(PicturesController *)picturesController {
+    [super picturesControllerDidFetchPictures:picturesController];
+    
+    /*
+     * Create title view.
+     */
+    
+    LocationTitleView *titleView = [[LocationTitleView alloc] init];
+    Placemark *placemark = picturesController.placemark;
+    titleView.title = [NSString stringWithFormat:@"near %@", placemark.title];
+    titleView.image = [UIImage listIcon:ListUIIconPictures size:kUINavigationBarDefaultImageSize];
+    self.navigationItem.titleView = titleView;
     
 }
 

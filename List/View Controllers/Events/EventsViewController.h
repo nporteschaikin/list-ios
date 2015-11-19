@@ -7,9 +7,14 @@
 //
 
 #import "ListUIKit.h"
+#import "EventsController.h"
 #import "Session.h"
 
-@interface EventsViewController : ListUIViewController
+@interface EventsViewController : ListUIViewController <UICollectionViewDelegate, EventsControllerDelegate>
+
+@property (strong, nonatomic, readonly) EventsController *eventsController;
+@property (strong, nonatomic, readonly) Session *session;
+@property (strong, nonatomic, readonly) UICollectionView *collectionView;
 
 - (instancetype)initWithSession:(Session *)session;
 

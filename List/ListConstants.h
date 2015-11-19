@@ -19,6 +19,12 @@
 #define kAPIPictureEndpoint @"pictures/%@"
 #define kAPIPictureKey @"picture"
 
+#define kAPIEventsEndpoint @"events"
+#define kAPIEventsKey @"events"
+
+#define kAPIEventEndpoint @"events/%@"
+#define kAPIEventKey @"event"
+
 #define kAPIPlacemarkEndpoint @"placemark"
 #define kAPIPlacemarkKey @"placemark"
 
@@ -27,7 +33,7 @@
 
 #define kDiscoveryRadiusInMilesUserDefaultsKey @"kDiscoveryRadiusInMilesUserDefaultsKey"
 
-#define kUINavigationBarDefaultImageSize 25
+#define kUINavigationBarDefaultImageSize 15
 #define kListUITabBarDefaultImageSize 20
 
 #define kPicturesHeightMultiplier = 1.7777;

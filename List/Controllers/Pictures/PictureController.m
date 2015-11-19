@@ -60,6 +60,16 @@
             [self.delegate pictureControllerDidSavePicture:self];
         }
         
+    } onProgress:^(NSInteger bytesWritten, NSInteger bytesExpectedToWrite) {
+        
+        /*
+         * Send delegate message.
+         */
+        
+        if ([self.delegate respondsToSelector:@selector(pictureControllerIsSavingPicture:bytesWritten:bytesExpectedToWrite:)]) {
+            [self.delegate pictureControllerIsSavingPicture:self bytesWritten:bytesWritten bytesExpectedToWrite:bytesExpectedToWrite];
+        }
+        
     } onError:^(NSError *error) {
         
         /*

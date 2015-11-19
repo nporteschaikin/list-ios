@@ -26,5 +26,6 @@ typedef NS_ENUM(NSUInteger, APIRequestMethod) {
 @property (strong, nonatomic) Session *session;
 
 - (void)sendRequest:(void(^)(id<NSObject> body))onComplete onError:(void(^)(NSError *error))onError onFail:(void(^)(id<NSObject> body))onFail;
+- (void)sendRequest:(void(^)(id<NSObject> body))onComplete onProgress:(void(^)(NSInteger bytesWritten, NSInteger bytesExpectedToWrite))onProgress onError:(void(^)(NSError *error))onError onFail:(void(^)(id<NSObject> body))onFail;
 
 @end

@@ -79,13 +79,6 @@
     UICollectionView *collectionView = self.collectionView;
     [self.dataSource registerReuseIdentifiersForCollectionView:collectionView];
     
-    /*
-     * Set navigation item title view.
-     */
-    
-    UIImage *icon = [[UIImage listIcon:ListUIIconPictures size:kUINavigationBarDefaultImageSize] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:icon];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {

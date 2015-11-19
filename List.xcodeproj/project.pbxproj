@@ -30,6 +30,7 @@
 		4F7453741BFC017D00D77DD4 /* CameraShutterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7453731BFC017D00D77DD4 /* CameraShutterButton.m */; };
 		4F7453771BFCDE4800D77DD4 /* PicturesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7453761BFCDE4800D77DD4 /* PicturesCollectionViewCell.m */; };
 		4F74537C1BFCE0A900D77DD4 /* PicturesLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F74537B1BFCE0A900D77DD4 /* PicturesLayout.m */; };
+		4F74537F1BFD297300D77DD4 /* LocationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F74537E1BFD297300D77DD4 /* LocationTitleView.m */; };
 		4F89A9001B7D1EFD00C8BF85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A8FF1B7D1EFD00C8BF85 /* main.m */; };
 		4F89A9031B7D1EFD00C8BF85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A9021B7D1EFD00C8BF85 /* AppDelegate.m */; };
 		4F89A90B1B7D1EFD00C8BF85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A90A1B7D1EFD00C8BF85 /* Images.xcassets */; };
@@ -164,6 +165,8 @@
 		4F7453761BFCDE4800D77DD4 /* PicturesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesCollectionViewCell.m; sourceTree = "<group>"; };
 		4F74537A1BFCE0A900D77DD4 /* PicturesLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesLayout.h; sourceTree = "<group>"; };
 		4F74537B1BFCE0A900D77DD4 /* PicturesLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesLayout.m; sourceTree = "<group>"; };
+		4F74537D1BFD297300D77DD4 /* LocationTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationTitleView.h; sourceTree = "<group>"; };
+		4F74537E1BFD297300D77DD4 /* LocationTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTitleView.m; sourceTree = "<group>"; };
 		4F89A8FA1B7D1EFD00C8BF85 /* List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = List.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F89A8FE1B7D1EFD00C8BF85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F89A8FF1B7D1EFD00C8BF85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -806,6 +809,8 @@
 				4F89A9AB1B7D53EA00C8BF85 /* Login */,
 				4F7453721BFC017D00D77DD4 /* CameraShutterButton.h */,
 				4F7453731BFC017D00D77DD4 /* CameraShutterButton.m */,
+				4F74537D1BFD297300D77DD4 /* LocationTitleView.h */,
+				4F74537E1BFD297300D77DD4 /* LocationTitleView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1163,6 +1168,7 @@
 				4F89A9DF1B7D658400C8BF85 /* UIImage+MultiFormat.m in Sources */,
 				4F89A9D81B7D658400C8BF85 /* SDWebImageDecoder.m in Sources */,
 				4F89A9001B7D1EFD00C8BF85 /* main.m in Sources */,
+				4F74537F1BFD297300D77DD4 /* LocationTitleView.m in Sources */,
 				4F64DAAA1B8CDB37009F6943 /* PicturesViewController.m in Sources */,
 				4F8F85811B8A716B0055D552 /* TagsScrollView.m in Sources */,
 				4FB9B4661B7E91B00016BFC3 /* MyLocationEventsViewController.m in Sources */,

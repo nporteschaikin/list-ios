@@ -19,6 +19,7 @@
 - (void)pictureController:(PictureController *)pictureController failedToFetchPictureWithError:(NSError *)error;
 - (void)pictureController:(PictureController *)pictureController failedToFetchPictureWithResponse:(id<NSObject>)response;
 - (void)pictureControllerDidSavePicture:(PictureController *)pictureController;
+- (void)pictureControllerIsSavingPicture:(PictureController *)pictureController bytesWritten:(NSInteger)bytesWritten bytesExpectedToWrite:(NSInteger)bytesExpectedToWrite;
 - (void)pictureController:(PictureController *)pictureController failedToSavePictureWithError:(NSError *)error;
 - (void)pictureController:(PictureController *)pictureController failedToSavePictureWithResponse:(id<NSObject>)response;
 

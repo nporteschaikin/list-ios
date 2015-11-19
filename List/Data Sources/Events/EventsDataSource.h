@@ -6,8 +6,12 @@
 //  Copyright (c) 2015 Noah Portes Chaikin. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "ListUIKit.h"
+#import "EventsController.h"
 
 @interface EventsDataSource : NSObject
+
+- (instancetype)initWithEventsController:(EventsController *)eventsController;
+- (void)registerReuseIdentifiersForCollectionView:(UICollectionView *)collectionView;
 
 @end

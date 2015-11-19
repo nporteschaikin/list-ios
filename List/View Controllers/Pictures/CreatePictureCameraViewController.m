@@ -56,7 +56,6 @@ typedef NS_ENUM(NSUInteger, CreatePictureCameraViewControllerAction) {
      */
     
     self.createPictureCameraView = [[CreatePictureCameraView alloc] init];
-    self.createPictureCameraView.delegate = self;
     self.view = self.createPictureCameraView;
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
@@ -70,6 +69,18 @@ typedef NS_ENUM(NSUInteger, CreatePictureCameraViewControllerAction) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    /*
+     * Set button handlers.
+     */
+    
+    CreatePictureCameraView *view = self.createPictureCameraView;
+    CameraShutterButton *shutterButton = view.shutterButton;
+    UIButton *flipButton = view.flipButton;
+    UIButton *closeButton = view.closeButton;
+    [shutterButton addTarget:self action:@selector(handleShutterButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
+    [flipButton addTarget:self action:@selector(handleFlipButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
+    [closeButton addTarget:self action:@selector(handleCloseButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
     
     /*
      * Start session.
@@ -99,9 +110,9 @@ typedef NS_ENUM(NSUInteger, CreatePictureCameraViewControllerAction) {
     
 }
 
-#pragma mark - PictureEditorViewDelegate
+#pragma mark - View button handlers
 
-- (void)didTouchDownShutterButtonCreatePictureCameraView:(CreatePictureCameraView *)view {
+- (void)handleShutterButtonTouchDown:(CameraShutterButton *)button {
     
     /*
      * Take photo.
@@ -112,7 +123,7 @@ typedef NS_ENUM(NSUInteger, CreatePictureCameraViewControllerAction) {
     
 }
 
-- (void)createPictureCameraView:(CreatePictureCameraView *)view flipButtonDidChangeState:(UIControlState)state {
+- (void)handleFlipButtonTouchDown:(UIButton *)button {
     
     /*
      * Toggle device.
@@ -121,6 +132,16 @@ typedef NS_ENUM(NSUInteger, CreatePictureCameraViewControllerAction) {
     
     ListUICameraController *cameraController = self.cameraController;
     [cameraController toggleDevice];
+    
+}
+
+- (void)handleCloseButtonTouchDown:(UIButton *)button {
+    
+    /*
+     * Close view.
+     */
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 

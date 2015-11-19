@@ -10,11 +10,16 @@
 
 @interface CreatePictureEditorView ()
 
+@property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) UIView *contentView;
 @property (strong, nonatomic) UIView *formView;
 @property (strong, nonatomic) UIToolbar *toolbar;
 @property (strong, nonatomic) ListUITextView *textView;
 @property (strong, nonatomic) UIImageView *imageView;
+@property (strong, nonatomic) CALayer *progressTrack;
+@property (strong, nonatomic) CALayer *progressBar;
+@property (strong, nonatomic) UIButton *returnButton;
+@property (strong, nonatomic) UIButton *closeButton;
 
 @end
 
@@ -28,12 +33,6 @@ static CGFloat const kCreatePictureEditorViewToolbarViewHeight = 50.f;
     if (self = [super init]) {
         
         /*
-         * Set defaults.
-         */
-        
-        self.scrollEnabled = NO;
-        
-        /*
          * Add blur effect.
          */
         
@@ -41,6 +40,14 @@ static CGFloat const kCreatePictureEditorViewToolbarViewHeight = 50.f;
         UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
         effectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self addSubview:effectView];
+        
+        /*
+         * Create scroll view.
+         */
+        
+        self.scrollView = [[UIScrollView alloc] init];
+        self.scrollView.scrollEnabled = NO;
+        [self addSubview:self.scrollView];
         
         /*
          * Create content view.
@@ -54,7 +61,7 @@ static CGFloat const kCreatePictureEditorViewToolbarViewHeight = 50.f;
         self.contentView.layer.shadowOpacity = 1.0f;
         self.contentView.layer.cornerRadius = 3.0f;
         self.contentView.backgroundColor = [UIColor whiteColor];
-        [self addSubview:self.contentView];
+        [self.scrollView addSubview:self.contentView];
         
         /*
          * Create form view.
@@ -92,6 +99,58 @@ static CGFloat const kCreatePictureEditorViewToolbarViewHeight = 50.f;
         self.toolbar.tintColor = [UIColor listBlueColorAlpha:1];
         [self.contentView addSubview:self.toolbar];
         
+        /*
+         * Create progress track.
+         */
+        
+        self.progressTrack = [CALayer layer];
+        self.progressTrack.backgroundColor = [UIColor listLightGrayColorAlpha:1.0f].CGColor;
+        [self.contentView.layer addSublayer:self.progressTrack];
+        
+        /*
+         * Create progress bar.
+         */
+        
+        self.progressBar = [CALayer layer];
+        self.progressBar.backgroundColor = [UIColor listBlueColorAlpha:1.0f].CGColor;
+        [self.contentView.layer addSublayer:self.progressBar];
+        
+        /*
+         * Set button params.
+         */
+        
+        UIColor *color = [UIColor whiteColor];
+        CGSize shadowOffset = CGSizeZero;
+        CGFloat shadowRadius = 3.0f;
+        CGFloat shadowOpacity = 0.5f;
+        CGColorRef shadowColor = [UIColor listBlackColorAlpha:1].CGColor;
+        
+        /*
+         * Create flip button.
+         */
+        
+        UIImage *returnImage = [UIImage listIcon:ListUIIconReturn size:30.f color:color];
+        self.returnButton = [[UIButton alloc] init];
+        self.returnButton.layer.shadowOffset = shadowOffset;
+        self.returnButton.layer.shadowRadius = shadowRadius;
+        self.returnButton.layer.shadowOpacity = shadowOpacity;
+        self.returnButton.layer.shadowColor = shadowColor;
+        [self.returnButton setImage:returnImage forState:UIControlStateNormal];
+        [self addSubview:self.returnButton];
+        
+        /*
+         * Create close button.
+         */
+        
+        UIImage *closeImage = [UIImage listIcon:ListUIIconCross size:30.f color:color];
+        self.closeButton = [[UIButton alloc] init];
+        self.closeButton.layer.shadowOffset = shadowOffset;
+        self.closeButton.layer.shadowRadius = shadowRadius;
+        self.closeButton.layer.shadowOpacity = shadowOpacity;
+        self.closeButton.layer.shadowColor = shadowColor;
+        [self.closeButton setImage:closeImage forState:UIControlStateNormal];
+        [self addSubview:self.closeButton];
+        
     }
     return self;
 }
@@ -101,6 +160,37 @@ static CGFloat const kCreatePictureEditorViewToolbarViewHeight = 50.f;
     
     CGFloat x, y, w, h;
     CGSize size;
+    
+    /*
+     * Layout return button.
+     */
+    
+    size = [self.returnButton sizeThatFits:CGSizeZero];
+    x = 25.f;
+    y = 25.f;
+    w = size.width;
+    h = size.height;
+    self.returnButton.frame = CGRectMake(x, y, w, h);
+    
+    /*
+     * Layout close button.
+     */
+    
+    size = [self.closeButton sizeThatFits:CGSizeZero];
+    x = CGRectGetWidth(self.bounds) - (size.width + 25.f);
+    w = size.width;
+    h = size.height;
+    self.closeButton.frame = CGRectMake(x, y, w, h);
+    
+    /*
+     * Layout scroll view.
+     */
+    
+    x = 0.0f;
+    y = 0.0f;
+    w = CGRectGetWidth(self.bounds);
+    h = CGRectGetHeight(self.bounds);
+    self.scrollView.frame = CGRectMake(x, y, w, h);
     
     /*
      * Layout content view.
@@ -124,11 +214,21 @@ static CGFloat const kCreatePictureEditorViewToolbarViewHeight = 50.f;
     self.formView.frame = CGRectMake(x, y, w, h);
     
     /*
-     * Layout text view.
+     * Layout progress view.
      */
     
     x = 0.0f;
     y = 0.0f;
+    w = CGRectGetWidth(self.formView.bounds);
+    h = 3.0f;
+    self.progressTrack.frame = CGRectMake(x, y, w, h);
+    
+    /*
+     * Layout text view.
+     */
+    
+    x = 0.0f;
+    y = 3.0f;
     w = CGRectGetWidth(self.formView.bounds);
     h = CGRectGetHeight(self.formView.bounds);
     self.textView.frame = CGRectMake(x, y, w, h);
@@ -154,18 +254,45 @@ static CGFloat const kCreatePictureEditorViewToolbarViewHeight = 50.f;
     self.toolbar.frame = CGRectMake(x, y, w, h);
     
     /*
+     * Set progress bar frame.
+     */
+    
+    [self updateProgressBarFrame];
+    
+    /*
      * Set content size.
      */
     
     w = CGRectGetWidth(self.bounds);
     h = CGRectGetHeight(self.bounds);
-    self.contentSize = CGSizeMake(w, h);
+    self.scrollView.contentSize = CGSizeMake(w, h);
     
 }
 
 - (BOOL)becomeFirstResponder {
     [self.textView becomeFirstResponder];
     return YES;
+}
+
+- (BOOL)resignFirstResponder {
+    [self.textView resignFirstResponder];
+    return YES;
+}
+
+- (void)updateProgressBarFrame {
+    
+    /*
+     * Update frame for progress
+     * bar.
+     */
+    
+    CGFloat progress = self.progress;
+    CALayer *progressTrack = self.progressTrack;
+    CALayer *progressBar = self.progressBar;
+    CGRect frame = progressTrack.frame;
+    frame.size.width = frame.size.width * progress;
+    progressBar.frame = frame;
+    
 }
 
 #pragma mark - Dynamic getters
@@ -215,6 +342,22 @@ static CGFloat const kCreatePictureEditorViewToolbarViewHeight = 50.f;
      */
     
     self.imageView.image = image;
+    
+}
+
+- (void)setProgress:(CGFloat)progress {
+    
+    /*
+     * Set progress.
+     */
+    
+    _progress = progress;
+    
+    /*
+     * Set progress bar frame.
+     */
+    
+    [self updateProgressBarFrame];
     
 }
 
