@@ -30,7 +30,7 @@
          * Set default inset.
          */
         
-        UIEdgeInsets insets = UIEdgeInsetsMake(6.0f, 10.0f, 6.0f, 10.0f);
+        UIEdgeInsets insets = UIEdgeInsetsMake(11.0f, 11.0f, 11.0f, 11.0f);
         textView.textContainerInset = insets;
         
     }

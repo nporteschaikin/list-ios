@@ -30,7 +30,7 @@
          * Set default inset.
          */
         
-        UIEdgeInsets insets = UIEdgeInsetsMake(0.0f, 15.0f, 0.0f, 15.0f);
+        UIEdgeInsets insets = UIEdgeInsetsMake(0.0f, 16.0f, 0.0f, 16.0f);
         textField.textInsets = insets;
         
     }

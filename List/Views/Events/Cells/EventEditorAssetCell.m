@@ -25,7 +25,6 @@
          * Set defaults.
          */
         
-        self.contentView.backgroundColor = [UIColor listBlackColorAlpha:1.0f];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     
         /*
@@ -33,7 +32,7 @@
          */
         
         UIImageView *assetView = self.assetView = [[UIImageView alloc] init];
-        assetView.backgroundColor = [UIColor clearColor];
+        assetView.backgroundColor = [UIColor listBlackColorAlpha:1.0f];
         assetView.contentMode = UIViewContentModeScaleAspectFill;
         assetView.clipsToBounds = YES;
         [self.contentView addSubview:assetView];

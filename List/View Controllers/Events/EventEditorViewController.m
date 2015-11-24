@@ -54,6 +54,7 @@
     self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self;
     self.tableView.contentInset = UIEdgeInsetsMake(-2.0f, 0.0f, 0.0f, 0.0f); // A little hacky.
+    self.tableView.bounces = NO;
     self.view = self.tableView;
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin;
     
@@ -106,6 +107,27 @@
     
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter removeObserver:self];
+    
+}
+
+
+
+- (void)setEventAssetWithImage:(UIImage *)image {
+    
+    /*
+     * Create asset.
+     */
+    
+    Event *event = self.event;
+    Photo *asset = [[Photo alloc] init];
+    asset.image = image;
+    event.asset = asset;
+    
+    /*
+     * Reload table view cell.
+     */
+    
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:EventEditorDataSourceCellAsset inSection:EventEditorDataSourceSectionAsset]] withRowAnimation:UITableViewRowAnimationFade];
     
 }
 
@@ -224,25 +246,6 @@
             break;
         }
     }
-    
-}
-
-- (void)setEventAssetWithImage:(UIImage *)image {
-    
-    /*
-     * Create asset.
-     */
-    
-    Event *event = self.event;
-    Photo *asset = [[Photo alloc] init];
-    asset.image = image;
-    event.asset = asset;
-    
-    /*
-     * Reload table view cell.
-     */
-    
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:EventEditorDataSourceCellAsset inSection:EventEditorDataSourceSectionAsset]] withRowAnimation:UITableViewRowAnimationFade];
     
 }
 

@@ -37,7 +37,7 @@
      * Update attributed placeholder.
      */
     
-    self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeholder attributes:@{NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
+    self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeholder attributes:@{NSForegroundColorAttributeName:[UIColor colorWithHex:0xC7C7C7 alpha:1.0F]}];
     
 }
 
