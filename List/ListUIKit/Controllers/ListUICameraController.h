@@ -13,6 +13,7 @@
 
 @protocol ListUICameraControllerDelegate <NSObject>
 
+@optional
 - (void)cameraController:(ListUICameraController *)controller didCaptureStillImage:(UIImage *)image;
 
 @end

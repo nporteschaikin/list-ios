@@ -10,6 +10,7 @@
 #import "CreatePictureCameraViewController.h"
 #import "CreatePictureEditorViewController.h"
 #import "CreatePictureViewControllerAnimator.h"
+#import "ListConstants.h"
 
 /*
  * @class CreatePictureViewControllerTransitionContext
@@ -77,8 +78,9 @@
  * @class CreatePictureViewController
  */
 
-@interface CreatePictureViewController ()
+@interface CreatePictureViewController () <ListUICameraViewControllerDelegate>
 
+@property (strong, nonatomic) Picture *picture;
 @property (strong, nonatomic) CreatePictureCameraViewController *cameraViewController;
 @property (strong, nonatomic) CreatePictureEditorViewController *editorViewController;
 
@@ -88,12 +90,14 @@
 
 - (instancetype)initWithPicture:(Picture *)picture session:(Session *)session {
     if (self = [super init]) {
+        self.picture = picture;
         
         /*
          * Create camera view controller.
          */
         
         self.cameraViewController = [[CreatePictureCameraViewController alloc] initWithPicture:picture];
+        self.cameraViewController.delegate = self;
         
         /*
          * Create editor view controller.
@@ -130,14 +134,18 @@
      * based on action.
      */
     
+    UINavigationItem *navigationItem = self.navigationItem;
+    navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage listIcon:ListUIIconCross size:kUINavigationBarCrossImageSize] style:UIBarButtonItemStyleDone target:self action:@selector(handleRightBarButtonItem:)];
     ListUIViewController *toViewController;
     switch (action) {
         case CreatePictureViewControllerActionEdit: {
             toViewController = self.editorViewController;
+            navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage listIcon:ListUIIconReturn size:kUINavigationBarDefaultImageSize] style:UIBarButtonItemStyleDone target:self action:@selector(handleLeftBarButtonItem:)];
             break;
         }
         case CreatePictureViewControllerActionCamera: {
             toViewController = self.cameraViewController;
+            navigationItem.leftBarButtonItem = nil;
             break;
         }
     }
@@ -218,6 +226,66 @@
      */
     
     return YES;
+    
+}
+
+#pragma mark - ListUICameraViewControllerDelegate
+
+- (void)cameraViewController:(CreatePictureCameraViewController *)controller didCaptureStillImage:(UIImage *)image {
+    
+    /*
+     * If we have a location, use it.
+     */
+    
+    LocationManager *locationManager = controller.locationManager;
+    CLLocation *location = locationManager.location;
+    if (locationManager.location) {
+        
+        /*
+         * Create picture.
+         */
+        
+        Picture *picture = self.picture;
+        Photo *asset = [[Photo alloc] init];
+        asset.image = image;
+        picture.asset = asset;
+        picture.location = location;
+        
+        /*
+         * Transition to edit action.
+         */
+        
+        [self transition:CreatePictureViewControllerActionEdit animated:YES];
+        
+    }
+    
+}
+
+#pragma mark - Bar button handlers
+
+- (void)handleLeftBarButtonItem:(UIBarButtonItem *)item {
+    if (!self.childViewControllers.count) return;
+    
+    UIViewController *controller = self.childViewControllers[0];
+    if ([controller isKindOfClass:[CreatePictureEditorViewController class]]) {
+        
+        /*
+         * If on editor, transition back to camera.
+         */
+        
+        [self transition:CreatePictureViewControllerActionCamera animated:YES];
+        
+    }
+    
+}
+
+- (void)handleRightBarButtonItem:(UIBarButtonItem *)item {
+    
+    /*
+     * Close view controller.
+     */
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 

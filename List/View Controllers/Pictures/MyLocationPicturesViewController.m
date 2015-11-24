@@ -9,6 +9,7 @@
 #import "MyLocationPicturesViewController.h"
 #import "CreatePictureViewController.h"
 #import "LocationTitleView.h"
+#import "ClearNavigationBar.h"
 #import "ListConstants.h"
 
 @interface MyLocationPicturesViewController ()
@@ -86,7 +87,7 @@
     
     LocationTitleView *titleView = [[LocationTitleView alloc] init];
     Placemark *placemark = picturesController.placemark;
-    titleView.title = [NSString stringWithFormat:@"near %@", placemark.title];
+    titleView.title = placemark.title;
     titleView.image = [UIImage listIcon:ListUIIconPictures size:kUINavigationBarDefaultImageSize];
     self.navigationItem.titleView = titleView;
     
@@ -138,12 +139,14 @@
     Picture *picture = [[Picture alloc] init];
     Session *session = self.session;
     CreatePictureViewController *viewController = [[CreatePictureViewController alloc] initWithPicture:picture session:session];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[ClearNavigationBar class] toolbarClass:nil];
+    navigationController.viewControllers = @[ viewController ];
     
     /*
      * Present.
      */
     
-    [self presentViewController:viewController animated:YES completion:nil];
+    [self presentViewController:navigationController animated:YES completion:nil];
     
 }
 

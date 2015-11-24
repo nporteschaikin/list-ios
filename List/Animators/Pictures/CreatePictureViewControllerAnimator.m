@@ -11,7 +11,7 @@
 @implementation CreatePictureViewControllerAnimator
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
-    return 0.35f;
+    return 0.25f;
 }
 
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
@@ -24,6 +24,12 @@
     if (!self.reverse) {
         [containerView addSubview:toView];
     }
+    
+    /*
+     * Set frame.
+     */
+    
+    toView.frame = containerView.frame;
     
     /*
      * Create states.
@@ -53,7 +59,6 @@
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                      animations:animationBlock
                      completion:^(BOOL finished) {
-                         toView.transform = CGAffineTransformIdentity;
                          [transitionContext completeTransition:finished];
                      }];
 }

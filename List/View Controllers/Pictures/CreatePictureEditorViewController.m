@@ -53,17 +53,7 @@
     
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(handleKeyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [defaultCenter addObserver:self selector:@selector(handleKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    
-    /*
-     * Set button handlers.
-     */
-    
-    CreatePictureEditorView *view = self.createPictureEditorView;
-    UIButton *returnButton = view.returnButton;
-    UIButton *closeButton = view.closeButton;
-    [returnButton addTarget:self action:@selector(handleReturnButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
-    [closeButton addTarget:self action:@selector(handleCloseButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
+    [defaultCenter addObserver:self selector:@selector(handleKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];\
     
 }
 
@@ -83,8 +73,11 @@
      * Set picture values where appropriate.
      */
     
-    view.image = asset.image;
-    view.text = picture.text;
+    UIImageView *imageView = view.imageView;
+    imageView.image = asset.image;
+    
+    ListUITextView *textView = view.textView;
+    textView.text = picture.text;
     
 }
 
@@ -103,7 +96,8 @@
      * If the toolbar has no items, set 'em up.
      */
     
-    if (!view.toolbarItems) {
+    UIToolbar *toolbar = view.toolbar;
+    if (!toolbar.items) {
         
         /*
          * Create flex item.
@@ -121,7 +115,7 @@
          * Set to toolbar
          */
         
-        [view setToolbarItems:@[flexItem, saveItem] animated:YES];
+        [toolbar setItems:@[flexItem, saveItem] animated:YES];
         
     }
     
@@ -170,9 +164,10 @@
      */
     
     CreatePictureEditorView *view = self.createPictureEditorView;
+    ListUITextView *textView = view.textView;
     PictureController *pictureController = self.pictureController;
     Picture *picture = pictureController.picture;
-    picture.text = view.text;
+    picture.text = textView.text;
     
     /*
      * Disable user interaction on view.
@@ -189,36 +184,10 @@
     
 }
 
-#pragma mark - Button handlers
-
-- (void)handleReturnButtonTouchDown:(UIButton *)button {
-    
-    /*
-     * If parent view is create picture, return.
-     */
-    
-    UIViewController *parentViewController = self.parentViewController;
-    if ([parentViewController isKindOfClass:[CreatePictureViewController class]]) {
-        [self.view resignFirstResponder];
-        [((CreatePictureViewController *)parentViewController) transition:CreatePictureViewControllerActionCamera animated:YES];
-    }
-    
-}
-
-- (void)handleCloseButtonTouchDown:(UIButton *)button {
-    
-    /*
-     * Close view.
-     */
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-}
-
 #pragma mark - Keyboard handlers
 
 - (void)handleKeyboardWillShow:(NSNotification *)notification {
-    NSDictionary* info = [notification userInfo];
+    NSDictionary *info = [notification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     
     /*
@@ -227,16 +196,15 @@
     
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
     CreatePictureEditorView *view = self.createPictureEditorView;
-    UIScrollView *scrollView = view.scrollView;
-    scrollView.contentInset = contentInsets;
-    scrollView.scrollIndicatorInsets = contentInsets;
+    view.contentInset = contentInsets;
+    view.scrollIndicatorInsets = contentInsets;
     
     /*
      * Scroll to bottom.
      */
     
     CGPoint point = CGPointMake(0, kbSize.height);
-    [scrollView setContentOffset:point animated:YES];
+    [view setContentOffset:point animated:YES];
     
 }
 
@@ -248,9 +216,8 @@
     
     CreatePictureEditorView *view = self.createPictureEditorView;
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-    UIScrollView *scrollView = view.scrollView;
-    scrollView.contentInset = contentInsets;
-    scrollView.scrollIndicatorInsets = contentInsets;
+    view.contentInset = contentInsets;
+    view.scrollIndicatorInsets = contentInsets;
     
 }
 

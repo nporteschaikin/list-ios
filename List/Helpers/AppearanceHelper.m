@@ -25,7 +25,7 @@
     
     [[UINavigationBar appearance] setBarTintColor:[UIColor listBlueColorAlpha:1]];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{ NSFontAttributeName:[UIFont listFontWithSize:11.f] }];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{ NSFontAttributeName:[UIFont listSemiboldFontWithSize:15.f], NSForegroundColorAttributeName: [UIColor whiteColor] }];
     
 }
 

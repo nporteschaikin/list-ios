@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4F4D3B801B84326C00D79CD3 /* CreatePictureCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D3B7F1B84326C00D79CD3 /* CreatePictureCameraViewController.m */; };
-		4F4D3B861B84341C00D79CD3 /* CreatePictureCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D3B851B84341C00D79CD3 /* CreatePictureCameraView.m */; };
 		4F4D3B8C1B84B65500D79CD3 /* CreatePictureEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D3B8B1B84B65500D79CD3 /* CreatePictureEditorViewController.m */; };
 		4F4D3B8F1B84B94500D79CD3 /* CreatePictureEditorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D3B8E1B84B94500D79CD3 /* CreatePictureEditorView.m */; };
 		4F4D3B921B84BFED00D79CD3 /* CreatePictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D3B911B84BFED00D79CD3 /* CreatePictureViewController.m */; };
@@ -27,10 +26,13 @@
 		4F7453671BFB818100D77DD4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F7453641BFB818100D77DD4 /* FBSDKCoreKit.framework */; };
 		4F7453681BFB818100D77DD4 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F7453651BFB818100D77DD4 /* FBSDKLoginKit.framework */; };
 		4F7453691BFB818100D77DD4 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F7453661BFB818100D77DD4 /* FBSDKShareKit.framework */; };
-		4F7453741BFC017D00D77DD4 /* CameraShutterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7453731BFC017D00D77DD4 /* CameraShutterButton.m */; };
 		4F7453771BFCDE4800D77DD4 /* PicturesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7453761BFCDE4800D77DD4 /* PicturesCollectionViewCell.m */; };
 		4F74537C1BFCE0A900D77DD4 /* PicturesLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F74537B1BFCE0A900D77DD4 /* PicturesLayout.m */; };
 		4F74537F1BFD297300D77DD4 /* LocationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F74537E1BFD297300D77DD4 /* LocationTitleView.m */; };
+		4F7453891BFE193000D77DD4 /* EventsLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7453881BFE193000D77DD4 /* EventsLayout.m */; };
+		4F7453901BFE207500D77DD4 /* ListUICameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F74538F1BFE207500D77DD4 /* ListUICameraViewController.m */; };
+		4F7453941BFE211900D77DD4 /* ListUICameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7453931BFE211900D77DD4 /* ListUICameraView.m */; };
+		4F7453971BFE216E00D77DD4 /* ListUICameraShutterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7453961BFE216E00D77DD4 /* ListUICameraShutterButton.m */; };
 		4F89A9001B7D1EFD00C8BF85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A8FF1B7D1EFD00C8BF85 /* main.m */; };
 		4F89A9031B7D1EFD00C8BF85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A9021B7D1EFD00C8BF85 /* AppDelegate.m */; };
 		4F89A90B1B7D1EFD00C8BF85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A90A1B7D1EFD00C8BF85 /* Images.xcassets */; };
@@ -59,7 +61,6 @@
 		4F89A97F1B7D237900C8BF85 /* EventsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A97E1B7D237900C8BF85 /* EventsDataSource.m */; };
 		4F89A9821B7D238200C8BF85 /* PicturesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A9811B7D238200C8BF85 /* PicturesDataSource.m */; };
 		4F89A9851B7D239C00C8BF85 /* UserEditorDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A9841B7D239C00C8BF85 /* UserEditorDataSource.m */; };
-		4F89A9881B7D23BA00C8BF85 /* EventEditorDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A9871B7D23BA00C8BF85 /* EventEditorDataSource.m */; };
 		4F89A98C1B7D240A00C8BF85 /* APIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A98B1B7D240A00C8BF85 /* APIRequest.m */; };
 		4F89A98F1B7D241200C8BF85 /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A98E1B7D241200C8BF85 /* Session.m */; };
 		4F89A99C1B7D249100C8BF85 /* ListReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A99B1B7D249100C8BF85 /* ListReachabilityManager.m */; };
@@ -84,7 +85,6 @@
 		4F89AA001B7D65E000C8BF85 /* loginView1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A9F11B7D65E000C8BF85 /* loginView1.jpg */; };
 		4F89AA011B7D65E000C8BF85 /* loginView2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A9F21B7D65E000C8BF85 /* loginView2.jpg */; };
 		4F89AA021B7D65E000C8BF85 /* loginView3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A9F31B7D65E000C8BF85 /* loginView3.jpg */; };
-		4F8A47131B8F89B000ED2B3C /* PictureNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8A47121B8F89B000ED2B3C /* PictureNavigationBar.m */; };
 		4F8F85751B8A0D140055D552 /* PlacemarkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F85741B8A0D140055D552 /* PlacemarkController.m */; };
 		4F8F857D1B8A708F0055D552 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F857C1B8A708F0055D552 /* Tag.m */; };
 		4F8F85811B8A716B0055D552 /* TagsScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F85801B8A716B0055D552 /* TagsScrollView.m */; };
@@ -105,6 +105,15 @@
 		4FB9B45D1B7E90B20016BFC3 /* MyLocationPicturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9B45C1B7E90B20016BFC3 /* MyLocationPicturesViewController.m */; };
 		4FB9B4661B7E91B00016BFC3 /* MyLocationEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9B4651B7E91B00016BFC3 /* MyLocationEventsViewController.m */; };
 		4FB9B46C1B7E951D0016BFC3 /* NSString+ListUIIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB9B46B1B7E951D0016BFC3 /* NSString+ListUIIcon.m */; };
+		4FC59ACC1C036CED00F2C2ED /* EventsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC59ACB1C036CED00F2C2ED /* EventsCollectionViewCell.m */; };
+		4FC59AD01C03A51800F2C2ED /* BlurNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC59ACF1C03A51800F2C2ED /* BlurNavigationBar.m */; };
+		4FC59AD61C03A55F00F2C2ED /* ClearNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC59AD51C03A55F00F2C2ED /* ClearNavigationBar.m */; };
+		4FC59ADA1C03B25800F2C2ED /* ListUITextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC59AD91C03B25800F2C2ED /* ListUITextFieldCell.m */; };
+		4FC59ADD1C03B35200F2C2ED /* EventEditorDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC59ADC1C03B35200F2C2ED /* EventEditorDataSource.m */; };
+		4FC59AE01C03B61F00F2C2ED /* ListUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC59ADF1C03B61F00F2C2ED /* ListUITableViewCell.m */; };
+		4FC59AE31C03B9B700F2C2ED /* EventEditorAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC59AE21C03B9B700F2C2ED /* EventEditorAssetCell.m */; };
+		4FC59AE61C03D84000F2C2ED /* ListUITextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC59AE51C03D84000F2C2ED /* ListUITextViewCell.m */; };
+		4FC59AE91C03DDA600F2C2ED /* BlackNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC59AE81C03DDA600F2C2ED /* BlackNavigationBar.m */; };
 		4FFFD6AE1B8253CF00915241 /* UIColor+ListUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFFD6A91B8253CF00915241 /* UIColor+ListUI.m */; };
 		4FFFD6AF1B8253CF00915241 /* UIFont+ListUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFFD6AB1B8253CF00915241 /* UIFont+ListUI.m */; };
 		4FFFD6B01B8253CF00915241 /* UIImage+ListUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFFD6AD1B8253CF00915241 /* UIImage+ListUI.m */; };
@@ -124,8 +133,6 @@
 /* Begin PBXFileReference section */
 		4F4D3B7E1B84326C00D79CD3 /* CreatePictureCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePictureCameraViewController.h; sourceTree = "<group>"; };
 		4F4D3B7F1B84326C00D79CD3 /* CreatePictureCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePictureCameraViewController.m; sourceTree = "<group>"; };
-		4F4D3B841B84341C00D79CD3 /* CreatePictureCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePictureCameraView.h; sourceTree = "<group>"; };
-		4F4D3B851B84341C00D79CD3 /* CreatePictureCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePictureCameraView.m; sourceTree = "<group>"; };
 		4F4D3B8A1B84B65500D79CD3 /* CreatePictureEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePictureEditorViewController.h; sourceTree = "<group>"; };
 		4F4D3B8B1B84B65500D79CD3 /* CreatePictureEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePictureEditorViewController.m; sourceTree = "<group>"; };
 		4F4D3B8D1B84B94500D79CD3 /* CreatePictureEditorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePictureEditorView.h; sourceTree = "<group>"; };
@@ -159,14 +166,20 @@
 		4F7453641BFB818100D77DD4 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		4F7453651BFB818100D77DD4 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		4F7453661BFB818100D77DD4 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
-		4F7453721BFC017D00D77DD4 /* CameraShutterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraShutterButton.h; sourceTree = "<group>"; };
-		4F7453731BFC017D00D77DD4 /* CameraShutterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraShutterButton.m; sourceTree = "<group>"; };
 		4F7453751BFCDE4800D77DD4 /* PicturesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesCollectionViewCell.h; sourceTree = "<group>"; };
 		4F7453761BFCDE4800D77DD4 /* PicturesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesCollectionViewCell.m; sourceTree = "<group>"; };
 		4F74537A1BFCE0A900D77DD4 /* PicturesLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesLayout.h; sourceTree = "<group>"; };
 		4F74537B1BFCE0A900D77DD4 /* PicturesLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesLayout.m; sourceTree = "<group>"; };
 		4F74537D1BFD297300D77DD4 /* LocationTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationTitleView.h; sourceTree = "<group>"; };
 		4F74537E1BFD297300D77DD4 /* LocationTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTitleView.m; sourceTree = "<group>"; };
+		4F7453871BFE193000D77DD4 /* EventsLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsLayout.h; sourceTree = "<group>"; };
+		4F7453881BFE193000D77DD4 /* EventsLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsLayout.m; sourceTree = "<group>"; };
+		4F74538E1BFE207500D77DD4 /* ListUICameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListUICameraViewController.h; sourceTree = "<group>"; };
+		4F74538F1BFE207500D77DD4 /* ListUICameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListUICameraViewController.m; sourceTree = "<group>"; };
+		4F7453921BFE211900D77DD4 /* ListUICameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListUICameraView.h; sourceTree = "<group>"; };
+		4F7453931BFE211900D77DD4 /* ListUICameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListUICameraView.m; sourceTree = "<group>"; };
+		4F7453951BFE216E00D77DD4 /* ListUICameraShutterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListUICameraShutterButton.h; sourceTree = "<group>"; };
+		4F7453961BFE216E00D77DD4 /* ListUICameraShutterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListUICameraShutterButton.m; sourceTree = "<group>"; };
 		4F89A8FA1B7D1EFD00C8BF85 /* List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = List.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F89A8FE1B7D1EFD00C8BF85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F89A8FF1B7D1EFD00C8BF85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -223,8 +236,6 @@
 		4F89A9811B7D238200C8BF85 /* PicturesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesDataSource.m; sourceTree = "<group>"; };
 		4F89A9831B7D239C00C8BF85 /* UserEditorDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserEditorDataSource.h; sourceTree = "<group>"; };
 		4F89A9841B7D239C00C8BF85 /* UserEditorDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEditorDataSource.m; sourceTree = "<group>"; };
-		4F89A9861B7D23BA00C8BF85 /* EventEditorDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventEditorDataSource.h; sourceTree = "<group>"; };
-		4F89A9871B7D23BA00C8BF85 /* EventEditorDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventEditorDataSource.m; sourceTree = "<group>"; };
 		4F89A98A1B7D240A00C8BF85 /* APIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIRequest.h; sourceTree = "<group>"; };
 		4F89A98B1B7D240A00C8BF85 /* APIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIRequest.m; sourceTree = "<group>"; };
 		4F89A98D1B7D241200C8BF85 /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
@@ -271,8 +282,6 @@
 		4F89A9F11B7D65E000C8BF85 /* loginView1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loginView1.jpg; sourceTree = "<group>"; };
 		4F89A9F21B7D65E000C8BF85 /* loginView2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loginView2.jpg; sourceTree = "<group>"; };
 		4F89A9F31B7D65E000C8BF85 /* loginView3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loginView3.jpg; sourceTree = "<group>"; };
-		4F8A47111B8F89B000ED2B3C /* PictureNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureNavigationBar.h; sourceTree = "<group>"; };
-		4F8A47121B8F89B000ED2B3C /* PictureNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureNavigationBar.m; sourceTree = "<group>"; };
 		4F8F85731B8A0D140055D552 /* PlacemarkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacemarkController.h; sourceTree = "<group>"; };
 		4F8F85741B8A0D140055D552 /* PlacemarkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacemarkController.m; sourceTree = "<group>"; };
 		4F8F857B1B8A708F0055D552 /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
@@ -289,6 +298,24 @@
 		4FB9B4651B7E91B00016BFC3 /* MyLocationEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLocationEventsViewController.m; sourceTree = "<group>"; };
 		4FB9B46A1B7E951D0016BFC3 /* NSString+ListUIIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ListUIIcon.h"; sourceTree = "<group>"; };
 		4FB9B46B1B7E951D0016BFC3 /* NSString+ListUIIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ListUIIcon.m"; sourceTree = "<group>"; };
+		4FC59ACA1C036CED00F2C2ED /* EventsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsCollectionViewCell.h; sourceTree = "<group>"; };
+		4FC59ACB1C036CED00F2C2ED /* EventsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsCollectionViewCell.m; sourceTree = "<group>"; };
+		4FC59ACE1C03A51800F2C2ED /* BlurNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurNavigationBar.h; sourceTree = "<group>"; };
+		4FC59ACF1C03A51800F2C2ED /* BlurNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurNavigationBar.m; sourceTree = "<group>"; };
+		4FC59AD41C03A55F00F2C2ED /* ClearNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClearNavigationBar.h; sourceTree = "<group>"; };
+		4FC59AD51C03A55F00F2C2ED /* ClearNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClearNavigationBar.m; sourceTree = "<group>"; };
+		4FC59AD81C03B25800F2C2ED /* ListUITextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListUITextFieldCell.h; sourceTree = "<group>"; };
+		4FC59AD91C03B25800F2C2ED /* ListUITextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListUITextFieldCell.m; sourceTree = "<group>"; };
+		4FC59ADB1C03B35200F2C2ED /* EventEditorDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventEditorDataSource.h; sourceTree = "<group>"; };
+		4FC59ADC1C03B35200F2C2ED /* EventEditorDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventEditorDataSource.m; sourceTree = "<group>"; };
+		4FC59ADE1C03B61F00F2C2ED /* ListUITableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListUITableViewCell.h; sourceTree = "<group>"; };
+		4FC59ADF1C03B61F00F2C2ED /* ListUITableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListUITableViewCell.m; sourceTree = "<group>"; };
+		4FC59AE11C03B9B700F2C2ED /* EventEditorAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventEditorAssetCell.h; sourceTree = "<group>"; };
+		4FC59AE21C03B9B700F2C2ED /* EventEditorAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventEditorAssetCell.m; sourceTree = "<group>"; };
+		4FC59AE41C03D84000F2C2ED /* ListUITextViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListUITextViewCell.h; sourceTree = "<group>"; };
+		4FC59AE51C03D84000F2C2ED /* ListUITextViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListUITextViewCell.m; sourceTree = "<group>"; };
+		4FC59AE71C03DDA600F2C2ED /* BlackNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackNavigationBar.h; sourceTree = "<group>"; };
+		4FC59AE81C03DDA600F2C2ED /* BlackNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackNavigationBar.m; sourceTree = "<group>"; };
 		4FFFD6A31B82505100915241 /* ListUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListUIKit.h; sourceTree = "<group>"; };
 		4FFFD6A41B82505D00915241 /* ListUIConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListUIConstants.h; sourceTree = "<group>"; };
 		4FFFD6A51B82507B00915241 /* ListConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListConstants.h; sourceTree = "<group>"; };
@@ -376,12 +403,8 @@
 			isa = PBXGroup;
 			children = (
 				4F4D47341BA0607700DF3D74 /* Cells */,
-				4F4D3B841B84341C00D79CD3 /* CreatePictureCameraView.h */,
-				4F4D3B851B84341C00D79CD3 /* CreatePictureCameraView.m */,
 				4F4D3B8D1B84B94500D79CD3 /* CreatePictureEditorView.h */,
 				4F4D3B8E1B84B94500D79CD3 /* CreatePictureEditorView.m */,
-				4F8A47111B8F89B000ED2B3C /* PictureNavigationBar.h */,
-				4F8A47121B8F89B000ED2B3C /* PictureNavigationBar.m */,
 			);
 			path = Pictures;
 			sourceTree = "<group>";
@@ -435,6 +458,7 @@
 		4F7453781BFCE00400D77DD4 /* Layouts */ = {
 			isa = PBXGroup;
 			children = (
+				4F7453861BFE18F900D77DD4 /* Events */,
 				4F7453791BFCE01B00D77DD4 /* Pictures */,
 			);
 			path = Layouts;
@@ -447,6 +471,35 @@
 				4F74537B1BFCE0A900D77DD4 /* PicturesLayout.m */,
 			);
 			path = Pictures;
+			sourceTree = "<group>";
+		};
+		4F7453861BFE18F900D77DD4 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				4F7453871BFE193000D77DD4 /* EventsLayout.h */,
+				4F7453881BFE193000D77DD4 /* EventsLayout.m */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		4F74538D1BFE205000D77DD4 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				4F74538E1BFE207500D77DD4 /* ListUICameraViewController.h */,
+				4F74538F1BFE207500D77DD4 /* ListUICameraViewController.m */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		4F7453911BFE20EC00D77DD4 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				4F7453921BFE211900D77DD4 /* ListUICameraView.h */,
+				4F7453931BFE211900D77DD4 /* ListUICameraView.m */,
+				4F7453951BFE216E00D77DD4 /* ListUICameraShutterButton.h */,
+				4F7453961BFE216E00D77DD4 /* ListUICameraShutterButton.m */,
+			);
+			path = Camera;
 			sourceTree = "<group>";
 		};
 		4F89A8F11B7D1EFD00C8BF85 = {
@@ -725,8 +778,8 @@
 			children = (
 				4F89A97D1B7D237900C8BF85 /* EventsDataSource.h */,
 				4F89A97E1B7D237900C8BF85 /* EventsDataSource.m */,
-				4F89A9861B7D23BA00C8BF85 /* EventEditorDataSource.h */,
-				4F89A9871B7D23BA00C8BF85 /* EventEditorDataSource.m */,
+				4FC59ADB1C03B35200F2C2ED /* EventEditorDataSource.h */,
+				4FC59ADC1C03B35200F2C2ED /* EventEditorDataSource.m */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -804,11 +857,11 @@
 		4F89A9AA1B7D53B200C8BF85 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4FC59ACD1C03A50400F2C2ED /* Navigation Bars */,
+				4FC59AC81C036CCD00F2C2ED /* Events */,
 				4F8F857E1B8A715B0055D552 /* Tags */,
 				4F6D72B21B7F940F00ADA9D3 /* Pictures */,
 				4F89A9AB1B7D53EA00C8BF85 /* Login */,
-				4F7453721BFC017D00D77DD4 /* CameraShutterButton.h */,
-				4F7453731BFC017D00D77DD4 /* CameraShutterButton.m */,
 				4F74537D1BFD297300D77DD4 /* LocationTitleView.h */,
 				4F74537E1BFD297300D77DD4 /* LocationTitleView.m */,
 			);
@@ -918,6 +971,51 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		4FC59AC81C036CCD00F2C2ED /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				4FC59AC91C036CDD00F2C2ED /* Cells */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		4FC59AC91C036CDD00F2C2ED /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4FC59ACA1C036CED00F2C2ED /* EventsCollectionViewCell.h */,
+				4FC59ACB1C036CED00F2C2ED /* EventsCollectionViewCell.m */,
+				4FC59AE11C03B9B700F2C2ED /* EventEditorAssetCell.h */,
+				4FC59AE21C03B9B700F2C2ED /* EventEditorAssetCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		4FC59ACD1C03A50400F2C2ED /* Navigation Bars */ = {
+			isa = PBXGroup;
+			children = (
+				4FC59ACE1C03A51800F2C2ED /* BlurNavigationBar.h */,
+				4FC59ACF1C03A51800F2C2ED /* BlurNavigationBar.m */,
+				4FC59AD41C03A55F00F2C2ED /* ClearNavigationBar.h */,
+				4FC59AD51C03A55F00F2C2ED /* ClearNavigationBar.m */,
+				4FC59AE71C03DDA600F2C2ED /* BlackNavigationBar.h */,
+				4FC59AE81C03DDA600F2C2ED /* BlackNavigationBar.m */,
+			);
+			path = "Navigation Bars";
+			sourceTree = "<group>";
+		};
+		4FC59AD71C03B23E00F2C2ED /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4FC59AD81C03B25800F2C2ED /* ListUITextFieldCell.h */,
+				4FC59AD91C03B25800F2C2ED /* ListUITextFieldCell.m */,
+				4FC59ADE1C03B61F00F2C2ED /* ListUITableViewCell.h */,
+				4FC59ADF1C03B61F00F2C2ED /* ListUITableViewCell.m */,
+				4FC59AE41C03D84000F2C2ED /* ListUITextViewCell.h */,
+				4FC59AE51C03D84000F2C2ED /* ListUITextViewCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		4FFFD6A01B824EEF00915241 /* ListUIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -935,6 +1033,7 @@
 		4FFFD6A11B824F0500915241 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4F74538D1BFE205000D77DD4 /* Camera */,
 				4F6D72C51B7FA40500ADA9D3 /* Tab Bar */,
 				4F89A9241B7D200D00C8BF85 /* ListUIViewController.h */,
 				4F89A9251B7D200D00C8BF85 /* ListUIViewController.m */,
@@ -945,6 +1044,8 @@
 		4FFFD6A21B824F7C00915241 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4FC59AD71C03B23E00F2C2ED /* Cells */,
+				4F7453911BFE20EC00D77DD4 /* Camera */,
 				4F4D3B991B84D4FA00D79CD3 /* Fields */,
 				4F6D72C11B7FA2B800ADA9D3 /* Tab Bar */,
 			);
@@ -1121,25 +1222,30 @@
 				4F89A9501B7D21A300C8BF85 /* PicturesController.m in Sources */,
 				4F89A9A21B7D24E400C8BF85 /* LoginDataSource.m in Sources */,
 				4F89A9691B7D228B00C8BF85 /* Placemark.m in Sources */,
+				4F7453901BFE207500D77DD4 /* ListUICameraViewController.m in Sources */,
 				4FFFD6AF1B8253CF00915241 /* UIFont+ListUI.m in Sources */,
-				4F7453741BFC017D00D77DD4 /* CameraShutterButton.m in Sources */,
+				4FC59ADA1C03B25800F2C2ED /* ListUITextFieldCell.m in Sources */,
 				4F89A96F1B7D229900C8BF85 /* Picture.m in Sources */,
 				4F89A9821B7D238200C8BF85 /* PicturesDataSource.m in Sources */,
+				4FC59ADD1C03B35200F2C2ED /* EventEditorDataSource.m in Sources */,
 				4F8F85751B8A0D140055D552 /* PlacemarkController.m in Sources */,
 				4F89A9561B7D21CD00C8BF85 /* EventController.m in Sources */,
 				4F89A9531B7D21B800C8BF85 /* EventsController.m in Sources */,
 				4F4D3B8F1B84B94500D79CD3 /* CreatePictureEditorView.m in Sources */,
 				4F6D72C41B7FA40000ADA9D3 /* ListUITabBar.m in Sources */,
 				4F6D72CC1B7FA57A00ADA9D3 /* SettingsViewController.m in Sources */,
+				4F7453941BFE211900D77DD4 /* ListUICameraView.m in Sources */,
 				4F89A98F1B7D241200C8BF85 /* Session.m in Sources */,
 				4F4D3B801B84326C00D79CD3 /* CreatePictureCameraViewController.m in Sources */,
 				4F89A98C1B7D240A00C8BF85 /* APIRequest.m in Sources */,
+				4F7453891BFE193000D77DD4 /* EventsLayout.m in Sources */,
 				4F89A9DB1B7D658400C8BF85 /* SDWebImageManager.m in Sources */,
 				4F89A9E21B7D658400C8BF85 /* UIImageView+WebCache.m in Sources */,
+				4FC59AD61C03A55F00F2C2ED /* ClearNavigationBar.m in Sources */,
+				4FC59AE61C03D84000F2C2ED /* ListUITextViewCell.m in Sources */,
 				4F89A9391B7D209700C8BF85 /* LoginViewController.m in Sources */,
 				4F6D72C01B7F9BD300ADA9D3 /* AppearanceHelper.m in Sources */,
 				4F89A9751B7D22A200C8BF85 /* User.m in Sources */,
-				4F89A9881B7D23BA00C8BF85 /* EventEditorDataSource.m in Sources */,
 				4FA369051B825DF400FE7EAE /* UIImage+ListAdditions.m in Sources */,
 				4F89A9D41B7D658400C8BF85 /* MKAnnotationView+WebCache.m in Sources */,
 				4F89A9D51B7D658400C8BF85 /* NSData+ImageContentType.m in Sources */,
@@ -1165,14 +1271,18 @@
 				4F4D3B961B84C7FD00D79CD3 /* CreatePictureViewControllerAnimator.m in Sources */,
 				4F6D72DF1B7FB00700ADA9D3 /* LocationManager.m in Sources */,
 				4F89A93C1B7D20B400C8BF85 /* EventViewController.m in Sources */,
+				4FC59AE01C03B61F00F2C2ED /* ListUITableViewCell.m in Sources */,
 				4F89A9DF1B7D658400C8BF85 /* UIImage+MultiFormat.m in Sources */,
 				4F89A9D81B7D658400C8BF85 /* SDWebImageDecoder.m in Sources */,
 				4F89A9001B7D1EFD00C8BF85 /* main.m in Sources */,
+				4F7453971BFE216E00D77DD4 /* ListUICameraShutterButton.m in Sources */,
 				4F74537F1BFD297300D77DD4 /* LocationTitleView.m in Sources */,
+				4FC59AE91C03DDA600F2C2ED /* BlackNavigationBar.m in Sources */,
 				4F64DAAA1B8CDB37009F6943 /* PicturesViewController.m in Sources */,
 				4F8F85811B8A716B0055D552 /* TagsScrollView.m in Sources */,
 				4FB9B4661B7E91B00016BFC3 /* MyLocationEventsViewController.m in Sources */,
 				4F89A9661B7D228100C8BF85 /* ListModel.m in Sources */,
+				4FC59AE31C03B9B700F2C2ED /* EventEditorAssetCell.m in Sources */,
 				4F89A9351B7D207800C8BF85 /* EventsViewController.m in Sources */,
 				4F89A9DD1B7D658400C8BF85 /* UIButton+WebCache.m in Sources */,
 				4F7453771BFCDE4800D77DD4 /* PicturesCollectionViewCell.m in Sources */,
@@ -1182,14 +1292,14 @@
 				4F89A9AE1B7D53F800C8BF85 /* LoginView.m in Sources */,
 				4F89A97C1B7D236F00C8BF85 /* UserDataSource.m in Sources */,
 				4F89A9261B7D200D00C8BF85 /* ListUIViewController.m in Sources */,
-				4F4D3B861B84341C00D79CD3 /* CreatePictureCameraView.m in Sources */,
 				4F4D3B921B84BFED00D79CD3 /* CreatePictureViewController.m in Sources */,
 				4FB9B46C1B7E951D0016BFC3 /* NSString+ListUIIcon.m in Sources */,
 				4F89A9DE1B7D658400C8BF85 /* UIImage+GIF.m in Sources */,
 				4F6D72B11B7EF0B100ADA9D3 /* UserViewController.m in Sources */,
 				4F89A92A1B7D202C00C8BF85 /* MainViewController.m in Sources */,
-				4F8A47131B8F89B000ED2B3C /* PictureNavigationBar.m in Sources */,
+				4FC59ACC1C036CED00F2C2ED /* EventsCollectionViewCell.m in Sources */,
 				4F89A9851B7D239C00C8BF85 /* UserEditorDataSource.m in Sources */,
+				4FC59AD01C03A51800F2C2ED /* BlurNavigationBar.m in Sources */,
 				4FFFD6AE1B8253CF00915241 /* UIColor+ListUI.m in Sources */,
 				4F89A9591B7D21D700C8BF85 /* PictureController.m in Sources */,
 				4FFFD6B01B8253CF00915241 /* UIImage+ListUI.m in Sources */,

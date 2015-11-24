@@ -8,8 +8,9 @@
 
 #import "ListUIKit.h"
 #import "EventsController.h"
+#import "EventsCollectionViewCell.h"
 
-@interface EventsDataSource : NSObject
+@interface EventsDataSource : NSObject <UICollectionViewDataSource>
 
 - (instancetype)initWithEventsController:(EventsController *)eventsController;
 - (void)registerReuseIdentifiersForCollectionView:(UICollectionView *)collectionView;

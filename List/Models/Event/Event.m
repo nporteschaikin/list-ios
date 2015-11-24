@@ -19,6 +19,14 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
     /*
+     * Handle title.
+     */
+    
+    if (self.title) {
+        dict[@"title"] = self.title;
+    }
+    
+    /*
      * Handle text.
      */
     
@@ -61,6 +69,14 @@
     
     if ([dict[@"asset"] isKindOfClass:[NSDictionary class]]) {
         self.asset = [Photo fromJSONDict:dict[@"asset"]];
+    }
+    
+    /*
+     * Set title.
+     */
+    
+    if (dict[@"title"]) {
+        self.title = dict[@"title"];
     }
     
     /*

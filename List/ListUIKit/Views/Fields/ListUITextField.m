@@ -37,7 +37,7 @@
      * Update attributed placeholder.
      */
     
-    self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeholder attributes:@{NSForegroundColorAttributeName:[UIColor darkGrayColor]}];
+    self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeholder attributes:@{NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
     
 }
 
@@ -50,6 +50,7 @@
      */
     
     return UIEdgeInsetsInsetRect([super textRectForBounds:bounds], self.textInsets);
+    
 }
 
 - (CGRect)editingRectForBounds:(CGRect)bounds {

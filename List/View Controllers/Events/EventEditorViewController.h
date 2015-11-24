@@ -7,7 +7,13 @@
 //
 
 #import "ListUIKit.h"
+#import "Event.h"
+#import "Session.h"
 
-@interface EventEditorViewController : ListUIViewController
+@interface EventEditorViewController : ListUIViewController <UITableViewDelegate>
+
+@property (strong, nonatomic, readonly) UITableView *tableView;
+
+- (instancetype)initWithEvent:(Event *)event session:(Session *)session;
 
 @end

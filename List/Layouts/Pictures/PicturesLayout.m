@@ -17,7 +17,7 @@
 
 @implementation PicturesLayout
 
-static CGFloat const kPicturesLayoutSpace = 12.f;
+static CGFloat const kPicturesLayoutSpace = 3.f;
 
 - (instancetype)initWithPicturesController:(PicturesController *)picturesController {
     if (self = [super init]) {
@@ -42,9 +42,7 @@ static CGFloat const kPicturesLayoutSpace = 12.f;
     // get y
     y = kPicturesLayoutSpace;
     for (NSInteger i=0; i<count; i++) {
-        if (i >= index) {
-            break;
-        }
+        if (i == index) break;
         if (index % 2 == i % 2) {
             y += [self heightForItemAtIndex:i];
             y += kPicturesLayoutSpace;

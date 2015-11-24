@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) UIImageView *iconView;
 @property (strong, nonatomic) UILabel *titleLabel;
+@property (strong, nonatomic) NSMutableAttributedString *attributedTitle;
 
 @end
 
@@ -37,15 +38,11 @@
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
-    CGFloat width = 0.0f;
     CGFloat height = 0.0f;
     CGSize iconSize = [self.iconView sizeThatFits:CGSizeZero];
     CGSize labelSize = [self.titleLabel sizeThatFits:CGSizeZero];
-    width += iconSize.width;
-    width += 6.0f;
-    width += labelSize.width;
     height += fmaxf(iconSize.height, labelSize.height);
-    return CGSizeMake(width, height);
+    return CGSizeMake(size.width, height);
 }
 
 - (void)tintColorDidChange {
@@ -59,7 +56,7 @@
     CGSize size;
     
     size = [self.iconView sizeThatFits:CGSizeZero];
-    x = 0.0f;
+    x = 6.0f;
     y = CGRectGetMidY(self.bounds) - (size.height / 2);
     w = size.width;
     h = size.height;
@@ -76,7 +73,21 @@
 
 - (void)setTitle:(NSString *)title {
     _title = title;
-    self.titleLabel.text = title;
+    
+    /*
+     * Create attributed text.
+     */
+    
+    if (title.length) {
+        NSString *near = @"near ";
+        NSString *titleFormat = [NSString stringWithFormat:@"%@%@", near, title];
+        NSMutableAttributedString *attributedTitle = self.attributedTitle = [[NSMutableAttributedString alloc] initWithString:titleFormat];
+        [attributedTitle addAttributes:@{NSFontAttributeName: [UIFont listFontWithSize:15.f]} range:NSMakeRange(0, near.length)];
+        [attributedTitle addAttributes:@{NSFontAttributeName: [UIFont listSemiboldFontWithSize:15.f]} range:NSMakeRange(near.length, title.length)];
+        self.titleLabel.attributedText = attributedTitle;
+    } else {
+        self.titleLabel.text = @"";
+    }
 }
 
 - (void)setImage:(UIImage *)image {

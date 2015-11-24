@@ -7,7 +7,10 @@
 //
 
 #import "EventsViewController.h"
+#import "LocationManager.h"
 
-@interface MyLocationEventsViewController : EventsViewController
+@interface MyLocationEventsViewController : EventsViewController <LocationManagerDelegate>
+
+@property (strong, nonatomic, readonly) LocationManager *locationManager;
 
 @end

@@ -65,6 +65,12 @@
         self.user = user;
         
         /*
+         * Log token.
+         */
+        
+        NSLog(@"Session token: %@", self.sessionToken);
+        
+        /*
          * Run delegate.
          */
         

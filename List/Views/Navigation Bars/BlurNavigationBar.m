@@ -1,24 +1,24 @@
 //
-//  PictureNavigationBar.m
+//  BlurNavigationBar.m
 //  List
 //
-//  Created by Noah Portes Chaikin on 8/27/15.
-//  Copyright (c) 2015 Noah Portes Chaikin. All rights reserved.
+//  Created by Noah Portes Chaikin on 11/23/15.
+//  Copyright © 2015 Noah Portes Chaikin. All rights reserved.
 //
 
-#import "PictureNavigationBar.h"
+#import "BlurNavigationBar.h"
 
-@interface PictureNavigationBar ()
+@interface BlurNavigationBar ()
 
 @property (strong, nonatomic) UIVisualEffectView *blurView;
 
 @end
 
-@implementation PictureNavigationBar
+@implementation BlurNavigationBar
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-
+        
         /*
          * Add blur view.
          */
@@ -28,14 +28,6 @@
         self.blurView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self addSubview:self.blurView];
         
-        /*
-         * Remove background  and shadow images.
-         */
-        
-        UIImage *image = [[UIImage alloc] init];
-        self.shadowImage = image;
-        [self setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
-
     }
     return self;
 }
@@ -49,6 +41,7 @@
     w = CGRectGetWidth(self.bounds);
     h = CGRectGetHeight(self.bounds) - y;
     self.blurView.frame = CGRectMake(x, y, w, h);
+    
 }
 
 @end

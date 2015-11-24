@@ -19,8 +19,8 @@
 @property (strong, nonatomic) Photo *asset;
 @property (strong, nonatomic) Placemark *placemark;
 @property (strong, nonatomic) CLLocation *location;
+@property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSDate *startTime;
-@property (copy, nonatomic) NSDate *endTime;
 @property (copy, nonatomic) NSString *text;
 
 @end

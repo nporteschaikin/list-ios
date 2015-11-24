@@ -8,7 +8,7 @@
 
 #import "MainViewController.h"
 #import "LoginViewController.h"
-#import "PictureNavigationBar.h"
+#import "BlurNavigationBar.h"
 #import "MyLocationPicturesViewController.h"
 #import "MyLocationEventsViewController.h"
 #import "UserViewController.h"
@@ -74,7 +74,7 @@
      */
     
     MyLocationPicturesViewController *picturesViewController = [[MyLocationPicturesViewController alloc] initWithSession:self.session];
-    UINavigationController *picturesNavigationController = [[UINavigationController alloc] initWithNavigationBarClass:[PictureNavigationBar class] toolbarClass:nil];
+    UINavigationController *picturesNavigationController = [[UINavigationController alloc] initWithNavigationBarClass:[BlurNavigationBar class] toolbarClass:nil];
     picturesNavigationController.viewControllers = @[ picturesViewController ];
     picturesNavigationController.listTabBarItem.image = [UIImage listIcon:ListUIIconPictures size:kListUITabBarDefaultImageSize];
     picturesNavigationController.listTabBarItem.barBackgroundColor = [UIColor listBlackColorAlpha:1];

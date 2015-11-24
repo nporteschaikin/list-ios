@@ -65,7 +65,7 @@
     
     UICollectionView *collectionView = self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     collectionView.dataSource = self.dataSource;
-    collectionView.backgroundColor = [UIColor listBlackColorAlpha:1];
+    collectionView.backgroundColor = [UIColor colorWithHex:0x222222 alpha:1.0f];
     [self.view addSubview:collectionView];
     
 }
@@ -104,6 +104,13 @@
     w = CGRectGetWidth(self.view.bounds);
     h = CGRectGetHeight(self.view.bounds);
     self.collectionView.frame = CGRectMake(x, y, w, h);
+    
+    /*
+     * Set insets.
+     */
+    
+    UIEdgeInsets insets = UIEdgeInsetsMake(self.topLayoutGuide.length, 0.0f, self.bottomLayoutGuide.length, 0.0f);
+    self.collectionView.contentInset = insets;
     
 }
 

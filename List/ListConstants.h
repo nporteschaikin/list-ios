@@ -34,6 +34,7 @@
 #define kDiscoveryRadiusInMilesUserDefaultsKey @"kDiscoveryRadiusInMilesUserDefaultsKey"
 
 #define kUINavigationBarDefaultImageSize 15
+#define kUINavigationBarCrossImageSize 18
 #define kListUITabBarDefaultImageSize 20
 
 #define kPicturesHeightMultiplier = 1.7777;

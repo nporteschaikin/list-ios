@@ -10,7 +10,6 @@
 
 @interface CreatePictureEditorView ()
 
-@property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) UIView *contentView;
 @property (strong, nonatomic) UIView *formView;
 @property (strong, nonatomic) UIToolbar *toolbar;
@@ -18,8 +17,6 @@
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) CALayer *progressTrack;
 @property (strong, nonatomic) CALayer *progressBar;
-@property (strong, nonatomic) UIButton *returnButton;
-@property (strong, nonatomic) UIButton *closeButton;
 
 @end
 
@@ -33,6 +30,12 @@ static CGFloat const kCreatePictureEditorViewToolbarViewHeight = 50.f;
     if (self = [super init]) {
         
         /*
+         * Disable scrolling by default
+         */
+        
+        self.scrollEnabled = NO;
+        
+        /*
          * Add blur effect.
          */
         
@@ -40,14 +43,6 @@ static CGFloat const kCreatePictureEditorViewToolbarViewHeight = 50.f;
         UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
         effectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self addSubview:effectView];
-        
-        /*
-         * Create scroll view.
-         */
-        
-        self.scrollView = [[UIScrollView alloc] init];
-        self.scrollView.scrollEnabled = NO;
-        [self addSubview:self.scrollView];
         
         /*
          * Create content view.
@@ -61,7 +56,7 @@ static CGFloat const kCreatePictureEditorViewToolbarViewHeight = 50.f;
         self.contentView.layer.shadowOpacity = 1.0f;
         self.contentView.layer.cornerRadius = 3.0f;
         self.contentView.backgroundColor = [UIColor whiteColor];
-        [self.scrollView addSubview:self.contentView];
+        [self addSubview:self.contentView];
         
         /*
          * Create form view.
@@ -90,7 +85,7 @@ static CGFloat const kCreatePictureEditorViewToolbarViewHeight = 50.f;
         [self.formView addSubview:self.imageView];
         
         /*
-         * Create toolbar view.
+         * Create toolbar.
          */
         
         self.toolbar = [[UIToolbar alloc] init];
@@ -115,42 +110,6 @@ static CGFloat const kCreatePictureEditorViewToolbarViewHeight = 50.f;
         self.progressBar.backgroundColor = [UIColor listBlueColorAlpha:1.0f].CGColor;
         [self.contentView.layer addSublayer:self.progressBar];
         
-        /*
-         * Set button params.
-         */
-        
-        UIColor *color = [UIColor whiteColor];
-        CGSize shadowOffset = CGSizeZero;
-        CGFloat shadowRadius = 3.0f;
-        CGFloat shadowOpacity = 0.5f;
-        CGColorRef shadowColor = [UIColor listBlackColorAlpha:1].CGColor;
-        
-        /*
-         * Create flip button.
-         */
-        
-        UIImage *returnImage = [UIImage listIcon:ListUIIconReturn size:30.f color:color];
-        self.returnButton = [[UIButton alloc] init];
-        self.returnButton.layer.shadowOffset = shadowOffset;
-        self.returnButton.layer.shadowRadius = shadowRadius;
-        self.returnButton.layer.shadowOpacity = shadowOpacity;
-        self.returnButton.layer.shadowColor = shadowColor;
-        [self.returnButton setImage:returnImage forState:UIControlStateNormal];
-        [self addSubview:self.returnButton];
-        
-        /*
-         * Create close button.
-         */
-        
-        UIImage *closeImage = [UIImage listIcon:ListUIIconCross size:30.f color:color];
-        self.closeButton = [[UIButton alloc] init];
-        self.closeButton.layer.shadowOffset = shadowOffset;
-        self.closeButton.layer.shadowRadius = shadowRadius;
-        self.closeButton.layer.shadowOpacity = shadowOpacity;
-        self.closeButton.layer.shadowColor = shadowColor;
-        [self.closeButton setImage:closeImage forState:UIControlStateNormal];
-        [self addSubview:self.closeButton];
-        
     }
     return self;
 }
@@ -160,37 +119,6 @@ static CGFloat const kCreatePictureEditorViewToolbarViewHeight = 50.f;
     
     CGFloat x, y, w, h;
     CGSize size;
-    
-    /*
-     * Layout return button.
-     */
-    
-    size = [self.returnButton sizeThatFits:CGSizeZero];
-    x = 25.f;
-    y = 25.f;
-    w = size.width;
-    h = size.height;
-    self.returnButton.frame = CGRectMake(x, y, w, h);
-    
-    /*
-     * Layout close button.
-     */
-    
-    size = [self.closeButton sizeThatFits:CGSizeZero];
-    x = CGRectGetWidth(self.bounds) - (size.width + 25.f);
-    w = size.width;
-    h = size.height;
-    self.closeButton.frame = CGRectMake(x, y, w, h);
-    
-    /*
-     * Layout scroll view.
-     */
-    
-    x = 0.0f;
-    y = 0.0f;
-    w = CGRectGetWidth(self.bounds);
-    h = CGRectGetHeight(self.bounds);
-    self.scrollView.frame = CGRectMake(x, y, w, h);
     
     /*
      * Layout content view.
@@ -265,7 +193,7 @@ static CGFloat const kCreatePictureEditorViewToolbarViewHeight = 50.f;
     
     w = CGRectGetWidth(self.bounds);
     h = CGRectGetHeight(self.bounds);
-    self.scrollView.contentSize = CGSizeMake(w, h);
+    self.contentSize = CGSizeMake(w, h);
     
 }
 
@@ -295,55 +223,7 @@ static CGFloat const kCreatePictureEditorViewToolbarViewHeight = 50.f;
     
 }
 
-#pragma mark - Dynamic getters
-
-- (NSString *)text {
-    
-    /*
-     * Get text view text.
-     */
-    
-    return self.textView.text;
-    
-}
-
-- (NSArray *)toolbarItems {
-    
-    /*
-     * Return toolbar items.
-     */
-    
-    return self.toolbar.items;
-    
-}
-
 #pragma mark - Dynamic setters
-
-- (void)setText:(NSString *)text {
-    
-    /*
-     * Set text view text.
-     */
-    
-    self.textView.text = text;
-    
-}
-
-- (void)setImage:(UIImage *)image {
-    
-    /*
-     * Set image.
-     */
-    
-    _image = image;
-    
-    /*
-     * Set image view image.
-     */
-    
-    self.imageView.image = image;
-    
-}
 
 - (void)setProgress:(CGFloat)progress {
     
@@ -358,26 +238,6 @@ static CGFloat const kCreatePictureEditorViewToolbarViewHeight = 50.f;
      */
     
     [self updateProgressBarFrame];
-    
-}
-
-- (void)setToolbarItems:(NSArray *)toolbarItems {
-    
-    /*
-     * Set toolbar items without animation.
-     */
-    
-    [self setToolbarItems:toolbarItems animated:NO];
-    
-}
-
-- (void)setToolbarItems:(NSArray *)items animated:(BOOL)animated {
-    
-    /*
-     * Set toolbar items with or without animation.
-     */
-    
-    [self.toolbar setItems:items animated:animated];
     
 }
 

@@ -9,11 +9,10 @@
 #import "ListUIKit.h"
 #import "Picture.h"
 #import "Session.h"
-#import "CreatePictureCameraView.h"
 
-@interface CreatePictureCameraViewController : ListUIViewController <ListUICameraControllerDelegate>
+@interface CreatePictureCameraViewController : ListUICameraViewController
 
-@property (strong, nonatomic, readonly) CreatePictureCameraView *createPictureCameraView;
+@property (strong, nonatomic, readonly) LocationManager *locationManager;
 
 - (instancetype)initWithPicture:(Picture *)picture;
 

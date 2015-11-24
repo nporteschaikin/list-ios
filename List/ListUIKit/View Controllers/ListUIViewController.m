@@ -8,10 +8,6 @@
 
 #import "ListUIViewController.h"
 
-@interface ListUIViewController ()
-
-@end
-
 @implementation ListUIViewController
 
 @end

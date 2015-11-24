@@ -86,11 +86,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "List/View Controllers/Pictures/CreatePictureViewController.m"
-            timestampString = "461687547.579694"
+            timestampString = "470011328.098156"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "@implementation CreatePictureViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -139,7 +139,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
             endingLineNumber = "17"
-            landmarkName = "@implementation PictureNavigationBar"
+            landmarkName = "@implementation ListNavigationBar"
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>

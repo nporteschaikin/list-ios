@@ -96,7 +96,9 @@
                  * Send delegate message.
                  */
                 
-                [self.delegate cameraController:self didCaptureStillImage:image];
+                if ([self.delegate respondsToSelector:@selector(cameraController:didCaptureStillImage:)]) {
+                    [self.delegate cameraController:self didCaptureStillImage:image];
+                }
                 
             }
         }];

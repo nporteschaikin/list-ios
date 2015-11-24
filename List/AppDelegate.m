@@ -28,6 +28,12 @@
     [AppearanceHelper customizeAppearance];
     
     /*
+     * Set status bar style.
+     */
+    
+    [application setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    
+    /*
      * Create window.
      */
     
