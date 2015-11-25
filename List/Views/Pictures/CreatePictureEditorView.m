@@ -50,7 +50,7 @@ static CGFloat const kCreatePictureEditorViewToolbarViewHeight = 50.f;
         
         self.contentView = [[UIView alloc] init];
         self.contentView.layer.masksToBounds = YES;
-        self.contentView.layer.shadowColor = [UIColor listBlackColorAlpha:1].CGColor;
+        self.contentView.layer.shadowColor = [UIColor listUI_blackColorAlpha:1].CGColor;
         self.contentView.layer.shadowRadius = 6.0f;
         self.contentView.layer.shadowOffset = CGSizeMake(3.0f, 3.0f);
         self.contentView.layer.shadowOpacity = 1.0f;
@@ -78,7 +78,7 @@ static CGFloat const kCreatePictureEditorViewToolbarViewHeight = 50.f;
          */
         
         self.imageView = [[UIImageView alloc] init];
-        self.imageView.backgroundColor = [UIColor listBlackColorAlpha:1];
+        self.imageView.backgroundColor = [UIColor listUI_blackColorAlpha:1];
         self.imageView.clipsToBounds = YES;
         self.imageView.layer.cornerRadius = 3.0f;
         self.imageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -91,7 +91,7 @@ static CGFloat const kCreatePictureEditorViewToolbarViewHeight = 50.f;
         self.toolbar = [[UIToolbar alloc] init];
         self.toolbar.clipsToBounds = YES;
         self.toolbar.barTintColor = [UIColor whiteColor];
-        self.toolbar.tintColor = [UIColor listBlueColorAlpha:1];
+        self.toolbar.tintColor = [UIColor listUI_blueColorAlpha:1];
         [self.contentView addSubview:self.toolbar];
         
         /*
@@ -99,7 +99,7 @@ static CGFloat const kCreatePictureEditorViewToolbarViewHeight = 50.f;
          */
         
         self.progressTrack = [CALayer layer];
-        self.progressTrack.backgroundColor = [UIColor listLightGrayColorAlpha:1.0f].CGColor;
+        self.progressTrack.backgroundColor = [UIColor listUI_lightGrayColorAlpha:1.0f].CGColor;
         [self.contentView.layer addSublayer:self.progressTrack];
         
         /*
@@ -107,7 +107,7 @@ static CGFloat const kCreatePictureEditorViewToolbarViewHeight = 50.f;
          */
         
         self.progressBar = [CALayer layer];
-        self.progressBar.backgroundColor = [UIColor listBlueColorAlpha:1.0f].CGColor;
+        self.progressBar.backgroundColor = [UIColor listUI_blueColorAlpha:1.0f].CGColor;
         [self.contentView.layer addSublayer:self.progressBar];
         
     }

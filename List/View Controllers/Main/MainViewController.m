@@ -40,7 +40,7 @@
      * Set up view.
      */
     
-    self.view.backgroundColor = [UIColor listBlueColorAlpha:1];
+    self.view.backgroundColor = [UIColor listUI_blueColorAlpha:1];
     
 }
 
@@ -76,8 +76,8 @@
     MyLocationPicturesViewController *picturesViewController = [[MyLocationPicturesViewController alloc] initWithSession:self.session];
     UINavigationController *picturesNavigationController = [[UINavigationController alloc] initWithNavigationBarClass:[BlurNavigationBar class] toolbarClass:nil];
     picturesNavigationController.viewControllers = @[ picturesViewController ];
-    picturesNavigationController.listTabBarItem.image = [UIImage listIcon:ListUIIconPictures size:kListUITabBarDefaultImageSize];
-    picturesNavigationController.listTabBarItem.barBackgroundColor = [UIColor listBlackColorAlpha:1];
+    picturesNavigationController.listTabBarItem.image = [UIImage listUI_icon:ListUIIconPictures size:kListUITabBarDefaultImageSize];
+    picturesNavigationController.listTabBarItem.barBackgroundColor = [UIColor listUI_blackColorAlpha:1];
     
     /*
      * Create events view controller.
@@ -85,7 +85,7 @@
     
     MyLocationEventsViewController *eventsViewController = [[MyLocationEventsViewController alloc] initWithSession:self.session];
     UINavigationController *eventsNavigationController = [[UINavigationController alloc] initWithRootViewController:eventsViewController];
-    eventsNavigationController.listTabBarItem.image = [UIImage listIcon:ListUIIconEvents size:kListUITabBarDefaultImageSize];
+    eventsNavigationController.listTabBarItem.image = [UIImage listUI_icon:ListUIIconEvents size:kListUITabBarDefaultImageSize];
     
     /*
      * Create user view controller.
@@ -93,7 +93,7 @@
     
     UserViewController *userViewController = [[UserViewController alloc] initWithUser:self.session.user session:self.session];
     UINavigationController *userNavigationController = [[UINavigationController alloc] initWithRootViewController:userViewController];
-    userNavigationController.listTabBarItem.image = [UIImage listIcon:ListUIIconUser size:kListUITabBarDefaultImageSize];
+    userNavigationController.listTabBarItem.image = [UIImage listUI_icon:ListUIIconUser size:kListUITabBarDefaultImageSize];
     
     /*
      * Create settings view controller.
@@ -101,7 +101,7 @@
     
     SettingsViewController *settingsViewController = [[SettingsViewController alloc] init];
     UINavigationController *settingsNavigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
-    settingsNavigationController.listTabBarItem.image = [UIImage listIcon:ListUIIconMenu size:kListUITabBarDefaultImageSize];
+    settingsNavigationController.listTabBarItem.image = [UIImage listUI_icon:ListUIIconMenu size:kListUITabBarDefaultImageSize];
     
     /*
      * Create tab bar controller.

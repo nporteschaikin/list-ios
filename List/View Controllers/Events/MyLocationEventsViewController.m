@@ -42,7 +42,7 @@
      */
     
     UINavigationItem *navigationItem = self.navigationItem;
-    UIImage *buttonImage = [UIImage listIcon:ListUIIconPlus size:kUINavigationBarDefaultImageSize];
+    UIImage *buttonImage = [UIImage listUI_icon:ListUIIconPlus size:kUINavigationBarDefaultImageSize];
     navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:buttonImage style:UIBarButtonItemStylePlain target:self action:@selector(handleBarButtonItem:)];
     
 }
@@ -88,7 +88,7 @@
     LocationTitleView *titleView = [[LocationTitleView alloc] init];
     Placemark *placemark = eventsController.placemark;
     titleView.title = placemark.title;
-    titleView.image = [UIImage listIcon:ListUIIconEvents size:kUINavigationBarDefaultImageSize];
+    titleView.image = [UIImage listUI_icon:ListUIIconEvents size:kUINavigationBarDefaultImageSize];
     self.navigationItem.titleView = titleView;
     
 }
@@ -143,7 +143,7 @@
      */
     
     EventEditorViewController *viewController = [[EventEditorViewController alloc] initWithEvent:event session:self.session];
-    viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage listIcon:ListUIIconCross size:kUINavigationBarCrossImageSize] style:UIBarButtonItemStyleDone target:self action:@selector(handleEventEditorViewControllerBarButtonItem:)];
+    viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage listUI_icon:ListUIIconCross size:kUINavigationBarCrossImageSize] style:UIBarButtonItemStyleDone target:self action:@selector(handleEventEditorViewControllerBarButtonItem:)];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[BlackNavigationBar class] toolbarClass:nil];
     navigationController.viewControllers = @[ viewController ];
     [self presentViewController:navigationController animated:YES completion:nil];

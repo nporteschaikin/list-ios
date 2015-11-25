@@ -30,7 +30,7 @@
         
         UILabel *titleLabel = self.titleLabel = [[UILabel alloc] init];
         titleLabel.numberOfLines = 1;
-        titleLabel.font = [UIFont listSemiboldFontWithSize:15.f];
+        titleLabel.font = [UIFont listUI_semiboldFontWithSize:15.f];
         [self addSubview:titleLabel];
         
     }
@@ -82,8 +82,8 @@
         NSString *near = @"near ";
         NSString *titleFormat = [NSString stringWithFormat:@"%@%@", near, title];
         NSMutableAttributedString *attributedTitle = self.attributedTitle = [[NSMutableAttributedString alloc] initWithString:titleFormat];
-        [attributedTitle addAttributes:@{NSFontAttributeName: [UIFont listFontWithSize:15.f]} range:NSMakeRange(0, near.length)];
-        [attributedTitle addAttributes:@{NSFontAttributeName: [UIFont listSemiboldFontWithSize:15.f]} range:NSMakeRange(near.length, title.length)];
+        [attributedTitle addAttributes:@{NSFontAttributeName: [UIFont listUI_fontWithSize:15.f]} range:NSMakeRange(0, near.length)];
+        [attributedTitle addAttributes:@{NSFontAttributeName: [UIFont listUI_semiboldFontWithSize:15.f]} range:NSMakeRange(near.length, title.length)];
         self.titleLabel.attributedText = attributedTitle;
     } else {
         self.titleLabel.text = @"";

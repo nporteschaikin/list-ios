@@ -27,7 +27,7 @@
          * Set defaults.
          */
         
-        self.backgroundColor = [UIColor listBlackColorAlpha:1];
+        self.backgroundColor = [UIColor listUI_blackColorAlpha:1];
         
         /*
          * Create image view.
@@ -47,7 +47,7 @@
          * Create flip button.
          */
         
-        UIImage *flipImage = [[UIImage listIcon:ListUIIconFlip size:30.f] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        UIImage *flipImage = [[UIImage listUI_icon:ListUIIconFlip size:30.f] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         self.flipButton = [[UIButton alloc] init];
         self.flipButton.tintColor = [UIColor whiteColor];
         [self.flipButton setImage:flipImage forState:UIControlStateNormal];

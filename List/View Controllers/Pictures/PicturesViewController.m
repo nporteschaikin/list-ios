@@ -51,7 +51,7 @@
      * Set view background.
      */
     
-    self.view.backgroundColor = [UIColor listBlackColorAlpha:1];
+    self.view.backgroundColor = [UIColor listUI_blackColorAlpha:1];
     
     /*
      * Create default layout.

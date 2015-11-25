@@ -24,23 +24,23 @@
  * List colors.
  */
 
-+ (UIColor *)listBlackColorAlpha:(CGFloat)alpha {
++ (UIColor *)listUI_blackColorAlpha:(CGFloat)alpha {
     return [UIColor colorWithHex:0x111111 alpha:alpha];
 }
 
-+ (UIColor *)listBlueColorAlpha:(CGFloat)alpha {
++ (UIColor *)listUI_blueColorAlpha:(CGFloat)alpha {
     return [UIColor colorWithHex:0x247fcc alpha:alpha];
 }
 
-+ (UIColor *)listGrayColorAlpha:(CGFloat)alpha {
++ (UIColor *)listUI_grayColorAlpha:(CGFloat)alpha {
     return [UIColor colorWithHex:0x999999 alpha:alpha];
 }
 
-+ (UIColor *)listLightBlueColorAlpha:(CGFloat)alpha {
++ (UIColor *)listUI_lightBlueColorAlpha:(CGFloat)alpha {
     return [UIColor colorWithHex:0x50a3e2 alpha:alpha];
 }
 
-+ (UIColor *)listLightGrayColorAlpha:(CGFloat)alpha {
++ (UIColor *)listUI_lightGrayColorAlpha:(CGFloat)alpha {
     return [UIColor colorWithHex:0xf1f1f1 alpha:alpha];
 }
 

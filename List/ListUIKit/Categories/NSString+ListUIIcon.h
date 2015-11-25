@@ -27,6 +27,6 @@ typedef NS_ENUM(NSUInteger, ListUIIcon) {
 
 @interface NSString (ListUIIcon)
 
-+ (NSString *)listStringForIcon:(ListUIIcon)icon;
++ (NSString *)listUI_stringForIcon:(ListUIIcon)icon;
 
 @end

@@ -17,15 +17,9 @@
      * UINavigationBar
      */
     
-    [[UIBarButtonItem appearanceWhenContainedIn:[CreatePictureEditorView class], nil] setTitleTextAttributes:@{ NSFontAttributeName:[UIFont listSemiboldFontWithSize:15.f] } forState:UIControlStateNormal];
-    
-    /*
-     * UINavigationBar
-     */
-    
-    [[UINavigationBar appearance] setBarTintColor:[UIColor listBlueColorAlpha:1]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor listUI_blueColorAlpha:1]];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{ NSFontAttributeName:[UIFont listSemiboldFontWithSize:15.f], NSForegroundColorAttributeName: [UIColor whiteColor] }];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{ NSFontAttributeName:[UIFont listUI_semiboldFontWithSize:15.f], NSForegroundColorAttributeName: [UIColor whiteColor] }];
     
 }
 

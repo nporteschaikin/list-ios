@@ -42,7 +42,7 @@
      */
     
     UINavigationItem *navigationItem = self.navigationItem;
-    UIImage *buttonImage = [UIImage listIcon:ListUIIconPlus size:kUINavigationBarDefaultImageSize];
+    UIImage *buttonImage = [UIImage listUI_icon:ListUIIconPlus size:kUINavigationBarDefaultImageSize];
     navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:buttonImage style:UIBarButtonItemStylePlain target:self action:@selector(handleBarButtonItem:)];
     
 }
@@ -88,7 +88,7 @@
     LocationTitleView *titleView = [[LocationTitleView alloc] init];
     Placemark *placemark = picturesController.placemark;
     titleView.title = placemark.title;
-    titleView.image = [UIImage listIcon:ListUIIconPictures size:kUINavigationBarDefaultImageSize];
+    titleView.image = [UIImage listUI_icon:ListUIIconPictures size:kUINavigationBarDefaultImageSize];
     self.navigationItem.titleView = titleView;
     
 }

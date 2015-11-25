@@ -135,12 +135,12 @@
      */
     
     UINavigationItem *navigationItem = self.navigationItem;
-    navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage listIcon:ListUIIconCross size:kUINavigationBarCrossImageSize] style:UIBarButtonItemStyleDone target:self action:@selector(handleRightBarButtonItem:)];
+    navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage listUI_icon:ListUIIconCross size:kUINavigationBarCrossImageSize] style:UIBarButtonItemStyleDone target:self action:@selector(handleRightBarButtonItem:)];
     ListUIViewController *toViewController;
     switch (action) {
         case CreatePictureViewControllerActionEdit: {
             toViewController = self.editorViewController;
-            navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage listIcon:ListUIIconReturn size:kUINavigationBarDefaultImageSize] style:UIBarButtonItemStyleDone target:self action:@selector(handleLeftBarButtonItem:)];
+            navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage listUI_icon:ListUIIconReturn size:kUINavigationBarDefaultImageSize] style:UIBarButtonItemStyleDone target:self action:@selector(handleLeftBarButtonItem:)];
             break;
         }
         case CreatePictureViewControllerActionCamera: {

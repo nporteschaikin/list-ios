@@ -47,7 +47,7 @@ static CGFloat const kLoginViewMargin = 24.f;
          * Create logo view.
          */
         
-        UIImage *image = [UIImage listLogoImageSize:kLoginViewLogoImageViewSize];
+        UIImage *image = [UIImage listUI_logoImageSize:kLoginViewLogoImageViewSize];
         self.logoImageView = [[UIImageView alloc] initWithImage:image];
         self.logoImageView.frame = CGRectMake(kLoginViewMargin, (kLoginViewMargin * 2), kLoginViewLogoImageViewSize, kLoginViewLogoImageViewSize);
         [self addSubview:self.logoImageView];
@@ -83,7 +83,7 @@ static CGFloat const kLoginViewMargin = 24.f;
         self.facebookButton.contentEdgeInsets = buttonInsets;
         self.facebookButton.layer.borderColor = [UIColor whiteColor].CGColor;
         self.facebookButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        self.facebookButton.titleLabel.font = [UIFont listFontWithSize:15.f];
+        self.facebookButton.titleLabel.font = [UIFont listUI_fontWithSize:15.f];
         [self.facebookButton setTitle:@"Sign in with Facebook" forState:UIControlStateNormal];
         [self.facebookButton addTarget:self action:@selector(handleButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
         [self addSubview:self.facebookButton];
@@ -142,7 +142,7 @@ static CGFloat const kLoginViewMargin = 24.f;
         label = [[UILabel alloc] init];
         label.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         label.frame = scrollView.bounds;
-        label.font = [UIFont listLightFontWithSize:20.f];
+        label.font = [UIFont listUI_lightFontWithSize:20.f];
         label.textColor = [UIColor whiteColor];
         label.numberOfLines = 0;
         text = [dataSource loginView:self textForPageAtIndex:i];

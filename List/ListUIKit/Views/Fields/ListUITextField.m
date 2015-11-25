@@ -19,7 +19,7 @@
          * Set defaults
          */
         
-        self.font = [UIFont listFontWithSize:15.f];
+        self.font = [UIFont listUI_fontWithSize:15.f];
         
     }
     return self;

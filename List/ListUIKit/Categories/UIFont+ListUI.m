@@ -11,19 +11,19 @@
 
 @implementation UIFont (ListUI)
 
-+ (UIFont *)listFontWithSize:(CGFloat)size {
++ (UIFont *)listUI_fontWithSize:(CGFloat)size {
     return [UIFont fontWithName:kListUIFontName size:size];
 }
 
-+ (UIFont *)listSemiboldFontWithSize:(CGFloat)size {
++ (UIFont *)listUI_semiboldFontWithSize:(CGFloat)size {
     return [UIFont fontWithName:kListUIFontSemiboldName size:size];
 }
 
-+ (UIFont *)listBoldFontWithSize:(CGFloat)size {
++ (UIFont *)listUI_boldFontWithSize:(CGFloat)size {
     return [UIFont fontWithName:kListUIFontBoldName size:size];
 }
 
-+ (UIFont *)listLightFontWithSize:(CGFloat)size {
++ (UIFont *)listUI_lightFontWithSize:(CGFloat)size {
     return [UIFont fontWithName:kListUIFontLightName size:size];
 }
 

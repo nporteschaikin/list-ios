@@ -11,8 +11,8 @@
 
 @interface UIImage (ListUI)
 
-+ (UIImage *)listLogoImageSize:(CGFloat)size;
-+ (UIImage *)listIcon:(ListUIIcon)icon size:(CGFloat)size;
-+ (UIImage *)listIcon:(ListUIIcon)icon size:(CGFloat)size color:(UIColor *)color;
++ (UIImage *)listUI_logoImageSize:(CGFloat)size;
++ (UIImage *)listUI_icon:(ListUIIcon)icon size:(CGFloat)size;
++ (UIImage *)listUI_icon:(ListUIIcon)icon size:(CGFloat)size color:(UIColor *)color;
 
 @end

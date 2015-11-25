@@ -12,7 +12,7 @@
 
 @implementation UIImage (ListUI)
 
-+ (UIImage *)listLogoImageSize:(CGFloat)size {
++ (UIImage *)listUI_logoImageSize:(CGFloat)size {
     
     /*
      * Takes the PDF and turns it into a UIImage.
@@ -40,17 +40,17 @@
     
 }
 
-+ (UIImage *)listIcon:(ListUIIcon)icon size:(CGFloat)size {
++ (UIImage *)listUI_icon:(ListUIIcon)icon size:(CGFloat)size {
     UIColor *color = [UIColor blackColor];
-    return [self listIcon:icon size:size color:color];
+    return [self listUI_icon:icon size:size color:color];
 }
-+ (UIImage *)listIcon:(ListUIIcon)icon size:(CGFloat)size color:(UIColor *)color {
++ (UIImage *)listUI_icon:(ListUIIcon)icon size:(CGFloat)size color:(UIColor *)color {
     
     /*
      * Returns a UIImage representation of an icon.
      */
     
-    NSString *str = [NSString listStringForIcon:icon];
+    NSString *str = [NSString listUI_stringForIcon:icon];
     UIFont *font = [UIFont fontWithName:kListUIIconFontName size:size];
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     style.alignment = NSTextAlignmentCenter;

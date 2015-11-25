@@ -31,7 +31,7 @@
         contentView.layer.borderColor = [UIColor whiteColor].CGColor;
         
         UIView *assetContainer = self.assetContainer = [[UIView alloc] init];
-        assetContainer.backgroundColor = [UIColor listLightGrayColorAlpha:1];
+        assetContainer.backgroundColor = [UIColor listUI_lightGrayColorAlpha:1];
         [contentView addSubview:assetContainer];
         
         UIImageView *assetView = self.assetView = [[UIImageView alloc] init];
@@ -42,20 +42,20 @@
         
         UILabel *titleLabel = self.titleLabel = [[UILabel alloc] init];
         titleLabel.numberOfLines = 0;
-        titleLabel.font = [UIFont listSemiboldFontWithSize:13.f];
-        titleLabel.textColor = [UIColor listBlackColorAlpha:1];
+        titleLabel.font = [UIFont listUI_semiboldFontWithSize:13.f];
+        titleLabel.textColor = [UIColor listUI_blackColorAlpha:1];
         [assetContainer addSubview:titleLabel];
         
         UILabel *timeLabel = self.timeLabel = [[UILabel alloc] init];
         timeLabel.numberOfLines = 1;
-        timeLabel.font = [UIFont listFontWithSize:11.f];
-        timeLabel.textColor = [UIColor listBlackColorAlpha:1];
+        timeLabel.font = [UIFont listUI_fontWithSize:11.f];
+        timeLabel.textColor = [UIColor listUI_blackColorAlpha:1];
         [assetContainer addSubview:timeLabel];
         
         UILabel *descriptionLabel = self.descriptionLabel = [[UILabel alloc] init];
         descriptionLabel.numberOfLines = 0;
-        descriptionLabel.font = [UIFont listFontWithSize:12.f];
-        descriptionLabel.textColor = [UIColor listBlackColorAlpha:1];
+        descriptionLabel.font = [UIFont listUI_fontWithSize:12.f];
+        descriptionLabel.textColor = [UIColor listUI_blackColorAlpha:1];
         [contentView addSubview:descriptionLabel];
         
     }

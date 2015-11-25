@@ -25,7 +25,7 @@
          * Set defaults.
          */
         
-        self.titleLabel.font = [UIFont listFontWithSize:15.f];
+        self.titleLabel.font = [UIFont listUI_fontWithSize:15.f];
         self.contentEdgeInsets = UIEdgeInsetsMake(6, 14, 6, 14);
         self.layer.borderWidth = 1.0f;
         self.layer.cornerRadius = 3.0f;

@@ -20,7 +20,7 @@
         CGRect rect = CGRectMake(0, 0, 1, 1);
         UIGraphicsBeginImageContext(rect.size);
         CGContextRef context = UIGraphicsGetCurrentContext();
-        CGContextSetFillColorWithColor(context, [UIColor listBlackColorAlpha:0.95f].CGColor);
+        CGContextSetFillColorWithColor(context, [UIColor listUI_blackColorAlpha:1.0f].CGColor);
         CGContextFillRect(context, rect);
         UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();

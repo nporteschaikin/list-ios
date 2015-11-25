@@ -10,9 +10,9 @@
 
 @interface UIFont (ListUI)
 
-+ (UIFont *)listFontWithSize:(CGFloat)size;
-+ (UIFont *)listSemiboldFontWithSize:(CGFloat)size;
-+ (UIFont *)listBoldFontWithSize:(CGFloat)size;
-+ (UIFont *)listLightFontWithSize:(CGFloat)size;
++ (UIFont *)listUI_fontWithSize:(CGFloat)size;
++ (UIFont *)listUI_semiboldFontWithSize:(CGFloat)size;
++ (UIFont *)listUI_boldFontWithSize:(CGFloat)size;
++ (UIFont *)listUI_lightFontWithSize:(CGFloat)size;
 
 @end

@@ -12,10 +12,10 @@
 
 + (UIColor *)colorWithHex:(uint32_t)hex alpha:(CGFloat)alpha;
 
-+ (UIColor *)listBlackColorAlpha:(CGFloat)alpha;
-+ (UIColor *)listBlueColorAlpha:(CGFloat)alpha;
-+ (UIColor *)listGrayColorAlpha:(CGFloat)alpha;
-+ (UIColor *)listLightBlueColorAlpha:(CGFloat)alpha;
-+ (UIColor *)listLightGrayColorAlpha:(CGFloat)alpha;
++ (UIColor *)listUI_blackColorAlpha:(CGFloat)alpha;
++ (UIColor *)listUI_blueColorAlpha:(CGFloat)alpha;
++ (UIColor *)listUI_grayColorAlpha:(CGFloat)alpha;
++ (UIColor *)listUI_lightBlueColorAlpha:(CGFloat)alpha;
++ (UIColor *)listUI_lightGrayColorAlpha:(CGFloat)alpha;
 
 @end

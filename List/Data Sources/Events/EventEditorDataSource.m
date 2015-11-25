@@ -7,6 +7,7 @@
 //
 
 #import "EventEditorDataSource.h"
+#import "NSDateFormatter+ListAdditions.h"
 #import "UIImageView+WebCache.h"
 
 @interface EventEditorDataSource ()
@@ -91,7 +92,7 @@ static NSString * const kEventEditorAssetCellReuseIdentifier = @"kEventEditorAss
                     
                     ListUITableViewCell *startTimeCell = [[ListUITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:kListUITableViewCellReuseIdentifier];
                     startTimeCell.textLabel.text = @"Starts";
-                    startTimeCell.detailTextLabel.text = @"August 1, 2016; 11:00 PM";
+                    startTimeCell.detailTextLabel.text = [[NSDateFormatter list_longDateFormatter] stringFromDate:event.startTime];
                     cell = startTimeCell;
                     break;
                     

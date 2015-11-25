@@ -75,7 +75,7 @@ static CGFloat const kPicturesLayoutSpace = 3.f;
         
         // description
         w = width - (kPicturesCollectionViewCellMargin * 2);
-        rect = [picture.text boundingRectWithSize:CGSizeMake(w, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont listFontWithSize:11.f]} context:nil];
+        rect = [picture.text boundingRectWithSize:CGSizeMake(w, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont listUI_fontWithSize:11.f]} context:nil];
         size = rect.size;
         height += size.height;
         height += kPicturesCollectionViewCellMargin;

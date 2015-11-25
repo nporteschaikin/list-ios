@@ -51,7 +51,7 @@
      * Set view background.
      */
     
-    self.view.backgroundColor = [UIColor listBlackColorAlpha:1];
+    self.view.backgroundColor = [UIColor listUI_blackColorAlpha:1];
     
     /*
      * Create default layout.
@@ -65,7 +65,7 @@
     
     UICollectionView *collectionView = self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     collectionView.dataSource = self.dataSource;
-    collectionView.backgroundColor = [UIColor listLightGrayColorAlpha:1];
+    collectionView.backgroundColor = [UIColor listUI_lightGrayColorAlpha:1];
     [self.view addSubview:collectionView];
     
 }

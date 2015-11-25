@@ -32,12 +32,12 @@
          */
         
         UIImageView *assetView = self.assetView = [[UIImageView alloc] init];
-        assetView.backgroundColor = [UIColor listBlackColorAlpha:1.0f];
+        assetView.backgroundColor = [UIColor listUI_blackColorAlpha:1.0f];
         assetView.contentMode = UIViewContentModeScaleAspectFill;
         assetView.clipsToBounds = YES;
         [self.contentView addSubview:assetView];
         
-        UIImage *addImage = [[UIImage listIcon:ListUIIconPictures size:30.f] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        UIImage *addImage = [[UIImage listUI_icon:ListUIIconPictures size:30.f] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         UIImageView *addImageView = self.addImageView = [[UIImageView alloc] initWithImage:addImage];
         addImageView.tintColor = [UIColor whiteColor];
         [self.contentView addSubview:addImageView];
@@ -45,7 +45,7 @@
         UILabel *addLabel = self.addLabel = [[UILabel alloc] init];
         addLabel.text = @"Add a photo";
         addLabel.textAlignment = NSTextAlignmentCenter;
-        addLabel.font = [UIFont listFontWithSize:12.f];
+        addLabel.font = [UIFont listUI_fontWithSize:12.f];
         addLabel.textColor = [UIColor whiteColor];
         addLabel.numberOfLines = 1;
         [self.contentView addSubview:addLabel];

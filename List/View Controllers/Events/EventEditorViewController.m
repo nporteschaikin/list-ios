@@ -9,15 +9,17 @@
 #import "EventEditorViewController.h"
 #import "EventEditorDataSource.h"
 #import "ClearNavigationBar.h"
+#import "BlackNavigationBar.h"
 #import "ListConstants.h"
+#import "DatePickerModalViewController.h"
+#import "LocationPickerViewController.h"
 
-@interface EventEditorViewController () <ListUICameraViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface EventEditorViewController () <ListUICameraViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, DatePickerModalViewControllerDelegate, LocationPickerViewControllerDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) Event *event;
 @property (strong, nonatomic) Session *session;
 @property (strong, nonatomic) EventEditorDataSource *dataSource;
-@property (strong, nonatomic) UIDatePicker *datePicker;
 
 @end
 
@@ -34,12 +36,6 @@
         
         self.dataSource = [[EventEditorDataSource alloc] initWithEvent:self.event];
         
-        /*
-         * Set defaults.
-         */
-        
-        self.automaticallyAdjustsScrollViewInsets = NO;
-        
     }
     return self;
 }
@@ -54,16 +50,8 @@
     self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self;
     self.tableView.contentInset = UIEdgeInsetsMake(-2.0f, 0.0f, 0.0f, 0.0f); // A little hacky.
-    self.tableView.bounces = NO;
     self.view = self.tableView;
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin;
-    
-    /*
-     * Create date picker.
-     */
-    
-    self.datePicker = [[UIDatePicker alloc] init];
-    [self.datePicker addTarget:self action:@selector(handleDatePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
     
 }
 
@@ -110,8 +98,6 @@
     
 }
 
-
-
 - (void)setEventAssetWithImage:(UIImage *)image {
     
     /*
@@ -138,7 +124,7 @@
     NSInteger row = indexPath.row;
     switch (section) {
         case EventEditorDataSourceSectionAsset: {
-            return CGRectGetWidth(tableView.bounds) * 0.75f; // 16:9 ratio.
+            return CGRectGetWidth(tableView.bounds) * 0.5625f; // 16:9 ratio.
         }
         case EventEditorDataSourceSectionDetails: {
             switch (row) {
@@ -185,7 +171,7 @@
                     ListUICameraViewController *controller = [[ListUICameraViewController alloc] init];
                     controller.delegate = self;
                     UINavigationItem *navigationItem = controller.navigationItem;
-                    navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage listIcon:ListUIIconCross size:kUINavigationBarCrossImageSize] style:UIBarButtonItemStyleDone target:self action:@selector(handleCameraViewControllerLeftBarButtonItem:)];
+                    navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage listUI_icon:ListUIIconCross size:kUINavigationBarCrossImageSize] style:UIBarButtonItemStyleDone target:self action:@selector(handlePresentedViewControllerRightBarButtonItem:)];
                     UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[ClearNavigationBar class] toolbarClass:nil];
                     navigationController.viewControllers = @[ controller ];
                     [self presentViewController:navigationController animated:YES completion:nil];
@@ -232,7 +218,11 @@
                      * Open date picker.
                      */
                     
+                    DatePickerModalViewController *controller = [[DatePickerModalViewController alloc] init];
+                    controller.delegate = self;
+                    [self presentViewController:controller animated:YES completion:nil];
                     break;
+                    
                 }
                 case EventEditorDataSourceCellLocation: {
                     
@@ -240,6 +230,14 @@
                      * Open location picker.
                      */
                     
+                    LocationPickerViewController *controller = [[LocationPickerViewController alloc] init];
+                    controller.delegate = self;
+                    UINavigationItem *navigationItem = controller.navigationItem;
+                    navigationItem.title = @"Locations";
+                    navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage listUI_icon:ListUIIconCross size:kUINavigationBarCrossImageSize] style:UIBarButtonItemStyleDone target:self action:@selector(handlePresentedViewControllerRightBarButtonItem:)];
+                    UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[BlackNavigationBar class] toolbarClass:nil];
+                    navigationController.viewControllers = @[ controller ];
+                    [self presentViewController:navigationController animated:YES completion:nil];
                     break;
                 }
             }
@@ -274,34 +272,40 @@
     
 }
 
+#pragma mark - DatePickerModalViewControllerDelegate
+
+- (void)datePickerModalViewController:(DatePickerModalViewController *)viewController didPickDate:(NSDate *)date {
+    
+    /*
+     * Set event.
+     */
+    
+    Event *event = self.event;
+    event.startTime = date;
+    
+    /*
+     * Reload table cell.
+     */
+    
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:EventEditorDataSourceCellStartTime inSection:EventEditorDataSourceSectionDetails]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+}
+
+#pragma mark - LocationPickerViewControllerDelegate
+
+- (void)locationPickerViewController:(LocationPickerViewController *)controller didSelectMapItem:(MKMapItem *)item {
+    NSLog(@"%@", item);
+}
+
 #pragma mark - Bar button item handlers
 
-- (void)handleCameraViewControllerLeftBarButtonItem:(UIBarButtonItem *)item {
+- (void)handlePresentedViewControllerRightBarButtonItem:(UIBarButtonItem *)item {
     
     /*
      * Dismiss controller.
      */
     
     [self dismissViewControllerAnimated:YES completion:nil];
-    
-}
-
-#pragma mark - Date picker handler
-
-- (void)handleDatePickerValueChanged:(UIDatePicker *)datePicker {
-    
-    /*
-     * Update date.
-     */
-    
-    Event *event = self.event;
-    event.startTime = datePicker.date;
-    
-    /*
-     * Reload table view cell.
-     */
-    
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:EventEditorDataSourceCellStartTime inSection:EventEditorDataSourceSectionDetails]] withRowAnimation:UITableViewRowAnimationNone];
     
 }
 
@@ -332,6 +336,7 @@
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(-2.0f, 0.0f, 0.0f, 0.0f);
     tableView.contentInset = contentInsets;
     tableView.scrollIndicatorInsets = contentInsets;
+    
 }
 
 

@@ -10,7 +10,7 @@
 
 @implementation NSString (ListUIIcon)
 
-+ (NSString *)listStringForIcon:(ListUIIcon)icon {
++ (NSString *)listUI_stringForIcon:(ListUIIcon)icon {
     switch (icon) {
         case ListUIIconLocation: {
             return @"\ue783";

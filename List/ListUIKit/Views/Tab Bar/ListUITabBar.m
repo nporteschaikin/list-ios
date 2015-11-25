@@ -66,7 +66,7 @@ static CGFloat const kListUITabBarDefaultHeight = 60.f;
          * Set defaults.
          */
         
-        self.tintColor = [UIColor listBlueColorAlpha:1];
+        self.tintColor = [UIColor listUI_blueColorAlpha:1];
         
     }
     return self;
@@ -198,7 +198,7 @@ static CGFloat const kListUITabBarDefaultHeight = 60.f;
                  * Set background.
                  */
                 
-                UIColor *backgroundColor = selectedItem.barBackgroundColor ?: [UIColor listLightGrayColorAlpha:0.9];
+                UIColor *backgroundColor = selectedItem.barBackgroundColor ?: [UIColor listUI_lightGrayColorAlpha:0.9];
                 self.backgroundColor = backgroundColor;
                 
                 continue;

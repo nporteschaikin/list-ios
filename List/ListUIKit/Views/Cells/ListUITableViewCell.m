@@ -18,8 +18,8 @@
          * Set defaults
          */
         
-        self.textLabel.font = [UIFont listFontWithSize:15.f];
-        self.detailTextLabel.font = [UIFont listFontWithSize:15.f];
+        self.textLabel.font = [UIFont listUI_fontWithSize:15.f];
+        self.detailTextLabel.font = [UIFont listUI_fontWithSize:15.f];
         
     }
     return self;

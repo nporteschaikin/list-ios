@@ -33,7 +33,7 @@
         
         self.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);
         self.layer.shadowOpacity = 1.0f;
-        self.layer.shadowColor = [UIColor listBlackColorAlpha:0.5f].CGColor;
+        self.layer.shadowColor = [UIColor listUI_blackColorAlpha:0.5f].CGColor;
         self.layer.shadowRadius = 0.0f;
         
         UIView *contentView = self.contentView;
@@ -52,19 +52,19 @@
         [assetContainer addSubview:assetView];
         
         UILabel *descriptionLabel = self.descriptionLabel = [[UILabel alloc] init];
-        descriptionLabel.font = [UIFont listFontWithSize:11.f];
+        descriptionLabel.font = [UIFont listUI_fontWithSize:11.f];
         descriptionLabel.numberOfLines = 0;
-        descriptionLabel.textColor = [UIColor listBlackColorAlpha:1];
+        descriptionLabel.textColor = [UIColor listUI_blackColorAlpha:1];
         [contentView addSubview:descriptionLabel];
         
         UILabel *userNameLabel = self.userNameLabel = [[UILabel alloc] init];
-        userNameLabel.font = [UIFont listFontWithSize:9.f];
+        userNameLabel.font = [UIFont listUI_fontWithSize:9.f];
         userNameLabel.numberOfLines = 0;
-        userNameLabel.textColor = [UIColor listBlueColorAlpha:1];
+        userNameLabel.textColor = [UIColor listUI_blueColorAlpha:1];
         [contentView addSubview:userNameLabel];
         
         UILabel *dateLabel = self.dateLabel = [[UILabel alloc] init];
-        dateLabel.font = [UIFont listFontWithSize:9.f];
+        dateLabel.font = [UIFont listUI_fontWithSize:9.f];
         dateLabel.textColor = [UIColor colorWithHex:0x999999 alpha:1.0f];
         [contentView addSubview:dateLabel];
         
