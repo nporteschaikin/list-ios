@@ -8,20 +8,22 @@
 
 #import "EventEditorViewController.h"
 #import "EventEditorDataSource.h"
+#import "EventController.h"
 #import "ClearNavigationBar.h"
 #import "BlackNavigationBar.h"
 #import "ListConstants.h"
 #import "DatePickerModalViewController.h"
 #import "LocationPickerViewController.h"
-#import "LocationManager.h"
+#import "NavigationBarRoundedButton.h"
 
-@interface EventEditorViewController () <ListUICameraViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, DatePickerModalViewControllerDelegate, LocationPickerViewControllerDelegate, LocationManagerDelegate>
+@interface EventEditorViewController () <EventControllerDelegate, ListUICameraViewControllerDelegate, UIImagePickerControllerDelegate,
+    UINavigationControllerDelegate, DatePickerModalViewControllerDelegate, LocationPickerViewControllerDelegate, LocationManagerDelegate>
 
+@property (strong, nonatomic) EventController *eventController;
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) Event *event;
 @property (strong, nonatomic) Session *session;
 @property (strong, nonatomic) EventEditorDataSource *dataSource;
-@property (strong, nonatomic) LocationManager *locationManager;
 
 @end
 
@@ -33,17 +35,17 @@
         self.session = session;
         
         /*
+         * Create picture controller.
+         */
+        
+        self.eventController = [[EventController alloc] initWithEvent:event session:session];
+        self.eventController.delegate = self;
+        
+        /*
          * Create data source.
          */
         
         self.dataSource = [[EventEditorDataSource alloc] initWithEvent:self.event];
-        
-        /*
-         * Create location manager.
-         */
-        
-        self.locationManager = [[LocationManager alloc] init];
-        self.locationManager.delegate = self;
         
         /*
          * Set defaults.
@@ -99,6 +101,17 @@
     UINavigationItem *navigationItem = self.navigationItem;
     Event *event = self.event;
     navigationItem.title = event.eventID ? event.title : @"New Event";
+    
+    /*
+     * Set save button.
+     */
+    
+    NavigationBarRoundedButton *saveButton = [[NavigationBarRoundedButton alloc] init];
+    [saveButton setTitle:@"Save" forState:UIControlStateNormal];
+    [saveButton addTarget:self action:@selector(handleSaveButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
+    [saveButton sizeToFit];
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton];
+    navigationItem.rightBarButtonItem = barButtonItem;
     
 }
 
@@ -235,7 +248,9 @@
                     
                     DatePickerModalViewController *controller = [[DatePickerModalViewController alloc] init];
                     controller.delegate = self;
+                    
                     [self presentViewController:controller animated:YES completion:nil];
+                    
                     break;
                     
                 }
@@ -247,11 +262,14 @@
                     
                     LocationPickerViewController *controller = [[LocationPickerViewController alloc] init];
                     controller.delegate = self;
+                    
                     UINavigationItem *navigationItem = controller.navigationItem;
-                    navigationItem.title = @"Locations";
+                    navigationItem.titleView = [[UIImageView alloc] initWithImage:[[UIImage listUI_icon:ListUIIconLocation size:kUINavigationBarDefaultImageSize] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
                     navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage listUI_icon:ListUIIconCross size:kUINavigationBarCrossImageSize] style:UIBarButtonItemStyleDone target:self action:@selector(handlePresentedViewControllerRightBarButtonItem:)];
+                    
                     UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[BlackNavigationBar class] toolbarClass:nil];
                     navigationController.viewControllers = @[ controller ];
+                    
                     [self presentViewController:navigationController animated:YES completion:nil];
                     break;
                 }
@@ -259,6 +277,18 @@
             break;
         }
     }
+    
+}
+
+#pragma mark - EventControllerDelegate
+
+- (void)eventControllerDidSaveEvent:(EventController *)eventController {
+    
+    /*
+     * Dismiss this view controller.
+     */
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
@@ -270,8 +300,13 @@
      * Handle captured image.
      */
     
-    [controller dismissViewControllerAnimated:YES completion:nil];
     [self setEventAssetWithImage:image];
+    
+    /*
+     * Dismiss controller.
+     */
+    
+    [controller dismissViewControllerAnimated:YES completion:nil];
     
 }
 
@@ -281,9 +316,14 @@
      * Handle selected image.
      */
     
-    [picker dismissViewControllerAnimated:YES completion:nil];
     UIImage *image = info[UIImagePickerControllerOriginalImage];
     [self setEventAssetWithImage:image];
+    
+    /*
+     * Dismiss controller.
+     */
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
     
 }
 
@@ -309,7 +349,28 @@
 #pragma mark - LocationPickerViewControllerDelegate
 
 - (void)locationPickerViewController:(LocationPickerViewController *)controller didSelectMapItem:(MKMapItem *)item {
-    NSLog(@"%@", item);
+    
+    /*
+     * Set to event.
+     */
+    
+    Event *event = self.event;
+    event.placeName = item.name;
+    event.placeAddress = item.placemark.title;
+    event.location = item.placemark.location;
+    
+    /*
+     * Reload table cell.
+     */
+    
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:EventEditorDataSourceCellLocation inSection:EventEditorDataSourceSectionDetails]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    /*
+     * Dismiss controller.
+     */
+    
+    [controller dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 #pragma mark - Bar button item handlers
@@ -321,6 +382,33 @@
      */
     
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+- (void)handleSaveButtonTouchDown:(NavigationBarRoundedButton *)button {
+    
+    /*
+     * Set title.
+     */
+    
+    Event *event = self.event;
+    UITableView *tableView = self.tableView;
+    ListUITextFieldCell *titleCell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:EventEditorDataSourceCellTitle inSection:EventEditorDataSourceSectionDetails]];
+    event.title = titleCell.textField.text;
+    
+    /*
+     * Set title.
+     */
+    
+    ListUITextViewCell *textCell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:EventEditorDataSourceCellText inSection:EventEditorDataSourceSectionDetails]];
+    event.text = textCell.textView.text;
+    
+    /*
+     * Save picture.
+     */
+    
+    EventController *eventController = self.eventController;
+    [eventController saveEvent];
     
 }
 

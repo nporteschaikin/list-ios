@@ -7,6 +7,7 @@
 //
 
 #import "ListUIKit.h"
+#import "ListSearchBar.h"
 #import <MapKit/MapKit.h>
 
 @class LocationPickerViewController;
@@ -20,6 +21,7 @@
 
 @interface LocationPickerViewController : ListUIViewController
 
+@property (strong, nonatomic, readonly) ListSearchBar *searchBar;
 @property (weak, nonatomic) id<LocationPickerViewControllerDelegate> delegate;
 
 @end

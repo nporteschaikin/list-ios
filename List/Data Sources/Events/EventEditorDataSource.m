@@ -105,7 +105,7 @@ static NSString * const kEventEditorAssetCellReuseIdentifier = @"kEventEditorAss
                     
                     ListUITableViewCell *locationCell = [[ListUITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:kListUITableViewCellReuseIdentifier];
                     locationCell.textLabel.text = @"Location";
-                    locationCell.detailTextLabel.text = @"Brooklyn Bowl";
+                    locationCell.detailTextLabel.text = event.placeName;
                     cell = locationCell;
                     break;
                     

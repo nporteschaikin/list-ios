@@ -7,6 +7,7 @@
 //
 
 #import "Event.h"
+#import "NSDateFormatter+ListAdditions.h"
 
 @implementation Event
 
@@ -32,6 +33,31 @@
     
     if (self.text) {
         dict[@"text"] = self.text;
+    }
+    
+    /*
+     * Handle place name.
+     */
+    
+    if (self.placeName) {
+        dict[@"placeName"] = self.placeName;
+    }
+    
+    /*
+     * Handle place address.
+     */
+    
+    if (self.placeName) {
+        dict[@"placeAddress"] = self.placeAddress;
+    }
+    
+    /*
+     * Set start time
+     */
+    
+    NSDateFormatter *dateFormatter = [NSDateFormatter list_ISO8601formatter];
+    if (self.startTime) {
+        dict[@"startTime"] = [dateFormatter stringFromDate:self.startTime];
     }
     
     /*
@@ -77,6 +103,31 @@
     
     if (dict[@"title"]) {
         self.title = dict[@"title"];
+    }
+    
+    /*
+     * Set place name.
+     */
+    
+    if (dict[@"placeName"]) {
+        self.placeName = dict[@"placeName"];
+    }
+    
+    /*
+     * Set place address.
+     */
+    
+    if (dict[@"placeAddress"]) {
+        self.placeAddress = dict[@"placeAddress"];
+    }
+    
+    /*
+     * Set start time
+     */
+    
+    NSDateFormatter *dateFormatter = [NSDateFormatter list_ISO8601formatter];
+    if (dict[@"startTime"]) {
+        self.startTime = [dateFormatter dateFromString:dict[@"startTime"]];
     }
     
     /*

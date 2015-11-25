@@ -7,10 +7,7 @@
 //
 
 #import "PicturesViewController.h"
-#import "LocationManager.h"
 
-@interface MyLocationPicturesViewController : PicturesViewController <LocationManagerDelegate>
-
-@property (strong, nonatomic, readonly) LocationManager *locationManager;
+@interface MyLocationPicturesViewController : PicturesViewController
 
 @end

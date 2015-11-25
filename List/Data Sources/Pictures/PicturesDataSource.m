@@ -8,6 +8,7 @@
 
 #import "PicturesDataSource.h"
 #import "UIImageView+WebCache.h"
+#import "NSDate+ListAdditions.h"
 
 @interface PicturesDataSource ()
 
@@ -42,7 +43,7 @@ static NSString * const kPicturesCollectionViewCellReuseIdentifier = @"kPictures
     [cell.avatarView sd_setImageWithURL:picture.user.profilePhoto.URL];
     cell.userNameLabel.text = picture.user.displayName;
     cell.descriptionLabel.text = picture.text;
-    cell.dateLabel.text = [NSString stringWithFormat:@"3m in %@", picture.placemark.title];
+    cell.dateLabel.text = [NSString stringWithFormat:@"%@ in %@", [picture.createdAt list_timeAgo], picture.placemark.title];
     [cell setNeedsLayout];
     [cell layoutIfNeeded];
     return cell;

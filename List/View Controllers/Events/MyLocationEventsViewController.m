@@ -11,28 +11,9 @@
 #import "ListConstants.h"
 #import "EventEditorViewController.h"
 #import "ClearNavigationBar.h"
-
-@interface MyLocationEventsViewController () <UIViewControllerTransitioningDelegate>
-
-@property (strong, nonatomic) LocationManager *locationManager;
-
-@end
+#import "LocationManager.h"
 
 @implementation MyLocationEventsViewController
-
-- (instancetype)initWithSession:(Session *)session {
-    if (self = [super initWithSession:session]) {
-        
-        /*
-         * Create location manager.
-         */
-        
-        self.locationManager = [[LocationManager alloc] init];
-        self.locationManager.delegate = self;
-        
-    }
-    return self;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,42 +28,13 @@
     
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    
-    /*
-     * Create map circle.
-     */
-    
-    LocationManager *locationManager = self.locationManager;
-    CLLocation *location = locationManager.location;
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    CGFloat radius = [[userDefaults objectForKey:kDiscoveryRadiusInMilesUserDefaultsKey] floatValue];
-    MapCircle *mapCircle = [[MapCircle alloc] init];
-    mapCircle.location = location;
-    mapCircle.radius = radius;
-    
-    /*
-     * Set map circle to latest we've got.
-     */
-    
-    EventsController *eventsController = self.eventsController;
-    eventsController.mapCircle = mapCircle;
-    
-    /*
-     * `super`!!!
-     */
-    
-    [super viewWillAppear:animated];
-    
-}
-
 - (void)requestEvents {
     
     /*
      * Create map circle.
      */
     
-    LocationManager *locationManager = self.locationManager;
+    LocationManager *locationManager = [[LocationManager alloc] init];
     CLLocation *location = locationManager.location;
     
     if (location) {

@@ -20,5 +20,6 @@
 @property (strong, nonatomic) Placemark *placemark;
 @property (strong, nonatomic) CLLocation *location;
 @property (copy, nonatomic) NSString *text;
+@property (strong, nonatomic) NSDate *createdAt;
 
 @end

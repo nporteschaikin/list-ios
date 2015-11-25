@@ -11,5 +11,6 @@
 @interface NSDateFormatter (ListAdditions)
 
 + (NSDateFormatter *)list_longDateFormatter;
++ (NSDateFormatter *)list_ISO8601formatter;
 
 @end

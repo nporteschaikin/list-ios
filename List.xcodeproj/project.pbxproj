@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F2D3D621C065B5A00F823B9 /* ListSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D3D611C065B5A00F823B9 /* ListSearchBar.m */; };
+		4F2D3D671C0660F600F823B9 /* LocationPickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D3D661C0660F600F823B9 /* LocationPickerTableViewCell.m */; };
+		4F2D3D6A1C066D1900F823B9 /* NSDate+ListAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D3D691C066D1900F823B9 /* NSDate+ListAdditions.m */; };
+		4F2D3D6D1C066FE700F823B9 /* NSString+ListAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D3D6C1C066FE700F823B9 /* NSString+ListAdditions.m */; };
+		4F2D3D751C06729C00F823B9 /* NavigationBarRoundedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D3D741C06729C00F823B9 /* NavigationBarRoundedButton.m */; };
 		4F4D3B801B84326C00D79CD3 /* CreatePictureCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D3B7F1B84326C00D79CD3 /* CreatePictureCameraViewController.m */; };
 		4F4D3B8C1B84B65500D79CD3 /* CreatePictureEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D3B8B1B84B65500D79CD3 /* CreatePictureEditorViewController.m */; };
 		4F4D3B8F1B84B94500D79CD3 /* CreatePictureEditorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D3B8E1B84B94500D79CD3 /* CreatePictureEditorView.m */; };
@@ -134,6 +139,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F2D3D601C065B5A00F823B9 /* ListSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListSearchBar.h; sourceTree = "<group>"; };
+		4F2D3D611C065B5A00F823B9 /* ListSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListSearchBar.m; sourceTree = "<group>"; };
+		4F2D3D651C0660F600F823B9 /* LocationPickerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationPickerTableViewCell.h; sourceTree = "<group>"; };
+		4F2D3D661C0660F600F823B9 /* LocationPickerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationPickerTableViewCell.m; sourceTree = "<group>"; };
+		4F2D3D681C066D1900F823B9 /* NSDate+ListAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ListAdditions.h"; sourceTree = "<group>"; };
+		4F2D3D691C066D1900F823B9 /* NSDate+ListAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ListAdditions.m"; sourceTree = "<group>"; };
+		4F2D3D6B1C066FE700F823B9 /* NSString+ListAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ListAdditions.h"; sourceTree = "<group>"; };
+		4F2D3D6C1C066FE700F823B9 /* NSString+ListAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ListAdditions.m"; sourceTree = "<group>"; };
+		4F2D3D731C06729C00F823B9 /* NavigationBarRoundedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarRoundedButton.h; sourceTree = "<group>"; };
+		4F2D3D741C06729C00F823B9 /* NavigationBarRoundedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarRoundedButton.m; sourceTree = "<group>"; };
 		4F4D3B7E1B84326C00D79CD3 /* CreatePictureCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePictureCameraViewController.h; sourceTree = "<group>"; };
 		4F4D3B7F1B84326C00D79CD3 /* CreatePictureCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePictureCameraViewController.m; sourceTree = "<group>"; };
 		4F4D3B8A1B84B65500D79CD3 /* CreatePictureEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePictureEditorViewController.h; sourceTree = "<group>"; };
@@ -371,6 +386,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F2D3D5F1C065B1D00F823B9 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				4F2D3D601C065B5A00F823B9 /* ListSearchBar.h */,
+				4F2D3D611C065B5A00F823B9 /* ListSearchBar.m */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		4F2D3D631C0660D600F823B9 /* Location Picker */ = {
+			isa = PBXGroup;
+			children = (
+				4F2D3D641C0660E800F823B9 /* Cells */,
+			);
+			path = "Location Picker";
+			sourceTree = "<group>";
+		};
+		4F2D3D641C0660E800F823B9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4F2D3D651C0660F600F823B9 /* LocationPickerTableViewCell.h */,
+				4F2D3D661C0660F600F823B9 /* LocationPickerTableViewCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		4F4D3B931B84C7E500D79CD3 /* Animators */ = {
 			isa = PBXGroup;
 			children = (
@@ -868,6 +909,8 @@
 		4F89A9AA1B7D53B200C8BF85 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4F2D3D631C0660D600F823B9 /* Location Picker */,
+				4F2D3D5F1C065B1D00F823B9 /* Search */,
 				4FC59ACD1C03A50400F2C2ED /* Navigation Bars */,
 				4FC59AC81C036CCD00F2C2ED /* Events */,
 				4F8F857E1B8A715B0055D552 /* Tags */,
@@ -972,6 +1015,10 @@
 				4FA369041B825DF400FE7EAE /* UIImage+ListAdditions.m */,
 				4FC59AEE1C05210C00F2C2ED /* NSDateFormatter+ListAdditions.h */,
 				4FC59AEF1C05210C00F2C2ED /* NSDateFormatter+ListAdditions.m */,
+				4F2D3D681C066D1900F823B9 /* NSDate+ListAdditions.h */,
+				4F2D3D691C066D1900F823B9 /* NSDate+ListAdditions.m */,
+				4F2D3D6B1C066FE700F823B9 /* NSString+ListAdditions.h */,
+				4F2D3D6C1C066FE700F823B9 /* NSString+ListAdditions.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1012,6 +1059,8 @@
 				4FC59AD51C03A55F00F2C2ED /* ClearNavigationBar.m */,
 				4FC59AE71C03DDA600F2C2ED /* BlackNavigationBar.h */,
 				4FC59AE81C03DDA600F2C2ED /* BlackNavigationBar.m */,
+				4F2D3D731C06729C00F823B9 /* NavigationBarRoundedButton.h */,
+				4F2D3D741C06729C00F823B9 /* NavigationBarRoundedButton.m */,
 			);
 			path = "Navigation Bars";
 			sourceTree = "<group>";
@@ -1254,6 +1303,7 @@
 				4F89A9A21B7D24E400C8BF85 /* LoginDataSource.m in Sources */,
 				4F89A9691B7D228B00C8BF85 /* Placemark.m in Sources */,
 				4F7453901BFE207500D77DD4 /* ListUICameraViewController.m in Sources */,
+				4F2D3D751C06729C00F823B9 /* NavigationBarRoundedButton.m in Sources */,
 				4FFFD6AF1B8253CF00915241 /* UIFont+ListUI.m in Sources */,
 				4FC59ADA1C03B25800F2C2ED /* ListUITextFieldCell.m in Sources */,
 				4F89A96F1B7D229900C8BF85 /* Picture.m in Sources */,
@@ -1262,6 +1312,7 @@
 				4F8F85751B8A0D140055D552 /* PlacemarkController.m in Sources */,
 				4F89A9561B7D21CD00C8BF85 /* EventController.m in Sources */,
 				4F89A9531B7D21B800C8BF85 /* EventsController.m in Sources */,
+				4F2D3D6A1C066D1900F823B9 /* NSDate+ListAdditions.m in Sources */,
 				4F4D3B8F1B84B94500D79CD3 /* CreatePictureEditorView.m in Sources */,
 				4F6D72C41B7FA40000ADA9D3 /* ListUITabBar.m in Sources */,
 				4F6D72CC1B7FA57A00ADA9D3 /* SettingsViewController.m in Sources */,
@@ -1299,6 +1350,7 @@
 				4F89A9E01B7D658400C8BF85 /* UIImage+WebP.m in Sources */,
 				4F89A9D91B7D658400C8BF85 /* SDWebImageDownloader.m in Sources */,
 				4F8F857D1B8A708F0055D552 /* Tag.m in Sources */,
+				4F2D3D621C065B5A00F823B9 /* ListSearchBar.m in Sources */,
 				4F89A9431B7D20D100C8BF85 /* UserEditorViewController.m in Sources */,
 				4F4D3B961B84C7FD00D79CD3 /* CreatePictureViewControllerAnimator.m in Sources */,
 				4F6D72DF1B7FB00700ADA9D3 /* LocationManager.m in Sources */,
@@ -1327,6 +1379,8 @@
 				4F89A97C1B7D236F00C8BF85 /* UserDataSource.m in Sources */,
 				4F89A9261B7D200D00C8BF85 /* ListUIViewController.m in Sources */,
 				4F4D3B921B84BFED00D79CD3 /* CreatePictureViewController.m in Sources */,
+				4F2D3D6D1C066FE700F823B9 /* NSString+ListAdditions.m in Sources */,
+				4F2D3D671C0660F600F823B9 /* LocationPickerTableViewCell.m in Sources */,
 				4FB9B46C1B7E951D0016BFC3 /* NSString+ListUIIcon.m in Sources */,
 				4F89A9DE1B7D658400C8BF85 /* UIImage+GIF.m in Sources */,
 				4F6D72B11B7EF0B100ADA9D3 /* UserViewController.m in Sources */,

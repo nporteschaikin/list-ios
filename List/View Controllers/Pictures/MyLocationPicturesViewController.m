@@ -7,31 +7,13 @@
 //
 
 #import "MyLocationPicturesViewController.h"
+#import "LocationManager.h"
 #import "CreatePictureViewController.h"
 #import "LocationTitleView.h"
 #import "ClearNavigationBar.h"
 #import "ListConstants.h"
 
-@interface MyLocationPicturesViewController ()
-
-@property (strong, nonatomic) LocationManager *locationManager;
-
-@end
-
 @implementation MyLocationPicturesViewController
-
-- (instancetype)initWithSession:(Session *)session {
-    if (self = [super initWithSession:session]) {
-        
-        /*
-         * Create location manager.
-         */
-        
-        self.locationManager = [[LocationManager alloc] init];
-        
-    }
-    return self;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -52,7 +34,7 @@
      * Create map circle.
      */
     
-    LocationManager *locationManager = self.locationManager;
+    LocationManager *locationManager = [[LocationManager alloc] init];
     CLLocation *location = locationManager.location;
     
     if (location) {

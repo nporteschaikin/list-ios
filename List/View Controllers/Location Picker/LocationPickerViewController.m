@@ -7,20 +7,38 @@
 //
 
 #import "LocationPickerViewController.h"
+#import "LocationPickerTableViewCell.h"
 
-@interface LocationPickerViewController () <UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating>
+@interface LocationPickerViewController () <ListSearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property (copy, nonatomic) NSArray *items;
-@property (strong, nonatomic) UISearchController *searchController;
+@property (strong, nonatomic) ListSearchBar *searchBar;
 @property (strong, nonatomic) UITableView *tableView;
+@property (copy, nonatomic) NSArray *mapItems;
+@property (strong, nonatomic) MKLocalSearch *search;
 
 @end
 
 @implementation LocationPickerViewController
 
-static NSString * const kListUITableViewCellReuseIdentifier = @"kListUITableViewCellReuseIdentifier";
+static NSString * const kLocationPickerTableViewCellReuseIdentifier = @"kLocationPickerTableViewCellReuseIdentifier";
 
 - (void)loadView {
+    [super loadView];
+    
+    /*
+     * Set view defaults.
+     */
+    
+    UIView *view = self.view;
+    view.backgroundColor = [UIColor listUI_lightGrayColorAlpha:1.0f];
+    
+    /*
+     * Create search bar.
+     */
+    
+    ListSearchBar *searchBar = self.searchBar = [[ListSearchBar alloc] init];
+    searchBar.delegate = self;
+    [view addSubview:searchBar];
     
     /*
      * Create table view.
@@ -29,20 +47,110 @@ static NSString * const kListUITableViewCellReuseIdentifier = @"kListUITableView
     UITableView *tableView = self.tableView = [[UITableView alloc] init];
     tableView.delegate = self;
     tableView.dataSource = self;
-    [tableView registerClass:[ListUITableViewCell class] forCellReuseIdentifier:kListUITableViewCellReuseIdentifier];
-    self.view = tableView;
-    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    tableView.hidden = YES;
+    tableView.separatorColor = [UIColor listUI_lightGrayColorAlpha:1.0f];
+    [tableView registerClass:[LocationPickerTableViewCell class] forCellReuseIdentifier:kLocationPickerTableViewCellReuseIdentifier];
+    [view addSubview:tableView];
+    
+}
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    
+    /*
+     * Layout search bar.
+     */
+    
+    CGFloat x, y, w, h;
+    CGSize size;
+    
+    x = 0.0f;
+    y = 0.0f;
+    w = CGRectGetWidth(self.view.bounds);
+    size = [self.searchBar sizeThatFits:CGSizeMake(w, CGFLOAT_MAX)];
+    h = size.height;
+    self.searchBar.frame = CGRectMake(x, y, w, h);
+    
+    /*
+     * Layout table view.
+     */
+    
+    y = y + h;
+    h = CGRectGetHeight(self.view.bounds) - y;
+    self.tableView.frame = CGRectMake(x, y, w, h);
+    
+}
+
+- (void)requestLocations {
+    
+    /*
+     * Cancel last search
+     */
+    
+    [self.search cancel];
+    
+    /*
+     * Create request.
+     */
+    
+    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
+    ListSearchBar *searchBar = self.searchBar;
+    NSString *text = searchBar.text;
+    request.naturalLanguageQuery = text;
+    
+    /*
+     * Create search object
+     * and send request.
+     */
+    
+    MKLocalSearch *search = self.search = [[MKLocalSearch alloc] initWithRequest:request];
+    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+        
+        /*
+         * Reset map items.
+         */
+        
+        self.mapItems = response.mapItems;
+        
+        /*
+         * Reset details.
+         */
+        
+        [self.tableView reloadData];
+        
+        /*
+         * If there is text, show table view.
+         */
+        
+        self.tableView.hidden = !text.length;
+        
+    }];
+    
+}
+
+#pragma mark - ListSearchBarDelegate
+
+- (void)searchBar:(ListSearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    /*
+     * Request new set of locations.
+     */
+    
+    [self requestLocations];
     
 }
 
 #pragma mark - UITableViewDataSource
 
-- (ListUITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ListUITableViewCell *cell = [[ListUITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kListUITableViewCellReuseIdentifier];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    LocationPickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kLocationPickerTableViewCellReuseIdentifier];
     NSInteger row = indexPath.row;
-    MKMapItem *item = self.items[row];
-    cell.textLabel.text = item.name;
-    cell.detailTextLabel.text = item.placemark.title;
+    NSArray *mapItems = self.mapItems;
+    MKMapItem *mapItem = mapItems[row];
+    cell.nameLabel.text = mapItem.name;
+    cell.descriptionLabel.text = mapItem.placemark.title;
+    [cell setNeedsLayout];
+    [cell layoutIfNeeded];
     return cell;
 }
 
@@ -51,37 +159,58 @@ static NSString * const kListUITableViewCellReuseIdentifier = @"kListUITableView
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *items = self.items;
-    return items.count;
+    NSArray *mapItems = self.mapItems;
+    return mapItems.count;
 }
 
-#pragma mark - UITextFieldDelegate
+#pragma mark - UITableViewDelegate
 
-- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
-    NSLog(@"%@", @"foo");
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 55.f;
 }
 
-//- (BOOL)handleTextFieldDidChange:(UITextField *)textField {
-//    
-//    /*
-//     * Get query.
-//     */
-//    
-//    NSString *query = textField.text;
-//    
-//    /*
-//     * Fetch map items.
-//     */
-//    
-//    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
-//    request.naturalLanguageQuery = query;
-//    MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
-//    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
-//        self.items = response.mapItems;
-//        [self.tableView reloadData];
-//    }];
-//    
-//    return YES;
-//}
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    /*
+     * Remove separator margins.
+     */
+    
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        cell.separatorInset = UIEdgeInsetsZero;
+    }
+    
+    if ([self respondsToSelector:@selector(setLayoutMargins:)]) {
+        cell.layoutMargins = UIEdgeInsetsZero;
+    }
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    /*
+     * Animate out.
+     */
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if ([self.delegate respondsToSelector:@selector(locationPickerViewController:didSelectMapItem:)]) {
+        
+        /*
+         * Find selected map item.
+         */
+        
+        NSInteger row = indexPath.row;
+        NSArray *mapItems = self.mapItems;
+        MKMapItem *mapItem = mapItems[row];
+        
+        /*
+         * Send delegate message.
+         */
+        
+        [self.delegate locationPickerViewController:self didSelectMapItem:mapItem];
+        
+    }
+    
+}
 
 @end

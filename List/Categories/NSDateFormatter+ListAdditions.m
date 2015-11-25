@@ -20,4 +20,14 @@
     return list_longDateFormatter;
 }
 
++ (NSDateFormatter *)list_ISO8601formatter {
+    static NSDateFormatter *list_ISO8601formatter;
+    if (!list_ISO8601formatter) {
+        list_ISO8601formatter = [[NSDateFormatter alloc] init];
+        list_ISO8601formatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss";
+        list_ISO8601formatter.timeZone = [NSTimeZone timeZoneWithName:@"GMT"];
+    }
+    return list_ISO8601formatter;
+}
+
 @end

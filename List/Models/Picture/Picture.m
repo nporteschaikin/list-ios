@@ -7,6 +7,8 @@
 //
 
 #import "Picture.h"
+#import "NSDateFormatter+ListAdditions.h"
+#import "NSString+ListAdditions.h"
 
 @implementation Picture
 
@@ -85,6 +87,15 @@
     
     if ([dict[@"placemark"] isKindOfClass:[NSDictionary class]]) {
         self.placemark = [Placemark fromJSONDict:dict[@"placemark"]];
+    }
+    
+    /*
+     * Set placemark.
+     */
+    
+    NSDateFormatter *dateFormatter = [NSDateFormatter list_ISO8601formatter];
+    if (dict[@"createdAt"]) {
+        self.createdAt = [dateFormatter dateFromString:[dict[@"createdAt"] list_stringForISO8601Formatter]];
     }
     
 }
