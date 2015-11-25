@@ -28,7 +28,6 @@
          */
         
         self.locationManager = [[LocationManager alloc] init];
-        self.locationManager.delegate = self;
         
     }
     return self;
@@ -47,7 +46,7 @@
     
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)requestPictures {
     
     /*
      * Create map circle.
@@ -55,24 +54,29 @@
     
     LocationManager *locationManager = self.locationManager;
     CLLocation *location = locationManager.location;
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    CGFloat radius = [[userDefaults objectForKey:kDiscoveryRadiusInMilesUserDefaultsKey] floatValue];
-    MapCircle *mapCircle = [[MapCircle alloc] init];
-    mapCircle.location = location;
-    mapCircle.radius = radius;
     
-    /*
-     * Set map circle to latest we've got.
-     */
-    
-    PicturesController *picturesController = self.picturesController;
-    picturesController.mapCircle = mapCircle;
-    
-    /*
-     * `super`!!!
-     */
-    
-    [super viewWillAppear:animated];
+    if (location) {
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        CGFloat radius = [[userDefaults objectForKey:kDiscoveryRadiusInMilesUserDefaultsKey] floatValue];
+        MapCircle *mapCircle = [[MapCircle alloc] init];
+        mapCircle.location = location;
+        mapCircle.radius = radius;
+        
+        /*
+         * Set map circle to latest we've got.
+         */
+        
+        PicturesController *picturesController = self.picturesController;
+        picturesController.mapCircle = mapCircle;
+        
+        /*
+         * `super`!!!
+         */
+        
+        [super requestPictures];
+        
+    }
     
 }
 
@@ -90,41 +94,6 @@
     titleView.title = placemark.title;
     titleView.image = [UIImage listUI_icon:ListUIIconPictures size:kUINavigationBarDefaultImageSize];
     self.navigationItem.titleView = titleView;
-    
-}
-
-#pragma mark - LocationManagerDelegate
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    
-    /*
-     * Get location.
-     */
-    
-    CLLocation *location = locations[0];
-    
-    /*
-     * Create map circle.
-     */
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    CGFloat radius = [[userDefaults objectForKey:kDiscoveryRadiusInMilesUserDefaultsKey] floatValue];
-    MapCircle *mapCircle = [[MapCircle alloc] init];
-    mapCircle.location = location;
-    mapCircle.radius = radius;
-    
-    /*
-     * Set map circle to latest we've got.
-     */
-    
-    PicturesController *picturesController = self.picturesController;
-    picturesController.mapCircle = mapCircle;
-    
-    /*
-     * Reload.
-     */
-    
-    [picturesController requestPictures];
     
 }
 

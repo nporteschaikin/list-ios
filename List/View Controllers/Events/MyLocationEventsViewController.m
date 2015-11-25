@@ -10,7 +10,7 @@
 #import "LocationTitleView.h"
 #import "ListConstants.h"
 #import "EventEditorViewController.h"
-#import "BlackNavigationBar.h"
+#import "ClearNavigationBar.h"
 
 @interface MyLocationEventsViewController () <UIViewControllerTransitioningDelegate>
 
@@ -76,6 +76,40 @@
     
 }
 
+- (void)requestEvents {
+    
+    /*
+     * Create map circle.
+     */
+    
+    LocationManager *locationManager = self.locationManager;
+    CLLocation *location = locationManager.location;
+    
+    if (location) {
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        CGFloat radius = [[userDefaults objectForKey:kDiscoveryRadiusInMilesUserDefaultsKey] floatValue];
+        MapCircle *mapCircle = [[MapCircle alloc] init];
+        mapCircle.location = location;
+        mapCircle.radius = radius;
+        
+        /*
+         * Set map circle to latest we've got.
+         */
+        
+        EventsController *eventsController = self.eventsController;
+        eventsController.mapCircle = mapCircle;
+        
+        /*
+         * `super`!!!
+         */
+        
+        [super requestEvents];
+        
+    }
+    
+}
+
 #pragma mark - EventsControllerDelegate
 
 - (void)eventsControllerDidFetchEvents:(EventsController *)eventsController {
@@ -90,41 +124,6 @@
     titleView.title = placemark.title;
     titleView.image = [UIImage listUI_icon:ListUIIconEvents size:kUINavigationBarDefaultImageSize];
     self.navigationItem.titleView = titleView;
-    
-}
-
-#pragma mark - LocationManagerDelegate
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    
-    /*
-     * Get location.
-     */
-    
-    CLLocation *location = locations[0];
-    
-    /*
-     * Create map circle.
-     */
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    CGFloat radius = [[userDefaults objectForKey:kDiscoveryRadiusInMilesUserDefaultsKey] floatValue];
-    MapCircle *mapCircle = [[MapCircle alloc] init];
-    mapCircle.location = location;
-    mapCircle.radius = radius;
-    
-    /*
-     * Set map circle to latest we've got.
-     */
-    
-    EventsController *eventsController = self.eventsController;
-    eventsController.mapCircle = mapCircle;
-    
-    /*
-     * Reload.
-     */
-    
-    [eventsController requestEvents];
     
 }
 
@@ -144,7 +143,7 @@
     
     EventEditorViewController *viewController = [[EventEditorViewController alloc] initWithEvent:event session:self.session];
     viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage listUI_icon:ListUIIconCross size:kUINavigationBarCrossImageSize] style:UIBarButtonItemStyleDone target:self action:@selector(handleEventEditorViewControllerBarButtonItem:)];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[BlackNavigationBar class] toolbarClass:nil];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[ClearNavigationBar class] toolbarClass:nil];
     navigationController.viewControllers = @[ viewController ];
     [self presentViewController:navigationController animated:YES completion:nil];
     

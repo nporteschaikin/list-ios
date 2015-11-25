@@ -20,6 +20,7 @@
 @property (strong, nonatomic) LoginViewController *loginViewController;
 @property (strong, nonatomic) Session *session;
 @property (strong, nonatomic) LocationManager *locationManager;
+@property (strong, nonatomic) ListUITabBarController *tabBarController;
 
 @end
 
@@ -70,6 +71,12 @@
 - (void)setupTabBarController {
     
     /*
+     * Skip if already set up.
+     */
+    
+    if (self.tabBarController) return;
+    
+    /*
      * Create pictures view controller.
      */
     
@@ -107,7 +114,7 @@
      * Create tab bar controller.
      */
     
-    ListUITabBarController *tabBarController = [[ListUITabBarController alloc] init];
+    ListUITabBarController *tabBarController = self.tabBarController = [[ListUITabBarController alloc] init];
     tabBarController.viewControllers = @[ picturesNavigationController, eventsNavigationController, userNavigationController, settingsNavigationController ];
     
     /*
@@ -180,16 +187,10 @@
 
 #pragma mark - CLLocationManagerDelegate
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     
     /*
-     * Stop the manager.
-     */
-    
-    [manager stopUpdatingLocation];
-    
-    /*
-     * Set up tab bar controller.
+     * Setup tab bar controller.
      */
     
     [self setupTabBarController];
@@ -201,14 +202,18 @@
         case kCLAuthorizationStatusAuthorizedWhenInUse: {
             
             /*
+             * Start updating location.
+             */
+            
+            [manager startUpdatingLocation];
+            
+            /*
              * If we have a location, use it.
              * Otherwise, start seeking!
              */
             
             if (manager.location) {
                 [self setupTabBarController];
-            } else {
-                [manager startUpdatingLocation];
             }
             
             break;

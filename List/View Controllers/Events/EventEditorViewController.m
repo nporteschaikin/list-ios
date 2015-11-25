@@ -13,13 +13,15 @@
 #import "ListConstants.h"
 #import "DatePickerModalViewController.h"
 #import "LocationPickerViewController.h"
+#import "LocationManager.h"
 
-@interface EventEditorViewController () <ListUICameraViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, DatePickerModalViewControllerDelegate, LocationPickerViewControllerDelegate>
+@interface EventEditorViewController () <ListUICameraViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, DatePickerModalViewControllerDelegate, LocationPickerViewControllerDelegate, LocationManagerDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) Event *event;
 @property (strong, nonatomic) Session *session;
 @property (strong, nonatomic) EventEditorDataSource *dataSource;
+@property (strong, nonatomic) LocationManager *locationManager;
 
 @end
 
@@ -35,6 +37,19 @@
          */
         
         self.dataSource = [[EventEditorDataSource alloc] initWithEvent:self.event];
+        
+        /*
+         * Create location manager.
+         */
+        
+        self.locationManager = [[LocationManager alloc] init];
+        self.locationManager.delegate = self;
+        
+        /*
+         * Set defaults.
+         */
+        
+        self.automaticallyAdjustsScrollViewInsets = NO;
         
     }
     return self;

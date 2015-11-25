@@ -88,6 +88,16 @@
      * Perform request.
      */
     
+    [self requestEvents];
+    
+}
+
+- (void)requestEvents {
+    
+    /*
+     * Perform request.
+     */
+    
     [self.eventsController requestEvents];
     
 }

@@ -82,7 +82,22 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    
+    /*
+     * `super`
+     */
+    
     [super viewWillAppear:animated];
+    
+    /*
+     * Perform request.
+     */
+    
+    [self requestPictures];
+    
+}
+
+- (void)requestPictures {
     
     /*
      * Perform request.

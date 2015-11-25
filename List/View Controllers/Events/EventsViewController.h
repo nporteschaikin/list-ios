@@ -17,5 +17,6 @@
 @property (strong, nonatomic, readonly) UICollectionView *collectionView;
 
 - (instancetype)initWithSession:(Session *)session;
+- (void)requestEvents;
 
 @end

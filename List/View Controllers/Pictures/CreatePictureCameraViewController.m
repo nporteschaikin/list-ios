@@ -40,8 +40,8 @@ typedef NS_ENUM(NSUInteger, CreatePictureCameraViewControllerAction) {
     return self;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     /*
      * Start updating location.

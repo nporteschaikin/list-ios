@@ -8,9 +8,10 @@
 
 #import "LocationPickerViewController.h"
 
-@interface LocationPickerViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface LocationPickerViewController () <UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating>
 
 @property (copy, nonatomic) NSArray *items;
+@property (strong, nonatomic) UISearchController *searchController;
 @property (strong, nonatomic) UITableView *tableView;
 
 @end
@@ -55,6 +56,10 @@ static NSString * const kListUITableViewCellReuseIdentifier = @"kListUITableView
 }
 
 #pragma mark - UITextFieldDelegate
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    NSLog(@"%@", @"foo");
+}
 
 //- (BOOL)handleTextFieldDidChange:(UITextField *)textField {
 //    
