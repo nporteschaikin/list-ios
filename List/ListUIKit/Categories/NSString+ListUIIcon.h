@@ -22,7 +22,8 @@ typedef NS_ENUM(NSUInteger, ListUIIcon) {
     ListUIIconCheck,
     ListUIIconTag,
     ListUIIconCamera,
-    ListUIIconReturn
+    ListUIIconReturn,
+    ListUIIconFlare
 };
 
 @interface NSString (ListUIIcon)

@@ -90,7 +90,7 @@
     }
     
     /*
-     * Set placemark.
+     * Set created at date.
      */
     
     NSDateFormatter *dateFormatter = [NSDateFormatter list_ISO8601formatter];

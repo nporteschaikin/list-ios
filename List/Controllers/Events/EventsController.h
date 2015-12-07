@@ -31,6 +31,7 @@
 @property (strong, nonatomic, readonly) Placemark *placemark;
 @property (strong, nonatomic) MapCircle *mapCircle;
 @property (strong, nonatomic) User *user;
+@property (strong, nonatomic) NSDate *afterDate;
 
 - (id)initWithSession:(Session *)session;
 - (void)requestEvents;

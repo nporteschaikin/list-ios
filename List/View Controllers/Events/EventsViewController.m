@@ -14,7 +14,7 @@
 @interface EventsViewController ()
 
 @property (strong, nonatomic) Session *session;
-@property (strong, nonatomic) UICollectionView *collectionView;
+@property (strong, nonatomic) ListCollectionView *collectionView;
 @property (strong, nonatomic) EventsController *eventsController;
 @property (strong, nonatomic) EventsDataSource *dataSource;
 @property (strong, nonatomic) EventsLayout *layout;
@@ -48,12 +48,6 @@
     [super loadView];
     
     /*
-     * Set view background.
-     */
-    
-    self.view.backgroundColor = [UIColor listUI_blackColorAlpha:1];
-    
-    /*
      * Create default layout.
      */
     
@@ -63,9 +57,8 @@
      * Create collection view.
      */
     
-    UICollectionView *collectionView = self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+    ListCollectionView *collectionView = self.collectionView = [[ListCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     collectionView.dataSource = self.dataSource;
-    collectionView.backgroundColor = [UIColor listUI_lightGrayColorAlpha:1];
     [self.view addSubview:collectionView];
     
 }
@@ -76,7 +69,7 @@
      * Register class for reuse identifier.
      */
     
-    UICollectionView *collectionView = self.collectionView;
+    ListCollectionView *collectionView = self.collectionView;
     [self.dataSource registerReuseIdentifiersForCollectionView:collectionView];
     
 }

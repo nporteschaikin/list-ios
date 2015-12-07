@@ -8,13 +8,14 @@
 
 #import "ListUIKit.h"
 #import "EventsController.h"
+#import "ListCollectionView.h"
 #import "Session.h"
 
 @interface EventsViewController : ListUIViewController <UICollectionViewDelegate, EventsControllerDelegate>
 
 @property (strong, nonatomic, readonly) EventsController *eventsController;
 @property (strong, nonatomic, readonly) Session *session;
-@property (strong, nonatomic, readonly) UICollectionView *collectionView;
+@property (strong, nonatomic, readonly) ListCollectionView *collectionView;
 
 - (instancetype)initWithSession:(Session *)session;
 - (void)requestEvents;

@@ -23,7 +23,7 @@
      */
     
     UINavigationItem *navigationItem = self.navigationItem;
-    UIImage *buttonImage = [UIImage listUI_icon:ListUIIconPlus size:kUINavigationBarDefaultImageSize];
+    UIImage *buttonImage = [UIImage listUI_icon:ListUIIconFlare size:20.f];
     navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:buttonImage style:UIBarButtonItemStylePlain target:self action:@selector(handleBarButtonItem:)];
     
 }
@@ -40,7 +40,7 @@
     if (location) {
         
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        CGFloat radius = [[userDefaults objectForKey:kDiscoveryRadiusInMilesUserDefaultsKey] floatValue];
+        CGFloat radius = [[userDefaults objectForKey:kUserDefaultsDiscoveryRadiusInMilesKey] floatValue];
         MapCircle *mapCircle = [[MapCircle alloc] init];
         mapCircle.location = location;
         mapCircle.radius = radius;

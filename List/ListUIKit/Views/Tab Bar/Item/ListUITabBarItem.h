@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) UIColor *barBackgroundColor;
+@property (strong, nonatomic) UIColor *barTintColor;
 
 @end
 

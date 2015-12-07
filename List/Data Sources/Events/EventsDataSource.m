@@ -7,6 +7,10 @@
 //
 
 #import "EventsDataSource.h"
+#import "NSDateFormatter+ListAdditions.h"
+#import "NSString+ListAdditions.h"
+#import "NSDate+ListAdditions.h"
+#import "UIImageView+WebCache.h"
 
 @interface EventsDataSource ()
 
@@ -38,8 +42,12 @@ static NSString * const kEventsCollectionViewCellReuseIdentifier = @"kEventsColl
     Event *event = events[row];
     EventsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kEventsCollectionViewCellReuseIdentifier forIndexPath:indexPath];
     cell.titleLabel.text = event.title;
-    cell.timeLabel.text = @"Today at 9pm";
     cell.descriptionLabel.text = event.text;
+    cell.dateView.date = event.startTime;
+    cell.userNameLabel.text = event.user.displayName;
+    cell.detailsLabel.text = [NSString stringWithFormat:@"%@ in %@", [event.createdAt list_timeAgo], event.placemark.title];
+    [cell.assetView sd_setImageWithURL:event.asset.URL];
+    [cell.avatarView sd_setImageWithURL:event.user.profilePhoto.URL];
     return cell;
 }
 

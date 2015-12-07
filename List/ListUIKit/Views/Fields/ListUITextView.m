@@ -46,7 +46,7 @@
      */
     
     if (self.text.length == 0) {
-        UIColor *color = [UIColor colorWithHex:0xC7C7C7 alpha:1.0f];
+        UIColor *color = [UIColor listUI_colorWithHex:0xC7C7C7 alpha:1.0f];
         NSDictionary *attributes = @{ NSFontAttributeName:self.font, NSForegroundColorAttributeName:color };
         CGFloat x, y, w, h;
         x = self.textContainerInset.left + 5.f;

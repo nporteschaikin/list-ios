@@ -31,7 +31,7 @@
 #define kUserDefaultsSessionTokenKey @"kUserDefaultsSessionTokenKey"
 #define kLocationManagerDistanceMinimum 804.67 // half a mile
 
-#define kDiscoveryRadiusInMilesUserDefaultsKey @"kDiscoveryRadiusInMilesUserDefaultsKey"
+#define kUserDefaultsDiscoveryRadiusInMilesKey @"kDiscoveryRadiusInMilesUserDefaultsKey"
 
 #define kUINavigationBarDefaultImageSize 15
 #define kUINavigationBarCrossImageSize 18

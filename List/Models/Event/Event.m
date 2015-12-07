@@ -8,6 +8,7 @@
 
 #import "Event.h"
 #import "NSDateFormatter+ListAdditions.h"
+#import "NSString+ListAdditions.h"
 
 @implementation Event
 
@@ -88,6 +89,7 @@
 }
 
 - (void)applyJSONDict:(NSDictionary *)dict {
+    NSDateFormatter *dateFormatter = [NSDateFormatter list_ISO8601formatter];
     
     /*
      * Set asset.
@@ -125,9 +127,8 @@
      * Set start time
      */
     
-    NSDateFormatter *dateFormatter = [NSDateFormatter list_ISO8601formatter];
     if (dict[@"startTime"]) {
-        self.startTime = [dateFormatter dateFromString:dict[@"startTime"]];
+        self.startTime = [dateFormatter dateFromString:[dict[@"startTime"] list_stringForISO8601Formatter]];
     }
     
     /*
@@ -152,6 +153,14 @@
     
     if ([dict[@"placemark"] isKindOfClass:[NSDictionary class]]) {
         self.placemark = [Placemark fromJSONDict:dict[@"placemark"]];
+    }
+    
+    /*
+     * Set created at date.
+     */
+    
+    if (dict[@"createdAt"]) {
+        self.createdAt = [dateFormatter dateFromString:[dict[@"createdAt"] list_stringForISO8601Formatter]];
     }
     
 }

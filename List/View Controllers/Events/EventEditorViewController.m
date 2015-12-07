@@ -47,12 +47,6 @@
         
         self.dataSource = [[EventEditorDataSource alloc] initWithEvent:self.event];
         
-        /*
-         * Set defaults.
-         */
-        
-        self.automaticallyAdjustsScrollViewInsets = NO;
-        
     }
     return self;
 }
@@ -73,6 +67,16 @@
 }
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    /*
+     * Set default date if one is missing.
+     */
+    
+    Event *event = self.event;
+    if (!event.startTime) {
+        event.startTime = [NSDate date];
+    }
     
     /*
      * Register class for reuse identifier.
@@ -152,7 +156,7 @@
     NSInteger row = indexPath.row;
     switch (section) {
         case EventEditorDataSourceSectionAsset: {
-            return CGRectGetWidth(tableView.bounds) * 0.5625f; // 16:9 ratio.
+            return CGRectGetHeight(tableView.bounds) * 0.4;
         }
         case EventEditorDataSourceSectionDetails: {
             switch (row) {
@@ -441,6 +445,5 @@
     tableView.scrollIndicatorInsets = contentInsets;
     
 }
-
 
 @end

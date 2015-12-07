@@ -26,6 +26,7 @@
          */
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.layoutMargins = UIEdgeInsetsZero;
     
         /*
          * Create subviews.

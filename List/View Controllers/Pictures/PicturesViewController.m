@@ -10,14 +10,18 @@
 #import "PicturesDataSource.h"
 #import "ListConstants.h"
 #import "PicturesLayout.h"
+#import "ZoomAnimator.h"
+#import "PictureViewController.h"
+#import "ClearNavigationBar.h"
 
 @interface PicturesViewController ()
 
 @property (strong, nonatomic) Session *session;
-@property (strong, nonatomic) UICollectionView *collectionView;
+@property (strong, nonatomic) ListCollectionView *collectionView;
 @property (strong, nonatomic) PicturesController *picturesController;
 @property (strong, nonatomic) PicturesDataSource *dataSource;
 @property (strong, nonatomic) PicturesLayout *layout;
+@property (strong, nonatomic) ZoomAnimatorTransitioningDelegate *zoomTransitioningDelegate;
 
 @end
 
@@ -40,6 +44,12 @@
         
         self.dataSource = [[PicturesDataSource alloc] initWithPicturesController:self.picturesController];
         
+        /*
+         * Create transitioning delegate.
+         */
+        
+        self.zoomTransitioningDelegate = [[ZoomAnimatorTransitioningDelegate alloc] init];
+        
     }
     return self;
 }
@@ -51,7 +61,7 @@
      * Set view background.
      */
     
-    self.view.backgroundColor = [UIColor listUI_blackColorAlpha:1];
+    self.view.backgroundColor = [UIColor listUI_lightGrayColorAlpha:1.0f];
     
     /*
      * Create default layout.
@@ -63,20 +73,21 @@
      * Create collection view.
      */
     
-    UICollectionView *collectionView = self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+    ListCollectionView *collectionView = self.collectionView = [[ListCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     collectionView.dataSource = self.dataSource;
-    collectionView.backgroundColor = [UIColor colorWithHex:0x222222 alpha:1.0f];
+    collectionView.delegate = self;
     [self.view addSubview:collectionView];
     
 }
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     
     /*
      * Register class for reuse identifier.
      */
     
-    UICollectionView *collectionView = self.collectionView;
+    ListCollectionView *collectionView = self.collectionView;
     [self.dataSource registerReuseIdentifiersForCollectionView:collectionView];
     
 }
@@ -138,6 +149,38 @@
      */
     
     [self.collectionView reloadData];
+    
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    
+    /*
+     * Set up transitioning delegate
+     */
+    
+    UICollectionViewLayoutAttributes *attributes = [collectionView layoutAttributesForItemAtIndexPath:indexPath];
+    CGRect startFrame = attributes.frame;
+    UIView *view = self.view;
+    ZoomAnimatorTransitioningDelegate *zoomTransitioningDelegate = self.zoomTransitioningDelegate;
+    zoomTransitioningDelegate.startFrame = [collectionView convertRect:startFrame toView:view];
+    
+    /*
+     * Transition.
+     */
+    
+    NSInteger item = indexPath.item;
+    PicturesController *controller = self.picturesController;
+    NSArray *pictures = controller.pictures;
+    Picture *picture = pictures[item];
+    Session *session = self.session;
+    PictureViewController *viewController = [[PictureViewController alloc] initWithPicture:picture session:session];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[ClearNavigationBar class] toolbarClass:nil];
+    navigationController.viewControllers = @[ viewController ];
+    navigationController.modalPresentationStyle = UIModalPresentationCustom;
+    navigationController.transitioningDelegate = zoomTransitioningDelegate;
+    [self presentViewController:navigationController animated:YES completion:nil];
     
 }
 

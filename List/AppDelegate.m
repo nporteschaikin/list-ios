@@ -11,6 +11,7 @@
 #import "Session.h"
 #import "MainViewController.h"
 #import "AppearanceHelper.h"
+#import "ListConstants.h"
 
 @interface AppDelegate ()
 
@@ -26,6 +27,15 @@
      */
     
     [AppearanceHelper customizeAppearance];
+    
+    /*
+     * Set user defaults if necessary.
+     */
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if (![userDefaults objectForKey:kUserDefaultsDiscoveryRadiusInMilesKey]) {
+        [userDefaults setObject:@5 forKey:kUserDefaultsDiscoveryRadiusInMilesKey];
+    }
     
     /*
      * Set status bar style.

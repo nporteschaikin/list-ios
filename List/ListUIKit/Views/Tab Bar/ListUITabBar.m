@@ -59,19 +59,6 @@
 
 static CGFloat const kListUITabBarDefaultHeight = 60.f;
 
-- (instancetype)init {
-    if (self = [super init]) {
-        
-        /*
-         * Set defaults.
-         */
-        
-        self.tintColor = [UIColor listUI_blueColorAlpha:1];
-        
-    }
-    return self;
-}
-
 - (void)layoutSubviews {
     [super layoutSubviews];
     
@@ -154,7 +141,6 @@ static CGFloat const kListUITabBarDefaultHeight = 60.f;
         button = [[ListUITabBarButton alloc] init];
         button.adjustsImageWhenDisabled = YES;
         button.adjustsImageWhenHighlighted = NO;
-        button.tintColor = self.tintColor;
         [button setTintAdjustmentMode:UIViewTintAdjustmentModeDimmed];
         [button setImage:item.image forState:UIControlStateNormal];
         [button addTarget:self action:@selector(handleButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
@@ -200,6 +186,13 @@ static CGFloat const kListUITabBarDefaultHeight = 60.f;
                 
                 UIColor *backgroundColor = selectedItem.barBackgroundColor ?: [UIColor listUI_lightGrayColorAlpha:0.9];
                 self.backgroundColor = backgroundColor;
+                
+                /*
+                 * Set tint color.
+                 */
+                
+                UIColor *tintColor = selectedItem.barTintColor ?: [UIColor listUI_lightBlueColorAlpha:1.0f];
+                self.tintColor = tintColor;
                 
                 continue;
             }

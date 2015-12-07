@@ -24,5 +24,6 @@
 @property (copy, nonatomic) NSString *placeAddress;
 @property (copy, nonatomic) NSDate *startTime;
 @property (copy, nonatomic) NSString *text;
+@property (copy, nonatomic) NSDate *createdAt;
 
 @end

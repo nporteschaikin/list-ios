@@ -235,7 +235,7 @@ static CGFloat const kTagsScrollViewSpacing = 12.f;
     /*
      * Set state.
      */
-    NSLog(@"%@", @"selected");
+    
     button.selected = !button.isSelected;
     
 }

@@ -7,7 +7,14 @@
 //
 
 #import "ListUIKit.h"
+#import "PictureView.h"
+#import "Picture.h"
+#import "Session.h"
 
 @interface PictureViewController : ListUIViewController
+
+@property (strong, nonatomic, readonly) PictureView *pictureView;
+
+- (instancetype)initWithPicture:(Picture *)picture session:(Session *)session;
 
 @end

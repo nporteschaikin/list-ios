@@ -9,12 +9,14 @@
 #import "EventsController.h"
 #import "APIRequest.h"
 #import "ListConstants.h"
+#import "NSDateFormatter+ListAdditions.h"
 
 @interface EventsController ()
 
 @property (strong, nonatomic) Session *session;
 @property (copy, nonatomic) NSArray *events;
 @property (copy, nonatomic) NSArray *tags;
+@property (copy, nonatomic) NSArray *dates;
 @property (strong, nonatomic) Placemark *placemark;
 
 @end
@@ -65,20 +67,22 @@
         }
     }
     
+    // After date
+    if (self.afterDate) {
+        NSDate *afterDate = self.afterDate;
+        NSDateFormatter *formatter = [NSDateFormatter list_ISO8601formatter];
+        query[@"after"] = [formatter stringFromDate:afterDate];
+    }
+    
     /*
      * Set query.
      */
     
     request.query = query;
-    
-    /*
-     * Perform request.
-     */
-    
     [request sendRequest:^(id<NSObject> body) {
         
         /*
-         * Add events and tags.
+         * Add events, tags, and placemark.
          */
         
         self.events = [Event fromJSONArray:(NSArray *)body[kAPIEventsKey]];

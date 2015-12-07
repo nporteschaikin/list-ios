@@ -10,7 +10,7 @@
 
 @interface UIColor (ListUI)
 
-+ (UIColor *)colorWithHex:(uint32_t)hex alpha:(CGFloat)alpha;
++ (UIColor *)listUI_colorWithHex:(uint32_t)hex alpha:(CGFloat)alpha;
 
 + (UIColor *)listUI_blackColorAlpha:(CGFloat)alpha;
 + (UIColor *)listUI_blueColorAlpha:(CGFloat)alpha;

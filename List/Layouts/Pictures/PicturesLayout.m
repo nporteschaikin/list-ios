@@ -17,7 +17,7 @@
 
 @implementation PicturesLayout
 
-static CGFloat const kPicturesLayoutSpace = 3.f;
+static CGFloat const kPicturesLayoutSpace = 6.0f;
 
 - (instancetype)initWithPicturesController:(PicturesController *)picturesController {
     if (self = [super init]) {
@@ -80,11 +80,8 @@ static CGFloat const kPicturesLayoutSpace = 3.f;
         height += size.height;
         height += kPicturesCollectionViewCellMargin;
         
-        // spacer
-        height += 1.0f;
-        height += kPicturesCollectionViewCellMargin;
-        
         // avatar
+        height += kPicturesCollectionViewCellMargin;
         height += kPicturesCollectionViewCellAvatarViewSize;
         height += kPicturesCollectionViewCellMargin;
         

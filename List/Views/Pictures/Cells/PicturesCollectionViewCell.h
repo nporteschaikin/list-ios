@@ -17,6 +17,6 @@ static CGFloat const kPicturesCollectionViewCellAvatarViewSize = 30.f;
 @property (strong, nonatomic, readonly) UILabel *descriptionLabel;
 @property (strong, nonatomic, readonly) UIImageView *avatarView;
 @property (strong, nonatomic, readonly) UILabel *userNameLabel;
-@property (strong, nonatomic, readonly) UILabel *dateLabel;
+@property (strong, nonatomic, readonly) UILabel *detailsLabel;
 
 @end

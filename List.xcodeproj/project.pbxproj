@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F25F9E31C15F4D00022704D /* ZoomAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F25F9E21C15F4D00022704D /* ZoomAnimator.m */; };
+		4F25F9E61C1605A50022704D /* PictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F25F9E51C1605A50022704D /* PictureView.m */; };
 		4F2D3D621C065B5A00F823B9 /* ListSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D3D611C065B5A00F823B9 /* ListSearchBar.m */; };
 		4F2D3D671C0660F600F823B9 /* LocationPickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D3D661C0660F600F823B9 /* LocationPickerTableViewCell.m */; };
 		4F2D3D6A1C066D1900F823B9 /* NSDate+ListAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D3D691C066D1900F823B9 /* NSDate+ListAdditions.m */; };
@@ -19,6 +21,7 @@
 		4F4D3B961B84C7FD00D79CD3 /* CreatePictureViewControllerAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D3B951B84C7FD00D79CD3 /* CreatePictureViewControllerAnimator.m */; };
 		4F4D3B9C1B84D53300D79CD3 /* ListUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D3B9B1B84D53300D79CD3 /* ListUITextField.m */; };
 		4F4D3B9F1B84D54300D79CD3 /* ListUITextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D3B9E1B84D54300D79CD3 /* ListUITextView.m */; };
+		4F57F1011C0E218D0008DD10 /* WhiteNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F57F1001C0E218D0008DD10 /* WhiteNavigationBar.m */; };
 		4F64DAAA1B8CDB37009F6943 /* PicturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F64DAA91B8CDB37009F6943 /* PicturesViewController.m */; };
 		4F6D72B11B7EF0B100ADA9D3 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D72B01B7EF0B100ADA9D3 /* UserViewController.m */; };
 		4F6D72C01B7F9BD300ADA9D3 /* AppearanceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D72BF1B7F9BD300ADA9D3 /* AppearanceHelper.m */; };
@@ -93,6 +96,7 @@
 		4F8F85751B8A0D140055D552 /* PlacemarkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F85741B8A0D140055D552 /* PlacemarkController.m */; };
 		4F8F857D1B8A708F0055D552 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F857C1B8A708F0055D552 /* Tag.m */; };
 		4F8F85811B8A716B0055D552 /* TagsScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F85801B8A716B0055D552 /* TagsScrollView.m */; };
+		4F9230F11C0E313C004231A8 /* ListCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9230F01C0E313C004231A8 /* ListCollectionView.m */; };
 		4FA369051B825DF400FE7EAE /* UIImage+ListAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FA369041B825DF400FE7EAE /* UIImage+ListAdditions.m */; };
 		4FA369071B825E2E00FE7EAE /* logo.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4FA369061B825E2E00FE7EAE /* logo.pdf */; };
 		4FA3690C1B826F1000FE7EAE /* Linearicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4FFFD6B31B82556A00915241 /* Linearicons.ttf */; };
@@ -122,6 +126,7 @@
 		4FC59AED1C05199C00F2C2ED /* DatePickerModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC59AEC1C05199C00F2C2ED /* DatePickerModalViewController.m */; };
 		4FC59AF01C05210C00F2C2ED /* NSDateFormatter+ListAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC59AEF1C05210C00F2C2ED /* NSDateFormatter+ListAdditions.m */; };
 		4FC59AF41C0524A900F2C2ED /* LocationPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC59AF31C0524A900F2C2ED /* LocationPickerViewController.m */; };
+		4FDA4FDD1C10C48D00E23D52 /* EventDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDA4FDC1C10C48D00E23D52 /* EventDateView.m */; };
 		4FFFD6AE1B8253CF00915241 /* UIColor+ListUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFFD6A91B8253CF00915241 /* UIColor+ListUI.m */; };
 		4FFFD6AF1B8253CF00915241 /* UIFont+ListUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFFD6AB1B8253CF00915241 /* UIFont+ListUI.m */; };
 		4FFFD6B01B8253CF00915241 /* UIImage+ListUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFFD6AD1B8253CF00915241 /* UIImage+ListUI.m */; };
@@ -139,6 +144,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F25F9E11C15F4D00022704D /* ZoomAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomAnimator.h; sourceTree = "<group>"; };
+		4F25F9E21C15F4D00022704D /* ZoomAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomAnimator.m; sourceTree = "<group>"; };
+		4F25F9E41C1605A50022704D /* PictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureView.h; sourceTree = "<group>"; };
+		4F25F9E51C1605A50022704D /* PictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureView.m; sourceTree = "<group>"; };
 		4F2D3D601C065B5A00F823B9 /* ListSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListSearchBar.h; sourceTree = "<group>"; };
 		4F2D3D611C065B5A00F823B9 /* ListSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListSearchBar.m; sourceTree = "<group>"; };
 		4F2D3D651C0660F600F823B9 /* LocationPickerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationPickerTableViewCell.h; sourceTree = "<group>"; };
@@ -163,6 +172,8 @@
 		4F4D3B9B1B84D53300D79CD3 /* ListUITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListUITextField.m; sourceTree = "<group>"; };
 		4F4D3B9D1B84D54300D79CD3 /* ListUITextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListUITextView.h; sourceTree = "<group>"; };
 		4F4D3B9E1B84D54300D79CD3 /* ListUITextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListUITextView.m; sourceTree = "<group>"; };
+		4F57F0FF1C0E218D0008DD10 /* WhiteNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhiteNavigationBar.h; sourceTree = "<group>"; };
+		4F57F1001C0E218D0008DD10 /* WhiteNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhiteNavigationBar.m; sourceTree = "<group>"; };
 		4F64DAA81B8CDB37009F6943 /* PicturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesViewController.h; sourceTree = "<group>"; };
 		4F64DAA91B8CDB37009F6943 /* PicturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesViewController.m; sourceTree = "<group>"; };
 		4F6D72AF1B7EF0B100ADA9D3 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
@@ -306,6 +317,8 @@
 		4F8F857C1B8A708F0055D552 /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		4F8F857F1B8A716B0055D552 /* TagsScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagsScrollView.h; sourceTree = "<group>"; };
 		4F8F85801B8A716B0055D552 /* TagsScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagsScrollView.m; sourceTree = "<group>"; };
+		4F9230EF1C0E313C004231A8 /* ListCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListCollectionView.h; sourceTree = "<group>"; };
+		4F9230F01C0E313C004231A8 /* ListCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCollectionView.m; sourceTree = "<group>"; };
 		4FA369031B825DF400FE7EAE /* UIImage+ListAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ListAdditions.h"; sourceTree = "<group>"; };
 		4FA369041B825DF400FE7EAE /* UIImage+ListAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ListAdditions.m"; sourceTree = "<group>"; };
 		4FA369061B825E2E00FE7EAE /* logo.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = logo.pdf; sourceTree = "<group>"; };
@@ -340,6 +353,8 @@
 		4FC59AEF1C05210C00F2C2ED /* NSDateFormatter+ListAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+ListAdditions.m"; sourceTree = "<group>"; };
 		4FC59AF21C0524A900F2C2ED /* LocationPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationPickerViewController.h; sourceTree = "<group>"; };
 		4FC59AF31C0524A900F2C2ED /* LocationPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationPickerViewController.m; sourceTree = "<group>"; };
+		4FDA4FDB1C10C48D00E23D52 /* EventDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDateView.h; sourceTree = "<group>"; };
+		4FDA4FDC1C10C48D00E23D52 /* EventDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDateView.m; sourceTree = "<group>"; };
 		4FFFD6A31B82505100915241 /* ListUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListUIKit.h; sourceTree = "<group>"; };
 		4FFFD6A41B82505D00915241 /* ListUIConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListUIConstants.h; sourceTree = "<group>"; };
 		4FFFD6A51B82507B00915241 /* ListConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListConstants.h; sourceTree = "<group>"; };
@@ -416,6 +431,8 @@
 			isa = PBXGroup;
 			children = (
 				4F4D3B971B84D13200D79CD3 /* Pictures */,
+				4F25F9E11C15F4D00022704D /* ZoomAnimator.h */,
+				4F25F9E21C15F4D00022704D /* ZoomAnimator.m */,
 			);
 			path = Animators;
 			sourceTree = "<group>";
@@ -455,6 +472,8 @@
 				4F4D47341BA0607700DF3D74 /* Cells */,
 				4F4D3B8D1B84B94500D79CD3 /* CreatePictureEditorView.h */,
 				4F4D3B8E1B84B94500D79CD3 /* CreatePictureEditorView.m */,
+				4F25F9E41C1605A50022704D /* PictureView.h */,
+				4F25F9E51C1605A50022704D /* PictureView.m */,
 			);
 			path = Pictures;
 			sourceTree = "<group>";
@@ -918,6 +937,8 @@
 				4F89A9AB1B7D53EA00C8BF85 /* Login */,
 				4F74537D1BFD297300D77DD4 /* LocationTitleView.h */,
 				4F74537E1BFD297300D77DD4 /* LocationTitleView.m */,
+				4F9230EF1C0E313C004231A8 /* ListCollectionView.h */,
+				4F9230F01C0E313C004231A8 /* ListCollectionView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1035,6 +1056,8 @@
 			isa = PBXGroup;
 			children = (
 				4FC59AC91C036CDD00F2C2ED /* Cells */,
+				4FDA4FDB1C10C48D00E23D52 /* EventDateView.h */,
+				4FDA4FDC1C10C48D00E23D52 /* EventDateView.m */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -1059,6 +1082,8 @@
 				4FC59AD51C03A55F00F2C2ED /* ClearNavigationBar.m */,
 				4FC59AE71C03DDA600F2C2ED /* BlackNavigationBar.h */,
 				4FC59AE81C03DDA600F2C2ED /* BlackNavigationBar.m */,
+				4F57F0FF1C0E218D0008DD10 /* WhiteNavigationBar.h */,
+				4F57F1001C0E218D0008DD10 /* WhiteNavigationBar.m */,
 				4F2D3D731C06729C00F823B9 /* NavigationBarRoundedButton.h */,
 				4F2D3D741C06729C00F823B9 /* NavigationBarRoundedButton.m */,
 			);
@@ -1298,6 +1323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F89A9E11B7D658400C8BF85 /* UIImageView+HighlightedWebCache.m in Sources */,
+				4FDA4FDD1C10C48D00E23D52 /* EventDateView.m in Sources */,
 				4F89A96C1B7D229300C8BF85 /* Photo.m in Sources */,
 				4F89A9501B7D21A300C8BF85 /* PicturesController.m in Sources */,
 				4F89A9A21B7D24E400C8BF85 /* LoginDataSource.m in Sources */,
@@ -1311,6 +1337,7 @@
 				4FC59ADD1C03B35200F2C2ED /* EventEditorDataSource.m in Sources */,
 				4F8F85751B8A0D140055D552 /* PlacemarkController.m in Sources */,
 				4F89A9561B7D21CD00C8BF85 /* EventController.m in Sources */,
+				4F25F9E61C1605A50022704D /* PictureView.m in Sources */,
 				4F89A9531B7D21B800C8BF85 /* EventsController.m in Sources */,
 				4F2D3D6A1C066D1900F823B9 /* NSDate+ListAdditions.m in Sources */,
 				4F4D3B8F1B84B94500D79CD3 /* CreatePictureEditorView.m in Sources */,
@@ -1319,6 +1346,7 @@
 				4F7453941BFE211900D77DD4 /* ListUICameraView.m in Sources */,
 				4F89A98F1B7D241200C8BF85 /* Session.m in Sources */,
 				4F4D3B801B84326C00D79CD3 /* CreatePictureCameraViewController.m in Sources */,
+				4F9230F11C0E313C004231A8 /* ListCollectionView.m in Sources */,
 				4F89A98C1B7D240A00C8BF85 /* APIRequest.m in Sources */,
 				4F7453891BFE193000D77DD4 /* EventsLayout.m in Sources */,
 				4F89A9DB1B7D658400C8BF85 /* SDWebImageManager.m in Sources */,
@@ -1330,6 +1358,7 @@
 				4F89A9751B7D22A200C8BF85 /* User.m in Sources */,
 				4FA369051B825DF400FE7EAE /* UIImage+ListAdditions.m in Sources */,
 				4F89A9D41B7D658400C8BF85 /* MKAnnotationView+WebCache.m in Sources */,
+				4F25F9E31C15F4D00022704D /* ZoomAnimator.m in Sources */,
 				4FC59AF41C0524A900F2C2ED /* LocationPickerViewController.m in Sources */,
 				4F89A9D51B7D658400C8BF85 /* NSData+ImageContentType.m in Sources */,
 				4F89A97F1B7D237900C8BF85 /* EventsDataSource.m in Sources */,
@@ -1362,6 +1391,7 @@
 				4F89A9001B7D1EFD00C8BF85 /* main.m in Sources */,
 				4F7453971BFE216E00D77DD4 /* ListUICameraShutterButton.m in Sources */,
 				4F74537F1BFD297300D77DD4 /* LocationTitleView.m in Sources */,
+				4F57F1011C0E218D0008DD10 /* WhiteNavigationBar.m in Sources */,
 				4FC59AE91C03DDA600F2C2ED /* BlackNavigationBar.m in Sources */,
 				4FC59AF01C05210C00F2C2ED /* NSDateFormatter+ListAdditions.m in Sources */,
 				4F64DAAA1B8CDB37009F6943 /* PicturesViewController.m in Sources */,

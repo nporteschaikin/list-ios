@@ -49,10 +49,13 @@
             return @"\ue756";
         }
         case ListUIIconCamera: {
-            return @"\ue708";
+            return @"\ue704";
         }
         case ListUIIconReturn: {
             return @"\ue949";
+        }
+        case ListUIIconFlare: {
+            return @"\ue70b";
         }
     }
     return nil;

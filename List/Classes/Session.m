@@ -55,7 +55,8 @@
          * Save session token.
          */
         
-        self.sessionToken = body[@"sessionToken"];
+        NSString *sessionToken = body[@"sessionToken"];
+        self.sessionToken = sessionToken;
         
         /*
          * Save user.
@@ -65,10 +66,12 @@
         self.user = user;
         
         /*
-         * Log token.
+         * Log details.
          */
         
-        NSLog(@"Session token: %@", self.sessionToken);
+        NSLog(@"Session token: %@", sessionToken);
+        NSLog(@"User ID: %@", user.userID);
+        NSLog(@"User display name: %@", user.displayName);
         
         /*
          * Run delegate.

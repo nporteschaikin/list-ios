@@ -10,7 +10,7 @@
 #import "LocationTitleView.h"
 #import "ListConstants.h"
 #import "EventEditorViewController.h"
-#import "ClearNavigationBar.h"
+#import "BlurNavigationBar.h"
 #import "LocationManager.h"
 
 @implementation MyLocationEventsViewController
@@ -31,6 +31,13 @@
 - (void)requestEvents {
     
     /*
+     * Set controller after date.
+     */
+    
+    EventsController *eventsController = self.eventsController;
+    eventsController.afterDate = [NSDate date];
+    
+    /*
      * Create map circle.
      */
     
@@ -40,7 +47,7 @@
     if (location) {
         
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        CGFloat radius = [[userDefaults objectForKey:kDiscoveryRadiusInMilesUserDefaultsKey] floatValue];
+        CGFloat radius = [[userDefaults objectForKey:kUserDefaultsDiscoveryRadiusInMilesKey] floatValue];
         MapCircle *mapCircle = [[MapCircle alloc] init];
         mapCircle.location = location;
         mapCircle.radius = radius;
@@ -49,7 +56,6 @@
          * Set map circle to latest we've got.
          */
         
-        EventsController *eventsController = self.eventsController;
         eventsController.mapCircle = mapCircle;
         
         /*
@@ -95,7 +101,7 @@
     
     EventEditorViewController *viewController = [[EventEditorViewController alloc] initWithEvent:event session:self.session];
     viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage listUI_icon:ListUIIconCross size:kUINavigationBarCrossImageSize] style:UIBarButtonItemStyleDone target:self action:@selector(handleEventEditorViewControllerBarButtonItem:)];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[ClearNavigationBar class] toolbarClass:nil];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[BlurNavigationBar class] toolbarClass:nil];
     navigationController.viewControllers = @[ viewController ];
     [self presentViewController:navigationController animated:YES completion:nil];
     

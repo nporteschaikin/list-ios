@@ -16,8 +16,7 @@
 @property (strong, nonatomic) UILabel *descriptionLabel;
 @property (strong, nonatomic) UIImageView *avatarView;
 @property (strong, nonatomic) UILabel *userNameLabel;
-@property (strong, nonatomic) UILabel *dateLabel;
-@property (strong, nonatomic) CALayer *spacerLayer;
+@property (strong, nonatomic) UILabel *detailsLabel;
 
 @end
 
@@ -31,18 +30,21 @@
          * Create subviews.
          */
         
-        self.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);
-        self.layer.shadowOpacity = 1.0f;
-        self.layer.shadowColor = [UIColor listUI_blackColorAlpha:0.5f].CGColor;
+        self.layer.shadowColor = [UIColor listUI_blackColorAlpha:1.0f].CGColor;
+        self.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+        self.layer.shadowOpacity = 0.05f;
         self.layer.shadowRadius = 0.0f;
         
         UIView *contentView = self.contentView;
         contentView.clipsToBounds = YES;
         contentView.backgroundColor = [UIColor whiteColor];
-        contentView.layer.cornerRadius = 2.0f;
+        contentView.layer.borderWidth = 1.0f;
+        contentView.layer.borderColor = [UIColor listUI_grayColorAlpha:0.5f].CGColor;
+        contentView.layer.cornerRadius = 3.0f;
+        contentView.layer.masksToBounds = YES;
         
         UIView *assetContainer = self.assetContainer = [[UIView alloc] init];
-        assetContainer.backgroundColor = [UIColor colorWithHex:0xf1f1f1 alpha:1.0f];
+        assetContainer.backgroundColor = [UIColor listUI_colorWithHex:0xf1f1f1 alpha:1.0f];
         [contentView addSubview:assetContainer];
         
         UIImageView *assetView = self.assetView = [[UIImageView alloc] init];
@@ -63,10 +65,10 @@
         userNameLabel.textColor = [UIColor listUI_blueColorAlpha:1];
         [contentView addSubview:userNameLabel];
         
-        UILabel *dateLabel = self.dateLabel = [[UILabel alloc] init];
-        dateLabel.font = [UIFont listUI_fontWithSize:9.f];
-        dateLabel.textColor = [UIColor colorWithHex:0x999999 alpha:1.0f];
-        [contentView addSubview:dateLabel];
+        UILabel *detailsLabel = self.detailsLabel = [[UILabel alloc] init];
+        detailsLabel.font = [UIFont listUI_fontWithSize:9.f];
+        detailsLabel.textColor = [UIColor listUI_colorWithHex:0x999999 alpha:1.0f];
+        [contentView addSubview:detailsLabel];
         
         UIImageView *avatarView = self.avatarView = [[UIImageView alloc] init];
         avatarView.clipsToBounds = YES;
@@ -74,10 +76,6 @@
         avatarView.layer.masksToBounds = YES;
         avatarView.contentMode = UIViewContentModeScaleAspectFill;
         [contentView addSubview:avatarView];
-        
-        CALayer *spacerLayer = self.spacerLayer = [[CALayer alloc] init];
-        spacerLayer.backgroundColor = [UIColor colorWithHex:0xF1F1F1 alpha:1.0f].CGColor;
-        [contentView.layer addSublayer:spacerLayer];
         
     }
     return self;
@@ -105,14 +103,8 @@
     h = size.height;
     self.descriptionLabel.frame = CGRectMake(x, y, w, h);
     
-    x = 0.0f;
-    y = y + h + kPicturesCollectionViewCellMargin;
-    w = CGRectGetWidth(self.contentView.bounds);
-    h = 1.0f;
-    self.spacerLayer.frame = CGRectMake(x, y, w, h);
-    
     x = kPicturesCollectionViewCellMargin;
-    y = y + h + kPicturesCollectionViewCellMargin;
+    y = y + h + (kPicturesCollectionViewCellMargin * 2);
     w = kPicturesCollectionViewCellAvatarViewSize;
     h = kPicturesCollectionViewCellAvatarViewSize;
     self.avatarView.frame = CGRectMake(x, y, w, h);
@@ -125,9 +117,9 @@
     self.userNameLabel.frame = CGRectMake(x, y, w, h);
     
     y = y + h;
-    size = [self.dateLabel sizeThatFits:CGSizeMake(w, CGFLOAT_MAX)];
+    size = [self.detailsLabel sizeThatFits:CGSizeMake(w, CGFLOAT_MAX)];
     h = size.height;
-    self.dateLabel.frame = CGRectMake(x, y, w, h);
+    self.detailsLabel.frame = CGRectMake(x, y, w, h);
 }
 
 @end

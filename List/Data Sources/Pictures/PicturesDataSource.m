@@ -41,9 +41,9 @@ static NSString * const kPicturesCollectionViewCellReuseIdentifier = @"kPictures
     PicturesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPicturesCollectionViewCellReuseIdentifier forIndexPath:indexPath];
     [cell.assetView sd_setImageWithURL:picture.asset.URL];
     [cell.avatarView sd_setImageWithURL:picture.user.profilePhoto.URL];
-    cell.userNameLabel.text = picture.user.displayName;
     cell.descriptionLabel.text = picture.text;
-    cell.dateLabel.text = [NSString stringWithFormat:@"%@ in %@", [picture.createdAt list_timeAgo], picture.placemark.title];
+    cell.userNameLabel.text = picture.user.displayName;
+    cell.detailsLabel.text = [NSString stringWithFormat:@"%@ in %@", [picture.createdAt list_timeAgo], picture.placemark.title];
     [cell setNeedsLayout];
     [cell layoutIfNeeded];
     return cell;

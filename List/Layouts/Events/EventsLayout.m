@@ -17,7 +17,7 @@
 
 @implementation EventsLayout
 
-static CGFloat const kEventsLayoutSpace = 12.f;
+static CGFloat const kEventsLayoutSpace = 6.f;
 
 - (instancetype)initWithEventsController:(EventsController *)eventsController {
     if (self = [super init]) {
@@ -76,6 +76,10 @@ static CGFloat const kEventsLayoutSpace = 12.f;
         rect = [event.text boundingRectWithSize:CGSizeMake(w, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont listUI_fontWithSize:12.f]} context:nil];
         size = rect.size;
         height += size.height;
+        height += kEventsCollectionViewCellMargin;
+        
+        // avatar
+        height += kEventsCollectionViewCellAvatarViewSize;
         height += kEventsCollectionViewCellMargin;
         
         return height;

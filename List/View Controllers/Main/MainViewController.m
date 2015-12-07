@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "LoginViewController.h"
 #import "BlurNavigationBar.h"
+#import "BlackNavigationBar.h"
 #import "MyLocationPicturesViewController.h"
 #import "MyLocationEventsViewController.h"
 #import "UserViewController.h"
@@ -42,6 +43,9 @@
      */
     
     self.view.backgroundColor = [UIColor listUI_blueColorAlpha:1];
+    self.view.clipsToBounds = YES;
+    self.view.layer.masksToBounds = YES;
+    self.view.layer.cornerRadius = 3.0f;
     
 }
 
@@ -84,22 +88,25 @@
     UINavigationController *picturesNavigationController = [[UINavigationController alloc] initWithNavigationBarClass:[BlurNavigationBar class] toolbarClass:nil];
     picturesNavigationController.viewControllers = @[ picturesViewController ];
     picturesNavigationController.listTabBarItem.image = [UIImage listUI_icon:ListUIIconPictures size:kListUITabBarDefaultImageSize];
-    picturesNavigationController.listTabBarItem.barBackgroundColor = [UIColor listUI_blackColorAlpha:1];
+    picturesNavigationController.listTabBarItem.barBackgroundColor = [UIColor whiteColor];
     
     /*
      * Create events view controller.
      */
     
     MyLocationEventsViewController *eventsViewController = [[MyLocationEventsViewController alloc] initWithSession:self.session];
-    UINavigationController *eventsNavigationController = [[UINavigationController alloc] initWithRootViewController:eventsViewController];
+    UINavigationController *eventsNavigationController = [[UINavigationController alloc] initWithNavigationBarClass:[BlurNavigationBar class] toolbarClass:nil];
+    eventsNavigationController.viewControllers = @[ eventsViewController ];
     eventsNavigationController.listTabBarItem.image = [UIImage listUI_icon:ListUIIconEvents size:kListUITabBarDefaultImageSize];
+    eventsNavigationController.listTabBarItem.barBackgroundColor = [UIColor whiteColor];
     
     /*
      * Create user view controller.
      */
     
     UserViewController *userViewController = [[UserViewController alloc] initWithUser:self.session.user session:self.session];
-    UINavigationController *userNavigationController = [[UINavigationController alloc] initWithRootViewController:userViewController];
+    UINavigationController *userNavigationController = [[UINavigationController alloc] initWithNavigationBarClass:nil toolbarClass:nil];
+    userNavigationController.viewControllers = @[ userViewController ];
     userNavigationController.listTabBarItem.image = [UIImage listUI_icon:ListUIIconUser size:kListUITabBarDefaultImageSize];
     
     /*
@@ -107,7 +114,8 @@
      */
     
     SettingsViewController *settingsViewController = [[SettingsViewController alloc] init];
-    UINavigationController *settingsNavigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
+    UINavigationController *settingsNavigationController = [[UINavigationController alloc] init];
+    settingsNavigationController.viewControllers = @[ settingsViewController ];
     settingsNavigationController.listTabBarItem.image = [UIImage listUI_icon:ListUIIconMenu size:kListUITabBarDefaultImageSize];
     
     /*

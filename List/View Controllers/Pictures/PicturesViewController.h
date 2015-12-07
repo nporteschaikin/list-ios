@@ -8,13 +8,14 @@
 
 #import "ListUIKit.h"
 #import "PicturesController.h"
+#import "ListCollectionView.h"
 #import "Session.h"
 
 @interface PicturesViewController : ListUIViewController <UICollectionViewDelegate, PicturesControllerDelegate>
 
 @property (strong, nonatomic, readonly) PicturesController *picturesController;
 @property (strong, nonatomic, readonly) Session *session;
-@property (strong, nonatomic, readonly) UICollectionView *collectionView;
+@property (strong, nonatomic, readonly) ListCollectionView *collectionView;
 
 - (instancetype)initWithSession:(Session *)session;
 - (void)requestPictures;
