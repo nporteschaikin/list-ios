@@ -10,6 +10,12 @@
 #import "NSDateFormatter+ListAdditions.h"
 #import "NSString+ListAdditions.h"
 
+@interface Picture ()
+
+@property (copy, nonatomic) NSString *pictureID;
+
+@end
+
 @implementation Picture
 
 - (id<NSCopying>)toJSON {
@@ -56,6 +62,14 @@
 }
 
 - (void)applyJSONDict:(NSDictionary *)dict {
+    
+    /*
+     * Set ID.
+     */
+    
+    if (dict[@"_id"]) {
+        self.pictureID = dict[@"_id"];
+    }
     
     /*
      * Set asset.

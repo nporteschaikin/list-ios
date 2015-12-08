@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Picture.h"
-#import "Params.h"
+#import "Paging.h"
 #import "Tag.h"
 #import "Session.h"
 #import "MapCircle.h"
@@ -19,6 +19,7 @@
 
 @optional
 - (void)picturesControllerDidFetchPictures:(PicturesController *)picturesController;
+- (void)picturesController:(PicturesController *)picturesController didInsertPictures:(NSArray *)pictures intoPictures:(NSArray *)prevPictures;
 - (void)picturesController:(PicturesController *)picturesController failedToFetchPicturesWithError:(NSError *)error;
 - (void)picturesController:(PicturesController *)picturesController failedToFetchPicturesWithResponse:(id<NSObject>)response;
 
@@ -27,14 +28,20 @@
 @interface PicturesController : NSObject
 
 @property (weak, nonatomic) id<PicturesControllerDelegate> delegate;
+
+#pragma mark - Result properties
 @property (copy, nonatomic, readonly) NSArray *pictures;
 @property (copy, nonatomic, readonly) NSArray *tags;
-@property (strong, nonatomic, readonly) Params *params;
+@property (strong, nonatomic, readonly) Paging *paging;
 @property (strong, nonatomic, readonly) Placemark *placemark;
+
+#pragma mark - Query properties
 @property (strong, nonatomic) MapCircle *mapCircle;
 @property (strong, nonatomic) User *user;
+@property (strong, nonatomic) Picture *start;
 
 - (id)initWithSession:(Session *)session;
 - (void)requestPictures;
+- (void)insertPictures;
 
 @end

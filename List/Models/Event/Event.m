@@ -10,6 +10,12 @@
 #import "NSDateFormatter+ListAdditions.h"
 #import "NSString+ListAdditions.h"
 
+@interface Event ()
+
+@property (copy, nonatomic) NSString *eventID;
+
+@end
+
 @implementation Event
 
 - (id<NSCopying>)toJSON {
@@ -90,6 +96,14 @@
 
 - (void)applyJSONDict:(NSDictionary *)dict {
     NSDateFormatter *dateFormatter = [NSDateFormatter list_ISO8601formatter];
+    
+    /*
+     * Set ID.
+     */
+    
+    if (dict[@"_id"]) {
+        self.eventID = dict[@"_id"];
+    }
     
     /*
      * Set asset.

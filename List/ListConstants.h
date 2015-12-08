@@ -28,7 +28,7 @@
 #define kAPIPlacemarkEndpoint @"placemark"
 #define kAPIPlacemarkKey @"placemark"
 
-#define kAPIParamsKey @"params"
+#define kAPIPagingKey @"paging"
 
 #define kUserDefaultsSessionTokenKey @"kUserDefaultsSessionTokenKey"
 #define kLocationManagerDistanceMinimum 804.67 // half a mile

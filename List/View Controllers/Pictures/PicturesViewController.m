@@ -21,7 +21,9 @@
 @property (strong, nonatomic) PicturesController *picturesController;
 @property (strong, nonatomic) PicturesDataSource *dataSource;
 @property (strong, nonatomic) PicturesLayout *layout;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) ZoomTransitioningDelegate *zoomTransitioningDelegate;
+@property (nonatomic, getter=isInsertingMore) BOOL insertingMore;
 
 @end
 
@@ -78,6 +80,14 @@
     collectionView.delegate = self;
     [self.view addSubview:collectionView];
     
+    /*
+     * Create refresh control.
+     */
+    
+    UIRefreshControl *refreshControl = self.refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(handleRefreshControl:) forControlEvents:UIControlEventValueChanged];
+    [collectionView addSubview:refreshControl];
+    
 }
 
 - (void)viewDidLoad {
@@ -109,6 +119,13 @@
 }
 
 - (void)requestPictures {
+    
+    /*
+     * Reset start.
+     */
+    
+    PicturesController *controller = self.picturesController;
+    controller.start = nil;
     
     /*
      * Perform request.
@@ -150,6 +167,29 @@
     
     [self.collectionView reloadData];
     
+    /*
+     * End refreshing.
+     */
+    
+    [self.refreshControl endRefreshing];
+    
+}
+
+- (void)picturesController:(PicturesController *)picturesController didInsertPictures:(NSArray *)pictures intoPictures:(NSArray *)prevPictures {
+    
+    /*
+     * Insert into collection view.
+     */
+    
+    [self.collectionView reloadData];
+    
+    /*
+     * Note that we're no longer
+     * inserting more.
+     */
+    
+    self.insertingMore = NO;
+    
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -181,6 +221,60 @@
     navigationController.modalPresentationStyle = UIModalPresentationCustom;
     navigationController.transitioningDelegate = zoomTransitioningDelegate;
     [self presentViewController:navigationController animated:YES completion:nil];
+    
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    
+    /*
+     * Determine if scrolled past delta.
+     */
+    
+    CGPoint offset = scrollView.contentOffset;
+    CGSize size = scrollView.contentSize;
+    CGRect frame = scrollView.frame;
+    if (offset.y + frame.size.height >= size.height - 30) {
+        
+        /*
+         * If is inserting more or ineligible,
+         * skip.
+         */
+        
+        PicturesController *controller = self.picturesController;
+        Paging *paging = controller.paging;
+        if (self.isInsertingMore || paging.limit >= paging.count) return;
+        
+        /*
+         * Note that we're inserting more.
+         */
+        
+        self.insertingMore = YES;
+        
+        /*
+         * Fetch additional pictures.
+         */
+        
+        NSArray *pictures = controller.pictures;
+        Picture *start = [pictures lastObject];
+        controller.start = start;
+        [controller insertPictures];
+    
+    }
+    
+}
+
+#pragma mark - Refresh control handler
+
+- (void)handleRefreshControl:(UIRefreshControl *)refreshControl {
+    
+    /*
+     * Request!
+     */
+    
+    [self requestPictures];
     
 }
 

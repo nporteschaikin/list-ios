@@ -16,7 +16,7 @@
 @property (strong, nonatomic) Session *session;
 @property (copy, nonatomic) NSArray *events;
 @property (copy, nonatomic) NSArray *tags;
-@property (strong, nonatomic) Params *params;
+@property (strong, nonatomic) Paging *paging;
 @property (copy, nonatomic) NSArray *dates;
 @property (strong, nonatomic) Placemark *placemark;
 
@@ -32,14 +32,6 @@
 }
 
 - (void)requestEvents {
-    
-    /*
-     * Set link params.
-     */
-    
-    Params *params = self.params = [[Params alloc] init];
-    params.limit = 10;
-    params.offset = 0;
     
     /*
      * Get request object.
@@ -93,19 +85,69 @@
     
 }
 
-- (void)requestNextEvents {
+- (void)insertEvents {
     
     /*
-     * If no events set, skip.
+     * Get request.
      */
     
-    if (!self.events) return;
+    APIRequest *request = [self request];
     
-    // TODO: finish
+    /*
+     * Perform request.
+     */
+    
+    [request sendRequest:^(id<NSObject> body) {
+        
+        /*
+         * Add pictures to existing array.
+         */
+        
+        NSArray *events = [Event fromJSONArray:(NSArray *)body[kAPIEventsKey]];
+        NSArray *prevEvents = self.events;
+        self.events = [prevEvents arrayByAddingObjectsFromArray:events];
+        
+        /*
+         * Update everything else.
+         */
+        
+        self.paging = [Paging fromJSONDict:(NSDictionary *)body[kAPIPagingKey]];
+        self.tags = [Tag fromJSONArray:(NSArray *)body[kAPITagsKey]];
+        self.placemark = [Placemark fromJSONDict:(NSDictionary *)body[kAPIPlacemarkKey]];
+        
+        /*
+         * Send delegate message.
+         */
+        
+        if ([self.delegate respondsToSelector:@selector(eventsController:didInsertEvents:intoEvents:)]) {
+            [self.delegate eventsController:self didInsertEvents:events intoEvents:prevEvents];
+        }
+        
+    } onError:^(NSError *error) {
+        
+        /*
+         * Send delegate message.
+         */
+        
+        if ([self.delegate respondsToSelector:@selector(eventsController:failedToFetchEventsWithError:)]) {
+            [self.delegate eventsController:self failedToFetchEventsWithError:error];
+        }
+        
+    } onFail:^(id<NSObject> body) {
+        
+        /*
+         * Send delegate message.
+         */
+        
+        if ([self.delegate respondsToSelector:@selector(eventsController:failedToFetchEventsWithError:)]) {
+            [self.delegate eventsController:self failedToFetchEventsWithResponse:body];
+        }
+        
+    }];
     
 }
 
-#pragma mark - Request builder
+#pragma mark - Request object
 
 - (APIRequest *)request {
     
@@ -151,12 +193,13 @@
         query[@"after"] = [formatter stringFromDate:afterDate];
     }
     
-    // Link params
-    if (self.params) {
-        Params *params = self.params;
-        query[@"offset"] = [NSString stringWithFormat:@"%ld", (long)params.offset];
-        query[@"limit"] = [NSString stringWithFormat:@"%ld", (long)params.limit];
+    // Start
+    if (self.start) {
+        query[@"start"] = self.start.eventID;
     }
+    
+    // Limit
+    query[@"limit"] = @"10";
     
     /*
      * Set query.

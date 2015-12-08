@@ -20,7 +20,9 @@
 @property (strong, nonatomic) EventsController *eventsController;
 @property (strong, nonatomic) EventsDataSource *dataSource;
 @property (strong, nonatomic) EventsLayout *layout;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) ZoomTransitioningDelegate *zoomTransitioningDelegate;
+@property (nonatomic, getter=isInsertingMore) BOOL insertingMore;
 
 @end
 
@@ -71,6 +73,14 @@
     collectionView.delegate = self;
     [self.view addSubview:collectionView];
     
+    /*
+     * Create refresh control.
+     */
+    
+    UIRefreshControl *refreshControl = self.refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(handleRefreshControl:) forControlEvents:UIControlEventValueChanged];
+    [collectionView addSubview:refreshControl];
+    
 }
 
 - (void)viewDidLoad {
@@ -96,6 +106,13 @@
 }
 
 - (void)requestEvents {
+    
+    /*
+     * Reset start.
+     */
+    
+    EventsController *controller = self.eventsController;
+    controller.start = nil;
     
     /*
      * Perform request.
@@ -132,6 +149,25 @@
     
 }
 
+- (void)eventsController:(EventsController *)eventsController didInsertEvents:(NSArray *)events intoEvents:(NSArray *)prevEvents {
+    
+    /*
+     * Insert into collection view.
+     */
+    
+    [self.collectionView reloadData];
+    
+    /*
+     * Note that we're no longer
+     * inserting more.
+     */
+    
+    self.insertingMore = NO;
+    
+}
+
+#pragma mark - UICollectionViewDelegate
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
     /*
@@ -159,6 +195,61 @@
     navigationController.modalPresentationStyle = UIModalPresentationCustom;
     navigationController.transitioningDelegate = zoomTransitioningDelegate;
     [self presentViewController:navigationController animated:YES completion:nil];
+    
+}
+
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    
+    /*
+     * Determine if scrolled past delta.
+     */
+    
+    CGPoint offset = scrollView.contentOffset;
+    CGSize size = scrollView.contentSize;
+    CGRect frame = scrollView.frame;
+    if (offset.y + frame.size.height >= size.height - 30) {
+        
+        /*
+         * If is inserting more or ineligible,
+         * skip.
+         */
+        
+        EventsController *controller = self.eventsController;
+        Paging *paging = controller.paging;
+        if (self.isInsertingMore || paging.limit >= paging.count) return;
+        
+        /*
+         * Note that we're inserting more.
+         */
+        
+        self.insertingMore = YES;
+        
+        /*
+         * Fetch additional events.
+         */
+        
+        NSArray *events = controller.events;
+        Event *start = [events lastObject];
+        controller.start = start;
+        [controller insertEvents];
+        
+    }
+    
+}
+
+#pragma mark - Refresh control handler
+
+- (void)handleRefreshControl:(UIRefreshControl *)refreshControl {
+    
+    /*
+     * Request!
+     */
+    
+    [self requestEvents];
     
 }
 

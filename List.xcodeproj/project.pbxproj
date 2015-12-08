@@ -10,7 +10,7 @@
 		4F25F9E31C15F4D00022704D /* ZoomAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F25F9E21C15F4D00022704D /* ZoomAnimator.m */; };
 		4F25F9E61C1605A50022704D /* PictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F25F9E51C1605A50022704D /* PictureView.m */; };
 		4F25F9E91C16237C0022704D /* ListLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F25F9E81C16237C0022704D /* ListLoadingView.m */; };
-		4F25F9F51C1653C20022704D /* Params.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F25F9F41C1653C20022704D /* Params.m */; };
+		4F25F9F91C1724980022704D /* Paging.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F25F9F81C1724980022704D /* Paging.m */; };
 		4F2D3D621C065B5A00F823B9 /* ListSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D3D611C065B5A00F823B9 /* ListSearchBar.m */; };
 		4F2D3D671C0660F600F823B9 /* LocationPickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D3D661C0660F600F823B9 /* LocationPickerTableViewCell.m */; };
 		4F2D3D6A1C066D1900F823B9 /* NSDate+ListAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D3D691C066D1900F823B9 /* NSDate+ListAdditions.m */; };
@@ -152,8 +152,8 @@
 		4F25F9E51C1605A50022704D /* PictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureView.m; sourceTree = "<group>"; };
 		4F25F9E71C16237C0022704D /* ListLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListLoadingView.h; sourceTree = "<group>"; };
 		4F25F9E81C16237C0022704D /* ListLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListLoadingView.m; sourceTree = "<group>"; };
-		4F25F9F31C1653C20022704D /* Params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Params.h; sourceTree = "<group>"; };
-		4F25F9F41C1653C20022704D /* Params.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Params.m; sourceTree = "<group>"; };
+		4F25F9F71C1724980022704D /* Paging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Paging.h; sourceTree = "<group>"; };
+		4F25F9F81C1724980022704D /* Paging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Paging.m; sourceTree = "<group>"; };
 		4F2D3D601C065B5A00F823B9 /* ListSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListSearchBar.h; sourceTree = "<group>"; };
 		4F2D3D611C065B5A00F823B9 /* ListSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListSearchBar.m; sourceTree = "<group>"; };
 		4F2D3D651C0660F600F823B9 /* LocationPickerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationPickerTableViewCell.h; sourceTree = "<group>"; };
@@ -407,13 +407,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4F25F9F21C1653B00022704D /* Params */ = {
+		4F25F9F61C1724860022704D /* Paging */ = {
 			isa = PBXGroup;
 			children = (
-				4F25F9F31C1653C20022704D /* Params.h */,
-				4F25F9F41C1653C20022704D /* Params.m */,
+				4F25F9F71C1724980022704D /* Paging.h */,
+				4F25F9F81C1724980022704D /* Paging.m */,
 			);
-			path = Params;
+			path = Paging;
 			sourceTree = "<group>";
 		};
 		4F2D3D5F1C065B1D00F823B9 /* Search */ = {
@@ -780,7 +780,7 @@
 		4F89A95D1B7D21FE00C8BF85 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4F25F9F21C1653B00022704D /* Params */,
+				4F25F9F61C1724860022704D /* Paging */,
 				4F8F857A1B8A70840055D552 /* Tag */,
 				4F89A9621B7D222300C8BF85 /* Placemark */,
 				4F89A9611B7D221F00C8BF85 /* Photo */,
@@ -1405,6 +1405,7 @@
 				4F89A93C1B7D20B400C8BF85 /* EventViewController.m in Sources */,
 				4FC59AED1C05199C00F2C2ED /* DatePickerModalViewController.m in Sources */,
 				4FC59AE01C03B61F00F2C2ED /* ListUITableViewCell.m in Sources */,
+				4F25F9F91C1724980022704D /* Paging.m in Sources */,
 				4F89A9DF1B7D658400C8BF85 /* UIImage+MultiFormat.m in Sources */,
 				4F89A9D81B7D658400C8BF85 /* SDWebImageDecoder.m in Sources */,
 				4F89A9001B7D1EFD00C8BF85 /* main.m in Sources */,
@@ -1419,7 +1420,6 @@
 				4F89A9661B7D228100C8BF85 /* ListModel.m in Sources */,
 				4FC59AE31C03B9B700F2C2ED /* EventEditorAssetCell.m in Sources */,
 				4F89A9351B7D207800C8BF85 /* EventsViewController.m in Sources */,
-				4F25F9F51C1653C20022704D /* Params.m in Sources */,
 				4F89A9DD1B7D658400C8BF85 /* UIButton+WebCache.m in Sources */,
 				4F7453771BFCDE4800D77DD4 /* PicturesCollectionViewCell.m in Sources */,
 				4F89A9DC1B7D658400C8BF85 /* SDWebImagePrefetcher.m in Sources */,
