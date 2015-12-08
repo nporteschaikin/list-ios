@@ -28,6 +28,8 @@
 #define kAPIPlacemarkEndpoint @"placemark"
 #define kAPIPlacemarkKey @"placemark"
 
+#define kAPIParamsKey @"params"
+
 #define kUserDefaultsSessionTokenKey @"kUserDefaultsSessionTokenKey"
 #define kLocationManagerDistanceMinimum 804.67 // half a mile
 
@@ -36,5 +38,6 @@
 #define kUINavigationBarDefaultImageSize 15
 #define kUINavigationBarCrossImageSize 18
 #define kListUITabBarDefaultImageSize 20
+#define kListLoadingViewDefaultSize 30
 
 #define kPicturesHeightMultiplier = 1.7777;

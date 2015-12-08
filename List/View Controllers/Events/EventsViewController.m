@@ -7,9 +7,11 @@
 //
 
 #import "EventsViewController.h"
+#import "EventViewController.h"
 #import "ListConstants.h"
 #import "EventsDataSource.h"
 #import "EventsLayout.h"
+#import "ZoomAnimator.h"
 
 @interface EventsViewController ()
 
@@ -18,6 +20,7 @@
 @property (strong, nonatomic) EventsController *eventsController;
 @property (strong, nonatomic) EventsDataSource *dataSource;
 @property (strong, nonatomic) EventsLayout *layout;
+@property (strong, nonatomic) ZoomTransitioningDelegate *zoomTransitioningDelegate;
 
 @end
 
@@ -40,6 +43,12 @@
         
         self.dataSource = [[EventsDataSource alloc] initWithEventsController:self.eventsController];
         
+        /*
+         * Create transitioning delegate.
+         */
+        
+        self.zoomTransitioningDelegate = [[ZoomTransitioningDelegate alloc] init];
+        
     }
     return self;
 }
@@ -59,6 +68,7 @@
     
     ListCollectionView *collectionView = self.collectionView = [[ListCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     collectionView.dataSource = self.dataSource;
+    collectionView.delegate = self;
     [self.view addSubview:collectionView];
     
 }
@@ -119,6 +129,36 @@
      */
     
     [self.collectionView reloadData];
+    
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    
+    /*
+     * Set up transitioning delegate
+     */
+    
+    UICollectionViewLayoutAttributes *attributes = [collectionView layoutAttributesForItemAtIndexPath:indexPath];
+    CGRect startFrame = attributes.frame;
+    UIView *view = self.view;
+    ZoomTransitioningDelegate *zoomTransitioningDelegate = self.zoomTransitioningDelegate;
+    zoomTransitioningDelegate.startFrame = [collectionView convertRect:startFrame toView:view];
+    
+    /*
+     * Transition.
+     */
+    
+    NSInteger item = indexPath.item;
+    EventsController *controller = self.eventsController;
+    NSArray *events = controller.events;
+    Event *event = events[item];
+    Session *session = self.session;
+    EventViewController *viewController = [[EventViewController alloc] initWithEvent:event session:session];
+    UINavigationController *navigationController = [[UINavigationController alloc] init];
+    navigationController.viewControllers = @[ viewController ];
+    navigationController.modalPresentationStyle = UIModalPresentationCustom;
+    navigationController.transitioningDelegate = zoomTransitioningDelegate;
+    [self presentViewController:navigationController animated:YES completion:nil];
     
 }
 

@@ -31,9 +31,11 @@ typedef NS_ENUM(NSUInteger, LoginViewButton) {
 
 @interface LoginView : UIView <UIScrollViewDelegate>
 
+@property (nonatomic, getter=isForegroundViewsHidden) BOOL foregroundViewsHidden;
 @property (weak, nonatomic) id<LoginViewDataSource> dataSource;
 @property (weak, nonatomic) id<LoginViewDelegate> delegate;
 
 - (void)reloadView;
+- (void)setForegroundViewsHidden:(BOOL)foregroundViewsHidden animated:(BOOL)animated;
 
 @end

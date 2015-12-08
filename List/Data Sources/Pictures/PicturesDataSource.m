@@ -39,7 +39,9 @@ static NSString * const kPicturesCollectionViewCellReuseIdentifier = @"kPictures
     NSArray *pictures = picturesController.pictures;
     Picture *picture = pictures[row];
     PicturesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPicturesCollectionViewCellReuseIdentifier forIndexPath:indexPath];
+    [cell.assetView sd_cancelCurrentImageLoad];
     [cell.assetView sd_setImageWithURL:picture.asset.URL];
+    [cell.avatarView sd_cancelCurrentImageLoad];
     [cell.avatarView sd_setImageWithURL:picture.user.profilePhoto.URL];
     cell.descriptionLabel.text = picture.text;
     cell.userNameLabel.text = picture.user.displayName;

@@ -84,6 +84,7 @@ static CGFloat const kLoginViewMargin = 24.f;
         self.facebookButton.layer.borderColor = [UIColor whiteColor].CGColor;
         self.facebookButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         self.facebookButton.titleLabel.font = [UIFont listUI_fontWithSize:15.f];
+        self.facebookButton.hidden = NO;
         [self.facebookButton setTitle:@"Sign in with Facebook" forState:UIControlStateNormal];
         [self.facebookButton addTarget:self action:@selector(handleButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
         [self addSubview:self.facebookButton];
@@ -122,6 +123,7 @@ static CGFloat const kLoginViewMargin = 24.f;
      * Create views for each page.
      */
     
+    BOOL isForegroundViewsHidden = self.isForegroundViewsHidden;
     id<LoginViewDataSource> dataSource = self.dataSource;
     UIView *overlayView = self.overlayView;
     NSInteger numberOfPages = [dataSource numberOfPagesInLoginView:self];
@@ -140,6 +142,7 @@ static CGFloat const kLoginViewMargin = 24.f;
          */
         
         label = [[UILabel alloc] init];
+        label.hidden = isForegroundViewsHidden;
         label.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         label.frame = scrollView.bounds;
         label.font = [UIFont listUI_lightFontWithSize:20.f];
@@ -157,6 +160,7 @@ static CGFloat const kLoginViewMargin = 24.f;
         dot = [[UIView alloc] init];
         dot.layer.cornerRadius = (kLoginViewDotSize / 2);
         dot.backgroundColor = [UIColor whiteColor];
+        dot.hidden = isForegroundViewsHidden;
         [self addSubview:dot];
         [newDots addObject:dot];
         dot.alpha = i == 0 ? 1 : kLoginViewDotDefaultAlpha;
@@ -251,6 +255,72 @@ static CGFloat const kLoginViewMargin = 24.f;
     h = size.height;
     frame = CGRectMake(x, y, w, h);
     self.facebookButton.frame = frame;
+    
+}
+
+- (void)setForegroundViewsHidden:(BOOL)foregroundViewsHidden {
+    
+    /*
+     * Use animated method.
+     */
+    
+    [self setForegroundViewsHidden:foregroundViewsHidden animated:NO];
+    
+}
+
+- (void)setForegroundViewsHidden:(BOOL)foregroundViewsHidden animated:(BOOL)animated {
+    
+    /*
+     * Set variable.
+     */
+    
+    _foregroundViewsHidden = foregroundViewsHidden;
+    
+    /*
+     * Create blocks.
+     */
+    
+    void (^animateBlock)(void) = ^void(void) {
+        CGFloat alpha = foregroundViewsHidden ? 0.0f : 1.0f;
+        for (UIView *dot in self.dots) dot.alpha = alpha;
+        for (UIView *label in self.labels) label.alpha = alpha;
+        self.facebookButton.alpha = alpha;
+    };
+    void (^completeBlock)(BOOL) = ^void(BOOL finished) {
+        if (foregroundViewsHidden) {
+            for (UIView *dot in self.dots) dot.hidden = YES;
+            for (UIView *label in self.labels) label.hidden = YES;
+            self.facebookButton.hidden = YES;
+        }
+    };
+    
+    /*
+     * Set initial state if not hidden.
+     */
+    
+    if (!foregroundViewsHidden) {
+        for (UIView *dot in self.dots) {
+            dot.hidden = YES;
+            dot.alpha = 0.0f;
+        }
+        for (UIView *label in self.labels) {
+            label.hidden = NO;
+            label.alpha = 0.0f;
+        }
+        self.facebookButton.hidden = YES;
+        self.facebookButton.alpha = 0.0f;
+    }
+    
+    /*
+     * Animate.
+     */
+    
+    if (animated) {
+        [UIView animateWithDuration:0.25f animations:animateBlock completion:completeBlock];
+        return;
+    }
+    animateBlock();
+    completeBlock(YES);
     
 }
 

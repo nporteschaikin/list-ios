@@ -8,9 +8,9 @@
 
 #import "ZoomAnimator.h"
 
-#pragma mark - ZoomAnimatorTransitioningDelegate
+#pragma mark - ZoomTransitioningDelegate
 
-@implementation ZoomAnimatorTransitioningDelegate
+@implementation ZoomTransitioningDelegate
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
     ZoomAnimator *animator = [[ZoomAnimator alloc] init];

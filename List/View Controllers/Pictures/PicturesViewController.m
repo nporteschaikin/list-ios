@@ -21,7 +21,7 @@
 @property (strong, nonatomic) PicturesController *picturesController;
 @property (strong, nonatomic) PicturesDataSource *dataSource;
 @property (strong, nonatomic) PicturesLayout *layout;
-@property (strong, nonatomic) ZoomAnimatorTransitioningDelegate *zoomTransitioningDelegate;
+@property (strong, nonatomic) ZoomTransitioningDelegate *zoomTransitioningDelegate;
 
 @end
 
@@ -48,7 +48,7 @@
          * Create transitioning delegate.
          */
         
-        self.zoomTransitioningDelegate = [[ZoomAnimatorTransitioningDelegate alloc] init];
+        self.zoomTransitioningDelegate = [[ZoomTransitioningDelegate alloc] init];
         
     }
     return self;
@@ -163,7 +163,7 @@
     UICollectionViewLayoutAttributes *attributes = [collectionView layoutAttributesForItemAtIndexPath:indexPath];
     CGRect startFrame = attributes.frame;
     UIView *view = self.view;
-    ZoomAnimatorTransitioningDelegate *zoomTransitioningDelegate = self.zoomTransitioningDelegate;
+    ZoomTransitioningDelegate *zoomTransitioningDelegate = self.zoomTransitioningDelegate;
     zoomTransitioningDelegate.startFrame = [collectionView convertRect:startFrame toView:view];
     
     /*

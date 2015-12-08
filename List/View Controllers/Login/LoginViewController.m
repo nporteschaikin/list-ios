@@ -11,12 +11,14 @@
 #import "LoginViewController.h"
 #import "LoginDataSource.h"
 #import "ListConstants.h"
+#import "ListLoadingView.h"
 
 @interface LoginViewController ()
 
 @property (strong, nonatomic) Session *session;
 @property (strong, nonatomic) LoginView *loginView;
 @property (strong, nonatomic) LoginDataSource *dataSource;
+@property (strong, nonatomic) ListLoadingView *loadingView;
 
 @end
 
@@ -31,6 +33,7 @@
          */
         
         self.dataSource = [[LoginDataSource alloc] init];
+        
     }
     return self;
 }
@@ -48,6 +51,15 @@
     self.view.frame = [UIScreen mainScreen].bounds;
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
+    /*
+     * Create loading view.
+     */
+    
+    self.loadingView = [[ListLoadingView alloc] init];
+    self.loadingView.hidden = YES;
+    self.loadingView.lineColor = [UIColor whiteColor];
+    [self.loginView addSubview:self.loadingView];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -60,8 +72,43 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *sessionToken = [userDefaults objectForKey:kUserDefaultsSessionTokenKey];
     if (sessionToken) {
+        [self setLoading:YES];
         [self.session authWithTokenKind:SessionAuthTokenKindSessionToken tokenValue:sessionToken];
     }
+    
+}
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    
+    /*
+     * Position loading view.
+     */
+    
+    CGFloat x, y, w, h;
+    x = (CGRectGetWidth(self.view.bounds) - kListLoadingViewDefaultSize) / 2;
+    y = (CGRectGetHeight(self.view.bounds) - kListLoadingViewDefaultSize) / 2;
+    w = kListLoadingViewDefaultSize;
+    h = kListLoadingViewDefaultSize;
+    self.loadingView.frame = CGRectMake(x, y, w, h);
+    
+}
+
+- (void)setLoading:(BOOL)loading {
+    
+    /*
+     * Toggle loading view.
+     */
+    
+    ListLoadingView *loadingView = self.loadingView;
+    loadingView.hidden = !loading;
+    
+    /*
+     * Toggle foreground views.
+     */
+    
+    LoginView *loginView = self.loginView;
+    [loginView setForegroundViewsHidden:loading animated:YES];
     
 }
 
@@ -89,6 +136,7 @@
              * FB login.
              */
             
+            [self setLoading:YES];
             [login logInWithReadPermissions:@[@"email"] fromViewController:self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
                 if (!result.isCancelled && !error) {
                     
@@ -99,7 +147,15 @@
                     FBSDKAccessToken *token = result.token;
                     NSString *tokenString = token.tokenString;
                     [self.session authWithTokenKind:SessionAuthTokenKindFacebookAccessToken tokenValue:tokenString];
+                    return;
                 }
+                
+                /*
+                 * Otherwise, turn off loading view.
+                 */
+                
+                [self setLoading:NO];
+                
             }];
             
             break;

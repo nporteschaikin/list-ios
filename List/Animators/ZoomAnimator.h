@@ -8,9 +8,9 @@
 
 #import "ListUIKit.h"
 
-#pragma mark - ZoomAnimatorTransitioningDelegate
+#pragma mark - ZoomTransitioningDelegate
 
-@interface ZoomAnimatorTransitioningDelegate : NSObject <UIViewControllerTransitioningDelegate>
+@interface ZoomTransitioningDelegate : NSObject <UIViewControllerTransitioningDelegate>
 
 @property (nonatomic) CGRect startFrame;
 

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Event.h"
+#import "Params.h"
 #import "Tag.h"
 #import "Session.h"
 #import "MapCircle.h"
@@ -28,6 +29,7 @@
 @property (weak, nonatomic) id<EventsControllerDelegate> delegate;
 @property (copy, nonatomic, readonly) NSArray *events;
 @property (copy, nonatomic, readonly) NSArray *tags;
+@property (strong, nonatomic, readonly) Params *params;
 @property (strong, nonatomic, readonly) Placemark *placemark;
 @property (strong, nonatomic) MapCircle *mapCircle;
 @property (strong, nonatomic) User *user;

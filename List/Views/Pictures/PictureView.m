@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) UIImageView *assetView;
 @property (strong, nonatomic) UIView *footerView;
+@property (strong, nonatomic) CAGradientLayer *footerGradient;
 @property (strong, nonatomic) UIImageView *avatarView;
 @property (strong, nonatomic) UILabel *detailsLabel;
 @property (strong, nonatomic) UILabel *textLabel;
@@ -38,12 +39,16 @@
         [self addSubview:assetView];
         
         UIView *footerView = self.footerView = [[UIView alloc] init];
-        footerView.backgroundColor = [UIColor listUI_blackColorAlpha:0.75f];
         [self addSubview:footerView];
+        
+        CAGradientLayer *footerGradient = self.footerGradient = [[CAGradientLayer alloc] init];
+        footerGradient.colors = @[ (id)[UIColor clearColor].CGColor, (id)[UIColor listUI_blackColorAlpha:0.75f].CGColor ];
+        footerGradient.locations = @[ @0, @1 ];
+        [footerView.layer insertSublayer:footerGradient atIndex:0];
         
         UIImageView *avatarView = self.avatarView = [[UIImageView alloc] init];
         avatarView.clipsToBounds = YES;
-        avatarView.layer.cornerRadius = kPictureViewAvatarViewSize;
+        avatarView.layer.cornerRadius = kPictureViewAvatarViewSize / 2;
         [footerView addSubview:avatarView];
         
         UILabel *textLabel = self.textLabel = [[UILabel alloc] init];
@@ -100,6 +105,10 @@
     y = CGRectGetHeight(self.bounds) - h;
     self.footerView.frame = CGRectMake(x, y, w, h);
     
+    x = 0.0f;
+    y = 0.0f;
+    self.footerGradient.frame = CGRectMake(x, y, w, h);
+    
 }
 
 - (void)updateTextLabel {
@@ -114,7 +123,7 @@
      * Create attributed string.
      */
     
-    NSAttributedString *displayName = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ ", self.displayName] attributes:@{NSFontAttributeName: [UIFont listUI_semiboldFontWithSize:12.f], NSForegroundColorAttributeName: [UIColor listUI_blueColorAlpha:1.0f]}];;
+    NSAttributedString *displayName = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ ", self.displayName] attributes:@{NSFontAttributeName: [UIFont listUI_semiboldFontWithSize:12.f], NSForegroundColorAttributeName: [UIColor whiteColor]}];
     NSAttributedString *text = [[NSAttributedString alloc] initWithString:self.text attributes:@{NSFontAttributeName: [UIFont listUI_fontWithSize:12.f], NSForegroundColorAttributeName: [UIColor whiteColor]}];;
     NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithAttributedString:displayName];
     [attributedText appendAttributedString:text];
